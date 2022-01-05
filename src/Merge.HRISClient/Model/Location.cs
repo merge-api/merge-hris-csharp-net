@@ -27,7 +27,7 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// # The Location Object ### Description The &#x60;Location&#x60; object is used to represent a Location for a company. This is shared across many models and is referenced whenever a location is stored.  ### Usage Example Fetch from the &#x60;LIST Locations&#x60; endpoint and filter by &#x60;ID&#x60; to show all office locations.
+    /// # The Location Object ### Description The &#x60;Location&#x60; object is used to represent a Location for a Company or Employee address. This is shared across many models and is referenced whenever a location is stored.  ### Usage Example Fetch from the &#x60;LIST Locations&#x60; endpoint and filter by &#x60;ID&#x60; to show all office locations.
     /// </summary>
     [DataContract(Name = "Location")]
     public partial class Location : IEquatable<Location>, IValidatableObject
@@ -43,6 +43,7 @@ namespace Merge.HRISClient.Model
         /// Initializes a new instance of the <see cref="Location" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
+        /// <param name="name">The location&#39;s name..</param>
         /// <param name="phoneNumber">The location&#39;s phone number..</param>
         /// <param name="street1">Line 1 of the location&#39;s street address..</param>
         /// <param name="street2">Line 2 of the location&#39;s street address..</param>
@@ -50,9 +51,10 @@ namespace Merge.HRISClient.Model
         /// <param name="state">The location&#39;s state. Represents a region if outside of the US..</param>
         /// <param name="zipCode">The location&#39;s zip code..</param>
         /// <param name="country">The location&#39;s country..</param>
-        public Location(string remoteId = default(string), string phoneNumber = default(string), string street1 = default(string), string street2 = default(string), string city = default(string), string state = default(string), string zipCode = default(string), CountryEnum? country = default(CountryEnum?))
+        public Location(string remoteId = default(string), string name = default(string), string phoneNumber = default(string), string street1 = default(string), string street2 = default(string), string city = default(string), string state = default(string), string zipCode = default(string), CountryEnum? country = default(CountryEnum?))
         {
             this.RemoteId = remoteId;
+            this.Name = name;
             this.PhoneNumber = phoneNumber;
             this.Street1 = street1;
             this.Street2 = street2;
@@ -83,6 +85,13 @@ namespace Merge.HRISClient.Model
         /// <value>The third-party API ID of the matching object.</value>
         [DataMember(Name = "remote_id", EmitDefaultValue = true)]
         public string RemoteId { get; set; }
+
+        /// <summary>
+        /// The location&#39;s name.
+        /// </summary>
+        /// <value>The location&#39;s name.</value>
+        [DataMember(Name = "name", EmitDefaultValue = true)]
+        public string Name { get; set; }
 
         /// <summary>
         /// The location&#39;s phone number.
@@ -151,6 +160,7 @@ namespace Merge.HRISClient.Model
             sb.Append("class Location {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  RemoteId: ").Append(RemoteId).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
             sb.Append("  Street1: ").Append(Street1).Append("\n");
             sb.Append("  Street2: ").Append(Street2).Append("\n");
@@ -202,6 +212,11 @@ namespace Merge.HRISClient.Model
                     this.RemoteId == input.RemoteId ||
                     (this.RemoteId != null &&
                     this.RemoteId.Equals(input.RemoteId))
+                ) && 
+                (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
                 ) && 
                 (
                     this.PhoneNumber == input.PhoneNumber ||
@@ -258,6 +273,8 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.RemoteId != null)
                     hashCode = hashCode * 59 + this.RemoteId.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.PhoneNumber != null)
                     hashCode = hashCode * 59 + this.PhoneNumber.GetHashCode();
                 if (this.Street1 != null)

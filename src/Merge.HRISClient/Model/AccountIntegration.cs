@@ -33,40 +33,6 @@ namespace Merge.HRISClient.Model
     public partial class AccountIntegration : IEquatable<AccountIntegration>, IValidatableObject
     {
         /// <summary>
-        /// Defines Categories
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum CategoriesEnum
-        {
-            /// <summary>
-            /// Enum Hris for value: hris
-            /// </summary>
-            [EnumMember(Value = "hris")]
-            Hris = 1,
-
-            /// <summary>
-            /// Enum Ats for value: ats
-            /// </summary>
-            [EnumMember(Value = "ats")]
-            Ats = 2,
-
-            /// <summary>
-            /// Enum Accounting for value: accounting
-            /// </summary>
-            [EnumMember(Value = "accounting")]
-            Accounting = 3
-
-        }
-
-
-
-        /// <summary>
-        /// Category or categories this integration belongs to. Multiple categories should be comma separated.&lt;br/&gt;&lt;br&gt;Example: For [ats, hris], enter &lt;i&gt;ats,hris&lt;/i&gt;
-        /// </summary>
-        /// <value>Category or categories this integration belongs to. Multiple categories should be comma separated.&lt;br/&gt;&lt;br&gt;Example: For [ats, hris], enter &lt;i&gt;ats,hris&lt;/i&gt;</value>
-        [DataMember(Name = "categories", EmitDefaultValue = false)]
-        public List<CategoriesEnum> Categories { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="AccountIntegration" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -95,6 +61,13 @@ namespace Merge.HRISClient.Model
         /// <value>Company name.</value>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Category or categories this integration belongs to. Multiple categories should be comma separated.&lt;br/&gt;&lt;br&gt;Example: For [ats, hris], enter &lt;i&gt;ats,hris&lt;/i&gt;
+        /// </summary>
+        /// <value>Category or categories this integration belongs to. Multiple categories should be comma separated.&lt;br/&gt;&lt;br&gt;Example: For [ats, hris], enter &lt;i&gt;ats,hris&lt;/i&gt;</value>
+        [DataMember(Name = "categories", EmitDefaultValue = false)]
+        public List<CategoriesEnum> Categories { get; set; }
 
         /// <summary>
         /// Company logo in rectangular shape. &lt;b&gt;Upload an image with a clear background.&lt;/b&gt;
@@ -187,6 +160,8 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.Categories == input.Categories ||
+                    this.Categories != null &&
+                    input.Categories != null &&
                     this.Categories.SequenceEqual(input.Categories)
                 ) && 
                 (
@@ -222,7 +197,8 @@ namespace Merge.HRISClient.Model
                 int hashCode = 41;
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                hashCode = hashCode * 59 + this.Categories.GetHashCode();
+                if (this.Categories != null)
+                    hashCode = hashCode * 59 + this.Categories.GetHashCode();
                 if (this.Image != null)
                     hashCode = hashCode * 59 + this.Image.GetHashCode();
                 if (this.SquareImage != null)

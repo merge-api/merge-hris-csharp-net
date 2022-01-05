@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="payrollrunslist"></a>
 # **PayrollRunsList**
-> PaginatedPayrollRunList PayrollRunsList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string remoteId = null)
+> PaginatedPayrollRunList PayrollRunsList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, DateTime? endedAfter = null, DateTime? endedBefore = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string remoteId = null, string runType = null, DateTime? startedAfter = null, DateTime? startedBefore = null)
 
 
 
@@ -42,15 +42,21 @@ namespace Example
             var createdAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created after this datetime. (optional) 
             var createdBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created before this datetime. (optional) 
             var cursor = cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw;  // string | The pagination cursor value. (optional) 
+            var endedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return payroll runs ended after this datetime. (optional) 
+            var endedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return payroll runs ended before this datetime. (optional) 
+            var includeDeletedData = true;  // bool? | Whether to include data that was deleted in the third-party service. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
             var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified after this datetime. (optional) 
             var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified before this datetime. (optional) 
             var pageSize = 56;  // int? | Number of results to return per page. (optional) 
             var remoteId = remoteId_example;  // string | The API provider's ID for the given object. (optional) 
+            var runType = runType_example;  // string | If provided, will only return PayrollRun's with this status. Options: ('REGULAR', 'OFF_CYCLE', 'CORRECTION', 'TERMINATION', 'SIGN_ON_BONUS') (optional) 
+            var startedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return payroll runs started after this datetime. (optional) 
+            var startedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return payroll runs started before this datetime. (optional) 
 
             try
             {
-                PaginatedPayrollRunList result = apiInstance.PayrollRunsList(xAccountToken, createdAfter, createdBefore, cursor, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId);
+                PaginatedPayrollRunList result = apiInstance.PayrollRunsList(xAccountToken, createdAfter, createdBefore, cursor, endedAfter, endedBefore, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, runType, startedAfter, startedBefore);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -72,11 +78,17 @@ Name | Type | Description  | Notes
  **createdAfter** | **DateTime?**| If provided, will only return objects created after this datetime. | [optional] 
  **createdBefore** | **DateTime?**| If provided, will only return objects created before this datetime. | [optional] 
  **cursor** | **string**| The pagination cursor value. | [optional] 
+ **endedAfter** | **DateTime?**| If provided, will only return payroll runs ended after this datetime. | [optional] 
+ **endedBefore** | **DateTime?**| If provided, will only return payroll runs ended before this datetime. | [optional] 
+ **includeDeletedData** | **bool?**| Whether to include data that was deleted in the third-party service. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
  **modifiedAfter** | **DateTime?**| If provided, will only return objects modified after this datetime. | [optional] 
  **modifiedBefore** | **DateTime?**| If provided, will only return objects modified before this datetime. | [optional] 
  **pageSize** | **int?**| Number of results to return per page. | [optional] 
  **remoteId** | **string**| The API provider&#39;s ID for the given object. | [optional] 
+ **runType** | **string**| If provided, will only return PayrollRun&#39;s with this status. Options: (&#39;REGULAR&#39;, &#39;OFF_CYCLE&#39;, &#39;CORRECTION&#39;, &#39;TERMINATION&#39;, &#39;SIGN_ON_BONUS&#39;) | [optional] 
+ **startedAfter** | **DateTime?**| If provided, will only return payroll runs started after this datetime. | [optional] 
+ **startedBefore** | **DateTime?**| If provided, will only return payroll runs started before this datetime. | [optional] 
 
 ### Return type
 

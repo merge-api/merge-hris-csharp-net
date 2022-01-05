@@ -31,6 +31,31 @@ namespace Merge.HRISClient.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// Creates a &#x60;TimeOff&#x60; object with the given values.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <returns>TimeOffResponse</returns>
+        TimeOffResponse TimeOffCreate(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a &#x60;TimeOff&#x60; object with the given values.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <returns>ApiResponse of TimeOffResponse</returns>
+        ApiResponse<TimeOffResponse> TimeOffCreateWithHttpInfo(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Returns a list of &#x60;TimeOff&#x60; objects.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -40,14 +65,16 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
         /// <returns>PaginatedTimeOffList</returns>
-        PaginatedTimeOffList TimeOffList(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), string expand = default(string), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string));
+        PaginatedTimeOffList TimeOffList(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string requestType = default(string), string status = default(string));
 
         /// <summary>
         /// 
@@ -62,41 +89,41 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
         /// <returns>ApiResponse of PaginatedTimeOffList</returns>
-        ApiResponse<PaginatedTimeOffList> TimeOffListWithHttpInfo(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), string expand = default(string), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string));
+        ApiResponse<PaginatedTimeOffList> TimeOffListWithHttpInfo(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string requestType = default(string), string status = default(string));
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
+        /// Returns a &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <returns>TimeOff</returns>
-        TimeOff TimeOffRetrieve(string xAccountToken, Guid id, string expand = default(string), bool? includeRemoteData = default(bool?));
+        TimeOff TimeOffRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?));
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
+        /// Returns a &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <returns>ApiResponse of TimeOff</returns>
-        ApiResponse<TimeOff> TimeOffRetrieveWithHttpInfo(string xAccountToken, Guid id, string expand = default(string), bool? includeRemoteData = default(bool?));
+        ApiResponse<TimeOff> TimeOffRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?));
         #endregion Synchronous Operations
     }
 
@@ -110,6 +137,33 @@ namespace Merge.HRISClient.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// Creates a &#x60;TimeOff&#x60; object with the given values.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TimeOffResponse</returns>
+        System.Threading.Tasks.Task<TimeOffResponse> TimeOffCreateAsync(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates a &#x60;TimeOff&#x60; object with the given values.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TimeOffResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TimeOffResponse>> TimeOffCreateWithHttpInfoAsync(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Returns a list of &#x60;TimeOff&#x60; objects.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -119,15 +173,17 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedTimeOffList</returns>
-        System.Threading.Tasks.Task<PaginatedTimeOffList> TimeOffListAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), string expand = default(string), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PaginatedTimeOffList> TimeOffListAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string requestType = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -142,44 +198,44 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedTimeOffList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaginatedTimeOffList>> TimeOffListWithHttpInfoAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), string expand = default(string), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PaginatedTimeOffList>> TimeOffListWithHttpInfoAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string requestType = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
+        /// Returns a &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TimeOff</returns>
-        System.Threading.Tasks.Task<TimeOff> TimeOffRetrieveAsync(string xAccountToken, Guid id, string expand = default(string), bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TimeOff> TimeOffRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Returns an &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
+        /// Returns a &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TimeOff)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimeOff>> TimeOffRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, string expand = default(string), bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TimeOff>> TimeOffRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -301,6 +357,163 @@ namespace Merge.HRISClient.Api
         }
 
         /// <summary>
+        ///  Creates a &#x60;TimeOff&#x60; object with the given values.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <returns>TimeOffResponse</returns>
+        public TimeOffResponse TimeOffCreate(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?))
+        {
+            Merge.HRISClient.Client.ApiResponse<TimeOffResponse> localVarResponse = TimeOffCreateWithHttpInfo(xAccountToken, timeOffEndpointRequest, runAsync);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Creates a &#x60;TimeOff&#x60; object with the given values.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <returns>ApiResponse of TimeOffResponse</returns>
+        public Merge.HRISClient.Client.ApiResponse<TimeOffResponse> TimeOffCreateWithHttpInfo(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?))
+        {
+            // verify the required parameter 'xAccountToken' is set
+            if (xAccountToken == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling TimeOffApi->TimeOffCreate");
+
+            // verify the required parameter 'timeOffEndpointRequest' is set
+            if (timeOffEndpointRequest == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'timeOffEndpointRequest' when calling TimeOffApi->TimeOffCreate");
+
+            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json",
+                "application/x-www-form-urlencoded",
+                "multipart/form-data"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            if (runAsync != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "run_async", runAsync));
+            }
+            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
+            localVarRequestOptions.Data = timeOffEndpointRequest;
+
+            // authentication (tokenAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TimeOffResponse>("/time-off", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TimeOffCreate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Creates a &#x60;TimeOff&#x60; object with the given values.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TimeOffResponse</returns>
+        public async System.Threading.Tasks.Task<TimeOffResponse> TimeOffCreateAsync(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Merge.HRISClient.Client.ApiResponse<TimeOffResponse> localVarResponse = await TimeOffCreateWithHttpInfoAsync(xAccountToken, timeOffEndpointRequest, runAsync, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Creates a &#x60;TimeOff&#x60; object with the given values.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TimeOffResponse)</returns>
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<TimeOffResponse>> TimeOffCreateWithHttpInfoAsync(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'xAccountToken' is set
+            if (xAccountToken == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling TimeOffApi->TimeOffCreate");
+
+            // verify the required parameter 'timeOffEndpointRequest' is set
+            if (timeOffEndpointRequest == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'timeOffEndpointRequest' when calling TimeOffApi->TimeOffCreate");
+
+
+            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json", 
+                "application/x-www-form-urlencoded", 
+                "multipart/form-data"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            if (runAsync != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "run_async", runAsync));
+            }
+            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
+            localVarRequestOptions.Data = timeOffEndpointRequest;
+
+            // authentication (tokenAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TimeOffResponse>("/time-off", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TimeOffCreate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         ///  Returns a list of &#x60;TimeOff&#x60; objects.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -310,16 +523,18 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
         /// <returns>PaginatedTimeOffList</returns>
-        public PaginatedTimeOffList TimeOffList(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), string expand = default(string), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string))
+        public PaginatedTimeOffList TimeOffList(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string requestType = default(string), string status = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList> localVarResponse = TimeOffListWithHttpInfo(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, expand, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId);
+            Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList> localVarResponse = TimeOffListWithHttpInfo(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, requestType, status);
             return localVarResponse.Data;
         }
 
@@ -333,14 +548,16 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
         /// <returns>ApiResponse of PaginatedTimeOffList</returns>
-        public Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList> TimeOffListWithHttpInfo(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), string expand = default(string), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string))
+        public Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList> TimeOffListWithHttpInfo(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string requestType = default(string), string status = default(string))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -382,9 +599,9 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "employee_id", employeeId));
             }
-            if (expand != null)
+            if (includeDeletedData != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "expand", expand));
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_deleted_data", includeDeletedData));
             }
             if (includeRemoteData != null)
             {
@@ -405,6 +622,14 @@ namespace Merge.HRISClient.Api
             if (remoteId != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_id", remoteId));
+            }
+            if (requestType != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "request_type", requestType));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "status", status));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
@@ -436,17 +661,19 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedTimeOffList</returns>
-        public async System.Threading.Tasks.Task<PaginatedTimeOffList> TimeOffListAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), string expand = default(string), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PaginatedTimeOffList> TimeOffListAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string requestType = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList> localVarResponse = await TimeOffListWithHttpInfoAsync(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, expand, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList> localVarResponse = await TimeOffListWithHttpInfoAsync(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, requestType, status, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -460,15 +687,17 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedTimeOffList)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList>> TimeOffListWithHttpInfoAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), string expand = default(string), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList>> TimeOffListWithHttpInfoAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string requestType = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -512,9 +741,9 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "employee_id", employeeId));
             }
-            if (expand != null)
+            if (includeDeletedData != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "expand", expand));
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_deleted_data", includeDeletedData));
             }
             if (includeRemoteData != null)
             {
@@ -535,6 +764,14 @@ namespace Merge.HRISClient.Api
             if (remoteId != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_id", remoteId));
+            }
+            if (requestType != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "request_type", requestType));
+            }
+            if (status != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "status", status));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
@@ -558,30 +795,28 @@ namespace Merge.HRISClient.Api
         }
 
         /// <summary>
-        ///  Returns an &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
+        ///  Returns a &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <returns>TimeOff</returns>
-        public TimeOff TimeOffRetrieve(string xAccountToken, Guid id, string expand = default(string), bool? includeRemoteData = default(bool?))
+        public TimeOff TimeOffRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?))
         {
-            Merge.HRISClient.Client.ApiResponse<TimeOff> localVarResponse = TimeOffRetrieveWithHttpInfo(xAccountToken, id, expand, includeRemoteData);
+            Merge.HRISClient.Client.ApiResponse<TimeOff> localVarResponse = TimeOffRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Returns an &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
+        ///  Returns a &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <returns>ApiResponse of TimeOff</returns>
-        public Merge.HRISClient.Client.ApiResponse<TimeOff> TimeOffRetrieveWithHttpInfo(string xAccountToken, Guid id, string expand = default(string), bool? includeRemoteData = default(bool?))
+        public Merge.HRISClient.Client.ApiResponse<TimeOff> TimeOffRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -604,10 +839,6 @@ namespace Merge.HRISClient.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Merge.HRISClient.Client.ClientUtils.ParameterToString(id)); // path parameter
-            if (expand != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "expand", expand));
-            }
             if (includeRemoteData != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_remote_data", includeRemoteData));
@@ -633,32 +864,30 @@ namespace Merge.HRISClient.Api
         }
 
         /// <summary>
-        ///  Returns an &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
+        ///  Returns a &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TimeOff</returns>
-        public async System.Threading.Tasks.Task<TimeOff> TimeOffRetrieveAsync(string xAccountToken, Guid id, string expand = default(string), bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TimeOff> TimeOffRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<TimeOff> localVarResponse = await TimeOffRetrieveWithHttpInfoAsync(xAccountToken, id, expand, includeRemoteData, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<TimeOff> localVarResponse = await TimeOffRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Returns an &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
+        ///  Returns a &#x60;TimeOff&#x60; object with the given &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
-        /// <param name="expand">Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TimeOff)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<TimeOff>> TimeOffRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, string expand = default(string), bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<TimeOff>> TimeOffRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -683,10 +912,6 @@ namespace Merge.HRISClient.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("id", Merge.HRISClient.Client.ClientUtils.ParameterToString(id)); // path parameter
-            if (expand != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "expand", expand));
-            }
             if (includeRemoteData != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_remote_data", includeRemoteData));

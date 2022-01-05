@@ -7,10 +7,6 @@
 - [ ] New feature (non-breaking change that adds functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 
-## Related issues
-
-> All PRs at Merge must be backed by an Asana ticket. Create one here, and then replace this line with the link. https://app.asana.com/0/1198991781422585/list
-
 ## Checklists
 
 ### Development

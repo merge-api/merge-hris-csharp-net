@@ -32,34 +32,11 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "Employee")]
     public partial class Employee : IEquatable<Employee>, IValidatableObject
     {
-
         /// <summary>
-        /// The employee&#39;s gender.
+        /// Initializes a new instance of the <see cref="Employee" /> class.
         /// </summary>
-        /// <value>The employee&#39;s gender.</value>
-        [DataMember(Name = "gender", EmitDefaultValue = true)]
-        public GenderEnum? Gender { get; set; }
-
-        /// <summary>
-        /// The employee&#39;s ethnicity.
-        /// </summary>
-        /// <value>The employee&#39;s ethnicity.</value>
-        [DataMember(Name = "ethnicity", EmitDefaultValue = true)]
-        public EthnicityEnum? Ethnicity { get; set; }
-
-        /// <summary>
-        /// The employee&#39;s marital status.
-        /// </summary>
-        /// <value>The employee&#39;s marital status.</value>
-        [DataMember(Name = "marital_status", EmitDefaultValue = true)]
-        public MaritalStatusEnum? MaritalStatus { get; set; }
-
-        /// <summary>
-        /// The employment status of the employee.
-        /// </summary>
-        /// <value>The employment status of the employee.</value>
-        [DataMember(Name = "employment_status", EmitDefaultValue = true)]
-        public EmploymentStatusEnum? EmploymentStatus { get; set; }
+        [JsonConstructorAttribute]
+        protected Employee() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="Employee" /> class.
         /// </summary>
@@ -68,7 +45,7 @@ namespace Merge.HRISClient.Model
         /// <param name="company">The ID of the employee&#39;s company..</param>
         /// <param name="firstName">The employee&#39;s first name..</param>
         /// <param name="lastName">The employee&#39;s last name..</param>
-        /// <param name="displayFullName">The employee&#39;s full name, to use for display purposes..</param>
+        /// <param name="displayFullName">The employee&#39;s full name, to use for display purposes. If a preferred first name is available, the full name will include the preferred first name..</param>
         /// <param name="workEmail">The employee&#39;s work email..</param>
         /// <param name="personalEmail">The employee&#39;s personal email..</param>
         /// <param name="mobilePhoneNumber">The employee&#39;s mobile phone number..</param>
@@ -76,17 +53,28 @@ namespace Merge.HRISClient.Model
         /// <param name="workLocation">The employee&#39;s work address..</param>
         /// <param name="manager">The employee ID of the employee&#39;s manager..</param>
         /// <param name="team">The employee&#39;s team..</param>
+        /// <param name="payGroup">The employee&#39;s pay group.</param>
         /// <param name="ssn">The employee&#39;s social security number..</param>
-        /// <param name="gender">The employee&#39;s gender..</param>
-        /// <param name="ethnicity">The employee&#39;s ethnicity..</param>
-        /// <param name="maritalStatus">The employee&#39;s marital status..</param>
+        /// <param name="gender">gender (required).</param>
+        /// <param name="ethnicity">ethnicity (required).</param>
+        /// <param name="maritalStatus">maritalStatus (required).</param>
         /// <param name="dateOfBirth">The employee&#39;s date of birth..</param>
-        /// <param name="hireDate">The employee&#39;s hire date. If an employee has multiple hire dates from previous employments, this represents the most recent hire date..</param>
-        /// <param name="employmentStatus">The employment status of the employee..</param>
+        /// <param name="hireDate">The date that the employee was hired, usually the day that an offer letter is signed. If an employee has multiple hire dates from previous employments, this represents the most recent hire date. Note: If you&#39;re looking for the employee&#39;s start date, refer to the start_date field..</param>
+        /// <param name="startDate">The date that the employee started working. If an employee has multiple start dates from previous employments, this represents the most recent start date..</param>
+        /// <param name="employmentStatus">employmentStatus (required).</param>
         /// <param name="terminationDate">The employee&#39;s termination date..</param>
         /// <param name="avatar">The URL of the employee&#39;s avatar image..</param>
-        public Employee(string remoteId = default(string), string employeeNumber = default(string), Guid? company = default(Guid?), string firstName = default(string), string lastName = default(string), string displayFullName = default(string), string workEmail = default(string), string personalEmail = default(string), string mobilePhoneNumber = default(string), Guid? homeLocation = default(Guid?), Guid? workLocation = default(Guid?), Guid? manager = default(Guid?), Guid? team = default(Guid?), string ssn = default(string), GenderEnum? gender = default(GenderEnum?), EthnicityEnum? ethnicity = default(EthnicityEnum?), MaritalStatusEnum? maritalStatus = default(MaritalStatusEnum?), DateTime? dateOfBirth = default(DateTime?), DateTime? hireDate = default(DateTime?), EmploymentStatusEnum? employmentStatus = default(EmploymentStatusEnum?), DateTime? terminationDate = default(DateTime?), string avatar = default(string))
+        /// <param name="customFields">Custom fields configured for a given model..</param>
+        public Employee(string remoteId = default(string), string employeeNumber = default(string), Guid? company = default(Guid?), string firstName = default(string), string lastName = default(string), string displayFullName = default(string), string workEmail = default(string), string personalEmail = default(string), string mobilePhoneNumber = default(string), Guid? homeLocation = default(Guid?), Guid? workLocation = default(Guid?), Guid? manager = default(Guid?), Guid? team = default(Guid?), Guid? payGroup = default(Guid?), string ssn = default(string), string gender = default(string), string ethnicity = default(string), string maritalStatus = default(string), DateTime? dateOfBirth = default(DateTime?), DateTime? hireDate = default(DateTime?), DateTime? startDate = default(DateTime?), string employmentStatus = default(string), DateTime? terminationDate = default(DateTime?), string avatar = default(string), Dictionary<string, Object> customFields = default(Dictionary<string, Object>))
         {
+            // to ensure "gender" is required (not null)
+            this.Gender = gender ?? throw new ArgumentNullException("gender is a required property for Employee and cannot be null");
+            // to ensure "ethnicity" is required (not null)
+            this.Ethnicity = ethnicity ?? throw new ArgumentNullException("ethnicity is a required property for Employee and cannot be null");
+            // to ensure "maritalStatus" is required (not null)
+            this.MaritalStatus = maritalStatus ?? throw new ArgumentNullException("maritalStatus is a required property for Employee and cannot be null");
+            // to ensure "employmentStatus" is required (not null)
+            this.EmploymentStatus = employmentStatus ?? throw new ArgumentNullException("employmentStatus is a required property for Employee and cannot be null");
             this.RemoteId = remoteId;
             this.EmployeeNumber = employeeNumber;
             this.Company = company;
@@ -100,15 +88,14 @@ namespace Merge.HRISClient.Model
             this.WorkLocation = workLocation;
             this.Manager = manager;
             this.Team = team;
+            this.PayGroup = payGroup;
             this.Ssn = ssn;
-            this.Gender = gender;
-            this.Ethnicity = ethnicity;
-            this.MaritalStatus = maritalStatus;
             this.DateOfBirth = dateOfBirth;
             this.HireDate = hireDate;
-            this.EmploymentStatus = employmentStatus;
+            this.StartDate = startDate;
             this.TerminationDate = terminationDate;
             this.Avatar = avatar;
+            this.CustomFields = customFields;
         }
 
         /// <summary>
@@ -162,9 +149,9 @@ namespace Merge.HRISClient.Model
         public string LastName { get; set; }
 
         /// <summary>
-        /// The employee&#39;s full name, to use for display purposes.
+        /// The employee&#39;s full name, to use for display purposes. If a preferred first name is available, the full name will include the preferred first name.
         /// </summary>
-        /// <value>The employee&#39;s full name, to use for display purposes.</value>
+        /// <value>The employee&#39;s full name, to use for display purposes. If a preferred first name is available, the full name will include the preferred first name.</value>
         [DataMember(Name = "display_full_name", EmitDefaultValue = true)]
         public string DisplayFullName { get; set; }
 
@@ -190,8 +177,9 @@ namespace Merge.HRISClient.Model
         public string MobilePhoneNumber { get; set; }
 
         /// <summary>
-        /// Gets or Sets Employments
+        /// Array of &#x60;Employment&#x60; IDs for this Employee.
         /// </summary>
+        /// <value>Array of &#x60;Employment&#x60; IDs for this Employee.</value>
         [DataMember(Name = "employments", EmitDefaultValue = false)]
         public List<Guid> Employments { get; private set; }
 
@@ -233,11 +221,36 @@ namespace Merge.HRISClient.Model
         public Guid? Team { get; set; }
 
         /// <summary>
+        /// The employee&#39;s pay group
+        /// </summary>
+        /// <value>The employee&#39;s pay group</value>
+        [DataMember(Name = "pay_group", EmitDefaultValue = true)]
+        public Guid? PayGroup { get; set; }
+
+        /// <summary>
         /// The employee&#39;s social security number.
         /// </summary>
         /// <value>The employee&#39;s social security number.</value>
         [DataMember(Name = "ssn", EmitDefaultValue = true)]
         public string Ssn { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Gender
+        /// </summary>
+        [DataMember(Name = "gender", IsRequired = true, EmitDefaultValue = false)]
+        public string Gender { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Ethnicity
+        /// </summary>
+        [DataMember(Name = "ethnicity", IsRequired = true, EmitDefaultValue = false)]
+        public string Ethnicity { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MaritalStatus
+        /// </summary>
+        [DataMember(Name = "marital_status", IsRequired = true, EmitDefaultValue = false)]
+        public string MaritalStatus { get; set; }
 
         /// <summary>
         /// The employee&#39;s date of birth.
@@ -247,11 +260,24 @@ namespace Merge.HRISClient.Model
         public DateTime? DateOfBirth { get; set; }
 
         /// <summary>
-        /// The employee&#39;s hire date. If an employee has multiple hire dates from previous employments, this represents the most recent hire date.
+        /// The date that the employee was hired, usually the day that an offer letter is signed. If an employee has multiple hire dates from previous employments, this represents the most recent hire date. Note: If you&#39;re looking for the employee&#39;s start date, refer to the start_date field.
         /// </summary>
-        /// <value>The employee&#39;s hire date. If an employee has multiple hire dates from previous employments, this represents the most recent hire date.</value>
+        /// <value>The date that the employee was hired, usually the day that an offer letter is signed. If an employee has multiple hire dates from previous employments, this represents the most recent hire date. Note: If you&#39;re looking for the employee&#39;s start date, refer to the start_date field.</value>
         [DataMember(Name = "hire_date", EmitDefaultValue = true)]
         public DateTime? HireDate { get; set; }
+
+        /// <summary>
+        /// The date that the employee started working. If an employee has multiple start dates from previous employments, this represents the most recent start date.
+        /// </summary>
+        /// <value>The date that the employee started working. If an employee has multiple start dates from previous employments, this represents the most recent start date.</value>
+        [DataMember(Name = "start_date", EmitDefaultValue = true)]
+        public DateTime? StartDate { get; set; }
+
+        /// <summary>
+        /// Gets or Sets EmploymentStatus
+        /// </summary>
+        [DataMember(Name = "employment_status", IsRequired = true, EmitDefaultValue = false)]
+        public string EmploymentStatus { get; set; }
 
         /// <summary>
         /// The employee&#39;s termination date.
@@ -283,6 +309,13 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
+        /// Custom fields configured for a given model.
+        /// </summary>
+        /// <value>Custom fields configured for a given model.</value>
+        [DataMember(Name = "custom_fields", EmitDefaultValue = true)]
+        public Dictionary<string, Object> CustomFields { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -305,16 +338,19 @@ namespace Merge.HRISClient.Model
             sb.Append("  WorkLocation: ").Append(WorkLocation).Append("\n");
             sb.Append("  Manager: ").Append(Manager).Append("\n");
             sb.Append("  Team: ").Append(Team).Append("\n");
+            sb.Append("  PayGroup: ").Append(PayGroup).Append("\n");
             sb.Append("  Ssn: ").Append(Ssn).Append("\n");
             sb.Append("  Gender: ").Append(Gender).Append("\n");
             sb.Append("  Ethnicity: ").Append(Ethnicity).Append("\n");
             sb.Append("  MaritalStatus: ").Append(MaritalStatus).Append("\n");
             sb.Append("  DateOfBirth: ").Append(DateOfBirth).Append("\n");
             sb.Append("  HireDate: ").Append(HireDate).Append("\n");
+            sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             sb.Append("  EmploymentStatus: ").Append(EmploymentStatus).Append("\n");
             sb.Append("  TerminationDate: ").Append(TerminationDate).Append("\n");
             sb.Append("  Avatar: ").Append(Avatar).Append("\n");
             sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
+            sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -426,21 +462,29 @@ namespace Merge.HRISClient.Model
                     this.Team.Equals(input.Team))
                 ) && 
                 (
+                    this.PayGroup == input.PayGroup ||
+                    (this.PayGroup != null &&
+                    this.PayGroup.Equals(input.PayGroup))
+                ) && 
+                (
                     this.Ssn == input.Ssn ||
                     (this.Ssn != null &&
                     this.Ssn.Equals(input.Ssn))
                 ) && 
                 (
                     this.Gender == input.Gender ||
-                    this.Gender.Equals(input.Gender)
+                    (this.Gender != null &&
+                    this.Gender.Equals(input.Gender))
                 ) && 
                 (
                     this.Ethnicity == input.Ethnicity ||
-                    this.Ethnicity.Equals(input.Ethnicity)
+                    (this.Ethnicity != null &&
+                    this.Ethnicity.Equals(input.Ethnicity))
                 ) && 
                 (
                     this.MaritalStatus == input.MaritalStatus ||
-                    this.MaritalStatus.Equals(input.MaritalStatus)
+                    (this.MaritalStatus != null &&
+                    this.MaritalStatus.Equals(input.MaritalStatus))
                 ) && 
                 (
                     this.DateOfBirth == input.DateOfBirth ||
@@ -453,8 +497,14 @@ namespace Merge.HRISClient.Model
                     this.HireDate.Equals(input.HireDate))
                 ) && 
                 (
+                    this.StartDate == input.StartDate ||
+                    (this.StartDate != null &&
+                    this.StartDate.Equals(input.StartDate))
+                ) && 
+                (
                     this.EmploymentStatus == input.EmploymentStatus ||
-                    this.EmploymentStatus.Equals(input.EmploymentStatus)
+                    (this.EmploymentStatus != null &&
+                    this.EmploymentStatus.Equals(input.EmploymentStatus))
                 ) && 
                 (
                     this.TerminationDate == input.TerminationDate ||
@@ -471,6 +521,12 @@ namespace Merge.HRISClient.Model
                     this.RemoteData != null &&
                     input.RemoteData != null &&
                     this.RemoteData.SequenceEqual(input.RemoteData)
+                ) && 
+                (
+                    this.CustomFields == input.CustomFields ||
+                    this.CustomFields != null &&
+                    input.CustomFields != null &&
+                    this.CustomFields.SequenceEqual(input.CustomFields)
                 );
         }
 
@@ -513,22 +569,32 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Manager.GetHashCode();
                 if (this.Team != null)
                     hashCode = hashCode * 59 + this.Team.GetHashCode();
+                if (this.PayGroup != null)
+                    hashCode = hashCode * 59 + this.PayGroup.GetHashCode();
                 if (this.Ssn != null)
                     hashCode = hashCode * 59 + this.Ssn.GetHashCode();
-                hashCode = hashCode * 59 + this.Gender.GetHashCode();
-                hashCode = hashCode * 59 + this.Ethnicity.GetHashCode();
-                hashCode = hashCode * 59 + this.MaritalStatus.GetHashCode();
+                if (this.Gender != null)
+                    hashCode = hashCode * 59 + this.Gender.GetHashCode();
+                if (this.Ethnicity != null)
+                    hashCode = hashCode * 59 + this.Ethnicity.GetHashCode();
+                if (this.MaritalStatus != null)
+                    hashCode = hashCode * 59 + this.MaritalStatus.GetHashCode();
                 if (this.DateOfBirth != null)
                     hashCode = hashCode * 59 + this.DateOfBirth.GetHashCode();
                 if (this.HireDate != null)
                     hashCode = hashCode * 59 + this.HireDate.GetHashCode();
-                hashCode = hashCode * 59 + this.EmploymentStatus.GetHashCode();
+                if (this.StartDate != null)
+                    hashCode = hashCode * 59 + this.StartDate.GetHashCode();
+                if (this.EmploymentStatus != null)
+                    hashCode = hashCode * 59 + this.EmploymentStatus.GetHashCode();
                 if (this.TerminationDate != null)
                     hashCode = hashCode * 59 + this.TerminationDate.GetHashCode();
                 if (this.Avatar != null)
                     hashCode = hashCode * 59 + this.Avatar.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
+                if (this.CustomFields != null)
+                    hashCode = hashCode * 59 + this.CustomFields.GetHashCode();
                 return hashCode;
             }
         }

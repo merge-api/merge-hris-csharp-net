@@ -67,13 +67,13 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? createdBefore = null;
             //string cursor = null;
             //string employeeId = null;
-            //string expand = null;
+            //bool? includeDeletedData = null;
             //bool? includeRemoteData = null;
             //DateTime? modifiedAfter = null;
             //DateTime? modifiedBefore = null;
             //int? pageSize = null;
             //string remoteId = null;
-            //var response = instance.BenefitsList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, expand, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId);
+            //var response = instance.BenefitsList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId);
             //Assert.IsType<PaginatedBenefitList>(response);
         }
 
@@ -86,9 +86,8 @@ namespace Merge.HRISClient.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string xAccountToken = null;
             //Guid id = null;
-            //string expand = null;
             //bool? includeRemoteData = null;
-            //var response = instance.BenefitsRetrieve(xAccountToken, id, expand, includeRemoteData);
+            //var response = instance.BenefitsRetrieve(xAccountToken, id, includeRemoteData);
             //Assert.IsType<Benefit>(response);
         }
     }

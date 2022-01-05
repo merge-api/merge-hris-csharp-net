@@ -32,28 +32,27 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "Benefit")]
     public partial class Benefit : IEquatable<Benefit>, IValidatableObject
     {
-
         /// <summary>
-        /// The type of benefit plan
+        /// Initializes a new instance of the <see cref="Benefit" /> class.
         /// </summary>
-        /// <value>The type of benefit plan</value>
-        [DataMember(Name = "benefit_plan_type", EmitDefaultValue = true)]
-        public BenefitPlanTypeEnum? BenefitPlanType { get; set; }
+        [JsonConstructorAttribute]
+        protected Benefit() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="Benefit" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
         /// <param name="employee">The employee on the plan..</param>
         /// <param name="providerName">The name of the benefit provider..</param>
-        /// <param name="benefitPlanType">The type of benefit plan.</param>
+        /// <param name="benefitPlanType">benefitPlanType (required).</param>
         /// <param name="employeeContribution">The employee&#39;s contribution..</param>
         /// <param name="companyContribution">The company&#39;s contribution..</param>
-        public Benefit(string remoteId = default(string), Guid? employee = default(Guid?), string providerName = default(string), BenefitPlanTypeEnum? benefitPlanType = default(BenefitPlanTypeEnum?), float? employeeContribution = default(float?), float? companyContribution = default(float?))
+        public Benefit(string remoteId = default(string), Guid? employee = default(Guid?), string providerName = default(string), string benefitPlanType = default(string), float? employeeContribution = default(float?), float? companyContribution = default(float?))
         {
+            // to ensure "benefitPlanType" is required (not null)
+            this.BenefitPlanType = benefitPlanType ?? throw new ArgumentNullException("benefitPlanType is a required property for Benefit and cannot be null");
             this.RemoteId = remoteId;
             this.Employee = employee;
             this.ProviderName = providerName;
-            this.BenefitPlanType = benefitPlanType;
             this.EmployeeContribution = employeeContribution;
             this.CompanyContribution = companyContribution;
         }
@@ -93,6 +92,12 @@ namespace Merge.HRISClient.Model
         /// <value>The name of the benefit provider.</value>
         [DataMember(Name = "provider_name", EmitDefaultValue = true)]
         public string ProviderName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BenefitPlanType
+        /// </summary>
+        [DataMember(Name = "benefit_plan_type", IsRequired = true, EmitDefaultValue = false)]
+        public string BenefitPlanType { get; set; }
 
         /// <summary>
         /// The employee&#39;s contribution.
@@ -195,7 +200,8 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.BenefitPlanType == input.BenefitPlanType ||
-                    this.BenefitPlanType.Equals(input.BenefitPlanType)
+                    (this.BenefitPlanType != null &&
+                    this.BenefitPlanType.Equals(input.BenefitPlanType))
                 ) && 
                 (
                     this.EmployeeContribution == input.EmployeeContribution ||
@@ -232,7 +238,8 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Employee.GetHashCode();
                 if (this.ProviderName != null)
                     hashCode = hashCode * 59 + this.ProviderName.GetHashCode();
-                hashCode = hashCode * 59 + this.BenefitPlanType.GetHashCode();
+                if (this.BenefitPlanType != null)
+                    hashCode = hashCode * 59 + this.BenefitPlanType.GetHashCode();
                 if (this.EmployeeContribution != null)
                     hashCode = hashCode * 59 + this.EmployeeContribution.GetHashCode();
                 if (this.CompanyContribution != null)

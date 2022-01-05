@@ -56,27 +56,17 @@ namespace Merge.HRISClient.Test.Api
         }
 
         /// <summary>
-        /// Test SyncStatusResyncCreate
+        /// Test SyncStatusList
         /// </summary>
         [Fact]
-        public void SyncStatusResyncCreateTest()
+        public void SyncStatusListTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string xAccountToken = null;
-            //var response = instance.SyncStatusResyncCreate(xAccountToken);
-            //Assert.IsType<SyncStatus>(response);
-        }
-
-        /// <summary>
-        /// Test SyncStatusRetrieve
-        /// </summary>
-        [Fact]
-        public void SyncStatusRetrieveTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string xAccountToken = null;
-            //var response = instance.SyncStatusRetrieve(xAccountToken);
-            //Assert.IsType<SyncStatus>(response);
+            //string cursor = null;
+            //int? pageSize = null;
+            //var response = instance.SyncStatusList(xAccountToken, cursor, pageSize);
+            //Assert.IsType<PaginatedSyncStatusList>(response);
         }
     }
 }

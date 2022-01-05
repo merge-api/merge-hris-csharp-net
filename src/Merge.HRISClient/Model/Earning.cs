@@ -32,25 +32,24 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "Earning")]
     public partial class Earning : IEquatable<Earning>, IValidatableObject
     {
-
         /// <summary>
-        /// The type of earning.
+        /// Initializes a new instance of the <see cref="Earning" /> class.
         /// </summary>
-        /// <value>The type of earning.</value>
-        [DataMember(Name = "type", EmitDefaultValue = true)]
-        public TypeEnum? Type { get; set; }
+        [JsonConstructorAttribute]
+        protected Earning() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="Earning" /> class.
         /// </summary>
         /// <param name="employeePayrollRun">The earning&#39;s employee payroll run..</param>
         /// <param name="amount">The amount earned..</param>
-        /// <param name="type">The type of earning..</param>
+        /// <param name="type">type (required).</param>
         /// <param name="remoteData">remoteData.</param>
-        public Earning(Guid? employeePayrollRun = default(Guid?), float? amount = default(float?), TypeEnum? type = default(TypeEnum?), List<Dictionary<string, Object>> remoteData = default(List<Dictionary<string, Object>>))
+        public Earning(Guid? employeePayrollRun = default(Guid?), float? amount = default(float?), string type = default(string), List<Dictionary<string, Object>> remoteData = default(List<Dictionary<string, Object>>))
         {
+            // to ensure "type" is required (not null)
+            this.Type = type ?? throw new ArgumentNullException("type is a required property for Earning and cannot be null");
             this.EmployeePayrollRun = employeePayrollRun;
             this.Amount = amount;
-            this.Type = type;
             this.RemoteData = remoteData;
         }
 
@@ -82,6 +81,12 @@ namespace Merge.HRISClient.Model
         /// <value>The amount earned.</value>
         [DataMember(Name = "amount", EmitDefaultValue = true)]
         public float? Amount { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets or Sets RemoteData
@@ -153,7 +158,8 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.Type == input.Type ||
-                    this.Type.Equals(input.Type)
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 ) && 
                 (
                     this.RemoteData == input.RemoteData ||
@@ -178,7 +184,8 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.EmployeePayrollRun.GetHashCode();
                 if (this.Amount != null)
                     hashCode = hashCode * 59 + this.Amount.GetHashCode();
-                hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
                 return hashCode;

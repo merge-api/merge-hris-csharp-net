@@ -31,44 +31,27 @@ namespace Merge.HRISClient.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Force resync of all models.
+        /// Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SYNCING&#x60;
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <returns>SyncStatus</returns>
-        SyncStatus SyncStatusResyncCreate(string xAccountToken);
+        /// <param name="cursor">The pagination cursor value. (optional)</param>
+        /// <param name="pageSize">Number of results to return per page. (optional)</param>
+        /// <returns>PaginatedSyncStatusList</returns>
+        PaginatedSyncStatusList SyncStatusList(string xAccountToken, string cursor = default(string), int? pageSize = default(int?));
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Force resync of all models.
+        /// Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SYNCING&#x60;
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <returns>ApiResponse of SyncStatus</returns>
-        ApiResponse<SyncStatus> SyncStatusResyncCreateWithHttpInfo(string xAccountToken);
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Get syncing status.
-        /// </remarks>
-        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <returns>SyncStatus</returns>
-        SyncStatus SyncStatusRetrieve(string xAccountToken);
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Get syncing status.
-        /// </remarks>
-        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <returns>ApiResponse of SyncStatus</returns>
-        ApiResponse<SyncStatus> SyncStatusRetrieveWithHttpInfo(string xAccountToken);
+        /// <param name="cursor">The pagination cursor value. (optional)</param>
+        /// <param name="pageSize">Number of results to return per page. (optional)</param>
+        /// <returns>ApiResponse of PaginatedSyncStatusList</returns>
+        ApiResponse<PaginatedSyncStatusList> SyncStatusListWithHttpInfo(string xAccountToken, string cursor = default(string), int? pageSize = default(int?));
         #endregion Synchronous Operations
     }
 
@@ -82,48 +65,29 @@ namespace Merge.HRISClient.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Force resync of all models.
+        /// Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SYNCING&#x60;
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="cursor">The pagination cursor value. (optional)</param>
+        /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SyncStatus</returns>
-        System.Threading.Tasks.Task<SyncStatus> SyncStatusResyncCreateAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of PaginatedSyncStatusList</returns>
+        System.Threading.Tasks.Task<PaginatedSyncStatusList> SyncStatusListAsync(string xAccountToken, string cursor = default(string), int? pageSize = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
         /// </summary>
         /// <remarks>
-        /// Force resync of all models.
+        /// Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SYNCING&#x60;
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="cursor">The pagination cursor value. (optional)</param>
+        /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SyncStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SyncStatus>> SyncStatusResyncCreateWithHttpInfoAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Get syncing status.
-        /// </remarks>
-        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SyncStatus</returns>
-        System.Threading.Tasks.Task<SyncStatus> SyncStatusRetrieveAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <remarks>
-        /// Get syncing status.
-        /// </remarks>
-        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SyncStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SyncStatus>> SyncStatusRetrieveWithHttpInfoAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (PaginatedSyncStatusList)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PaginatedSyncStatusList>> SyncStatusListWithHttpInfoAsync(string xAccountToken, string cursor = default(string), int? pageSize = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -245,28 +209,32 @@ namespace Merge.HRISClient.Api
         }
 
         /// <summary>
-        ///  Force resync of all models.
+        ///  Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SYNCING&#x60;
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <returns>SyncStatus</returns>
-        public SyncStatus SyncStatusResyncCreate(string xAccountToken)
+        /// <param name="cursor">The pagination cursor value. (optional)</param>
+        /// <param name="pageSize">Number of results to return per page. (optional)</param>
+        /// <returns>PaginatedSyncStatusList</returns>
+        public PaginatedSyncStatusList SyncStatusList(string xAccountToken, string cursor = default(string), int? pageSize = default(int?))
         {
-            Merge.HRISClient.Client.ApiResponse<SyncStatus> localVarResponse = SyncStatusResyncCreateWithHttpInfo(xAccountToken);
+            Merge.HRISClient.Client.ApiResponse<PaginatedSyncStatusList> localVarResponse = SyncStatusListWithHttpInfo(xAccountToken, cursor, pageSize);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Force resync of all models.
+        ///  Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SYNCING&#x60;
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <returns>ApiResponse of SyncStatus</returns>
-        public Merge.HRISClient.Client.ApiResponse<SyncStatus> SyncStatusResyncCreateWithHttpInfo(string xAccountToken)
+        /// <param name="cursor">The pagination cursor value. (optional)</param>
+        /// <param name="pageSize">Number of results to return per page. (optional)</param>
+        /// <returns>ApiResponse of PaginatedSyncStatusList</returns>
+        public Merge.HRISClient.Client.ApiResponse<PaginatedSyncStatusList> SyncStatusListWithHttpInfo(string xAccountToken, string cursor = default(string), int? pageSize = default(int?))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
-                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling SyncStatusApi->SyncStatusResyncCreate");
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling SyncStatusApi->SyncStatusList");
 
             Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
 
@@ -284,6 +252,14 @@ namespace Merge.HRISClient.Api
             var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
             // authentication (tokenAuth) required
@@ -293,11 +269,11 @@ namespace Merge.HRISClient.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<SyncStatus>("/sync-status/resync", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<PaginatedSyncStatusList>("/sync-status", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SyncStatusResyncCreate", localVarResponse);
+                Exception _exception = this.ExceptionFactory("SyncStatusList", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -305,30 +281,34 @@ namespace Merge.HRISClient.Api
         }
 
         /// <summary>
-        ///  Force resync of all models.
+        ///  Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SYNCING&#x60;
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="cursor">The pagination cursor value. (optional)</param>
+        /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SyncStatus</returns>
-        public async System.Threading.Tasks.Task<SyncStatus> SyncStatusResyncCreateAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of PaginatedSyncStatusList</returns>
+        public async System.Threading.Tasks.Task<PaginatedSyncStatusList> SyncStatusListAsync(string xAccountToken, string cursor = default(string), int? pageSize = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<SyncStatus> localVarResponse = await SyncStatusResyncCreateWithHttpInfoAsync(xAccountToken, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<PaginatedSyncStatusList> localVarResponse = await SyncStatusListWithHttpInfoAsync(xAccountToken, cursor, pageSize, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        ///  Force resync of all models.
+        ///  Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;SYNCING&#x60;
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="cursor">The pagination cursor value. (optional)</param>
+        /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SyncStatus)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<SyncStatus>> SyncStatusResyncCreateWithHttpInfoAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (PaginatedSyncStatusList)</returns>
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedSyncStatusList>> SyncStatusListWithHttpInfoAsync(string xAccountToken, string cursor = default(string), int? pageSize = default(int?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
-                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling SyncStatusApi->SyncStatusResyncCreate");
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling SyncStatusApi->SyncStatusList");
 
 
             Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
@@ -348,6 +328,14 @@ namespace Merge.HRISClient.Api
             var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
+            if (pageSize != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
             // authentication (tokenAuth) required
@@ -358,136 +346,11 @@ namespace Merge.HRISClient.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<SyncStatus>("/sync-status/resync", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<PaginatedSyncStatusList>("/sync-status", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("SyncStatusResyncCreate", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  Get syncing status.
-        /// </summary>
-        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <returns>SyncStatus</returns>
-        public SyncStatus SyncStatusRetrieve(string xAccountToken)
-        {
-            Merge.HRISClient.Client.ApiResponse<SyncStatus> localVarResponse = SyncStatusRetrieveWithHttpInfo(xAccountToken);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  Get syncing status.
-        /// </summary>
-        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <returns>ApiResponse of SyncStatus</returns>
-        public Merge.HRISClient.Client.ApiResponse<SyncStatus> SyncStatusRetrieveWithHttpInfo(string xAccountToken)
-        {
-            // verify the required parameter 'xAccountToken' is set
-            if (xAccountToken == null)
-                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling SyncStatusApi->SyncStatusRetrieve");
-
-            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
-
-            String[] _contentTypes = new String[] {
-            };
-
-            // to determine the Accept header
-            String[] _accepts = new String[] {
-                "application/json"
-            };
-
-            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
-
-            // authentication (tokenAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<SyncStatus>("/sync-status", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("SyncStatusRetrieve", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        ///  Get syncing status.
-        /// </summary>
-        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SyncStatus</returns>
-        public async System.Threading.Tasks.Task<SyncStatus> SyncStatusRetrieveAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            Merge.HRISClient.Client.ApiResponse<SyncStatus> localVarResponse = await SyncStatusRetrieveWithHttpInfoAsync(xAccountToken, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        ///  Get syncing status.
-        /// </summary>
-        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SyncStatus)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<SyncStatus>> SyncStatusRetrieveWithHttpInfoAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            // verify the required parameter 'xAccountToken' is set
-            if (xAccountToken == null)
-                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling SyncStatusApi->SyncStatusRetrieve");
-
-
-            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
-
-            String[] _contentTypes = new String[] {
-            };
-
-            // to determine the Accept header
-            String[] _accepts = new String[] {
-                "application/json"
-            };
-
-
-            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
-
-            // authentication (tokenAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
-            }
-
-            // make the HTTP request
-
-            var localVarResponse = await this.AsynchronousClient.GetAsync<SyncStatus>("/sync-status", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("SyncStatusRetrieve", localVarResponse);
+                Exception _exception = this.ExceptionFactory("SyncStatusList", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

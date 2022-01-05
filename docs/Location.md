@@ -1,5 +1,5 @@
 # Merge.HRISClient.Model.Location
-# The Location Object ### Description The `Location` object is used to represent a Location for a company. This is shared across many models and is referenced whenever a location is stored.  ### Usage Example Fetch from the `LIST Locations` endpoint and filter by `ID` to show all office locations.
+# The Location Object ### Description The `Location` object is used to represent a Location for a Company or Employee address. This is shared across many models and is referenced whenever a location is stored.  ### Usage Example Fetch from the `LIST Locations` endpoint and filter by `ID` to show all office locations.
 
 ## Properties
 
@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Guid** |  | [optional] [readonly] 
 **RemoteId** | **string** | The third-party API ID of the matching object. | [optional] 
+**Name** | **string** | The location&#39;s name. | [optional] 
 **PhoneNumber** | **string** | The location&#39;s phone number. | [optional] 
 **Street1** | **string** | Line 1 of the location&#39;s street address. | [optional] 
 **Street2** | **string** | Line 2 of the location&#39;s street address. | [optional] 

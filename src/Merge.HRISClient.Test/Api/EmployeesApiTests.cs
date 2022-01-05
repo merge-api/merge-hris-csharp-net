@@ -56,20 +56,6 @@ namespace Merge.HRISClient.Test.Api
         }
 
         /// <summary>
-        /// Test EmployeesCreate
-        /// </summary>
-        [Fact]
-        public void EmployeesCreateTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string xAccountToken = null;
-            //bool? runAsync = null;
-            //EmployeeRequest employeeRequest = null;
-            //var response = instance.EmployeesCreate(xAccountToken, runAsync, employeeRequest);
-            //Assert.IsType<Employee>(response);
-        }
-
-        /// <summary>
         /// Test EmployeesList
         /// </summary>
         [Fact]
@@ -81,17 +67,20 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? createdAfter = null;
             //DateTime? createdBefore = null;
             //string cursor = null;
-            //string expand = null;
+            //bool? includeDeletedData = null;
             //bool? includeRemoteData = null;
             //bool? includeSensitiveFields = null;
             //string managerId = null;
             //DateTime? modifiedAfter = null;
             //DateTime? modifiedBefore = null;
             //int? pageSize = null;
+            //string payGroupId = null;
+            //string personalEmail = null;
             //string remoteId = null;
             //string teamId = null;
+            //string workEmail = null;
             //string workLocationId = null;
-            //var response = instance.EmployeesList(xAccountToken, companyId, createdAfter, createdBefore, cursor, expand, includeRemoteData, includeSensitiveFields, managerId, modifiedAfter, modifiedBefore, pageSize, remoteId, teamId, workLocationId);
+            //var response = instance.EmployeesList(xAccountToken, companyId, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, includeSensitiveFields, managerId, modifiedAfter, modifiedBefore, pageSize, payGroupId, personalEmail, remoteId, teamId, workEmail, workLocationId);
             //Assert.IsType<PaginatedEmployeeList>(response);
         }
 
@@ -104,10 +93,9 @@ namespace Merge.HRISClient.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string xAccountToken = null;
             //Guid id = null;
-            //string expand = null;
             //bool? includeRemoteData = null;
             //bool? includeSensitiveFields = null;
-            //var response = instance.EmployeesRetrieve(xAccountToken, id, expand, includeRemoteData, includeSensitiveFields);
+            //var response = instance.EmployeesRetrieve(xAccountToken, id, includeRemoteData, includeSensitiveFields);
             //Assert.IsType<Employee>(response);
         }
     }

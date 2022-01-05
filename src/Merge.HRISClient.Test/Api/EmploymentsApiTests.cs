@@ -56,20 +56,6 @@ namespace Merge.HRISClient.Test.Api
         }
 
         /// <summary>
-        /// Test EmploymentsCreate
-        /// </summary>
-        [Fact]
-        public void EmploymentsCreateTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string xAccountToken = null;
-            //bool? runAsync = null;
-            //EmploymentRequest employmentRequest = null;
-            //var response = instance.EmploymentsCreate(xAccountToken, runAsync, employmentRequest);
-            //Assert.IsType<Employment>(response);
-        }
-
-        /// <summary>
         /// Test EmploymentsList
         /// </summary>
         [Fact]
@@ -81,12 +67,14 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? createdBefore = null;
             //string cursor = null;
             //string employeeId = null;
+            //bool? includeDeletedData = null;
             //bool? includeRemoteData = null;
             //DateTime? modifiedAfter = null;
             //DateTime? modifiedBefore = null;
+            //string orderBy = null;
             //int? pageSize = null;
             //string remoteId = null;
-            //var response = instance.EmploymentsList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId);
+            //var response = instance.EmploymentsList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteId);
             //Assert.IsType<PaginatedEmploymentList>(response);
         }
 
