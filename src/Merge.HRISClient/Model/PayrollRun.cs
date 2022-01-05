@@ -32,34 +32,27 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "PayrollRun")]
     public partial class PayrollRun : IEquatable<PayrollRun>, IValidatableObject
     {
-
         /// <summary>
-        /// The state of the payroll run
+        /// Initializes a new instance of the <see cref="PayrollRun" /> class.
         /// </summary>
-        /// <value>The state of the payroll run</value>
-        [DataMember(Name = "run_state", EmitDefaultValue = true)]
-        public RunStateEnum? RunState { get; set; }
-
-        /// <summary>
-        /// The type of the payroll run
-        /// </summary>
-        /// <value>The type of the payroll run</value>
-        [DataMember(Name = "run_type", EmitDefaultValue = true)]
-        public RunTypeEnum? RunType { get; set; }
+        [JsonConstructorAttribute]
+        protected PayrollRun() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="PayrollRun" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="runState">The state of the payroll run.</param>
-        /// <param name="runType">The type of the payroll run.</param>
+        /// <param name="runState">runState (required).</param>
+        /// <param name="runType">runType (required).</param>
         /// <param name="startDate">The day and time the payroll run started..</param>
         /// <param name="endDate">The day and time the payroll run ended..</param>
         /// <param name="checkDate">The day and time the payroll run was checked..</param>
-        public PayrollRun(string remoteId = default(string), RunStateEnum? runState = default(RunStateEnum?), RunTypeEnum? runType = default(RunTypeEnum?), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), DateTime? checkDate = default(DateTime?))
+        public PayrollRun(string remoteId = default(string), string runState = default(string), string runType = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), DateTime? checkDate = default(DateTime?))
         {
+            // to ensure "runState" is required (not null)
+            this.RunState = runState ?? throw new ArgumentNullException("runState is a required property for PayrollRun and cannot be null");
+            // to ensure "runType" is required (not null)
+            this.RunType = runType ?? throw new ArgumentNullException("runType is a required property for PayrollRun and cannot be null");
             this.RemoteId = remoteId;
-            this.RunState = runState;
-            this.RunType = runType;
             this.StartDate = startDate;
             this.EndDate = endDate;
             this.CheckDate = checkDate;
@@ -86,6 +79,18 @@ namespace Merge.HRISClient.Model
         /// <value>The third-party API ID of the matching object.</value>
         [DataMember(Name = "remote_id", EmitDefaultValue = true)]
         public string RemoteId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RunState
+        /// </summary>
+        [DataMember(Name = "run_state", IsRequired = true, EmitDefaultValue = false)]
+        public string RunState { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RunType
+        /// </summary>
+        [DataMember(Name = "run_type", IsRequired = true, EmitDefaultValue = false)]
+        public string RunType { get; set; }
 
         /// <summary>
         /// The day and time the payroll run started.
@@ -185,11 +190,13 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.RunState == input.RunState ||
-                    this.RunState.Equals(input.RunState)
+                    (this.RunState != null &&
+                    this.RunState.Equals(input.RunState))
                 ) && 
                 (
                     this.RunType == input.RunType ||
-                    this.RunType.Equals(input.RunType)
+                    (this.RunType != null &&
+                    this.RunType.Equals(input.RunType))
                 ) && 
                 (
                     this.StartDate == input.StartDate ||
@@ -227,8 +234,10 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.RemoteId != null)
                     hashCode = hashCode * 59 + this.RemoteId.GetHashCode();
-                hashCode = hashCode * 59 + this.RunState.GetHashCode();
-                hashCode = hashCode * 59 + this.RunType.GetHashCode();
+                if (this.RunState != null)
+                    hashCode = hashCode * 59 + this.RunState.GetHashCode();
+                if (this.RunType != null)
+                    hashCode = hashCode * 59 + this.RunType.GetHashCode();
                 if (this.StartDate != null)
                     hashCode = hashCode * 59 + this.StartDate.GetHashCode();
                 if (this.EndDate != null)

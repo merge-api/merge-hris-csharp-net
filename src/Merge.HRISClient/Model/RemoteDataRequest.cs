@@ -142,6 +142,12 @@ namespace Merge.HRISClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // Path (string) minLength
+            if(this.Path != null && this.Path.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Path, length must be greater than 1.", new [] { "Path" });
+            }
+
             yield break;
         }
     }

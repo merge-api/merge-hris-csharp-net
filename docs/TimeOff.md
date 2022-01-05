@@ -9,11 +9,11 @@ Name | Type | Description | Notes
 **RemoteId** | **string** | The third-party API ID of the matching object. | [optional] 
 **Employee** | **Guid?** | The employee requesting time off. | [optional] 
 **Approver** | **Guid?** | The employee approving the time off request. | [optional] 
-**Status** | **TimeOffStatusEnum** | The status of this time off request. | [optional] 
+**Status** | **string** |  | 
 **EmployeeNote** | **string** | The employee note for this time off request. | [optional] 
-**Units** | **UnitsEnum** | The unit of time requested. | [optional] 
+**Units** | **string** |  | 
 **Amount** | **float?** | The number of time off units requested. | [optional] 
-**RequestType** | **RequestTypeEnum** | The type of time off request. | [optional] 
+**RequestType** | **string** |  | 
 **StartTime** | **DateTime?** | The day and time of the start of the time requested off. | [optional] 
 **EndTime** | **DateTime?** | The day and time of the end of the time requested off. | [optional] 
 **RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 

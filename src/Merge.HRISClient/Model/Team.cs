@@ -37,10 +37,12 @@ namespace Merge.HRISClient.Model
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
         /// <param name="name">The team&#39;s name..</param>
-        public Team(string remoteId = default(string), string name = default(string))
+        /// <param name="parentTeam">The team&#39;s parent team..</param>
+        public Team(string remoteId = default(string), string name = default(string), Guid? parentTeam = default(Guid?))
         {
             this.RemoteId = remoteId;
             this.Name = name;
+            this.ParentTeam = parentTeam;
         }
 
         /// <summary>
@@ -73,6 +75,13 @@ namespace Merge.HRISClient.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// The team&#39;s parent team.
+        /// </summary>
+        /// <value>The team&#39;s parent team.</value>
+        [DataMember(Name = "parent_team", EmitDefaultValue = true)]
+        public Guid? ParentTeam { get; set; }
+
+        /// <summary>
         /// Gets or Sets RemoteData
         /// </summary>
         [DataMember(Name = "remote_data", EmitDefaultValue = true)]
@@ -98,6 +107,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  RemoteId: ").Append(RemoteId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ParentTeam: ").Append(ParentTeam).Append("\n");
             sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -149,6 +159,11 @@ namespace Merge.HRISClient.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.ParentTeam == input.ParentTeam ||
+                    (this.ParentTeam != null &&
+                    this.ParentTeam.Equals(input.ParentTeam))
+                ) && 
+                (
                     this.RemoteData == input.RemoteData ||
                     this.RemoteData != null &&
                     input.RemoteData != null &&
@@ -171,6 +186,8 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.RemoteId.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.ParentTeam != null)
+                    hashCode = hashCode * 59 + this.ParentTeam.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
                 return hashCode;

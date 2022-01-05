@@ -4,13 +4,93 @@ All URIs are relative to *https://api.merge.dev/api/hris/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**TimeOffCreate**](TimeOffApi.md#timeoffcreate) | **POST** /time-off | 
 [**TimeOffList**](TimeOffApi.md#timeofflist) | **GET** /time-off | 
 [**TimeOffRetrieve**](TimeOffApi.md#timeoffretrieve) | **GET** /time-off/{id} | 
 
 
+<a name="timeoffcreate"></a>
+# **TimeOffCreate**
+> TimeOffResponse TimeOffCreate (string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = null)
+
+
+
+Creates a `TimeOff` object with the given values.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Merge.HRISClient.Api;
+using Merge.HRISClient.Client;
+using Merge.HRISClient.Model;
+
+namespace Example
+{
+    public class TimeOffCreateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.merge.dev/api/hris/v1";
+            // Configure API key authorization: tokenAuth
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+
+            var apiInstance = new TimeOffApi(config);
+            var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
+            var timeOffEndpointRequest = new TimeOffEndpointRequest(); // TimeOffEndpointRequest | 
+            var runAsync = true;  // bool? | Whether or not third-party updates should be run asynchronously. (optional) 
+
+            try
+            {
+                TimeOffResponse result = apiInstance.TimeOffCreate(xAccountToken, timeOffEndpointRequest, runAsync);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling TimeOffApi.TimeOffCreate: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xAccountToken** | **string**| Token identifying the end user. | 
+ **timeOffEndpointRequest** | [**TimeOffEndpointRequest**](TimeOffEndpointRequest.md)|  | 
+ **runAsync** | **bool?**| Whether or not third-party updates should be run asynchronously. | [optional] 
+
+### Return type
+
+[**TimeOffResponse**](TimeOffResponse.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 <a name="timeofflist"></a>
 # **TimeOffList**
-> PaginatedTimeOffList TimeOffList (string xAccountToken, string approverId = null, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, string employeeId = null, string expand = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string remoteId = null)
+> PaginatedTimeOffList TimeOffList (string xAccountToken, string approverId = null, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, string employeeId = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string remoteId = null, string requestType = null, string status = null)
 
 
 
@@ -44,16 +124,18 @@ namespace Example
             var createdBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created before this datetime. (optional) 
             var cursor = cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw;  // string | The pagination cursor value. (optional) 
             var employeeId = employeeId_example;  // string | If provided, will only return time off for this employee. (optional) 
-            var expand = employee,approver;  // string | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional) 
+            var includeDeletedData = true;  // bool? | Whether to include data that was deleted in the third-party service. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
             var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified after this datetime. (optional) 
             var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified before this datetime. (optional) 
             var pageSize = 56;  // int? | Number of results to return per page. (optional) 
             var remoteId = remoteId_example;  // string | The API provider's ID for the given object. (optional) 
+            var requestType = requestType_example;  // string | If provided, will only return TimeOff with this request type. Options: ('VACATION', 'SICK', 'PERSONAL', 'JURY_DUTY', 'VOLUNTEER', 'BEREAVEMENT') (optional) 
+            var status = status_example;  // string | If provided, will only return TimeOff with this status. Options: ('REQUESTED', 'APPROVED', 'DECLINED', 'CANCELLED', 'DELETED') (optional) 
 
             try
             {
-                PaginatedTimeOffList result = apiInstance.TimeOffList(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, expand, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId);
+                PaginatedTimeOffList result = apiInstance.TimeOffList(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, requestType, status);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -77,12 +159,14 @@ Name | Type | Description  | Notes
  **createdBefore** | **DateTime?**| If provided, will only return objects created before this datetime. | [optional] 
  **cursor** | **string**| The pagination cursor value. | [optional] 
  **employeeId** | **string**| If provided, will only return time off for this employee. | [optional] 
- **expand** | **string**| Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] 
+ **includeDeletedData** | **bool?**| Whether to include data that was deleted in the third-party service. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
  **modifiedAfter** | **DateTime?**| If provided, will only return objects modified after this datetime. | [optional] 
  **modifiedBefore** | **DateTime?**| If provided, will only return objects modified before this datetime. | [optional] 
  **pageSize** | **int?**| Number of results to return per page. | [optional] 
  **remoteId** | **string**| The API provider&#39;s ID for the given object. | [optional] 
+ **requestType** | **string**| If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) | [optional] 
+ **status** | **string**| If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) | [optional] 
 
 ### Return type
 
@@ -107,11 +191,11 @@ Name | Type | Description  | Notes
 
 <a name="timeoffretrieve"></a>
 # **TimeOffRetrieve**
-> TimeOff TimeOffRetrieve (string xAccountToken, Guid id, string expand = null, bool? includeRemoteData = null)
+> TimeOff TimeOffRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null)
 
 
 
-Returns an `TimeOff` object with the given `id`.
+Returns a `TimeOff` object with the given `id`.
 
 ### Example
 ```csharp
@@ -137,12 +221,11 @@ namespace Example
             var apiInstance = new TimeOffApi(config);
             var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
             var id = new Guid(); // Guid | 
-            var expand = employee,approver;  // string | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
 
             try
             {
-                TimeOff result = apiInstance.TimeOffRetrieve(xAccountToken, id, expand, includeRemoteData);
+                TimeOff result = apiInstance.TimeOffRetrieve(xAccountToken, id, includeRemoteData);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -162,7 +245,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAccountToken** | **string**| Token identifying the end user. | 
  **id** | [**Guid**](Guid.md)|  | 
- **expand** | **string**| Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
 
 ### Return type

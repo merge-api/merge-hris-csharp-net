@@ -66,12 +66,14 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? createdAfter = null;
             //DateTime? createdBefore = null;
             //string cursor = null;
+            //bool? includeDeletedData = null;
             //bool? includeRemoteData = null;
             //DateTime? modifiedAfter = null;
             //DateTime? modifiedBefore = null;
             //int? pageSize = null;
+            //string parentTeamId = null;
             //string remoteId = null;
-            //var response = instance.TeamsList(xAccountToken, createdAfter, createdBefore, cursor, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId);
+            //var response = instance.TeamsList(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, parentTeamId, remoteId);
             //Assert.IsType<PaginatedTeamList>(response);
         }
 

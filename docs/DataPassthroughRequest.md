@@ -5,11 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Method** | **MethodEnum** |  | 
+**Method** | **string** |  | 
 **Path** | **string** |  | 
 **BaseUrlOverride** | **string** |  | [optional] 
-**Data** | **Dictionary&lt;string, Object&gt;** |  | [optional] 
+**Data** | **string** |  | [optional] 
 **Headers** | **Dictionary&lt;string, Object&gt;** |  | [optional] 
+**RequestFormat** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

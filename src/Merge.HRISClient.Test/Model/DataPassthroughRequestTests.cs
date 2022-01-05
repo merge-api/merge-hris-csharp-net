@@ -97,6 +97,14 @@ namespace Merge.HRISClient.Test.Model
         {
             // TODO unit test for the property 'Headers'
         }
+        /// <summary>
+        /// Test the property 'RequestFormat'
+        /// </summary>
+        [Fact]
+        public void RequestFormatTest()
+        {
+            // TODO unit test for the property 'RequestFormat'
+        }
 
     }
 

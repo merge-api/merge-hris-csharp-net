@@ -56,6 +56,20 @@ namespace Merge.HRISClient.Test.Api
         }
 
         /// <summary>
+        /// Test TimeOffCreate
+        /// </summary>
+        [Fact]
+        public void TimeOffCreateTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string xAccountToken = null;
+            //TimeOffEndpointRequest timeOffEndpointRequest = null;
+            //bool? runAsync = null;
+            //var response = instance.TimeOffCreate(xAccountToken, timeOffEndpointRequest, runAsync);
+            //Assert.IsType<TimeOffResponse>(response);
+        }
+
+        /// <summary>
         /// Test TimeOffList
         /// </summary>
         [Fact]
@@ -68,13 +82,15 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? createdBefore = null;
             //string cursor = null;
             //string employeeId = null;
-            //string expand = null;
+            //bool? includeDeletedData = null;
             //bool? includeRemoteData = null;
             //DateTime? modifiedAfter = null;
             //DateTime? modifiedBefore = null;
             //int? pageSize = null;
             //string remoteId = null;
-            //var response = instance.TimeOffList(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, expand, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId);
+            //string requestType = null;
+            //string status = null;
+            //var response = instance.TimeOffList(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, requestType, status);
             //Assert.IsType<PaginatedTimeOffList>(response);
         }
 
@@ -87,9 +103,8 @@ namespace Merge.HRISClient.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string xAccountToken = null;
             //Guid id = null;
-            //string expand = null;
             //bool? includeRemoteData = null;
-            //var response = instance.TimeOffRetrieve(xAccountToken, id, expand, includeRemoteData);
+            //var response = instance.TimeOffRetrieve(xAccountToken, id, includeRemoteData);
             //Assert.IsType<TimeOff>(response);
         }
     }

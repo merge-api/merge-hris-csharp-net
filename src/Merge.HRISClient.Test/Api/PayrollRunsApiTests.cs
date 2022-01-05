@@ -66,12 +66,18 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? createdAfter = null;
             //DateTime? createdBefore = null;
             //string cursor = null;
+            //DateTime? endedAfter = null;
+            //DateTime? endedBefore = null;
+            //bool? includeDeletedData = null;
             //bool? includeRemoteData = null;
             //DateTime? modifiedAfter = null;
             //DateTime? modifiedBefore = null;
             //int? pageSize = null;
             //string remoteId = null;
-            //var response = instance.PayrollRunsList(xAccountToken, createdAfter, createdBefore, cursor, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId);
+            //string runType = null;
+            //DateTime? startedAfter = null;
+            //DateTime? startedBefore = null;
+            //var response = instance.PayrollRunsList(xAccountToken, createdAfter, createdBefore, cursor, endedAfter, endedBefore, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, runType, startedAfter, startedBefore);
             //Assert.IsType<PaginatedPayrollRunList>(response);
         }
 

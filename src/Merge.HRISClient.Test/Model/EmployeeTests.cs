@@ -178,6 +178,14 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'Team'
         }
         /// <summary>
+        /// Test the property 'PayGroup'
+        /// </summary>
+        [Fact]
+        public void PayGroupTest()
+        {
+            // TODO unit test for the property 'PayGroup'
+        }
+        /// <summary>
         /// Test the property 'Ssn'
         /// </summary>
         [Fact]
@@ -226,6 +234,14 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'HireDate'
         }
         /// <summary>
+        /// Test the property 'StartDate'
+        /// </summary>
+        [Fact]
+        public void StartDateTest()
+        {
+            // TODO unit test for the property 'StartDate'
+        }
+        /// <summary>
         /// Test the property 'EmploymentStatus'
         /// </summary>
         [Fact]
@@ -256,6 +272,14 @@ namespace Merge.HRISClient.Test.Model
         public void RemoteDataTest()
         {
             // TODO unit test for the property 'RemoteData'
+        }
+        /// <summary>
+        /// Test the property 'CustomFields'
+        /// </summary>
+        [Fact]
+        public void CustomFieldsTest()
+        {
+            // TODO unit test for the property 'CustomFields'
         }
 
     }

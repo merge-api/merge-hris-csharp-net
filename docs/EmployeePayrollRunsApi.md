@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="employeepayrollrunslist"></a>
 # **EmployeePayrollRunsList**
-> PaginatedEmployeePayrollRunList EmployeePayrollRunsList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, string employeeId = null, string expand = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string payrollRunId = null, string remoteId = null)
+> PaginatedEmployeePayrollRunList EmployeePayrollRunsList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, string employeeId = null, DateTime? endedAfter = null, DateTime? endedBefore = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string payrollRunId = null, string remoteId = null, DateTime? startedAfter = null, DateTime? startedBefore = null)
 
 
 
@@ -42,18 +42,22 @@ namespace Example
             var createdAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created after this datetime. (optional) 
             var createdBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created before this datetime. (optional) 
             var cursor = cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw;  // string | The pagination cursor value. (optional) 
-            var employeeId = employeeId_example;  // string | If provided, will only return time off for this employee. (optional) 
-            var expand = employee,payroll_run;  // string | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional) 
+            var employeeId = employeeId_example;  // string | If provided, will only return employee payroll runs for this employee. (optional) 
+            var endedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return employee payroll runs ended after this datetime. (optional) 
+            var endedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return employee payroll runs ended before this datetime. (optional) 
+            var includeDeletedData = true;  // bool? | Whether to include data that was deleted in the third-party service. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
             var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified after this datetime. (optional) 
             var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified before this datetime. (optional) 
             var pageSize = 56;  // int? | Number of results to return per page. (optional) 
             var payrollRunId = payrollRunId_example;  // string | If provided, will only return employee payroll runs for this employee. (optional) 
             var remoteId = remoteId_example;  // string | The API provider's ID for the given object. (optional) 
+            var startedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return employee payroll runs started after this datetime. (optional) 
+            var startedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return employee payroll runs started before this datetime. (optional) 
 
             try
             {
-                PaginatedEmployeePayrollRunList result = apiInstance.EmployeePayrollRunsList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, expand, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, payrollRunId, remoteId);
+                PaginatedEmployeePayrollRunList result = apiInstance.EmployeePayrollRunsList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, endedAfter, endedBefore, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, payrollRunId, remoteId, startedAfter, startedBefore);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -75,14 +79,18 @@ Name | Type | Description  | Notes
  **createdAfter** | **DateTime?**| If provided, will only return objects created after this datetime. | [optional] 
  **createdBefore** | **DateTime?**| If provided, will only return objects created before this datetime. | [optional] 
  **cursor** | **string**| The pagination cursor value. | [optional] 
- **employeeId** | **string**| If provided, will only return time off for this employee. | [optional] 
- **expand** | **string**| Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] 
+ **employeeId** | **string**| If provided, will only return employee payroll runs for this employee. | [optional] 
+ **endedAfter** | **DateTime?**| If provided, will only return employee payroll runs ended after this datetime. | [optional] 
+ **endedBefore** | **DateTime?**| If provided, will only return employee payroll runs ended before this datetime. | [optional] 
+ **includeDeletedData** | **bool?**| Whether to include data that was deleted in the third-party service. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
  **modifiedAfter** | **DateTime?**| If provided, will only return objects modified after this datetime. | [optional] 
  **modifiedBefore** | **DateTime?**| If provided, will only return objects modified before this datetime. | [optional] 
  **pageSize** | **int?**| Number of results to return per page. | [optional] 
  **payrollRunId** | **string**| If provided, will only return employee payroll runs for this employee. | [optional] 
  **remoteId** | **string**| The API provider&#39;s ID for the given object. | [optional] 
+ **startedAfter** | **DateTime?**| If provided, will only return employee payroll runs started after this datetime. | [optional] 
+ **startedBefore** | **DateTime?**| If provided, will only return employee payroll runs started before this datetime. | [optional] 
 
 ### Return type
 
@@ -107,7 +115,7 @@ Name | Type | Description  | Notes
 
 <a name="employeepayrollrunsretrieve"></a>
 # **EmployeePayrollRunsRetrieve**
-> EmployeePayrollRun EmployeePayrollRunsRetrieve (string xAccountToken, Guid id, string expand = null, bool? includeRemoteData = null)
+> EmployeePayrollRun EmployeePayrollRunsRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null)
 
 
 
@@ -137,12 +145,11 @@ namespace Example
             var apiInstance = new EmployeePayrollRunsApi(config);
             var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
             var id = new Guid(); // Guid | 
-            var expand = employee,payroll_run;  // string | Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
 
             try
             {
-                EmployeePayrollRun result = apiInstance.EmployeePayrollRunsRetrieve(xAccountToken, id, expand, includeRemoteData);
+                EmployeePayrollRun result = apiInstance.EmployeePayrollRunsRetrieve(xAccountToken, id, includeRemoteData);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -162,7 +169,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAccountToken** | **string**| Token identifying the end user. | 
  **id** | [**Guid**](Guid.md)|  | 
- **expand** | **string**| Which relations should be returned in expanded form. Multiple relation names should be comma separated without spaces. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
 
 ### Return type

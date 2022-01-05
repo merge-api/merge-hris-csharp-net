@@ -33,39 +33,6 @@ namespace Merge.HRISClient.Model
     public partial class EndUserDetailsRequest : IEquatable<EndUserDetailsRequest>, IValidatableObject
     {
         /// <summary>
-        /// Defines Categories
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public enum CategoriesEnum
-        {
-            /// <summary>
-            /// Enum Hris for value: hris
-            /// </summary>
-            [EnumMember(Value = "hris")]
-            Hris = 1,
-
-            /// <summary>
-            /// Enum Ats for value: ats
-            /// </summary>
-            [EnumMember(Value = "ats")]
-            Ats = 2,
-
-            /// <summary>
-            /// Enum Accounting for value: accounting
-            /// </summary>
-            [EnumMember(Value = "accounting")]
-            Accounting = 3
-
-        }
-
-
-
-        /// <summary>
-        /// Gets or Sets Categories
-        /// </summary>
-        [DataMember(Name = "categories", IsRequired = true, EmitDefaultValue = false)]
-        public List<CategoriesEnum> Categories { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="EndUserDetailsRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -76,7 +43,7 @@ namespace Merge.HRISClient.Model
         /// <param name="endUserEmailAddress">endUserEmailAddress (required).</param>
         /// <param name="endUserOrganizationName">endUserOrganizationName (required).</param>
         /// <param name="endUserOriginId">endUserOriginId (required).</param>
-        /// <param name="categories">categories (required).</param>
+        /// <param name="categories">categories.</param>
         /// <param name="integration">integration.</param>
         public EndUserDetailsRequest(string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), List<CategoriesEnum> categories = default(List<CategoriesEnum>), string integration = default(string))
         {
@@ -86,8 +53,7 @@ namespace Merge.HRISClient.Model
             this.EndUserOrganizationName = endUserOrganizationName ?? throw new ArgumentNullException("endUserOrganizationName is a required property for EndUserDetailsRequest and cannot be null");
             // to ensure "endUserOriginId" is required (not null)
             this.EndUserOriginId = endUserOriginId ?? throw new ArgumentNullException("endUserOriginId is a required property for EndUserDetailsRequest and cannot be null");
-            // to ensure "categories" is required (not null)
-            this.Categories = categories ?? throw new ArgumentNullException("categories is a required property for EndUserDetailsRequest and cannot be null");
+            this.Categories = categories;
             this.Integration = integration;
         }
 
@@ -108,6 +74,12 @@ namespace Merge.HRISClient.Model
         /// </summary>
         [DataMember(Name = "end_user_origin_id", IsRequired = true, EmitDefaultValue = false)]
         public string EndUserOriginId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Categories
+        /// </summary>
+        [DataMember(Name = "categories", EmitDefaultValue = false)]
+        public List<CategoriesEnum> Categories { get; set; }
 
         /// <summary>
         /// Gets or Sets Integration
@@ -179,6 +151,8 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.Categories == input.Categories ||
+                    this.Categories != null &&
+                    input.Categories != null &&
                     this.Categories.SequenceEqual(input.Categories)
                 ) && 
                 (
@@ -203,7 +177,8 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.EndUserOrganizationName.GetHashCode();
                 if (this.EndUserOriginId != null)
                     hashCode = hashCode * 59 + this.EndUserOriginId.GetHashCode();
-                hashCode = hashCode * 59 + this.Categories.GetHashCode();
+                if (this.Categories != null)
+                    hashCode = hashCode * 59 + this.Categories.GetHashCode();
                 if (this.Integration != null)
                     hashCode = hashCode * 59 + this.Integration.GetHashCode();
                 return hashCode;
@@ -217,6 +192,30 @@ namespace Merge.HRISClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // EndUserEmailAddress (string) minLength
+            if(this.EndUserEmailAddress != null && this.EndUserEmailAddress.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EndUserEmailAddress, length must be greater than 1.", new [] { "EndUserEmailAddress" });
+            }
+
+            // EndUserOrganizationName (string) minLength
+            if(this.EndUserOrganizationName != null && this.EndUserOrganizationName.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EndUserOrganizationName, length must be greater than 1.", new [] { "EndUserOrganizationName" });
+            }
+
+            // EndUserOriginId (string) minLength
+            if(this.EndUserOriginId != null && this.EndUserOriginId.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EndUserOriginId, length must be greater than 1.", new [] { "EndUserOriginId" });
+            }
+
+            // Integration (string) minLength
+            if(this.Integration != null && this.Integration.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Integration, length must be greater than 1.", new [] { "Integration" });
+            }
+
             yield break;
         }
     }

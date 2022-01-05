@@ -67,14 +67,18 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? createdBefore = null;
             //string cursor = null;
             //string employeeId = null;
-            //string expand = null;
+            //DateTime? endedAfter = null;
+            //DateTime? endedBefore = null;
+            //bool? includeDeletedData = null;
             //bool? includeRemoteData = null;
             //DateTime? modifiedAfter = null;
             //DateTime? modifiedBefore = null;
             //int? pageSize = null;
             //string payrollRunId = null;
             //string remoteId = null;
-            //var response = instance.EmployeePayrollRunsList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, expand, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, payrollRunId, remoteId);
+            //DateTime? startedAfter = null;
+            //DateTime? startedBefore = null;
+            //var response = instance.EmployeePayrollRunsList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, endedAfter, endedBefore, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, payrollRunId, remoteId, startedAfter, startedBefore);
             //Assert.IsType<PaginatedEmployeePayrollRunList>(response);
         }
 
@@ -87,9 +91,8 @@ namespace Merge.HRISClient.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string xAccountToken = null;
             //Guid id = null;
-            //string expand = null;
             //bool? includeRemoteData = null;
-            //var response = instance.EmployeePayrollRunsRetrieve(xAccountToken, id, expand, includeRemoteData);
+            //var response = instance.EmployeePayrollRunsRetrieve(xAccountToken, id, includeRemoteData);
             //Assert.IsType<EmployeePayrollRun>(response);
         }
     }

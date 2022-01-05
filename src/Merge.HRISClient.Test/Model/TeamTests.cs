@@ -82,6 +82,14 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'Name'
         }
         /// <summary>
+        /// Test the property 'ParentTeam'
+        /// </summary>
+        [Fact]
+        public void ParentTeamTest()
+        {
+            // TODO unit test for the property 'ParentTeam'
+        }
+        /// <summary>
         /// Test the property 'RemoteData'
         /// </summary>
         [Fact]

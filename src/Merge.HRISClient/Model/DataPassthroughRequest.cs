@@ -32,12 +32,6 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "DataPassthroughRequest")]
     public partial class DataPassthroughRequest : IEquatable<DataPassthroughRequest>, IValidatableObject
     {
-
-        /// <summary>
-        /// Gets or Sets Method
-        /// </summary>
-        [DataMember(Name = "method", IsRequired = true, EmitDefaultValue = false)]
-        public MethodEnum Method { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="DataPassthroughRequest" /> class.
         /// </summary>
@@ -51,15 +45,24 @@ namespace Merge.HRISClient.Model
         /// <param name="baseUrlOverride">baseUrlOverride.</param>
         /// <param name="data">data.</param>
         /// <param name="headers">headers.</param>
-        public DataPassthroughRequest(MethodEnum method = default(MethodEnum), string path = default(string), string baseUrlOverride = default(string), Dictionary<string, Object> data = default(Dictionary<string, Object>), Dictionary<string, Object> headers = default(Dictionary<string, Object>))
+        /// <param name="requestFormat">requestFormat.</param>
+        public DataPassthroughRequest(string method = default(string), string path = default(string), string baseUrlOverride = default(string), string data = default(string), Dictionary<string, Object> headers = default(Dictionary<string, Object>), string requestFormat = default(string))
         {
-            this.Method = method;
+            // to ensure "method" is required (not null)
+            this.Method = method ?? throw new ArgumentNullException("method is a required property for DataPassthroughRequest and cannot be null");
             // to ensure "path" is required (not null)
             this.Path = path ?? throw new ArgumentNullException("path is a required property for DataPassthroughRequest and cannot be null");
             this.BaseUrlOverride = baseUrlOverride;
             this.Data = data;
             this.Headers = headers;
+            this.RequestFormat = requestFormat;
         }
+
+        /// <summary>
+        /// Gets or Sets Method
+        /// </summary>
+        [DataMember(Name = "method", IsRequired = true, EmitDefaultValue = false)]
+        public string Method { get; set; }
 
         /// <summary>
         /// Gets or Sets Path
@@ -77,13 +80,19 @@ namespace Merge.HRISClient.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", EmitDefaultValue = true)]
-        public Dictionary<string, Object> Data { get; set; }
+        public string Data { get; set; }
 
         /// <summary>
         /// Gets or Sets Headers
         /// </summary>
         [DataMember(Name = "headers", EmitDefaultValue = true)]
         public Dictionary<string, Object> Headers { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RequestFormat
+        /// </summary>
+        [DataMember(Name = "request_format", EmitDefaultValue = false)]
+        public string RequestFormat { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -98,6 +107,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  BaseUrlOverride: ").Append(BaseUrlOverride).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  Headers: ").Append(Headers).Append("\n");
+            sb.Append("  RequestFormat: ").Append(RequestFormat).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -134,7 +144,8 @@ namespace Merge.HRISClient.Model
             return 
                 (
                     this.Method == input.Method ||
-                    this.Method.Equals(input.Method)
+                    (this.Method != null &&
+                    this.Method.Equals(input.Method))
                 ) && 
                 (
                     this.Path == input.Path ||
@@ -148,15 +159,19 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.Data == input.Data ||
-                    this.Data != null &&
-                    input.Data != null &&
-                    this.Data.SequenceEqual(input.Data)
+                    (this.Data != null &&
+                    this.Data.Equals(input.Data))
                 ) && 
                 (
                     this.Headers == input.Headers ||
                     this.Headers != null &&
                     input.Headers != null &&
                     this.Headers.SequenceEqual(input.Headers)
+                ) && 
+                (
+                    this.RequestFormat == input.RequestFormat ||
+                    (this.RequestFormat != null &&
+                    this.RequestFormat.Equals(input.RequestFormat))
                 );
         }
 
@@ -169,7 +184,8 @@ namespace Merge.HRISClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                hashCode = hashCode * 59 + this.Method.GetHashCode();
+                if (this.Method != null)
+                    hashCode = hashCode * 59 + this.Method.GetHashCode();
                 if (this.Path != null)
                     hashCode = hashCode * 59 + this.Path.GetHashCode();
                 if (this.BaseUrlOverride != null)
@@ -178,6 +194,8 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Data.GetHashCode();
                 if (this.Headers != null)
                     hashCode = hashCode * 59 + this.Headers.GetHashCode();
+                if (this.RequestFormat != null)
+                    hashCode = hashCode * 59 + this.RequestFormat.GetHashCode();
                 return hashCode;
             }
         }
@@ -189,6 +207,36 @@ namespace Merge.HRISClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // Method (string) minLength
+            if(this.Method != null && this.Method.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Method, length must be greater than 1.", new [] { "Method" });
+            }
+
+            // Path (string) minLength
+            if(this.Path != null && this.Path.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Path, length must be greater than 1.", new [] { "Path" });
+            }
+
+            // BaseUrlOverride (string) minLength
+            if(this.BaseUrlOverride != null && this.BaseUrlOverride.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for BaseUrlOverride, length must be greater than 1.", new [] { "BaseUrlOverride" });
+            }
+
+            // Data (string) minLength
+            if(this.Data != null && this.Data.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Data, length must be greater than 1.", new [] { "Data" });
+            }
+
+            // RequestFormat (string) minLength
+            if(this.RequestFormat != null && this.RequestFormat.Length < 1)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RequestFormat, length must be greater than 1.", new [] { "RequestFormat" });
+            }
+
             yield break;
         }
     }
