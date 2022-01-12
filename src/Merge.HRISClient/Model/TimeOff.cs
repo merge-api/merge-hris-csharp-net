@@ -35,29 +35,15 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeOff" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected TimeOff() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TimeOff" /> class.
-        /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
         /// <param name="employee">The employee requesting time off..</param>
         /// <param name="approver">The employee approving the time off request..</param>
-        /// <param name="status">status (required).</param>
         /// <param name="employeeNote">The employee note for this time off request..</param>
-        /// <param name="units">units (required).</param>
         /// <param name="amount">The number of time off units requested..</param>
-        /// <param name="requestType">requestType (required).</param>
         /// <param name="startTime">The day and time of the start of the time requested off..</param>
         /// <param name="endTime">The day and time of the end of the time requested off..</param>
-        public TimeOff(string remoteId = default(string), Guid? employee = default(Guid?), Guid? approver = default(Guid?), string status = default(string), string employeeNote = default(string), string units = default(string), float? amount = default(float?), string requestType = default(string), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?))
+        public TimeOff(string remoteId = default(string), Guid? employee = default(Guid?), Guid? approver = default(Guid?), string employeeNote = default(string), float? amount = default(float?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?))
         {
-            // to ensure "status" is required (not null)
-            this.Status = status ?? throw new ArgumentNullException("status is a required property for TimeOff and cannot be null");
-            // to ensure "units" is required (not null)
-            this.Units = units ?? throw new ArgumentNullException("units is a required property for TimeOff and cannot be null");
-            // to ensure "requestType" is required (not null)
-            this.RequestType = requestType ?? throw new ArgumentNullException("requestType is a required property for TimeOff and cannot be null");
             this.RemoteId = remoteId;
             this.Employee = employee;
             this.Approver = approver;
@@ -106,8 +92,17 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets Status
         /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
+        [DataMember(Name = "status", EmitDefaultValue = false)]
+        public string Status { get; private set; }
+
+        /// <summary>
+        /// Returns false as Status should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeStatus()
+        {
+            return false;
+        }
 
         /// <summary>
         /// The employee note for this time off request.
@@ -119,8 +114,17 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets Units
         /// </summary>
-        [DataMember(Name = "units", IsRequired = true, EmitDefaultValue = false)]
-        public string Units { get; set; }
+        [DataMember(Name = "units", EmitDefaultValue = false)]
+        public string Units { get; private set; }
+
+        /// <summary>
+        /// Returns false as Units should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeUnits()
+        {
+            return false;
+        }
 
         /// <summary>
         /// The number of time off units requested.
@@ -132,8 +136,17 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets RequestType
         /// </summary>
-        [DataMember(Name = "request_type", IsRequired = true, EmitDefaultValue = false)]
-        public string RequestType { get; set; }
+        [DataMember(Name = "request_type", EmitDefaultValue = false)]
+        public string RequestType { get; private set; }
+
+        /// <summary>
+        /// Returns false as RequestType should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRequestType()
+        {
+            return false;
+        }
 
         /// <summary>
         /// The day and time of the start of the time requested off.

@@ -35,19 +35,11 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Earning" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected Earning() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Earning" /> class.
-        /// </summary>
         /// <param name="employeePayrollRun">The earning&#39;s employee payroll run..</param>
         /// <param name="amount">The amount earned..</param>
-        /// <param name="type">type (required).</param>
         /// <param name="remoteData">remoteData.</param>
-        public Earning(Guid? employeePayrollRun = default(Guid?), float? amount = default(float?), string type = default(string), List<Dictionary<string, Object>> remoteData = default(List<Dictionary<string, Object>>))
+        public Earning(Guid? employeePayrollRun = default(Guid?), float? amount = default(float?), List<Dictionary<string, Object>> remoteData = default(List<Dictionary<string, Object>>))
         {
-            // to ensure "type" is required (not null)
-            this.Type = type ?? throw new ArgumentNullException("type is a required property for Earning and cannot be null");
             this.EmployeePayrollRun = employeePayrollRun;
             this.Amount = amount;
             this.RemoteData = remoteData;
@@ -85,8 +77,17 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name = "type", IsRequired = true, EmitDefaultValue = false)]
-        public string Type { get; set; }
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public string Type { get; private set; }
+
+        /// <summary>
+        /// Returns false as Type should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeType()
+        {
+            return false;
+        }
 
         /// <summary>
         /// Gets or Sets RemoteData

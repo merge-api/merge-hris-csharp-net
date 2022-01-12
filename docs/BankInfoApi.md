@@ -39,7 +39,7 @@ namespace Example
 
             var apiInstance = new BankInfoApi(config);
             var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
-            var accountType = accountType_example;  // string | The bank account type: [CHECKING, SAVINGS] (optional) 
+            var accountType = accountType_example;  // string | The bank account type (optional) 
             var bankName = bankName_example;  // string |  (optional) 
             var createdAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created after this datetime. (optional) 
             var createdBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created before this datetime. (optional) 
@@ -76,7 +76,7 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAccountToken** | **string**| Token identifying the end user. | 
- **accountType** | **string**| The bank account type: [CHECKING, SAVINGS] | [optional] 
+ **accountType** | **string**| The bank account type | [optional] 
  **bankName** | **string**|  | [optional] 
  **createdAfter** | **DateTime?**| If provided, will only return objects created after this datetime. | [optional] 
  **createdBefore** | **DateTime?**| If provided, will only return objects created before this datetime. | [optional] 

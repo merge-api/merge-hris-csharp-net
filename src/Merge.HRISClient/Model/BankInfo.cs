@@ -35,22 +35,14 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BankInfo" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected BankInfo() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BankInfo" /> class.
-        /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
         /// <param name="employee">The employee with this bank account..</param>
         /// <param name="accountNumber">The account number..</param>
         /// <param name="routingNumber">The routing number..</param>
         /// <param name="bankName">The bank name..</param>
-        /// <param name="accountType">accountType (required).</param>
         /// <param name="remoteCreatedAt">When the matching bank object was created in the third party system..</param>
-        public BankInfo(string remoteId = default(string), Guid? employee = default(Guid?), string accountNumber = default(string), string routingNumber = default(string), string bankName = default(string), string accountType = default(string), DateTime? remoteCreatedAt = default(DateTime?))
+        public BankInfo(string remoteId = default(string), Guid? employee = default(Guid?), string accountNumber = default(string), string routingNumber = default(string), string bankName = default(string), DateTime? remoteCreatedAt = default(DateTime?))
         {
-            // to ensure "accountType" is required (not null)
-            this.AccountType = accountType ?? throw new ArgumentNullException("accountType is a required property for BankInfo and cannot be null");
             this.RemoteId = remoteId;
             this.Employee = employee;
             this.AccountNumber = accountNumber;
@@ -112,8 +104,17 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets AccountType
         /// </summary>
-        [DataMember(Name = "account_type", IsRequired = true, EmitDefaultValue = false)]
-        public string AccountType { get; set; }
+        [DataMember(Name = "account_type", EmitDefaultValue = false)]
+        public string AccountType { get; private set; }
+
+        /// <summary>
+        /// Returns false as AccountType should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAccountType()
+        {
+            return false;
+        }
 
         /// <summary>
         /// When the matching bank object was created in the third party system.

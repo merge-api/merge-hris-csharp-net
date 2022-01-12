@@ -35,7 +35,7 @@ namespace Merge.HRISClient.Api
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type: [CHECKING, SAVINGS] (optional)</param>
+        /// <param name="accountType">The bank account type (optional)</param>
         /// <param name="bankName"> (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
@@ -61,7 +61,7 @@ namespace Merge.HRISClient.Api
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type: [CHECKING, SAVINGS] (optional)</param>
+        /// <param name="accountType">The bank account type (optional)</param>
         /// <param name="bankName"> (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
@@ -120,7 +120,7 @@ namespace Merge.HRISClient.Api
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type: [CHECKING, SAVINGS] (optional)</param>
+        /// <param name="accountType">The bank account type (optional)</param>
         /// <param name="bankName"> (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
@@ -147,7 +147,7 @@ namespace Merge.HRISClient.Api
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type: [CHECKING, SAVINGS] (optional)</param>
+        /// <param name="accountType">The bank account type (optional)</param>
         /// <param name="bankName"> (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
@@ -317,7 +317,7 @@ namespace Merge.HRISClient.Api
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type: [CHECKING, SAVINGS] (optional)</param>
+        /// <param name="accountType">The bank account type (optional)</param>
         /// <param name="bankName"> (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
@@ -344,7 +344,7 @@ namespace Merge.HRISClient.Api
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type: [CHECKING, SAVINGS] (optional)</param>
+        /// <param name="accountType">The bank account type (optional)</param>
         /// <param name="bankName"> (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
@@ -467,7 +467,7 @@ namespace Merge.HRISClient.Api
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type: [CHECKING, SAVINGS] (optional)</param>
+        /// <param name="accountType">The bank account type (optional)</param>
         /// <param name="bankName"> (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
@@ -495,7 +495,7 @@ namespace Merge.HRISClient.Api
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type: [CHECKING, SAVINGS] (optional)</param>
+        /// <param name="accountType">The bank account type (optional)</param>
         /// <param name="bankName"> (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>

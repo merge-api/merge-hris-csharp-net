@@ -35,20 +35,12 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeOffBalance" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected TimeOffBalance() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TimeOffBalance" /> class.
-        /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
         /// <param name="employee">The employee the balance belongs to..</param>
         /// <param name="balance">The current PTO balance in terms of hours..</param>
         /// <param name="used">The amount of PTO used in terms of hours..</param>
-        /// <param name="policyType">policyType (required).</param>
-        public TimeOffBalance(string remoteId = default(string), Guid? employee = default(Guid?), float? balance = default(float?), float? used = default(float?), string policyType = default(string))
+        public TimeOffBalance(string remoteId = default(string), Guid? employee = default(Guid?), float? balance = default(float?), float? used = default(float?))
         {
-            // to ensure "policyType" is required (not null)
-            this.PolicyType = policyType ?? throw new ArgumentNullException("policyType is a required property for TimeOffBalance and cannot be null");
             this.RemoteId = remoteId;
             this.Employee = employee;
             this.Balance = balance;
@@ -101,8 +93,17 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets PolicyType
         /// </summary>
-        [DataMember(Name = "policy_type", IsRequired = true, EmitDefaultValue = false)]
-        public string PolicyType { get; set; }
+        [DataMember(Name = "policy_type", EmitDefaultValue = false)]
+        public string PolicyType { get; private set; }
+
+        /// <summary>
+        /// Returns false as PolicyType should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePolicyType()
+        {
+            return false;
+        }
 
         /// <summary>
         /// Gets or Sets RemoteData
