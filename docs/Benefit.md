@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **RemoteId** | **string** | The third-party API ID of the matching object. | [optional] 
 **Employee** | **Guid?** | The employee on the plan. | [optional] 
 **ProviderName** | **string** | The name of the benefit provider. | [optional] 
-**BenefitPlanType** | **string** |  | 
+**BenefitPlanType** | **string** |  | [optional] [readonly] 
 **EmployeeContribution** | **float?** | The employee&#39;s contribution. | [optional] 
 **CompanyContribution** | **float?** | The company&#39;s contribution. | [optional] 
 **RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 

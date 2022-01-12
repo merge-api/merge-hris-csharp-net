@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **AccountNumber** | **string** | The account number. | [optional] 
 **RoutingNumber** | **string** | The routing number. | [optional] 
 **BankName** | **string** | The bank name. | [optional] 
-**AccountType** | **string** |  | 
+**AccountType** | **string** |  | [optional] [readonly] 
 **RemoteCreatedAt** | **DateTime?** | When the matching bank object was created in the third party system. | [optional] 
 **RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 
 

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Employee** | **Guid?** | The employee the balance belongs to. | [optional] 
 **Balance** | **float?** | The current PTO balance in terms of hours. | [optional] 
 **Used** | **float?** | The amount of PTO used in terms of hours. | [optional] 
-**PolicyType** | **string** |  | 
+**PolicyType** | **string** |  | [optional] [readonly] 
 **RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

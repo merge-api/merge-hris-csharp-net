@@ -91,7 +91,7 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets RequestFormat
         /// </summary>
-        [DataMember(Name = "request_format", EmitDefaultValue = false)]
+        [DataMember(Name = "request_format", EmitDefaultValue = true)]
         public string RequestFormat { get; set; }
 
         /// <summary>

@@ -35,23 +35,12 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PayrollRun" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected PayrollRun() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="PayrollRun" /> class.
-        /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="runState">runState (required).</param>
-        /// <param name="runType">runType (required).</param>
         /// <param name="startDate">The day and time the payroll run started..</param>
         /// <param name="endDate">The day and time the payroll run ended..</param>
         /// <param name="checkDate">The day and time the payroll run was checked..</param>
-        public PayrollRun(string remoteId = default(string), string runState = default(string), string runType = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), DateTime? checkDate = default(DateTime?))
+        public PayrollRun(string remoteId = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), DateTime? checkDate = default(DateTime?))
         {
-            // to ensure "runState" is required (not null)
-            this.RunState = runState ?? throw new ArgumentNullException("runState is a required property for PayrollRun and cannot be null");
-            // to ensure "runType" is required (not null)
-            this.RunType = runType ?? throw new ArgumentNullException("runType is a required property for PayrollRun and cannot be null");
             this.RemoteId = remoteId;
             this.StartDate = startDate;
             this.EndDate = endDate;
@@ -83,14 +72,32 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets RunState
         /// </summary>
-        [DataMember(Name = "run_state", IsRequired = true, EmitDefaultValue = false)]
-        public string RunState { get; set; }
+        [DataMember(Name = "run_state", EmitDefaultValue = false)]
+        public string RunState { get; private set; }
+
+        /// <summary>
+        /// Returns false as RunState should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRunState()
+        {
+            return false;
+        }
 
         /// <summary>
         /// Gets or Sets RunType
         /// </summary>
-        [DataMember(Name = "run_type", IsRequired = true, EmitDefaultValue = false)]
-        public string RunType { get; set; }
+        [DataMember(Name = "run_type", EmitDefaultValue = false)]
+        public string RunType { get; private set; }
+
+        /// <summary>
+        /// Returns false as RunType should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRunType()
+        {
+            return false;
+        }
 
         /// <summary>
         /// The day and time the payroll run started.

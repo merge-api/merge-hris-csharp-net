@@ -35,33 +35,13 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Employment" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected Employment() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Employment" /> class.
-        /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
         /// <param name="employee">The employee holding this position..</param>
         /// <param name="jobTitle">The position&#39;s title..</param>
         /// <param name="payRate">The position&#39;s pay rate in dollars..</param>
-        /// <param name="payPeriod">payPeriod (required).</param>
-        /// <param name="payFrequency">payFrequency (required).</param>
-        /// <param name="payCurrency">payCurrency (required).</param>
-        /// <param name="flsaStatus">flsaStatus (required).</param>
         /// <param name="effectiveDate">The position&#39;s effective date..</param>
-        /// <param name="employmentType">employmentType (required).</param>
-        public Employment(string remoteId = default(string), Guid? employee = default(Guid?), string jobTitle = default(string), float? payRate = default(float?), string payPeriod = default(string), string payFrequency = default(string), string payCurrency = default(string), string flsaStatus = default(string), DateTime? effectiveDate = default(DateTime?), string employmentType = default(string))
+        public Employment(string remoteId = default(string), Guid? employee = default(Guid?), string jobTitle = default(string), float? payRate = default(float?), DateTime? effectiveDate = default(DateTime?))
         {
-            // to ensure "payPeriod" is required (not null)
-            this.PayPeriod = payPeriod ?? throw new ArgumentNullException("payPeriod is a required property for Employment and cannot be null");
-            // to ensure "payFrequency" is required (not null)
-            this.PayFrequency = payFrequency ?? throw new ArgumentNullException("payFrequency is a required property for Employment and cannot be null");
-            // to ensure "payCurrency" is required (not null)
-            this.PayCurrency = payCurrency ?? throw new ArgumentNullException("payCurrency is a required property for Employment and cannot be null");
-            // to ensure "flsaStatus" is required (not null)
-            this.FlsaStatus = flsaStatus ?? throw new ArgumentNullException("flsaStatus is a required property for Employment and cannot be null");
-            // to ensure "employmentType" is required (not null)
-            this.EmploymentType = employmentType ?? throw new ArgumentNullException("employmentType is a required property for Employment and cannot be null");
             this.RemoteId = remoteId;
             this.Employee = employee;
             this.JobTitle = jobTitle;
@@ -115,26 +95,62 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets PayPeriod
         /// </summary>
-        [DataMember(Name = "pay_period", IsRequired = true, EmitDefaultValue = false)]
-        public string PayPeriod { get; set; }
+        [DataMember(Name = "pay_period", EmitDefaultValue = false)]
+        public string PayPeriod { get; private set; }
+
+        /// <summary>
+        /// Returns false as PayPeriod should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePayPeriod()
+        {
+            return false;
+        }
 
         /// <summary>
         /// Gets or Sets PayFrequency
         /// </summary>
-        [DataMember(Name = "pay_frequency", IsRequired = true, EmitDefaultValue = false)]
-        public string PayFrequency { get; set; }
+        [DataMember(Name = "pay_frequency", EmitDefaultValue = false)]
+        public string PayFrequency { get; private set; }
+
+        /// <summary>
+        /// Returns false as PayFrequency should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePayFrequency()
+        {
+            return false;
+        }
 
         /// <summary>
         /// Gets or Sets PayCurrency
         /// </summary>
-        [DataMember(Name = "pay_currency", IsRequired = true, EmitDefaultValue = false)]
-        public string PayCurrency { get; set; }
+        [DataMember(Name = "pay_currency", EmitDefaultValue = false)]
+        public string PayCurrency { get; private set; }
+
+        /// <summary>
+        /// Returns false as PayCurrency should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePayCurrency()
+        {
+            return false;
+        }
 
         /// <summary>
         /// Gets or Sets FlsaStatus
         /// </summary>
-        [DataMember(Name = "flsa_status", IsRequired = true, EmitDefaultValue = false)]
-        public string FlsaStatus { get; set; }
+        [DataMember(Name = "flsa_status", EmitDefaultValue = false)]
+        public string FlsaStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as FlsaStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFlsaStatus()
+        {
+            return false;
+        }
 
         /// <summary>
         /// The position&#39;s effective date.
@@ -146,8 +162,17 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets EmploymentType
         /// </summary>
-        [DataMember(Name = "employment_type", IsRequired = true, EmitDefaultValue = false)]
-        public string EmploymentType { get; set; }
+        [DataMember(Name = "employment_type", EmitDefaultValue = false)]
+        public string EmploymentType { get; private set; }
+
+        /// <summary>
+        /// Returns false as EmploymentType should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEmploymentType()
+        {
+            return false;
+        }
 
         /// <summary>
         /// Gets or Sets RemoteData

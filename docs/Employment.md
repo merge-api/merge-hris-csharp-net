@@ -10,12 +10,12 @@ Name | Type | Description | Notes
 **Employee** | **Guid?** | The employee holding this position. | [optional] 
 **JobTitle** | **string** | The position&#39;s title. | [optional] 
 **PayRate** | **float?** | The position&#39;s pay rate in dollars. | [optional] 
-**PayPeriod** | **string** |  | 
-**PayFrequency** | **string** |  | 
-**PayCurrency** | **string** |  | 
-**FlsaStatus** | **string** |  | 
+**PayPeriod** | **string** |  | [optional] [readonly] 
+**PayFrequency** | **string** |  | [optional] [readonly] 
+**PayCurrency** | **string** |  | [optional] [readonly] 
+**FlsaStatus** | **string** |  | [optional] [readonly] 
 **EffectiveDate** | **DateTime?** | The position&#39;s effective date. | [optional] 
-**EmploymentType** | **string** |  | 
+**EmploymentType** | **string** |  | [optional] [readonly] 
 **RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

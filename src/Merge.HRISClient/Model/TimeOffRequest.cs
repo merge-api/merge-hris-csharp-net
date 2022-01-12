@@ -35,29 +35,15 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeOffRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected TimeOffRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TimeOffRequest" /> class.
-        /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
         /// <param name="employee">The employee requesting time off..</param>
         /// <param name="approver">The employee approving the time off request..</param>
-        /// <param name="status">status (required).</param>
         /// <param name="employeeNote">The employee note for this time off request..</param>
-        /// <param name="units">units (required).</param>
         /// <param name="amount">The number of time off units requested..</param>
-        /// <param name="requestType">requestType (required).</param>
         /// <param name="startTime">The day and time of the start of the time requested off..</param>
         /// <param name="endTime">The day and time of the end of the time requested off..</param>
-        public TimeOffRequest(string remoteId = default(string), Guid? employee = default(Guid?), Guid? approver = default(Guid?), string status = default(string), string employeeNote = default(string), string units = default(string), float? amount = default(float?), string requestType = default(string), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?))
+        public TimeOffRequest(string remoteId = default(string), Guid? employee = default(Guid?), Guid? approver = default(Guid?), string employeeNote = default(string), float? amount = default(float?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?))
         {
-            // to ensure "status" is required (not null)
-            this.Status = status ?? throw new ArgumentNullException("status is a required property for TimeOffRequest and cannot be null");
-            // to ensure "units" is required (not null)
-            this.Units = units ?? throw new ArgumentNullException("units is a required property for TimeOffRequest and cannot be null");
-            // to ensure "requestType" is required (not null)
-            this.RequestType = requestType ?? throw new ArgumentNullException("requestType is a required property for TimeOffRequest and cannot be null");
             this.RemoteId = remoteId;
             this.Employee = employee;
             this.Approver = approver;
@@ -89,12 +75,6 @@ namespace Merge.HRISClient.Model
         public Guid? Approver { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
-
-        /// <summary>
         /// The employee note for this time off request.
         /// </summary>
         /// <value>The employee note for this time off request.</value>
@@ -102,23 +82,11 @@ namespace Merge.HRISClient.Model
         public string EmployeeNote { get; set; }
 
         /// <summary>
-        /// Gets or Sets Units
-        /// </summary>
-        [DataMember(Name = "units", IsRequired = true, EmitDefaultValue = false)]
-        public string Units { get; set; }
-
-        /// <summary>
         /// The number of time off units requested.
         /// </summary>
         /// <value>The number of time off units requested.</value>
         [DataMember(Name = "amount", EmitDefaultValue = true)]
         public float? Amount { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RequestType
-        /// </summary>
-        [DataMember(Name = "request_type", IsRequired = true, EmitDefaultValue = false)]
-        public string RequestType { get; set; }
 
         /// <summary>
         /// The day and time of the start of the time requested off.
@@ -145,11 +113,8 @@ namespace Merge.HRISClient.Model
             sb.Append("  RemoteId: ").Append(RemoteId).Append("\n");
             sb.Append("  Employee: ").Append(Employee).Append("\n");
             sb.Append("  Approver: ").Append(Approver).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  EmployeeNote: ").Append(EmployeeNote).Append("\n");
-            sb.Append("  Units: ").Append(Units).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
-            sb.Append("  RequestType: ").Append(RequestType).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
             sb.Append("}\n");
@@ -202,29 +167,14 @@ namespace Merge.HRISClient.Model
                     this.Approver.Equals(input.Approver))
                 ) && 
                 (
-                    this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
-                ) && 
-                (
                     this.EmployeeNote == input.EmployeeNote ||
                     (this.EmployeeNote != null &&
                     this.EmployeeNote.Equals(input.EmployeeNote))
                 ) && 
                 (
-                    this.Units == input.Units ||
-                    (this.Units != null &&
-                    this.Units.Equals(input.Units))
-                ) && 
-                (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && 
-                (
-                    this.RequestType == input.RequestType ||
-                    (this.RequestType != null &&
-                    this.RequestType.Equals(input.RequestType))
                 ) && 
                 (
                     this.StartTime == input.StartTime ||
@@ -253,16 +203,10 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Employee.GetHashCode();
                 if (this.Approver != null)
                     hashCode = hashCode * 59 + this.Approver.GetHashCode();
-                if (this.Status != null)
-                    hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.EmployeeNote != null)
                     hashCode = hashCode * 59 + this.EmployeeNote.GetHashCode();
-                if (this.Units != null)
-                    hashCode = hashCode * 59 + this.Units.GetHashCode();
                 if (this.Amount != null)
                     hashCode = hashCode * 59 + this.Amount.GetHashCode();
-                if (this.RequestType != null)
-                    hashCode = hashCode * 59 + this.RequestType.GetHashCode();
                 if (this.StartTime != null)
                     hashCode = hashCode * 59 + this.StartTime.GetHashCode();
                 if (this.EndTime != null)
@@ -278,24 +222,6 @@ namespace Merge.HRISClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Status (string) minLength
-            if(this.Status != null && this.Status.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Status, length must be greater than 1.", new [] { "Status" });
-            }
-
-            // Units (string) minLength
-            if(this.Units != null && this.Units.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Units, length must be greater than 1.", new [] { "Units" });
-            }
-
-            // RequestType (string) minLength
-            if(this.RequestType != null && this.RequestType.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RequestType, length must be greater than 1.", new [] { "RequestType" });
-            }
-
             yield break;
         }
     }

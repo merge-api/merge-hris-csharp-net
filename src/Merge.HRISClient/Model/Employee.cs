@@ -35,11 +35,6 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Employee" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected Employee() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Employee" /> class.
-        /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
         /// <param name="employeeNumber">The employee&#39;s number that appears in the remote UI. Note: This is distinct from the remote_id field, which is a unique identifier for the employee set by the remote API, and is not exposed to the user..</param>
         /// <param name="company">The ID of the employee&#39;s company..</param>
@@ -55,26 +50,14 @@ namespace Merge.HRISClient.Model
         /// <param name="team">The employee&#39;s team..</param>
         /// <param name="payGroup">The employee&#39;s pay group.</param>
         /// <param name="ssn">The employee&#39;s social security number..</param>
-        /// <param name="gender">gender (required).</param>
-        /// <param name="ethnicity">ethnicity (required).</param>
-        /// <param name="maritalStatus">maritalStatus (required).</param>
         /// <param name="dateOfBirth">The employee&#39;s date of birth..</param>
         /// <param name="hireDate">The date that the employee was hired, usually the day that an offer letter is signed. If an employee has multiple hire dates from previous employments, this represents the most recent hire date. Note: If you&#39;re looking for the employee&#39;s start date, refer to the start_date field..</param>
         /// <param name="startDate">The date that the employee started working. If an employee has multiple start dates from previous employments, this represents the most recent start date..</param>
-        /// <param name="employmentStatus">employmentStatus (required).</param>
         /// <param name="terminationDate">The employee&#39;s termination date..</param>
         /// <param name="avatar">The URL of the employee&#39;s avatar image..</param>
         /// <param name="customFields">Custom fields configured for a given model..</param>
-        public Employee(string remoteId = default(string), string employeeNumber = default(string), Guid? company = default(Guid?), string firstName = default(string), string lastName = default(string), string displayFullName = default(string), string workEmail = default(string), string personalEmail = default(string), string mobilePhoneNumber = default(string), Guid? homeLocation = default(Guid?), Guid? workLocation = default(Guid?), Guid? manager = default(Guid?), Guid? team = default(Guid?), Guid? payGroup = default(Guid?), string ssn = default(string), string gender = default(string), string ethnicity = default(string), string maritalStatus = default(string), DateTime? dateOfBirth = default(DateTime?), DateTime? hireDate = default(DateTime?), DateTime? startDate = default(DateTime?), string employmentStatus = default(string), DateTime? terminationDate = default(DateTime?), string avatar = default(string), Dictionary<string, Object> customFields = default(Dictionary<string, Object>))
+        public Employee(string remoteId = default(string), string employeeNumber = default(string), Guid? company = default(Guid?), string firstName = default(string), string lastName = default(string), string displayFullName = default(string), string workEmail = default(string), string personalEmail = default(string), string mobilePhoneNumber = default(string), Guid? homeLocation = default(Guid?), Guid? workLocation = default(Guid?), Guid? manager = default(Guid?), Guid? team = default(Guid?), Guid? payGroup = default(Guid?), string ssn = default(string), DateTime? dateOfBirth = default(DateTime?), DateTime? hireDate = default(DateTime?), DateTime? startDate = default(DateTime?), DateTime? terminationDate = default(DateTime?), string avatar = default(string), Dictionary<string, Object> customFields = default(Dictionary<string, Object>))
         {
-            // to ensure "gender" is required (not null)
-            this.Gender = gender ?? throw new ArgumentNullException("gender is a required property for Employee and cannot be null");
-            // to ensure "ethnicity" is required (not null)
-            this.Ethnicity = ethnicity ?? throw new ArgumentNullException("ethnicity is a required property for Employee and cannot be null");
-            // to ensure "maritalStatus" is required (not null)
-            this.MaritalStatus = maritalStatus ?? throw new ArgumentNullException("maritalStatus is a required property for Employee and cannot be null");
-            // to ensure "employmentStatus" is required (not null)
-            this.EmploymentStatus = employmentStatus ?? throw new ArgumentNullException("employmentStatus is a required property for Employee and cannot be null");
             this.RemoteId = remoteId;
             this.EmployeeNumber = employeeNumber;
             this.Company = company;
@@ -237,20 +220,47 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets Gender
         /// </summary>
-        [DataMember(Name = "gender", IsRequired = true, EmitDefaultValue = false)]
-        public string Gender { get; set; }
+        [DataMember(Name = "gender", EmitDefaultValue = false)]
+        public string Gender { get; private set; }
+
+        /// <summary>
+        /// Returns false as Gender should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeGender()
+        {
+            return false;
+        }
 
         /// <summary>
         /// Gets or Sets Ethnicity
         /// </summary>
-        [DataMember(Name = "ethnicity", IsRequired = true, EmitDefaultValue = false)]
-        public string Ethnicity { get; set; }
+        [DataMember(Name = "ethnicity", EmitDefaultValue = false)]
+        public string Ethnicity { get; private set; }
+
+        /// <summary>
+        /// Returns false as Ethnicity should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEthnicity()
+        {
+            return false;
+        }
 
         /// <summary>
         /// Gets or Sets MaritalStatus
         /// </summary>
-        [DataMember(Name = "marital_status", IsRequired = true, EmitDefaultValue = false)]
-        public string MaritalStatus { get; set; }
+        [DataMember(Name = "marital_status", EmitDefaultValue = false)]
+        public string MaritalStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as MaritalStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeMaritalStatus()
+        {
+            return false;
+        }
 
         /// <summary>
         /// The employee&#39;s date of birth.
@@ -276,8 +286,17 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets EmploymentStatus
         /// </summary>
-        [DataMember(Name = "employment_status", IsRequired = true, EmitDefaultValue = false)]
-        public string EmploymentStatus { get; set; }
+        [DataMember(Name = "employment_status", EmitDefaultValue = false)]
+        public string EmploymentStatus { get; private set; }
+
+        /// <summary>
+        /// Returns false as EmploymentStatus should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeEmploymentStatus()
+        {
+            return false;
+        }
 
         /// <summary>
         /// The employee&#39;s termination date.

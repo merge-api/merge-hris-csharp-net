@@ -22,13 +22,13 @@ Name | Type | Description | Notes
 **Team** | **Guid?** | The employee&#39;s team. | [optional] 
 **PayGroup** | **Guid?** | The employee&#39;s pay group | [optional] 
 **Ssn** | **string** | The employee&#39;s social security number. | [optional] 
-**Gender** | **string** |  | 
-**Ethnicity** | **string** |  | 
-**MaritalStatus** | **string** |  | 
+**Gender** | **string** |  | [optional] [readonly] 
+**Ethnicity** | **string** |  | [optional] [readonly] 
+**MaritalStatus** | **string** |  | [optional] [readonly] 
 **DateOfBirth** | **DateTime?** | The employee&#39;s date of birth. | [optional] 
 **HireDate** | **DateTime?** | The date that the employee was hired, usually the day that an offer letter is signed. If an employee has multiple hire dates from previous employments, this represents the most recent hire date. Note: If you&#39;re looking for the employee&#39;s start date, refer to the start_date field. | [optional] 
 **StartDate** | **DateTime?** | The date that the employee started working. If an employee has multiple start dates from previous employments, this represents the most recent start date. | [optional] 
-**EmploymentStatus** | **string** |  | 
+**EmploymentStatus** | **string** |  | [optional] [readonly] 
 **TerminationDate** | **DateTime?** | The employee&#39;s termination date. | [optional] 
 **Avatar** | **string** | The URL of the employee&#39;s avatar image. | [optional] 
 **RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 

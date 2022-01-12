@@ -132,8 +132,8 @@ Class | Method | HTTP request | Description
 *LocationsApi* | [**LocationsList**](docs/LocationsApi.md#locationslist) | **GET** /locations | 
 *LocationsApi* | [**LocationsRetrieve**](docs/LocationsApi.md#locationsretrieve) | **GET** /locations/{id} | 
 *PassthroughApi* | [**PassthroughCreate**](docs/PassthroughApi.md#passthroughcreate) | **POST** /passthrough | 
-*PayGroupApi* | [**PayGroupList**](docs/PayGroupApi.md#paygrouplist) | **GET** /pay-group | 
-*PayGroupApi* | [**PayGroupRetrieve**](docs/PayGroupApi.md#paygroupretrieve) | **GET** /pay-group/{id} | 
+*PayGroupsApi* | [**PayGroupsList**](docs/PayGroupsApi.md#paygroupslist) | **GET** /pay-groups | 
+*PayGroupsApi* | [**PayGroupsRetrieve**](docs/PayGroupsApi.md#paygroupsretrieve) | **GET** /pay-groups/{id} | 
 *PayrollRunsApi* | [**PayrollRunsList**](docs/PayrollRunsApi.md#payrollrunslist) | **GET** /payroll-runs | 
 *PayrollRunsApi* | [**PayrollRunsRetrieve**](docs/PayrollRunsApi.md#payrollrunsretrieve) | **GET** /payroll-runs/{id} | 
 *RegenerateKeyApi* | [**RegenerateKeyCreate**](docs/RegenerateKeyApi.md#regeneratekeycreate) | **POST** /regenerate-key | 
@@ -143,8 +143,8 @@ Class | Method | HTTP request | Description
 *TimeOffApi* | [**TimeOffCreate**](docs/TimeOffApi.md#timeoffcreate) | **POST** /time-off | 
 *TimeOffApi* | [**TimeOffList**](docs/TimeOffApi.md#timeofflist) | **GET** /time-off | 
 *TimeOffApi* | [**TimeOffRetrieve**](docs/TimeOffApi.md#timeoffretrieve) | **GET** /time-off/{id} | 
-*TimeOffBalanceApi* | [**TimeOffBalanceList**](docs/TimeOffBalanceApi.md#timeoffbalancelist) | **GET** /time-off-balance | 
-*TimeOffBalanceApi* | [**TimeOffBalanceRetrieve**](docs/TimeOffBalanceApi.md#timeoffbalanceretrieve) | **GET** /time-off-balance/{id} | 
+*TimeOffBalancesApi* | [**TimeOffBalancesList**](docs/TimeOffBalancesApi.md#timeoffbalanceslist) | **GET** /time-off-balances | 
+*TimeOffBalancesApi* | [**TimeOffBalancesRetrieve**](docs/TimeOffBalancesApi.md#timeoffbalancesretrieve) | **GET** /time-off-balances/{id} | 
 
 
 <a name="documentation-for-models"></a>
@@ -169,6 +169,7 @@ Class | Method | HTTP request | Description
  - [Model.EmployeePayrollRun](docs/EmployeePayrollRun.md)
  - [Model.Employment](docs/Employment.md)
  - [Model.EndUserDetailsRequest](docs/EndUserDetailsRequest.md)
+ - [Model.ErrorValidationProblem](docs/ErrorValidationProblem.md)
  - [Model.GenerateRemoteKeyRequest](docs/GenerateRemoteKeyRequest.md)
  - [Model.Issue](docs/Issue.md)
  - [Model.LinkToken](docs/LinkToken.md)
@@ -205,7 +206,8 @@ Class | Method | HTTP request | Description
  - [Model.TimeOffEndpointRequest](docs/TimeOffEndpointRequest.md)
  - [Model.TimeOffRequest](docs/TimeOffRequest.md)
  - [Model.TimeOffResponse](docs/TimeOffResponse.md)
- - [Model.ValidationProblem](docs/ValidationProblem.md)
+ - [Model.ValidationProblemSource](docs/ValidationProblemSource.md)
+ - [Model.WarningValidationProblem](docs/WarningValidationProblem.md)
 
 
 <a name="documentation-for-authorization"></a>

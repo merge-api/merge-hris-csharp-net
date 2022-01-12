@@ -40,36 +40,36 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeOffResponse" /> class.
         /// </summary>
-        /// <param name="errors">errors (required).</param>
-        /// <param name="warnings">warnings (required).</param>
         /// <param name="model">model (required).</param>
-        public TimeOffResponse(List<ValidationProblem> errors = default(List<ValidationProblem>), List<ValidationProblem> warnings = default(List<ValidationProblem>), TimeOff model = default(TimeOff))
+        /// <param name="warnings">warnings (required).</param>
+        /// <param name="errors">errors (required).</param>
+        public TimeOffResponse(TimeOff model = default(TimeOff), List<WarningValidationProblem> warnings = default(List<WarningValidationProblem>), List<ErrorValidationProblem> errors = default(List<ErrorValidationProblem>))
         {
-            // to ensure "errors" is required (not null)
-            this.Errors = errors ?? throw new ArgumentNullException("errors is a required property for TimeOffResponse and cannot be null");
-            // to ensure "warnings" is required (not null)
-            this.Warnings = warnings ?? throw new ArgumentNullException("warnings is a required property for TimeOffResponse and cannot be null");
             // to ensure "model" is required (not null)
             this.Model = model ?? throw new ArgumentNullException("model is a required property for TimeOffResponse and cannot be null");
+            // to ensure "warnings" is required (not null)
+            this.Warnings = warnings ?? throw new ArgumentNullException("warnings is a required property for TimeOffResponse and cannot be null");
+            // to ensure "errors" is required (not null)
+            this.Errors = errors ?? throw new ArgumentNullException("errors is a required property for TimeOffResponse and cannot be null");
         }
-
-        /// <summary>
-        /// Gets or Sets Errors
-        /// </summary>
-        [DataMember(Name = "errors", IsRequired = true, EmitDefaultValue = false)]
-        public List<ValidationProblem> Errors { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Warnings
-        /// </summary>
-        [DataMember(Name = "warnings", IsRequired = true, EmitDefaultValue = false)]
-        public List<ValidationProblem> Warnings { get; set; }
 
         /// <summary>
         /// Gets or Sets Model
         /// </summary>
         [DataMember(Name = "model", IsRequired = true, EmitDefaultValue = false)]
         public TimeOff Model { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Warnings
+        /// </summary>
+        [DataMember(Name = "warnings", IsRequired = true, EmitDefaultValue = false)]
+        public List<WarningValidationProblem> Warnings { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Errors
+        /// </summary>
+        [DataMember(Name = "errors", IsRequired = true, EmitDefaultValue = false)]
+        public List<ErrorValidationProblem> Errors { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -79,9 +79,9 @@ namespace Merge.HRISClient.Model
         {
             var sb = new StringBuilder();
             sb.Append("class TimeOffResponse {\n");
-            sb.Append("  Errors: ").Append(Errors).Append("\n");
-            sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("  Model: ").Append(Model).Append("\n");
+            sb.Append("  Warnings: ").Append(Warnings).Append("\n");
+            sb.Append("  Errors: ").Append(Errors).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -117,10 +117,9 @@ namespace Merge.HRISClient.Model
 
             return 
                 (
-                    this.Errors == input.Errors ||
-                    this.Errors != null &&
-                    input.Errors != null &&
-                    this.Errors.SequenceEqual(input.Errors)
+                    this.Model == input.Model ||
+                    (this.Model != null &&
+                    this.Model.Equals(input.Model))
                 ) && 
                 (
                     this.Warnings == input.Warnings ||
@@ -129,9 +128,10 @@ namespace Merge.HRISClient.Model
                     this.Warnings.SequenceEqual(input.Warnings)
                 ) && 
                 (
-                    this.Model == input.Model ||
-                    (this.Model != null &&
-                    this.Model.Equals(input.Model))
+                    this.Errors == input.Errors ||
+                    this.Errors != null &&
+                    input.Errors != null &&
+                    this.Errors.SequenceEqual(input.Errors)
                 );
         }
 
@@ -144,12 +144,12 @@ namespace Merge.HRISClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Errors != null)
-                    hashCode = hashCode * 59 + this.Errors.GetHashCode();
-                if (this.Warnings != null)
-                    hashCode = hashCode * 59 + this.Warnings.GetHashCode();
                 if (this.Model != null)
                     hashCode = hashCode * 59 + this.Model.GetHashCode();
+                if (this.Warnings != null)
+                    hashCode = hashCode * 59 + this.Warnings.GetHashCode();
+                if (this.Errors != null)
+                    hashCode = hashCode * 59 + this.Errors.GetHashCode();
                 return hashCode;
             }
         }
