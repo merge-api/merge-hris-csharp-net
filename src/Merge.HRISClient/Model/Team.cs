@@ -37,7 +37,7 @@ namespace Merge.HRISClient.Model
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
         /// <param name="name">The team&#39;s name..</param>
-        /// <param name="parentTeam">The team&#39;s parent team..</param>
+        /// <param name="parentTeam">parentTeam.</param>
         public Team(string remoteId = default(string), string name = default(string), Guid? parentTeam = default(Guid?))
         {
             this.RemoteId = remoteId;
@@ -75,9 +75,8 @@ namespace Merge.HRISClient.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The team&#39;s parent team.
+        /// Gets or Sets ParentTeam
         /// </summary>
-        /// <value>The team&#39;s parent team.</value>
         [DataMember(Name = "parent_team", EmitDefaultValue = true)]
         public Guid? ParentTeam { get; set; }
 

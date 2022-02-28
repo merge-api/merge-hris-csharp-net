@@ -114,6 +114,14 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'DisplayFullName'
         }
         /// <summary>
+        /// Test the property 'Groups'
+        /// </summary>
+        [Fact]
+        public void GroupsTest()
+        {
+            // TODO unit test for the property 'Groups'
+        }
+        /// <summary>
         /// Test the property 'WorkEmail'
         /// </summary>
         [Fact]

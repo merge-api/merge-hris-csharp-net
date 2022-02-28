@@ -4,9 +4,169 @@ All URIs are relative to *https://api.merge.dev/api/hris/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**EmployeesCreate**](EmployeesApi.md#employeescreate) | **POST** /employees | 
+[**EmployeesIgnoreCreate**](EmployeesApi.md#employeesignorecreate) | **POST** /employees/ignore/{model_id} | 
 [**EmployeesList**](EmployeesApi.md#employeeslist) | **GET** /employees | 
 [**EmployeesRetrieve**](EmployeesApi.md#employeesretrieve) | **GET** /employees/{id} | 
 
+
+<a name="employeescreate"></a>
+# **EmployeesCreate**
+> EmployeeResponse EmployeesCreate (string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = null, bool? runAsync = null)
+
+
+
+Creates an `Employee` object with the given values.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Merge.HRISClient.Api;
+using Merge.HRISClient.Client;
+using Merge.HRISClient.Model;
+
+namespace Example
+{
+    public class EmployeesCreateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.merge.dev/api/hris/v1";
+            // Configure API key authorization: tokenAuth
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+
+            var apiInstance = new EmployeesApi(config);
+            var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
+            var employeeEndpointRequest = new EmployeeEndpointRequest(); // EmployeeEndpointRequest | 
+            var isDebugMode = true;  // bool? | Whether to include debug fields (such as log file links) in the response. (optional) 
+            var runAsync = true;  // bool? | Whether or not third-party updates should be run asynchronously. (optional) 
+
+            try
+            {
+                EmployeeResponse result = apiInstance.EmployeesCreate(xAccountToken, employeeEndpointRequest, isDebugMode, runAsync);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling EmployeesApi.EmployeesCreate: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xAccountToken** | **string**| Token identifying the end user. | 
+ **employeeEndpointRequest** | [**EmployeeEndpointRequest**](EmployeeEndpointRequest.md)|  | 
+ **isDebugMode** | **bool?**| Whether to include debug fields (such as log file links) in the response. | [optional] 
+ **runAsync** | **bool?**| Whether or not third-party updates should be run asynchronously. | [optional] 
+
+### Return type
+
+[**EmployeeResponse**](EmployeeResponse.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="employeesignorecreate"></a>
+# **EmployeesIgnoreCreate**
+> IgnoreCommonModel EmployeesIgnoreCreate (Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest)
+
+
+
+Ignores a specific row based on the `model_id` in the url. These records will have their properties set to null, and will not be updated in future syncs. The \"reason\" and \"message\" fields in the request body will be stored for audit purposes.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using Merge.HRISClient.Api;
+using Merge.HRISClient.Client;
+using Merge.HRISClient.Model;
+
+namespace Example
+{
+    public class EmployeesIgnoreCreateExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.merge.dev/api/hris/v1";
+            // Configure API key authorization: tokenAuth
+            config.AddApiKey("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // config.AddApiKeyPrefix("Authorization", "Bearer");
+
+            var apiInstance = new EmployeesApi(config);
+            var modelId = new Guid(); // Guid | 
+            var ignoreCommonModelRequest = new IgnoreCommonModelRequest(); // IgnoreCommonModelRequest | 
+
+            try
+            {
+                IgnoreCommonModel result = apiInstance.EmployeesIgnoreCreate(modelId, ignoreCommonModelRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling EmployeesApi.EmployeesIgnoreCreate: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **modelId** | [**Guid**](Guid.md)|  | 
+ **ignoreCommonModelRequest** | [**IgnoreCommonModelRequest**](IgnoreCommonModelRequest.md)|  | 
+
+### Return type
+
+[**IgnoreCommonModel**](IgnoreCommonModel.md)
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/x-www-form-urlencoded, multipart/form-data
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="employeeslist"></a>
 # **EmployeesList**

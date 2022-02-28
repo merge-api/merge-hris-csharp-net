@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="timeoffcreate"></a>
 # **TimeOffCreate**
-> TimeOffResponse TimeOffCreate (string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = null)
+> TimeOffResponse TimeOffCreate (string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? isDebugMode = null, bool? runAsync = null)
 
 
 
@@ -41,11 +41,12 @@ namespace Example
             var apiInstance = new TimeOffApi(config);
             var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
             var timeOffEndpointRequest = new TimeOffEndpointRequest(); // TimeOffEndpointRequest | 
+            var isDebugMode = true;  // bool? | Whether to include debug fields (such as log file links) in the response. (optional) 
             var runAsync = true;  // bool? | Whether or not third-party updates should be run asynchronously. (optional) 
 
             try
             {
-                TimeOffResponse result = apiInstance.TimeOffCreate(xAccountToken, timeOffEndpointRequest, runAsync);
+                TimeOffResponse result = apiInstance.TimeOffCreate(xAccountToken, timeOffEndpointRequest, isDebugMode, runAsync);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -65,6 +66,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAccountToken** | **string**| Token identifying the end user. | 
  **timeOffEndpointRequest** | [**TimeOffEndpointRequest**](TimeOffEndpointRequest.md)|  | 
+ **isDebugMode** | **bool?**| Whether to include debug fields (such as log file links) in the response. | [optional] 
  **runAsync** | **bool?**| Whether or not third-party updates should be run asynchronously. | [optional] 
 
 ### Return type

@@ -64,8 +64,9 @@ namespace Merge.HRISClient.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string xAccountToken = null;
             //TimeOffEndpointRequest timeOffEndpointRequest = null;
+            //bool? isDebugMode = null;
             //bool? runAsync = null;
-            //var response = instance.TimeOffCreate(xAccountToken, timeOffEndpointRequest, runAsync);
+            //var response = instance.TimeOffCreate(xAccountToken, timeOffEndpointRequest, isDebugMode, runAsync);
             //Assert.IsType<TimeOffResponse>(response);
         }
 

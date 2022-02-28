@@ -35,18 +35,16 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Deduction" /> class.
         /// </summary>
-        /// <param name="employeePayrollRun">The deduction&#39;s employee payroll run..</param>
+        /// <param name="employeePayrollRun">employeePayrollRun.</param>
         /// <param name="name">The deduction&#39;s name..</param>
         /// <param name="employeeDeduction">The amount the employee is deducting..</param>
         /// <param name="companyDeduction">The amount the company is deducting..</param>
-        /// <param name="remoteData">remoteData.</param>
-        public Deduction(Guid? employeePayrollRun = default(Guid?), string name = default(string), float? employeeDeduction = default(float?), float? companyDeduction = default(float?), List<Dictionary<string, Object>> remoteData = default(List<Dictionary<string, Object>>))
+        public Deduction(Guid? employeePayrollRun = default(Guid?), string name = default(string), float? employeeDeduction = default(float?), float? companyDeduction = default(float?))
         {
             this.EmployeePayrollRun = employeePayrollRun;
             this.Name = name;
             this.EmployeeDeduction = employeeDeduction;
             this.CompanyDeduction = companyDeduction;
-            this.RemoteData = remoteData;
         }
 
         /// <summary>
@@ -65,9 +63,8 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
-        /// The deduction&#39;s employee payroll run.
+        /// Gets or Sets EmployeePayrollRun
         /// </summary>
-        /// <value>The deduction&#39;s employee payroll run.</value>
         [DataMember(Name = "employee_payroll_run", EmitDefaultValue = true)]
         public Guid? EmployeePayrollRun { get; set; }
 
@@ -96,7 +93,16 @@ namespace Merge.HRISClient.Model
         /// Gets or Sets RemoteData
         /// </summary>
         [DataMember(Name = "remote_data", EmitDefaultValue = true)]
-        public List<Dictionary<string, Object>> RemoteData { get; set; }
+        public List<RemoteData> RemoteData { get; private set; }
+
+        /// <summary>
+        /// Returns false as RemoteData should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRemoteData()
+        {
+            return false;
+        }
 
         /// <summary>
         /// Returns the string presentation of the object

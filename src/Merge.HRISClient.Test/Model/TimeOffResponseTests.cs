@@ -58,12 +58,12 @@ namespace Merge.HRISClient.Test.Model
 
 
         /// <summary>
-        /// Test the property 'Errors'
+        /// Test the property 'Model'
         /// </summary>
         [Fact]
-        public void ErrorsTest()
+        public void ModelTest()
         {
-            // TODO unit test for the property 'Errors'
+            // TODO unit test for the property 'Model'
         }
         /// <summary>
         /// Test the property 'Warnings'
@@ -74,12 +74,20 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'Warnings'
         }
         /// <summary>
-        /// Test the property 'Model'
+        /// Test the property 'Errors'
         /// </summary>
         [Fact]
-        public void ModelTest()
+        public void ErrorsTest()
         {
-            // TODO unit test for the property 'Model'
+            // TODO unit test for the property 'Errors'
+        }
+        /// <summary>
+        /// Test the property 'Logs'
+        /// </summary>
+        [Fact]
+        public void LogsTest()
+        {
+            // TODO unit test for the property 'Logs'
         }
 
     }

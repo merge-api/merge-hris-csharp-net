@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
-**Category** | **string** |  | [optional] 
-**Status** | **string** |  | 
+**Category** | **CategoryEnum** |  | [optional] 
+**Status** | **AccountDetailsAndActionsStatusEnum** |  | 
 **StatusDetail** | **string** |  | [optional] 
 **EndUserOriginId** | **string** |  | [optional] 
 **EndUserOrganizationName** | **string** |  | 

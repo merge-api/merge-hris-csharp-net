@@ -36,8 +36,8 @@ namespace Merge.HRISClient.Model
         /// Initializes a new instance of the <see cref="EmployeePayrollRun" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">The employee whose payroll is being run..</param>
-        /// <param name="payrollRun">The payroll being run..</param>
+        /// <param name="employee">employee.</param>
+        /// <param name="payrollRun">payrollRun.</param>
         /// <param name="grossPay">The gross pay from the run..</param>
         /// <param name="netPay">The net pay from the run..</param>
         /// <param name="startDate">The day and time the payroll run started..</param>
@@ -78,16 +78,14 @@ namespace Merge.HRISClient.Model
         public string RemoteId { get; set; }
 
         /// <summary>
-        /// The employee whose payroll is being run.
+        /// Gets or Sets Employee
         /// </summary>
-        /// <value>The employee whose payroll is being run.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
         /// <summary>
-        /// The payroll being run.
+        /// Gets or Sets PayrollRun
         /// </summary>
-        /// <value>The payroll being run.</value>
         [DataMember(Name = "payroll_run", EmitDefaultValue = true)]
         public Guid? PayrollRun { get; set; }
 

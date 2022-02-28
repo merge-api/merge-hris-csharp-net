@@ -32,21 +32,66 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "Employment")]
     public partial class Employment : IEquatable<Employment>, IValidatableObject
     {
+
+        /// <summary>
+        /// The time period this pay rate encompasses.
+        /// </summary>
+        /// <value>The time period this pay rate encompasses.</value>
+        [DataMember(Name = "pay_period", EmitDefaultValue = true)]
+        public PayPeriodEnum? PayPeriod { get; set; }
+
+        /// <summary>
+        /// The position&#39;s pay frequency.
+        /// </summary>
+        /// <value>The position&#39;s pay frequency.</value>
+        [DataMember(Name = "pay_frequency", EmitDefaultValue = true)]
+        public PayFrequencyEnum? PayFrequency { get; set; }
+
+        /// <summary>
+        /// The position&#39;s currency code.
+        /// </summary>
+        /// <value>The position&#39;s currency code.</value>
+        [DataMember(Name = "pay_currency", EmitDefaultValue = true)]
+        public PayCurrencyEnum? PayCurrency { get; set; }
+
+        /// <summary>
+        /// The position&#39;s FLSA status.
+        /// </summary>
+        /// <value>The position&#39;s FLSA status.</value>
+        [DataMember(Name = "flsa_status", EmitDefaultValue = true)]
+        public FlsaStatusEnum? FlsaStatus { get; set; }
+
+        /// <summary>
+        /// The position&#39;s type of employment.
+        /// </summary>
+        /// <value>The position&#39;s type of employment.</value>
+        [DataMember(Name = "employment_type", EmitDefaultValue = true)]
+        public EmploymentTypeEnum? EmploymentType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Employment" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">The employee holding this position..</param>
+        /// <param name="employee">employee.</param>
         /// <param name="jobTitle">The position&#39;s title..</param>
         /// <param name="payRate">The position&#39;s pay rate in dollars..</param>
+        /// <param name="payPeriod">The time period this pay rate encompasses..</param>
+        /// <param name="payFrequency">The position&#39;s pay frequency..</param>
+        /// <param name="payCurrency">The position&#39;s currency code..</param>
+        /// <param name="flsaStatus">The position&#39;s FLSA status..</param>
         /// <param name="effectiveDate">The position&#39;s effective date..</param>
-        public Employment(string remoteId = default(string), Guid? employee = default(Guid?), string jobTitle = default(string), float? payRate = default(float?), DateTime? effectiveDate = default(DateTime?))
+        /// <param name="employmentType">The position&#39;s type of employment..</param>
+        public Employment(string remoteId = default(string), Guid? employee = default(Guid?), string jobTitle = default(string), float? payRate = default(float?), PayPeriodEnum? payPeriod = default(PayPeriodEnum?), PayFrequencyEnum? payFrequency = default(PayFrequencyEnum?), PayCurrencyEnum? payCurrency = default(PayCurrencyEnum?), FlsaStatusEnum? flsaStatus = default(FlsaStatusEnum?), DateTime? effectiveDate = default(DateTime?), EmploymentTypeEnum? employmentType = default(EmploymentTypeEnum?))
         {
             this.RemoteId = remoteId;
             this.Employee = employee;
             this.JobTitle = jobTitle;
             this.PayRate = payRate;
+            this.PayPeriod = payPeriod;
+            this.PayFrequency = payFrequency;
+            this.PayCurrency = payCurrency;
+            this.FlsaStatus = flsaStatus;
             this.EffectiveDate = effectiveDate;
+            this.EmploymentType = employmentType;
         }
 
         /// <summary>
@@ -72,9 +117,8 @@ namespace Merge.HRISClient.Model
         public string RemoteId { get; set; }
 
         /// <summary>
-        /// The employee holding this position.
+        /// Gets or Sets Employee
         /// </summary>
-        /// <value>The employee holding this position.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
@@ -93,86 +137,11 @@ namespace Merge.HRISClient.Model
         public float? PayRate { get; set; }
 
         /// <summary>
-        /// Gets or Sets PayPeriod
-        /// </summary>
-        [DataMember(Name = "pay_period", EmitDefaultValue = false)]
-        public string PayPeriod { get; private set; }
-
-        /// <summary>
-        /// Returns false as PayPeriod should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePayPeriod()
-        {
-            return false;
-        }
-
-        /// <summary>
-        /// Gets or Sets PayFrequency
-        /// </summary>
-        [DataMember(Name = "pay_frequency", EmitDefaultValue = false)]
-        public string PayFrequency { get; private set; }
-
-        /// <summary>
-        /// Returns false as PayFrequency should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePayFrequency()
-        {
-            return false;
-        }
-
-        /// <summary>
-        /// Gets or Sets PayCurrency
-        /// </summary>
-        [DataMember(Name = "pay_currency", EmitDefaultValue = false)]
-        public string PayCurrency { get; private set; }
-
-        /// <summary>
-        /// Returns false as PayCurrency should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePayCurrency()
-        {
-            return false;
-        }
-
-        /// <summary>
-        /// Gets or Sets FlsaStatus
-        /// </summary>
-        [DataMember(Name = "flsa_status", EmitDefaultValue = false)]
-        public string FlsaStatus { get; private set; }
-
-        /// <summary>
-        /// Returns false as FlsaStatus should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeFlsaStatus()
-        {
-            return false;
-        }
-
-        /// <summary>
         /// The position&#39;s effective date.
         /// </summary>
         /// <value>The position&#39;s effective date.</value>
         [DataMember(Name = "effective_date", EmitDefaultValue = true)]
         public DateTime? EffectiveDate { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EmploymentType
-        /// </summary>
-        [DataMember(Name = "employment_type", EmitDefaultValue = false)]
-        public string EmploymentType { get; private set; }
-
-        /// <summary>
-        /// Returns false as EmploymentType should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeEmploymentType()
-        {
-            return false;
-        }
 
         /// <summary>
         /// Gets or Sets RemoteData
@@ -270,23 +239,19 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.PayPeriod == input.PayPeriod ||
-                    (this.PayPeriod != null &&
-                    this.PayPeriod.Equals(input.PayPeriod))
+                    this.PayPeriod.Equals(input.PayPeriod)
                 ) && 
                 (
                     this.PayFrequency == input.PayFrequency ||
-                    (this.PayFrequency != null &&
-                    this.PayFrequency.Equals(input.PayFrequency))
+                    this.PayFrequency.Equals(input.PayFrequency)
                 ) && 
                 (
                     this.PayCurrency == input.PayCurrency ||
-                    (this.PayCurrency != null &&
-                    this.PayCurrency.Equals(input.PayCurrency))
+                    this.PayCurrency.Equals(input.PayCurrency)
                 ) && 
                 (
                     this.FlsaStatus == input.FlsaStatus ||
-                    (this.FlsaStatus != null &&
-                    this.FlsaStatus.Equals(input.FlsaStatus))
+                    this.FlsaStatus.Equals(input.FlsaStatus)
                 ) && 
                 (
                     this.EffectiveDate == input.EffectiveDate ||
@@ -295,8 +260,7 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.EmploymentType == input.EmploymentType ||
-                    (this.EmploymentType != null &&
-                    this.EmploymentType.Equals(input.EmploymentType))
+                    this.EmploymentType.Equals(input.EmploymentType)
                 ) && 
                 (
                     this.RemoteData == input.RemoteData ||
@@ -325,18 +289,13 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.JobTitle.GetHashCode();
                 if (this.PayRate != null)
                     hashCode = hashCode * 59 + this.PayRate.GetHashCode();
-                if (this.PayPeriod != null)
-                    hashCode = hashCode * 59 + this.PayPeriod.GetHashCode();
-                if (this.PayFrequency != null)
-                    hashCode = hashCode * 59 + this.PayFrequency.GetHashCode();
-                if (this.PayCurrency != null)
-                    hashCode = hashCode * 59 + this.PayCurrency.GetHashCode();
-                if (this.FlsaStatus != null)
-                    hashCode = hashCode * 59 + this.FlsaStatus.GetHashCode();
+                hashCode = hashCode * 59 + this.PayPeriod.GetHashCode();
+                hashCode = hashCode * 59 + this.PayFrequency.GetHashCode();
+                hashCode = hashCode * 59 + this.PayCurrency.GetHashCode();
+                hashCode = hashCode * 59 + this.FlsaStatus.GetHashCode();
                 if (this.EffectiveDate != null)
                     hashCode = hashCode * 59 + this.EffectiveDate.GetHashCode();
-                if (this.EmploymentType != null)
-                    hashCode = hashCode * 59 + this.EmploymentType.GetHashCode();
+                hashCode = hashCode * 59 + this.EmploymentType.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
                 return hashCode;

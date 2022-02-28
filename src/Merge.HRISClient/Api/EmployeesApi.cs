@@ -31,6 +31,56 @@ namespace Merge.HRISClient.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// Creates an &#x60;Employee&#x60; object with the given values.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <returns>EmployeeResponse</returns>
+        EmployeeResponse EmployeesCreate(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates an &#x60;Employee&#x60; object with the given values.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <returns>ApiResponse of EmployeeResponse</returns>
+        ApiResponse<EmployeeResponse> EmployeesCreateWithHttpInfo(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <returns>IgnoreCommonModel</returns>
+        IgnoreCommonModel EmployeesIgnoreCreate(Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <returns>ApiResponse of IgnoreCommonModel</returns>
+        ApiResponse<IgnoreCommonModel> EmployeesIgnoreCreateWithHttpInfo(Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Returns a list of &#x60;Employee&#x60; objects.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -118,6 +168,60 @@ namespace Merge.HRISClient.Api
     public interface IEmployeesApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates an &#x60;Employee&#x60; object with the given values.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EmployeeResponse</returns>
+        System.Threading.Tasks.Task<EmployeeResponse> EmployeesCreateAsync(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates an &#x60;Employee&#x60; object with the given values.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EmployeeResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EmployeeResponse>> EmployeesCreateWithHttpInfoAsync(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of IgnoreCommonModel</returns>
+        System.Threading.Tasks.Task<IgnoreCommonModel> EmployeesIgnoreCreateAsync(Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (IgnoreCommonModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<IgnoreCommonModel>> EmployeesIgnoreCreateWithHttpInfoAsync(Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -322,6 +426,312 @@ namespace Merge.HRISClient.Api
                 return _exceptionFactory;
             }
             set { _exceptionFactory = value; }
+        }
+
+        /// <summary>
+        ///  Creates an &#x60;Employee&#x60; object with the given values.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <returns>EmployeeResponse</returns>
+        public EmployeeResponse EmployeesCreate(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?))
+        {
+            Merge.HRISClient.Client.ApiResponse<EmployeeResponse> localVarResponse = EmployeesCreateWithHttpInfo(xAccountToken, employeeEndpointRequest, isDebugMode, runAsync);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Creates an &#x60;Employee&#x60; object with the given values.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <returns>ApiResponse of EmployeeResponse</returns>
+        public Merge.HRISClient.Client.ApiResponse<EmployeeResponse> EmployeesCreateWithHttpInfo(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?))
+        {
+            // verify the required parameter 'xAccountToken' is set
+            if (xAccountToken == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling EmployeesApi->EmployeesCreate");
+
+            // verify the required parameter 'employeeEndpointRequest' is set
+            if (employeeEndpointRequest == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'employeeEndpointRequest' when calling EmployeesApi->EmployeesCreate");
+
+            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json",
+                "application/x-www-form-urlencoded",
+                "multipart/form-data"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            if (isDebugMode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "is_debug_mode", isDebugMode));
+            }
+            if (runAsync != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "run_async", runAsync));
+            }
+            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
+            localVarRequestOptions.Data = employeeEndpointRequest;
+
+            // authentication (tokenAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<EmployeeResponse>("/employees", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EmployeesCreate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Creates an &#x60;Employee&#x60; object with the given values.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EmployeeResponse</returns>
+        public async System.Threading.Tasks.Task<EmployeeResponse> EmployeesCreateAsync(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Merge.HRISClient.Client.ApiResponse<EmployeeResponse> localVarResponse = await EmployeesCreateWithHttpInfoAsync(xAccountToken, employeeEndpointRequest, isDebugMode, runAsync, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Creates an &#x60;Employee&#x60; object with the given values.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EmployeeResponse)</returns>
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<EmployeeResponse>> EmployeesCreateWithHttpInfoAsync(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'xAccountToken' is set
+            if (xAccountToken == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling EmployeesApi->EmployeesCreate");
+
+            // verify the required parameter 'employeeEndpointRequest' is set
+            if (employeeEndpointRequest == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'employeeEndpointRequest' when calling EmployeesApi->EmployeesCreate");
+
+
+            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json", 
+                "application/x-www-form-urlencoded", 
+                "multipart/form-data"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            if (isDebugMode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "is_debug_mode", isDebugMode));
+            }
+            if (runAsync != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "run_async", runAsync));
+            }
+            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
+            localVarRequestOptions.Data = employeeEndpointRequest;
+
+            // authentication (tokenAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<EmployeeResponse>("/employees", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EmployeesCreate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <returns>IgnoreCommonModel</returns>
+        public IgnoreCommonModel EmployeesIgnoreCreate(Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest)
+        {
+            Merge.HRISClient.Client.ApiResponse<IgnoreCommonModel> localVarResponse = EmployeesIgnoreCreateWithHttpInfo(modelId, ignoreCommonModelRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <returns>ApiResponse of IgnoreCommonModel</returns>
+        public Merge.HRISClient.Client.ApiResponse<IgnoreCommonModel> EmployeesIgnoreCreateWithHttpInfo(Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest)
+        {
+            // verify the required parameter 'ignoreCommonModelRequest' is set
+            if (ignoreCommonModelRequest == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'ignoreCommonModelRequest' when calling EmployeesApi->EmployeesIgnoreCreate");
+
+            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json",
+                "application/x-www-form-urlencoded",
+                "multipart/form-data"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("model_id", Merge.HRISClient.Client.ClientUtils.ParameterToString(modelId)); // path parameter
+            localVarRequestOptions.Data = ignoreCommonModelRequest;
+
+            // authentication (tokenAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<IgnoreCommonModel>("/employees/ignore/{model_id}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EmployeesIgnoreCreate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of IgnoreCommonModel</returns>
+        public async System.Threading.Tasks.Task<IgnoreCommonModel> EmployeesIgnoreCreateAsync(Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Merge.HRISClient.Client.ApiResponse<IgnoreCommonModel> localVarResponse = await EmployeesIgnoreCreateWithHttpInfoAsync(modelId, ignoreCommonModelRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (IgnoreCommonModel)</returns>
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<IgnoreCommonModel>> EmployeesIgnoreCreateWithHttpInfoAsync(Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'ignoreCommonModelRequest' is set
+            if (ignoreCommonModelRequest == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'ignoreCommonModelRequest' when calling EmployeesApi->EmployeesIgnoreCreate");
+
+
+            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json", 
+                "application/x-www-form-urlencoded", 
+                "multipart/form-data"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("model_id", Merge.HRISClient.Client.ClientUtils.ParameterToString(modelId)); // path parameter
+            localVarRequestOptions.Data = ignoreCommonModelRequest;
+
+            // authentication (tokenAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<IgnoreCommonModel>("/employees/ignore/{model_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EmployeesIgnoreCreate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
         }
 
         /// <summary>

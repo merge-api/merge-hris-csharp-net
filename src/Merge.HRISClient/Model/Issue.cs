@@ -32,6 +32,12 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "Issue")]
     public partial class Issue : IEquatable<Issue>, IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", EmitDefaultValue = false)]
+        public IssueStatusEnum? Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Issue" /> class.
         /// </summary>
@@ -40,13 +46,15 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Issue" /> class.
         /// </summary>
+        /// <param name="status">status.</param>
         /// <param name="errorDescription">errorDescription (required).</param>
         /// <param name="firstIncidentTime">firstIncidentTime.</param>
         /// <param name="lastIncidentTime">lastIncidentTime.</param>
-        public Issue(string errorDescription = default(string), DateTime? firstIncidentTime = default(DateTime?), DateTime? lastIncidentTime = default(DateTime?))
+        public Issue(IssueStatusEnum? status = default(IssueStatusEnum?), string errorDescription = default(string), DateTime? firstIncidentTime = default(DateTime?), DateTime? lastIncidentTime = default(DateTime?))
         {
             // to ensure "errorDescription" is required (not null)
             this.ErrorDescription = errorDescription ?? throw new ArgumentNullException("errorDescription is a required property for Issue and cannot be null");
+            this.Status = status;
             this.FirstIncidentTime = firstIncidentTime;
             this.LastIncidentTime = lastIncidentTime;
         }
@@ -62,21 +70,6 @@ namespace Merge.HRISClient.Model
         /// </summary>
         /// <returns>false (boolean)</returns>
         public bool ShouldSerializeId()
-        {
-            return false;
-        }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = false)]
-        public string Status { get; private set; }
-
-        /// <summary>
-        /// Returns false as Status should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeStatus()
         {
             return false;
         }
@@ -185,8 +178,7 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
+                    this.Status.Equals(input.Status)
                 ) && 
                 (
                     this.ErrorDescription == input.ErrorDescription ||
@@ -226,8 +218,7 @@ namespace Merge.HRISClient.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Status != null)
-                    hashCode = hashCode * 59 + this.Status.GetHashCode();
+                hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.ErrorDescription != null)
                     hashCode = hashCode * 59 + this.ErrorDescription.GetHashCode();
                 if (this.EndUser != null)

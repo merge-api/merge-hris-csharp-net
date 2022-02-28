@@ -56,6 +56,34 @@ namespace Merge.HRISClient.Test.Api
         }
 
         /// <summary>
+        /// Test EmployeesCreate
+        /// </summary>
+        [Fact]
+        public void EmployeesCreateTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string xAccountToken = null;
+            //EmployeeEndpointRequest employeeEndpointRequest = null;
+            //bool? isDebugMode = null;
+            //bool? runAsync = null;
+            //var response = instance.EmployeesCreate(xAccountToken, employeeEndpointRequest, isDebugMode, runAsync);
+            //Assert.IsType<EmployeeResponse>(response);
+        }
+
+        /// <summary>
+        /// Test EmployeesIgnoreCreate
+        /// </summary>
+        [Fact]
+        public void EmployeesIgnoreCreateTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //Guid modelId = null;
+            //IgnoreCommonModelRequest ignoreCommonModelRequest = null;
+            //var response = instance.EmployeesIgnoreCreate(modelId, ignoreCommonModelRequest);
+            //Assert.IsType<IgnoreCommonModel>(response);
+        }
+
+        /// <summary>
         /// Test EmployeesList
         /// </summary>
         [Fact]

@@ -36,9 +36,10 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
         /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
         /// <returns>TimeOffResponse</returns>
-        TimeOffResponse TimeOffCreate(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?));
+        TimeOffResponse TimeOffCreate(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?));
 
         /// <summary>
         /// 
@@ -49,9 +50,10 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
         /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
         /// <returns>ApiResponse of TimeOffResponse</returns>
-        ApiResponse<TimeOffResponse> TimeOffCreateWithHttpInfo(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?));
+        ApiResponse<TimeOffResponse> TimeOffCreateWithHttpInfo(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?));
         /// <summary>
         /// 
         /// </summary>
@@ -142,10 +144,11 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
         /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TimeOffResponse</returns>
-        System.Threading.Tasks.Task<TimeOffResponse> TimeOffCreateAsync(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TimeOffResponse> TimeOffCreateAsync(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -156,10 +159,11 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
         /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TimeOffResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimeOffResponse>> TimeOffCreateWithHttpInfoAsync(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TimeOffResponse>> TimeOffCreateWithHttpInfoAsync(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -362,11 +366,12 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
         /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
         /// <returns>TimeOffResponse</returns>
-        public TimeOffResponse TimeOffCreate(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?))
+        public TimeOffResponse TimeOffCreate(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?))
         {
-            Merge.HRISClient.Client.ApiResponse<TimeOffResponse> localVarResponse = TimeOffCreateWithHttpInfo(xAccountToken, timeOffEndpointRequest, runAsync);
+            Merge.HRISClient.Client.ApiResponse<TimeOffResponse> localVarResponse = TimeOffCreateWithHttpInfo(xAccountToken, timeOffEndpointRequest, isDebugMode, runAsync);
             return localVarResponse.Data;
         }
 
@@ -376,9 +381,10 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
         /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
         /// <returns>ApiResponse of TimeOffResponse</returns>
-        public Merge.HRISClient.Client.ApiResponse<TimeOffResponse> TimeOffCreateWithHttpInfo(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?))
+        public Merge.HRISClient.Client.ApiResponse<TimeOffResponse> TimeOffCreateWithHttpInfo(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -407,6 +413,10 @@ namespace Merge.HRISClient.Api
             var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            if (isDebugMode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "is_debug_mode", isDebugMode));
+            }
             if (runAsync != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "run_async", runAsync));
@@ -438,12 +448,13 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
         /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TimeOffResponse</returns>
-        public async System.Threading.Tasks.Task<TimeOffResponse> TimeOffCreateAsync(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TimeOffResponse> TimeOffCreateAsync(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<TimeOffResponse> localVarResponse = await TimeOffCreateWithHttpInfoAsync(xAccountToken, timeOffEndpointRequest, runAsync, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<TimeOffResponse> localVarResponse = await TimeOffCreateWithHttpInfoAsync(xAccountToken, timeOffEndpointRequest, isDebugMode, runAsync, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -453,10 +464,11 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="timeOffEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
         /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TimeOffResponse)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<TimeOffResponse>> TimeOffCreateWithHttpInfoAsync(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<TimeOffResponse>> TimeOffCreateWithHttpInfoAsync(string xAccountToken, TimeOffEndpointRequest timeOffEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -487,6 +499,10 @@ namespace Merge.HRISClient.Api
             var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            if (isDebugMode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "is_debug_mode", isDebugMode));
+            }
             if (runAsync != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "run_async", runAsync));

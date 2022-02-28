@@ -45,7 +45,8 @@ namespace Merge.HRISClient.Model
         /// <param name="endUserOriginId">endUserOriginId (required).</param>
         /// <param name="categories">categories.</param>
         /// <param name="integration">integration.</param>
-        public EndUserDetailsRequest(string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), List<CategoriesEnum> categories = default(List<CategoriesEnum>), string integration = default(string))
+        /// <param name="linkExpiryMins">linkExpiryMins (default to 30).</param>
+        public EndUserDetailsRequest(string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), List<CategoriesEnum> categories = default(List<CategoriesEnum>), string integration = default(string), int linkExpiryMins = 30)
         {
             // to ensure "endUserEmailAddress" is required (not null)
             this.EndUserEmailAddress = endUserEmailAddress ?? throw new ArgumentNullException("endUserEmailAddress is a required property for EndUserDetailsRequest and cannot be null");
@@ -55,6 +56,7 @@ namespace Merge.HRISClient.Model
             this.EndUserOriginId = endUserOriginId ?? throw new ArgumentNullException("endUserOriginId is a required property for EndUserDetailsRequest and cannot be null");
             this.Categories = categories;
             this.Integration = integration;
+            this.LinkExpiryMins = linkExpiryMins;
         }
 
         /// <summary>
@@ -88,6 +90,12 @@ namespace Merge.HRISClient.Model
         public string Integration { get; set; }
 
         /// <summary>
+        /// Gets or Sets LinkExpiryMins
+        /// </summary>
+        [DataMember(Name = "link_expiry_mins", EmitDefaultValue = false)]
+        public int LinkExpiryMins { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -100,6 +108,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  EndUserOriginId: ").Append(EndUserOriginId).Append("\n");
             sb.Append("  Categories: ").Append(Categories).Append("\n");
             sb.Append("  Integration: ").Append(Integration).Append("\n");
+            sb.Append("  LinkExpiryMins: ").Append(LinkExpiryMins).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -159,6 +168,10 @@ namespace Merge.HRISClient.Model
                     this.Integration == input.Integration ||
                     (this.Integration != null &&
                     this.Integration.Equals(input.Integration))
+                ) && 
+                (
+                    this.LinkExpiryMins == input.LinkExpiryMins ||
+                    this.LinkExpiryMins.Equals(input.LinkExpiryMins)
                 );
         }
 
@@ -181,6 +194,7 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Categories.GetHashCode();
                 if (this.Integration != null)
                     hashCode = hashCode * 59 + this.Integration.GetHashCode();
+                hashCode = hashCode * 59 + this.LinkExpiryMins.GetHashCode();
                 return hashCode;
             }
         }
@@ -214,6 +228,18 @@ namespace Merge.HRISClient.Model
             if(this.Integration != null && this.Integration.Length < 1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Integration, length must be greater than 1.", new [] { "Integration" });
+            }
+
+            // LinkExpiryMins (int) maximum
+            if(this.LinkExpiryMins > (int)720)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LinkExpiryMins, must be a value less than or equal to 720.", new [] { "LinkExpiryMins" });
+            }
+
+            // LinkExpiryMins (int) minimum
+            if(this.LinkExpiryMins < (int)30)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LinkExpiryMins, must be a value greater than or equal to 30.", new [] { "LinkExpiryMins" });
             }
 
             yield break;
