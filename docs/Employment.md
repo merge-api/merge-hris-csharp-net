@@ -7,15 +7,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Guid** |  | [optional] [readonly] 
 **RemoteId** | **string** | The third-party API ID of the matching object. | [optional] 
-**Employee** | **Guid?** | The employee holding this position. | [optional] 
+**Employee** | **Guid?** |  | [optional] 
 **JobTitle** | **string** | The position&#39;s title. | [optional] 
 **PayRate** | **float?** | The position&#39;s pay rate in dollars. | [optional] 
-**PayPeriod** | **string** |  | [optional] [readonly] 
-**PayFrequency** | **string** |  | [optional] [readonly] 
-**PayCurrency** | **string** |  | [optional] [readonly] 
-**FlsaStatus** | **string** |  | [optional] [readonly] 
+**PayPeriod** | **PayPeriodEnum** | The time period this pay rate encompasses. | [optional] 
+**PayFrequency** | **PayFrequencyEnum** | The position&#39;s pay frequency. | [optional] 
+**PayCurrency** | **PayCurrencyEnum** | The position&#39;s currency code. | [optional] 
+**FlsaStatus** | **FlsaStatusEnum** | The position&#39;s FLSA status. | [optional] 
 **EffectiveDate** | **DateTime?** | The position&#39;s effective date. | [optional] 
-**EmploymentType** | **string** |  | [optional] [readonly] 
+**EmploymentType** | **EmploymentTypeEnum** | The position&#39;s type of employment. | [optional] 
 **RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

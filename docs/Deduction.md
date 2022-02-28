@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Guid** |  | [optional] [readonly] 
-**EmployeePayrollRun** | **Guid?** | The deduction&#39;s employee payroll run. | [optional] 
+**EmployeePayrollRun** | **Guid?** |  | [optional] 
 **Name** | **string** | The deduction&#39;s name. | [optional] 
 **EmployeeDeduction** | **float?** | The amount the employee is deducting. | [optional] 
 **CompanyDeduction** | **float?** | The amount the company is deducting. | [optional] 
-**RemoteData** | **List&lt;Dictionary&lt;string, Object&gt;&gt;** |  | [optional] 
+**RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

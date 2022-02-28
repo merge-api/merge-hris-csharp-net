@@ -32,6 +32,18 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "AccountDetailsAndActions")]
     public partial class AccountDetailsAndActions : IEquatable<AccountDetailsAndActions>, IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets Category
+        /// </summary>
+        [DataMember(Name = "category", EmitDefaultValue = false)]
+        public CategoryEnum? Category { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public AccountDetailsAndActionsStatusEnum Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountDetailsAndActions" /> class.
         /// </summary>
@@ -48,12 +60,11 @@ namespace Merge.HRISClient.Model
         /// <param name="endUserOrganizationName">endUserOrganizationName (required).</param>
         /// <param name="endUserEmailAddress">endUserEmailAddress (required).</param>
         /// <param name="integration">integration.</param>
-        public AccountDetailsAndActions(string id = default(string), string category = default(string), string status = default(string), string statusDetail = default(string), string endUserOriginId = default(string), string endUserOrganizationName = default(string), string endUserEmailAddress = default(string), AccountDetailsAndActionsIntegration integration = default(AccountDetailsAndActionsIntegration))
+        public AccountDetailsAndActions(string id = default(string), CategoryEnum? category = default(CategoryEnum?), AccountDetailsAndActionsStatusEnum status = default(AccountDetailsAndActionsStatusEnum), string statusDetail = default(string), string endUserOriginId = default(string), string endUserOrganizationName = default(string), string endUserEmailAddress = default(string), AccountDetailsAndActionsIntegration integration = default(AccountDetailsAndActionsIntegration))
         {
             // to ensure "id" is required (not null)
             this.Id = id ?? throw new ArgumentNullException("id is a required property for AccountDetailsAndActions and cannot be null");
-            // to ensure "status" is required (not null)
-            this.Status = status ?? throw new ArgumentNullException("status is a required property for AccountDetailsAndActions and cannot be null");
+            this.Status = status;
             // to ensure "endUserOrganizationName" is required (not null)
             this.EndUserOrganizationName = endUserOrganizationName ?? throw new ArgumentNullException("endUserOrganizationName is a required property for AccountDetailsAndActions and cannot be null");
             // to ensure "endUserEmailAddress" is required (not null)
@@ -69,18 +80,6 @@ namespace Merge.HRISClient.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Category
-        /// </summary>
-        [DataMember(Name = "category", EmitDefaultValue = false)]
-        public string Category { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets StatusDetail
@@ -169,13 +168,11 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.Category == input.Category ||
-                    (this.Category != null &&
-                    this.Category.Equals(input.Category))
+                    this.Category.Equals(input.Category)
                 ) && 
                 (
                     this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
+                    this.Status.Equals(input.Status)
                 ) && 
                 (
                     this.StatusDetail == input.StatusDetail ||
@@ -215,10 +212,8 @@ namespace Merge.HRISClient.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Category != null)
-                    hashCode = hashCode * 59 + this.Category.GetHashCode();
-                if (this.Status != null)
-                    hashCode = hashCode * 59 + this.Status.GetHashCode();
+                hashCode = hashCode * 59 + this.Category.GetHashCode();
+                hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.StatusDetail != null)
                     hashCode = hashCode * 59 + this.StatusDetail.GetHashCode();
                 if (this.EndUserOriginId != null)

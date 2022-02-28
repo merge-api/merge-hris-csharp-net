@@ -32,19 +32,28 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "TimeOffBalance")]
     public partial class TimeOffBalance : IEquatable<TimeOffBalance>, IValidatableObject
     {
+
+        /// <summary>
+        /// The policy type of this time off balance.
+        /// </summary>
+        /// <value>The policy type of this time off balance.</value>
+        [DataMember(Name = "policy_type", EmitDefaultValue = true)]
+        public PolicyTypeEnum? PolicyType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeOffBalance" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">The employee the balance belongs to..</param>
+        /// <param name="employee">employee.</param>
         /// <param name="balance">The current PTO balance in terms of hours..</param>
         /// <param name="used">The amount of PTO used in terms of hours..</param>
-        public TimeOffBalance(string remoteId = default(string), Guid? employee = default(Guid?), float? balance = default(float?), float? used = default(float?))
+        /// <param name="policyType">The policy type of this time off balance..</param>
+        public TimeOffBalance(string remoteId = default(string), Guid? employee = default(Guid?), float? balance = default(float?), float? used = default(float?), PolicyTypeEnum? policyType = default(PolicyTypeEnum?))
         {
             this.RemoteId = remoteId;
             this.Employee = employee;
             this.Balance = balance;
             this.Used = used;
+            this.PolicyType = policyType;
         }
 
         /// <summary>
@@ -70,9 +79,8 @@ namespace Merge.HRISClient.Model
         public string RemoteId { get; set; }
 
         /// <summary>
-        /// The employee the balance belongs to.
+        /// Gets or Sets Employee
         /// </summary>
-        /// <value>The employee the balance belongs to.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
@@ -89,21 +97,6 @@ namespace Merge.HRISClient.Model
         /// <value>The amount of PTO used in terms of hours.</value>
         [DataMember(Name = "used", EmitDefaultValue = true)]
         public float? Used { get; set; }
-
-        /// <summary>
-        /// Gets or Sets PolicyType
-        /// </summary>
-        [DataMember(Name = "policy_type", EmitDefaultValue = false)]
-        public string PolicyType { get; private set; }
-
-        /// <summary>
-        /// Returns false as PolicyType should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializePolicyType()
-        {
-            return false;
-        }
 
         /// <summary>
         /// Gets or Sets RemoteData
@@ -196,8 +189,7 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.PolicyType == input.PolicyType ||
-                    (this.PolicyType != null &&
-                    this.PolicyType.Equals(input.PolicyType))
+                    this.PolicyType.Equals(input.PolicyType)
                 ) && 
                 (
                     this.RemoteData == input.RemoteData ||
@@ -226,8 +218,7 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Balance.GetHashCode();
                 if (this.Used != null)
                     hashCode = hashCode * 59 + this.Used.GetHashCode();
-                if (this.PolicyType != null)
-                    hashCode = hashCode * 59 + this.PolicyType.GetHashCode();
+                hashCode = hashCode * 59 + this.PolicyType.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
                 return hashCode;

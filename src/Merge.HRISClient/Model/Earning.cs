@@ -32,17 +32,24 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "Earning")]
     public partial class Earning : IEquatable<Earning>, IValidatableObject
     {
+
+        /// <summary>
+        /// The type of earning.
+        /// </summary>
+        /// <value>The type of earning.</value>
+        [DataMember(Name = "type", EmitDefaultValue = true)]
+        public EarningTypeEnum? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Earning" /> class.
         /// </summary>
-        /// <param name="employeePayrollRun">The earning&#39;s employee payroll run..</param>
+        /// <param name="employeePayrollRun">employeePayrollRun.</param>
         /// <param name="amount">The amount earned..</param>
-        /// <param name="remoteData">remoteData.</param>
-        public Earning(Guid? employeePayrollRun = default(Guid?), float? amount = default(float?), List<Dictionary<string, Object>> remoteData = default(List<Dictionary<string, Object>>))
+        /// <param name="type">The type of earning..</param>
+        public Earning(Guid? employeePayrollRun = default(Guid?), float? amount = default(float?), EarningTypeEnum? type = default(EarningTypeEnum?))
         {
             this.EmployeePayrollRun = employeePayrollRun;
             this.Amount = amount;
-            this.RemoteData = remoteData;
+            this.Type = type;
         }
 
         /// <summary>
@@ -61,9 +68,8 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
-        /// The earning&#39;s employee payroll run.
+        /// Gets or Sets EmployeePayrollRun
         /// </summary>
-        /// <value>The earning&#39;s employee payroll run.</value>
         [DataMember(Name = "employee_payroll_run", EmitDefaultValue = true)]
         public Guid? EmployeePayrollRun { get; set; }
 
@@ -75,25 +81,19 @@ namespace Merge.HRISClient.Model
         public float? Amount { get; set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// Gets or Sets RemoteData
         /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public string Type { get; private set; }
+        [DataMember(Name = "remote_data", EmitDefaultValue = false)]
+        public string RemoteData { get; private set; }
 
         /// <summary>
-        /// Returns false as Type should not be serialized given that it's read-only.
+        /// Returns false as RemoteData should not be serialized given that it's read-only.
         /// </summary>
         /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeType()
+        public bool ShouldSerializeRemoteData()
         {
             return false;
         }
-
-        /// <summary>
-        /// Gets or Sets RemoteData
-        /// </summary>
-        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
-        public List<Dictionary<string, Object>> RemoteData { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -159,14 +159,12 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.Type.Equals(input.Type)
                 ) && 
                 (
                     this.RemoteData == input.RemoteData ||
-                    this.RemoteData != null &&
-                    input.RemoteData != null &&
-                    this.RemoteData.SequenceEqual(input.RemoteData)
+                    (this.RemoteData != null &&
+                    this.RemoteData.Equals(input.RemoteData))
                 );
         }
 
@@ -185,8 +183,7 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.EmployeePayrollRun.GetHashCode();
                 if (this.Amount != null)
                     hashCode = hashCode * 59 + this.Amount.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
                 return hashCode;

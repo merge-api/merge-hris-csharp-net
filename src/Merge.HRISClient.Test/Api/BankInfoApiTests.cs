@@ -68,7 +68,6 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? createdAfter = null;
             //DateTime? createdBefore = null;
             //string cursor = null;
-            //Guid? employee = null;
             //string employeeId = null;
             //bool? includeDeletedData = null;
             //bool? includeRemoteData = null;
@@ -76,9 +75,8 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? modifiedBefore = null;
             //string orderBy = null;
             //int? pageSize = null;
-            //DateTime? remoteCreatedAt = null;
             //string remoteId = null;
-            //var response = instance.BankInfoList(xAccountToken, accountType, bankName, createdAfter, createdBefore, cursor, employee, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteCreatedAt, remoteId);
+            //var response = instance.BankInfoList(xAccountToken, accountType, bankName, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteId);
             //Assert.IsType<PaginatedBankInfoList>(response);
         }
 

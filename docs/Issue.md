@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Guid** |  | [optional] [readonly] 
-**Status** | **string** |  | [optional] [readonly] 
+**Status** | **IssueStatusEnum** |  | [optional] 
 **ErrorDescription** | **string** |  | 
 **EndUser** | **Dictionary&lt;string, Object&gt;** |  | [optional] [readonly] 
 **FirstIncidentTime** | **DateTime?** |  | [optional] 

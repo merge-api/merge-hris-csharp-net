@@ -39,6 +39,13 @@ namespace Merge.HRISClient.Model
         /// <value>The location&#39;s country.</value>
         [DataMember(Name = "country", EmitDefaultValue = true)]
         public CountryEnum? Country { get; set; }
+
+        /// <summary>
+        /// The location&#39;s type. Can be either WORK or HOME
+        /// </summary>
+        /// <value>The location&#39;s type. Can be either WORK or HOME</value>
+        [DataMember(Name = "location_type", EmitDefaultValue = true)]
+        public LocationTypeEnum? LocationType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Location" /> class.
         /// </summary>
@@ -51,7 +58,8 @@ namespace Merge.HRISClient.Model
         /// <param name="state">The location&#39;s state. Represents a region if outside of the US..</param>
         /// <param name="zipCode">The location&#39;s zip code..</param>
         /// <param name="country">The location&#39;s country..</param>
-        public Location(string remoteId = default(string), string name = default(string), string phoneNumber = default(string), string street1 = default(string), string street2 = default(string), string city = default(string), string state = default(string), string zipCode = default(string), CountryEnum? country = default(CountryEnum?))
+        /// <param name="locationType">The location&#39;s type. Can be either WORK or HOME.</param>
+        public Location(string remoteId = default(string), string name = default(string), string phoneNumber = default(string), string street1 = default(string), string street2 = default(string), string city = default(string), string state = default(string), string zipCode = default(string), CountryEnum? country = default(CountryEnum?), LocationTypeEnum? locationType = default(LocationTypeEnum?))
         {
             this.RemoteId = remoteId;
             this.Name = name;
@@ -62,6 +70,7 @@ namespace Merge.HRISClient.Model
             this.State = state;
             this.ZipCode = zipCode;
             this.Country = country;
+            this.LocationType = locationType;
         }
 
         /// <summary>
@@ -168,6 +177,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  ZipCode: ").Append(ZipCode).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
+            sb.Append("  LocationType: ").Append(LocationType).Append("\n");
             sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -253,6 +263,10 @@ namespace Merge.HRISClient.Model
                     this.Country.Equals(input.Country)
                 ) && 
                 (
+                    this.LocationType == input.LocationType ||
+                    this.LocationType.Equals(input.LocationType)
+                ) && 
+                (
                     this.RemoteData == input.RemoteData ||
                     this.RemoteData != null &&
                     input.RemoteData != null &&
@@ -288,6 +302,7 @@ namespace Merge.HRISClient.Model
                 if (this.ZipCode != null)
                     hashCode = hashCode * 59 + this.ZipCode.GetHashCode();
                 hashCode = hashCode * 59 + this.Country.GetHashCode();
+                hashCode = hashCode * 59 + this.LocationType.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
                 return hashCode;

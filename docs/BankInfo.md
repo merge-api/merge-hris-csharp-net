@@ -7,11 +7,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Guid** |  | [optional] [readonly] 
 **RemoteId** | **string** | The third-party API ID of the matching object. | [optional] 
-**Employee** | **Guid?** | The employee with this bank account. | [optional] 
+**Employee** | **Guid?** |  | [optional] 
 **AccountNumber** | **string** | The account number. | [optional] 
 **RoutingNumber** | **string** | The routing number. | [optional] 
 **BankName** | **string** | The bank name. | [optional] 
-**AccountType** | **string** |  | [optional] [readonly] 
+**AccountType** | **AccountTypeEnum** | The bank account type | [optional] 
 **RemoteCreatedAt** | **DateTime?** | When the matching bank object was created in the third party system. | [optional] 
 **RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 
 

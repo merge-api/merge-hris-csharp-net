@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Guid** |  | [optional] [readonly] 
 **RemoteId** | **string** | The third-party API ID of the matching object. | [optional] 
-**Employee** | **Guid?** | The employee whose payroll is being run. | [optional] 
-**PayrollRun** | **Guid?** | The payroll being run. | [optional] 
+**Employee** | **Guid?** |  | [optional] 
+**PayrollRun** | **Guid?** |  | [optional] 
 **GrossPay** | **float?** | The gross pay from the run. | [optional] 
 **NetPay** | **float?** | The net pay from the run. | [optional] 
 **StartDate** | **DateTime?** | The day and time the payroll run started. | [optional] 

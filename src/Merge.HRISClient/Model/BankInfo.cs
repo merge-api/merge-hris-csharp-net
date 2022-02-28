@@ -32,22 +32,31 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "BankInfo")]
     public partial class BankInfo : IEquatable<BankInfo>, IValidatableObject
     {
+
+        /// <summary>
+        /// The bank account type
+        /// </summary>
+        /// <value>The bank account type</value>
+        [DataMember(Name = "account_type", EmitDefaultValue = true)]
+        public AccountTypeEnum? AccountType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankInfo" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">The employee with this bank account..</param>
+        /// <param name="employee">employee.</param>
         /// <param name="accountNumber">The account number..</param>
         /// <param name="routingNumber">The routing number..</param>
         /// <param name="bankName">The bank name..</param>
+        /// <param name="accountType">The bank account type.</param>
         /// <param name="remoteCreatedAt">When the matching bank object was created in the third party system..</param>
-        public BankInfo(string remoteId = default(string), Guid? employee = default(Guid?), string accountNumber = default(string), string routingNumber = default(string), string bankName = default(string), DateTime? remoteCreatedAt = default(DateTime?))
+        public BankInfo(string remoteId = default(string), Guid? employee = default(Guid?), string accountNumber = default(string), string routingNumber = default(string), string bankName = default(string), AccountTypeEnum? accountType = default(AccountTypeEnum?), DateTime? remoteCreatedAt = default(DateTime?))
         {
             this.RemoteId = remoteId;
             this.Employee = employee;
             this.AccountNumber = accountNumber;
             this.RoutingNumber = routingNumber;
             this.BankName = bankName;
+            this.AccountType = accountType;
             this.RemoteCreatedAt = remoteCreatedAt;
         }
 
@@ -74,9 +83,8 @@ namespace Merge.HRISClient.Model
         public string RemoteId { get; set; }
 
         /// <summary>
-        /// The employee with this bank account.
+        /// Gets or Sets Employee
         /// </summary>
-        /// <value>The employee with this bank account.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
@@ -100,21 +108,6 @@ namespace Merge.HRISClient.Model
         /// <value>The bank name.</value>
         [DataMember(Name = "bank_name", EmitDefaultValue = true)]
         public string BankName { get; set; }
-
-        /// <summary>
-        /// Gets or Sets AccountType
-        /// </summary>
-        [DataMember(Name = "account_type", EmitDefaultValue = false)]
-        public string AccountType { get; private set; }
-
-        /// <summary>
-        /// Returns false as AccountType should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAccountType()
-        {
-            return false;
-        }
 
         /// <summary>
         /// When the matching bank object was created in the third party system.
@@ -221,8 +214,7 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.AccountType == input.AccountType ||
-                    (this.AccountType != null &&
-                    this.AccountType.Equals(input.AccountType))
+                    this.AccountType.Equals(input.AccountType)
                 ) && 
                 (
                     this.RemoteCreatedAt == input.RemoteCreatedAt ||
@@ -258,8 +250,7 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.RoutingNumber.GetHashCode();
                 if (this.BankName != null)
                     hashCode = hashCode * 59 + this.BankName.GetHashCode();
-                if (this.AccountType != null)
-                    hashCode = hashCode * 59 + this.AccountType.GetHashCode();
+                hashCode = hashCode * 59 + this.AccountType.GetHashCode();
                 if (this.RemoteCreatedAt != null)
                     hashCode = hashCode * 59 + this.RemoteCreatedAt.GetHashCode();
                 if (this.RemoteData != null)

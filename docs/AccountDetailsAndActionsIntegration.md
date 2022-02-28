@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Categories** | **List&lt;string&gt;** |  | 
+**Categories** | [**List&lt;CategoriesEnum&gt;**](CategoriesEnum.md) |  | 
 **Image** | **string** |  | [optional] 
 **SquareImage** | **string** |  | [optional] 
 **Color** | **string** |  | 

@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **State** | **string** | The location&#39;s state. Represents a region if outside of the US. | [optional] 
 **ZipCode** | **string** | The location&#39;s zip code. | [optional] 
 **Country** | **CountryEnum** | The location&#39;s country. | [optional] 
+**LocationType** | **LocationTypeEnum** | The location&#39;s type. Can be either WORK or HOME | [optional] 
 **RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

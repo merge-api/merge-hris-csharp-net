@@ -48,7 +48,7 @@ namespace Merge.HRISClient.Model
         /// <param name="slug">slug (required).</param>
         /// <param name="passthroughAvailable">passthroughAvailable (required).</param>
         /// <param name="availableModelOperations">availableModelOperations.</param>
-        public AccountDetailsAndActionsIntegration(string name = default(string), List<string> categories = default(List<string>), string image = default(string), string squareImage = default(string), string color = default(string), string slug = default(string), bool passthroughAvailable = default(bool), List<ModelOperation> availableModelOperations = default(List<ModelOperation>))
+        public AccountDetailsAndActionsIntegration(string name = default(string), List<CategoriesEnum> categories = default(List<CategoriesEnum>), string image = default(string), string squareImage = default(string), string color = default(string), string slug = default(string), bool passthroughAvailable = default(bool), List<ModelOperation> availableModelOperations = default(List<ModelOperation>))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for AccountDetailsAndActionsIntegration and cannot be null");
@@ -74,7 +74,7 @@ namespace Merge.HRISClient.Model
         /// Gets or Sets Categories
         /// </summary>
         [DataMember(Name = "categories", IsRequired = true, EmitDefaultValue = false)]
-        public List<string> Categories { get; set; }
+        public List<CategoriesEnum> Categories { get; set; }
 
         /// <summary>
         /// Gets or Sets Image

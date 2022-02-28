@@ -32,6 +32,18 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "DataPassthroughRequest")]
     public partial class DataPassthroughRequest : IEquatable<DataPassthroughRequest>, IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets Method
+        /// </summary>
+        [DataMember(Name = "method", IsRequired = true, EmitDefaultValue = false)]
+        public MethodEnum Method { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RequestFormat
+        /// </summary>
+        [DataMember(Name = "request_format", EmitDefaultValue = true)]
+        public RequestFormatEnum? RequestFormat { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="DataPassthroughRequest" /> class.
         /// </summary>
@@ -44,25 +56,20 @@ namespace Merge.HRISClient.Model
         /// <param name="path">path (required).</param>
         /// <param name="baseUrlOverride">baseUrlOverride.</param>
         /// <param name="data">data.</param>
+        /// <param name="multipartFormData">Pass an array of &#x60;MultipartFormField&#x60; objects in here instead of using the &#x60;data&#x60; param if &#x60;request_format&#x60; is set to &#x60;MULTIPART&#x60;..</param>
         /// <param name="headers">headers.</param>
         /// <param name="requestFormat">requestFormat.</param>
-        public DataPassthroughRequest(string method = default(string), string path = default(string), string baseUrlOverride = default(string), string data = default(string), Dictionary<string, Object> headers = default(Dictionary<string, Object>), string requestFormat = default(string))
+        public DataPassthroughRequest(MethodEnum method = default(MethodEnum), string path = default(string), string baseUrlOverride = default(string), string data = default(string), List<MultipartFormFieldRequest> multipartFormData = default(List<MultipartFormFieldRequest>), Dictionary<string, Object> headers = default(Dictionary<string, Object>), RequestFormatEnum? requestFormat = default(RequestFormatEnum?))
         {
-            // to ensure "method" is required (not null)
-            this.Method = method ?? throw new ArgumentNullException("method is a required property for DataPassthroughRequest and cannot be null");
+            this.Method = method;
             // to ensure "path" is required (not null)
             this.Path = path ?? throw new ArgumentNullException("path is a required property for DataPassthroughRequest and cannot be null");
             this.BaseUrlOverride = baseUrlOverride;
             this.Data = data;
+            this.MultipartFormData = multipartFormData;
             this.Headers = headers;
             this.RequestFormat = requestFormat;
         }
-
-        /// <summary>
-        /// Gets or Sets Method
-        /// </summary>
-        [DataMember(Name = "method", IsRequired = true, EmitDefaultValue = false)]
-        public string Method { get; set; }
 
         /// <summary>
         /// Gets or Sets Path
@@ -83,16 +90,17 @@ namespace Merge.HRISClient.Model
         public string Data { get; set; }
 
         /// <summary>
+        /// Pass an array of &#x60;MultipartFormField&#x60; objects in here instead of using the &#x60;data&#x60; param if &#x60;request_format&#x60; is set to &#x60;MULTIPART&#x60;.
+        /// </summary>
+        /// <value>Pass an array of &#x60;MultipartFormField&#x60; objects in here instead of using the &#x60;data&#x60; param if &#x60;request_format&#x60; is set to &#x60;MULTIPART&#x60;.</value>
+        [DataMember(Name = "multipart_form_data", EmitDefaultValue = true)]
+        public List<MultipartFormFieldRequest> MultipartFormData { get; set; }
+
+        /// <summary>
         /// Gets or Sets Headers
         /// </summary>
         [DataMember(Name = "headers", EmitDefaultValue = true)]
         public Dictionary<string, Object> Headers { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RequestFormat
-        /// </summary>
-        [DataMember(Name = "request_format", EmitDefaultValue = true)]
-        public string RequestFormat { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -106,6 +114,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  BaseUrlOverride: ").Append(BaseUrlOverride).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("  MultipartFormData: ").Append(MultipartFormData).Append("\n");
             sb.Append("  Headers: ").Append(Headers).Append("\n");
             sb.Append("  RequestFormat: ").Append(RequestFormat).Append("\n");
             sb.Append("}\n");
@@ -144,8 +153,7 @@ namespace Merge.HRISClient.Model
             return 
                 (
                     this.Method == input.Method ||
-                    (this.Method != null &&
-                    this.Method.Equals(input.Method))
+                    this.Method.Equals(input.Method)
                 ) && 
                 (
                     this.Path == input.Path ||
@@ -163,6 +171,12 @@ namespace Merge.HRISClient.Model
                     this.Data.Equals(input.Data))
                 ) && 
                 (
+                    this.MultipartFormData == input.MultipartFormData ||
+                    this.MultipartFormData != null &&
+                    input.MultipartFormData != null &&
+                    this.MultipartFormData.SequenceEqual(input.MultipartFormData)
+                ) && 
+                (
                     this.Headers == input.Headers ||
                     this.Headers != null &&
                     input.Headers != null &&
@@ -170,8 +184,7 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.RequestFormat == input.RequestFormat ||
-                    (this.RequestFormat != null &&
-                    this.RequestFormat.Equals(input.RequestFormat))
+                    this.RequestFormat.Equals(input.RequestFormat)
                 );
         }
 
@@ -184,18 +197,18 @@ namespace Merge.HRISClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Method != null)
-                    hashCode = hashCode * 59 + this.Method.GetHashCode();
+                hashCode = hashCode * 59 + this.Method.GetHashCode();
                 if (this.Path != null)
                     hashCode = hashCode * 59 + this.Path.GetHashCode();
                 if (this.BaseUrlOverride != null)
                     hashCode = hashCode * 59 + this.BaseUrlOverride.GetHashCode();
                 if (this.Data != null)
                     hashCode = hashCode * 59 + this.Data.GetHashCode();
+                if (this.MultipartFormData != null)
+                    hashCode = hashCode * 59 + this.MultipartFormData.GetHashCode();
                 if (this.Headers != null)
                     hashCode = hashCode * 59 + this.Headers.GetHashCode();
-                if (this.RequestFormat != null)
-                    hashCode = hashCode * 59 + this.RequestFormat.GetHashCode();
+                hashCode = hashCode * 59 + this.RequestFormat.GetHashCode();
                 return hashCode;
             }
         }
@@ -207,12 +220,6 @@ namespace Merge.HRISClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            // Method (string) minLength
-            if(this.Method != null && this.Method.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Method, length must be greater than 1.", new [] { "Method" });
-            }
-
             // Path (string) minLength
             if(this.Path != null && this.Path.Length < 1)
             {
@@ -229,12 +236,6 @@ namespace Merge.HRISClient.Model
             if(this.Data != null && this.Data.Length < 1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Data, length must be greater than 1.", new [] { "Data" });
-            }
-
-            // RequestFormat (string) minLength
-            if(this.RequestFormat != null && this.RequestFormat.Length < 1)
-            {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RequestFormat, length must be greater than 1.", new [] { "RequestFormat" });
             }
 
             yield break;
