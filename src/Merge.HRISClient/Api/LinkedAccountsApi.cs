@@ -36,18 +36,19 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="endUserEmailAddress"> (optional)</param>
-        /// <param name="endUserOrganizationName"> (optional)</param>
-        /// <param name="endUserOriginId"> (optional)</param>
-        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once (optional)</param>
+        /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
+        /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
+        /// <param name="endUserOriginId">If provided, will only return linked accounts associated with the given origin ID. (optional)</param>
+        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once. (optional)</param>
         /// <param name="id"> (optional)</param>
-        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once (optional)</param>
-        /// <param name="integrationName"> (optional)</param>
-        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts (optional)</param>
+        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once. (optional)</param>
+        /// <param name="includeDuplicates">If &#x60;true&#x60;, will include complete production duplicates of the account specified by the &#x60;id&#x60; query parameter in the response. &#x60;id&#x60; must be for a complete production linked account. (optional)</param>
+        /// <param name="integrationName">If provided, will only return linked accounts associated with the given integration name. (optional)</param>
+        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="status">Filter by status. Options: &#x60;COMPLETE&#x60;, &#x60;INCOMPLETE&#x60;, &#x60;RELINK_NEEDED&#x60; (optional)</param>
         /// <returns>PaginatedAccountDetailsAndActionsList</returns>
-        PaginatedAccountDetailsAndActionsList LinkedAccountsList(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string));
+        PaginatedAccountDetailsAndActionsList LinkedAccountsList(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), bool? includeDuplicates = default(bool?), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string));
 
         /// <summary>
         /// 
@@ -58,18 +59,19 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="endUserEmailAddress"> (optional)</param>
-        /// <param name="endUserOrganizationName"> (optional)</param>
-        /// <param name="endUserOriginId"> (optional)</param>
-        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once (optional)</param>
+        /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
+        /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
+        /// <param name="endUserOriginId">If provided, will only return linked accounts associated with the given origin ID. (optional)</param>
+        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once. (optional)</param>
         /// <param name="id"> (optional)</param>
-        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once (optional)</param>
-        /// <param name="integrationName"> (optional)</param>
-        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts (optional)</param>
+        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once. (optional)</param>
+        /// <param name="includeDuplicates">If &#x60;true&#x60;, will include complete production duplicates of the account specified by the &#x60;id&#x60; query parameter in the response. &#x60;id&#x60; must be for a complete production linked account. (optional)</param>
+        /// <param name="integrationName">If provided, will only return linked accounts associated with the given integration name. (optional)</param>
+        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="status">Filter by status. Options: &#x60;COMPLETE&#x60;, &#x60;INCOMPLETE&#x60;, &#x60;RELINK_NEEDED&#x60; (optional)</param>
         /// <returns>ApiResponse of PaginatedAccountDetailsAndActionsList</returns>
-        ApiResponse<PaginatedAccountDetailsAndActionsList> LinkedAccountsListWithHttpInfo(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string));
+        ApiResponse<PaginatedAccountDetailsAndActionsList> LinkedAccountsListWithHttpInfo(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), bool? includeDuplicates = default(bool?), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string));
         #endregion Synchronous Operations
     }
 
@@ -88,19 +90,20 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="endUserEmailAddress"> (optional)</param>
-        /// <param name="endUserOrganizationName"> (optional)</param>
-        /// <param name="endUserOriginId"> (optional)</param>
-        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once (optional)</param>
+        /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
+        /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
+        /// <param name="endUserOriginId">If provided, will only return linked accounts associated with the given origin ID. (optional)</param>
+        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once. (optional)</param>
         /// <param name="id"> (optional)</param>
-        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once (optional)</param>
-        /// <param name="integrationName"> (optional)</param>
-        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts (optional)</param>
+        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once. (optional)</param>
+        /// <param name="includeDuplicates">If &#x60;true&#x60;, will include complete production duplicates of the account specified by the &#x60;id&#x60; query parameter in the response. &#x60;id&#x60; must be for a complete production linked account. (optional)</param>
+        /// <param name="integrationName">If provided, will only return linked accounts associated with the given integration name. (optional)</param>
+        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="status">Filter by status. Options: &#x60;COMPLETE&#x60;, &#x60;INCOMPLETE&#x60;, &#x60;RELINK_NEEDED&#x60; (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedAccountDetailsAndActionsList</returns>
-        System.Threading.Tasks.Task<PaginatedAccountDetailsAndActionsList> LinkedAccountsListAsync(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PaginatedAccountDetailsAndActionsList> LinkedAccountsListAsync(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), bool? includeDuplicates = default(bool?), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -111,19 +114,20 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="endUserEmailAddress"> (optional)</param>
-        /// <param name="endUserOrganizationName"> (optional)</param>
-        /// <param name="endUserOriginId"> (optional)</param>
-        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once (optional)</param>
+        /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
+        /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
+        /// <param name="endUserOriginId">If provided, will only return linked accounts associated with the given origin ID. (optional)</param>
+        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once. (optional)</param>
         /// <param name="id"> (optional)</param>
-        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once (optional)</param>
-        /// <param name="integrationName"> (optional)</param>
-        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts (optional)</param>
+        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once. (optional)</param>
+        /// <param name="includeDuplicates">If &#x60;true&#x60;, will include complete production duplicates of the account specified by the &#x60;id&#x60; query parameter in the response. &#x60;id&#x60; must be for a complete production linked account. (optional)</param>
+        /// <param name="integrationName">If provided, will only return linked accounts associated with the given integration name. (optional)</param>
+        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="status">Filter by status. Options: &#x60;COMPLETE&#x60;, &#x60;INCOMPLETE&#x60;, &#x60;RELINK_NEEDED&#x60; (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedAccountDetailsAndActionsList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaginatedAccountDetailsAndActionsList>> LinkedAccountsListWithHttpInfoAsync(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PaginatedAccountDetailsAndActionsList>> LinkedAccountsListWithHttpInfoAsync(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), bool? includeDuplicates = default(bool?), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -250,20 +254,21 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="endUserEmailAddress"> (optional)</param>
-        /// <param name="endUserOrganizationName"> (optional)</param>
-        /// <param name="endUserOriginId"> (optional)</param>
-        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once (optional)</param>
+        /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
+        /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
+        /// <param name="endUserOriginId">If provided, will only return linked accounts associated with the given origin ID. (optional)</param>
+        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once. (optional)</param>
         /// <param name="id"> (optional)</param>
-        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once (optional)</param>
-        /// <param name="integrationName"> (optional)</param>
-        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts (optional)</param>
+        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once. (optional)</param>
+        /// <param name="includeDuplicates">If &#x60;true&#x60;, will include complete production duplicates of the account specified by the &#x60;id&#x60; query parameter in the response. &#x60;id&#x60; must be for a complete production linked account. (optional)</param>
+        /// <param name="integrationName">If provided, will only return linked accounts associated with the given integration name. (optional)</param>
+        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="status">Filter by status. Options: &#x60;COMPLETE&#x60;, &#x60;INCOMPLETE&#x60;, &#x60;RELINK_NEEDED&#x60; (optional)</param>
         /// <returns>PaginatedAccountDetailsAndActionsList</returns>
-        public PaginatedAccountDetailsAndActionsList LinkedAccountsList(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string))
+        public PaginatedAccountDetailsAndActionsList LinkedAccountsList(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), bool? includeDuplicates = default(bool?), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedAccountDetailsAndActionsList> localVarResponse = LinkedAccountsListWithHttpInfo(category, cursor, endUserEmailAddress, endUserOrganizationName, endUserOriginId, endUserOriginIds, id, ids, integrationName, isTestAccount, pageSize, status);
+            Merge.HRISClient.Client.ApiResponse<PaginatedAccountDetailsAndActionsList> localVarResponse = LinkedAccountsListWithHttpInfo(category, cursor, endUserEmailAddress, endUserOrganizationName, endUserOriginId, endUserOriginIds, id, ids, includeDuplicates, integrationName, isTestAccount, pageSize, status);
             return localVarResponse.Data;
         }
 
@@ -273,18 +278,19 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="endUserEmailAddress"> (optional)</param>
-        /// <param name="endUserOrganizationName"> (optional)</param>
-        /// <param name="endUserOriginId"> (optional)</param>
-        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once (optional)</param>
+        /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
+        /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
+        /// <param name="endUserOriginId">If provided, will only return linked accounts associated with the given origin ID. (optional)</param>
+        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once. (optional)</param>
         /// <param name="id"> (optional)</param>
-        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once (optional)</param>
-        /// <param name="integrationName"> (optional)</param>
-        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts (optional)</param>
+        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once. (optional)</param>
+        /// <param name="includeDuplicates">If &#x60;true&#x60;, will include complete production duplicates of the account specified by the &#x60;id&#x60; query parameter in the response. &#x60;id&#x60; must be for a complete production linked account. (optional)</param>
+        /// <param name="integrationName">If provided, will only return linked accounts associated with the given integration name. (optional)</param>
+        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="status">Filter by status. Options: &#x60;COMPLETE&#x60;, &#x60;INCOMPLETE&#x60;, &#x60;RELINK_NEEDED&#x60; (optional)</param>
         /// <returns>ApiResponse of PaginatedAccountDetailsAndActionsList</returns>
-        public Merge.HRISClient.Client.ApiResponse<PaginatedAccountDetailsAndActionsList> LinkedAccountsListWithHttpInfo(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string))
+        public Merge.HRISClient.Client.ApiResponse<PaginatedAccountDetailsAndActionsList> LinkedAccountsListWithHttpInfo(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), bool? includeDuplicates = default(bool?), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string))
         {
             Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
 
@@ -333,6 +339,10 @@ namespace Merge.HRISClient.Api
             if (ids != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "ids", ids));
+            }
+            if (includeDuplicates != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_duplicates", includeDuplicates));
             }
             if (integrationName != null)
             {
@@ -375,21 +385,22 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="endUserEmailAddress"> (optional)</param>
-        /// <param name="endUserOrganizationName"> (optional)</param>
-        /// <param name="endUserOriginId"> (optional)</param>
-        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once (optional)</param>
+        /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
+        /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
+        /// <param name="endUserOriginId">If provided, will only return linked accounts associated with the given origin ID. (optional)</param>
+        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once. (optional)</param>
         /// <param name="id"> (optional)</param>
-        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once (optional)</param>
-        /// <param name="integrationName"> (optional)</param>
-        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts (optional)</param>
+        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once. (optional)</param>
+        /// <param name="includeDuplicates">If &#x60;true&#x60;, will include complete production duplicates of the account specified by the &#x60;id&#x60; query parameter in the response. &#x60;id&#x60; must be for a complete production linked account. (optional)</param>
+        /// <param name="integrationName">If provided, will only return linked accounts associated with the given integration name. (optional)</param>
+        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="status">Filter by status. Options: &#x60;COMPLETE&#x60;, &#x60;INCOMPLETE&#x60;, &#x60;RELINK_NEEDED&#x60; (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedAccountDetailsAndActionsList</returns>
-        public async System.Threading.Tasks.Task<PaginatedAccountDetailsAndActionsList> LinkedAccountsListAsync(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PaginatedAccountDetailsAndActionsList> LinkedAccountsListAsync(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), bool? includeDuplicates = default(bool?), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedAccountDetailsAndActionsList> localVarResponse = await LinkedAccountsListWithHttpInfoAsync(category, cursor, endUserEmailAddress, endUserOrganizationName, endUserOriginId, endUserOriginIds, id, ids, integrationName, isTestAccount, pageSize, status, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<PaginatedAccountDetailsAndActionsList> localVarResponse = await LinkedAccountsListWithHttpInfoAsync(category, cursor, endUserEmailAddress, endUserOrganizationName, endUserOriginId, endUserOriginIds, id, ids, includeDuplicates, integrationName, isTestAccount, pageSize, status, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -399,19 +410,20 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="category"> (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="endUserEmailAddress"> (optional)</param>
-        /// <param name="endUserOrganizationName"> (optional)</param>
-        /// <param name="endUserOriginId"> (optional)</param>
-        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once (optional)</param>
+        /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
+        /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
+        /// <param name="endUserOriginId">If provided, will only return linked accounts associated with the given origin ID. (optional)</param>
+        /// <param name="endUserOriginIds">Comma-separated list of EndUser origin IDs, making it possible to specify multiple EndUsers at once. (optional)</param>
         /// <param name="id"> (optional)</param>
-        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once (optional)</param>
-        /// <param name="integrationName"> (optional)</param>
-        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts (optional)</param>
+        /// <param name="ids">Comma-separated list of LinkedAccount IDs, making it possible to specify multiple LinkedAccounts at once. (optional)</param>
+        /// <param name="includeDuplicates">If &#x60;true&#x60;, will include complete production duplicates of the account specified by the &#x60;id&#x60; query parameter in the response. &#x60;id&#x60; must be for a complete production linked account. (optional)</param>
+        /// <param name="integrationName">If provided, will only return linked accounts associated with the given integration name. (optional)</param>
+        /// <param name="isTestAccount">If included, will only include test linked accounts. If not included, will only include non-test linked accounts. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="status">Filter by status. Options: &#x60;COMPLETE&#x60;, &#x60;INCOMPLETE&#x60;, &#x60;RELINK_NEEDED&#x60; (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedAccountDetailsAndActionsList)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedAccountDetailsAndActionsList>> LinkedAccountsListWithHttpInfoAsync(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedAccountDetailsAndActionsList>> LinkedAccountsListWithHttpInfoAsync(string category = default(string), string cursor = default(string), string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), string endUserOriginIds = default(string), Guid? id = default(Guid?), string ids = default(string), bool? includeDuplicates = default(bool?), string integrationName = default(string), string isTestAccount = default(string), int? pageSize = default(int?), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
@@ -462,6 +474,10 @@ namespace Merge.HRISClient.Api
             if (ids != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "ids", ids));
+            }
+            if (includeDuplicates != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_duplicates", includeDuplicates));
             }
             if (integrationName != null)
             {

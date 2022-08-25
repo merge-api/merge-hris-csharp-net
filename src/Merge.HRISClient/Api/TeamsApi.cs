@@ -38,7 +38,7 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -59,7 +59,7 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -113,7 +113,7 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -135,7 +135,7 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -300,7 +300,7 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -322,7 +322,7 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -420,7 +420,7 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -443,7 +443,7 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>

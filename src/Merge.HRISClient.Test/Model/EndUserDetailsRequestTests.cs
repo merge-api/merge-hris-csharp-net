@@ -97,6 +97,22 @@ namespace Merge.HRISClient.Test.Model
         {
             // TODO unit test for the property 'Integration'
         }
+        /// <summary>
+        /// Test the property 'LinkExpiryMins'
+        /// </summary>
+        [Fact]
+        public void LinkExpiryMinsTest()
+        {
+            // TODO unit test for the property 'LinkExpiryMins'
+        }
+        /// <summary>
+        /// Test the property 'ShouldCreateMagicLinkUrl'
+        /// </summary>
+        [Fact]
+        public void ShouldCreateMagicLinkUrlTest()
+        {
+            // TODO unit test for the property 'ShouldCreateMagicLinkUrl'
+        }
 
     }
 

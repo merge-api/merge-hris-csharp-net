@@ -32,22 +32,31 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "BankInfo")]
     public partial class BankInfo : IEquatable<BankInfo>, IValidatableObject
     {
+
+        /// <summary>
+        /// The bank account type
+        /// </summary>
+        /// <value>The bank account type</value>
+        [DataMember(Name = "account_type", EmitDefaultValue = true)]
+        public string AccountType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankInfo" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">The employee with this bank account..</param>
+        /// <param name="employee">employee.</param>
         /// <param name="accountNumber">The account number..</param>
         /// <param name="routingNumber">The routing number..</param>
         /// <param name="bankName">The bank name..</param>
+        /// <param name="accountType">The bank account type.</param>
         /// <param name="remoteCreatedAt">When the matching bank object was created in the third party system..</param>
-        public BankInfo(string remoteId = default(string), Guid? employee = default(Guid?), string accountNumber = default(string), string routingNumber = default(string), string bankName = default(string), DateTime? remoteCreatedAt = default(DateTime?))
+        public BankInfo(string remoteId = default(string), Guid? employee = default(Guid?), string accountNumber = default(string), string routingNumber = default(string), string bankName = default(string), string accountType = default(string), DateTime? remoteCreatedAt = default(DateTime?))
         {
             this.RemoteId = remoteId;
             this.Employee = employee;
             this.AccountNumber = accountNumber;
             this.RoutingNumber = routingNumber;
             this.BankName = bankName;
+            this.AccountType = accountType;
             this.RemoteCreatedAt = remoteCreatedAt;
         }
 
@@ -74,9 +83,8 @@ namespace Merge.HRISClient.Model
         public string RemoteId { get; set; }
 
         /// <summary>
-        /// The employee with this bank account.
+        /// Gets or Sets Employee
         /// </summary>
-        /// <value>The employee with this bank account.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
@@ -102,21 +110,6 @@ namespace Merge.HRISClient.Model
         public string BankName { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccountType
-        /// </summary>
-        [DataMember(Name = "account_type", EmitDefaultValue = false)]
-        public string AccountType { get; private set; }
-
-        /// <summary>
-        /// Returns false as AccountType should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeAccountType()
-        {
-            return false;
-        }
-
-        /// <summary>
         /// When the matching bank object was created in the third party system.
         /// </summary>
         /// <value>When the matching bank object was created in the third party system.</value>
@@ -139,6 +132,22 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
+        /// Indicates whether or not this object has been deleted by third party webhooks.
+        /// </summary>
+        /// <value>Indicates whether or not this object has been deleted by third party webhooks.</value>
+        [DataMember(Name = "remote_was_deleted", EmitDefaultValue = true)]
+        public bool RemoteWasDeleted { get; private set; }
+
+        /// <summary>
+        /// Returns false as RemoteWasDeleted should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRemoteWasDeleted()
+        {
+            return false;
+        }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -155,6 +164,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  AccountType: ").Append(AccountType).Append("\n");
             sb.Append("  RemoteCreatedAt: ").Append(RemoteCreatedAt).Append("\n");
             sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
+            sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -221,8 +231,7 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.AccountType == input.AccountType ||
-                    (this.AccountType != null &&
-                    this.AccountType.Equals(input.AccountType))
+                    this.AccountType.Equals(input.AccountType)
                 ) && 
                 (
                     this.RemoteCreatedAt == input.RemoteCreatedAt ||
@@ -234,6 +243,10 @@ namespace Merge.HRISClient.Model
                     this.RemoteData != null &&
                     input.RemoteData != null &&
                     this.RemoteData.SequenceEqual(input.RemoteData)
+                ) && 
+                (
+                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
+                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
                 );
         }
 
@@ -258,12 +271,12 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.RoutingNumber.GetHashCode();
                 if (this.BankName != null)
                     hashCode = hashCode * 59 + this.BankName.GetHashCode();
-                if (this.AccountType != null)
-                    hashCode = hashCode * 59 + this.AccountType.GetHashCode();
+                hashCode = hashCode * 59 + this.AccountType.GetHashCode();
                 if (this.RemoteCreatedAt != null)
                     hashCode = hashCode * 59 + this.RemoteCreatedAt.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }

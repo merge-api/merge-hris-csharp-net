@@ -42,12 +42,14 @@ namespace Merge.HRISClient.Model
         /// </summary>
         /// <param name="linkToken">linkToken (required).</param>
         /// <param name="integrationName">integrationName (required).</param>
-        public LinkToken(string linkToken = default(string), string integrationName = default(string))
+        /// <param name="magicLinkUrl">magicLinkUrl.</param>
+        public LinkToken(string linkToken = default(string), string integrationName = default(string), string magicLinkUrl = default(string))
         {
             // to ensure "linkToken" is required (not null)
             this._LinkToken = linkToken ?? throw new ArgumentNullException("linkToken is a required property for LinkToken and cannot be null");
             // to ensure "integrationName" is required (not null)
             this.IntegrationName = integrationName ?? throw new ArgumentNullException("integrationName is a required property for LinkToken and cannot be null");
+            this.MagicLinkUrl = magicLinkUrl;
         }
 
         /// <summary>
@@ -63,6 +65,12 @@ namespace Merge.HRISClient.Model
         public string IntegrationName { get; set; }
 
         /// <summary>
+        /// Gets or Sets MagicLinkUrl
+        /// </summary>
+        [DataMember(Name = "magic_link_url", EmitDefaultValue = false)]
+        public string MagicLinkUrl { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -72,6 +80,7 @@ namespace Merge.HRISClient.Model
             sb.Append("class LinkToken {\n");
             sb.Append("  _LinkToken: ").Append(_LinkToken).Append("\n");
             sb.Append("  IntegrationName: ").Append(IntegrationName).Append("\n");
+            sb.Append("  MagicLinkUrl: ").Append(MagicLinkUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -115,6 +124,11 @@ namespace Merge.HRISClient.Model
                     this.IntegrationName == input.IntegrationName ||
                     (this.IntegrationName != null &&
                     this.IntegrationName.Equals(input.IntegrationName))
+                ) && 
+                (
+                    this.MagicLinkUrl == input.MagicLinkUrl ||
+                    (this.MagicLinkUrl != null &&
+                    this.MagicLinkUrl.Equals(input.MagicLinkUrl))
                 );
         }
 
@@ -131,6 +145,8 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this._LinkToken.GetHashCode();
                 if (this.IntegrationName != null)
                     hashCode = hashCode * 59 + this.IntegrationName.GetHashCode();
+                if (this.MagicLinkUrl != null)
+                    hashCode = hashCode * 59 + this.MagicLinkUrl.GetHashCode();
                 return hashCode;
             }
         }

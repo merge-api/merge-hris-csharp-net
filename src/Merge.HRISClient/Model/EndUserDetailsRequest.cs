@@ -40,12 +40,14 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EndUserDetailsRequest" /> class.
         /// </summary>
-        /// <param name="endUserEmailAddress">endUserEmailAddress (required).</param>
-        /// <param name="endUserOrganizationName">endUserOrganizationName (required).</param>
-        /// <param name="endUserOriginId">endUserOriginId (required).</param>
-        /// <param name="categories">categories.</param>
-        /// <param name="integration">integration.</param>
-        public EndUserDetailsRequest(string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), List<CategoriesEnum> categories = default(List<CategoriesEnum>), string integration = default(string))
+        /// <param name="endUserEmailAddress">Your end user&#39;s email address. (required).</param>
+        /// <param name="endUserOrganizationName">Your end user&#39;s organization. (required).</param>
+        /// <param name="endUserOriginId">Unique ID for your end user. (required).</param>
+        /// <param name="categories">The integration categories to show in Merge Link. (required).</param>
+        /// <param name="integration">The slug of a specific pre-selected integration for this linking flow token. For examples of slugs, see https://www.merge.dev/docs/basics/integration-metadata/..</param>
+        /// <param name="linkExpiryMins">An integer number of minutes between [30, 720 or 10080 if for a Magic Link URL] for how long this token is valid. Defaults to 30. (default to 30).</param>
+        /// <param name="shouldCreateMagicLinkUrl">Whether to generate a Magic Link URL. Defaults to false. For more information on Magic Link, see https://merge.dev/blog/product/integrations,-fast.-say-hello-to-magic-link/. (default to false).</param>
+        public EndUserDetailsRequest(string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), List<CategoriesEnum> categories = default(List<CategoriesEnum>), string integration = default(string), int linkExpiryMins = 30, bool? shouldCreateMagicLinkUrl = false)
         {
             // to ensure "endUserEmailAddress" is required (not null)
             this.EndUserEmailAddress = endUserEmailAddress ?? throw new ArgumentNullException("endUserEmailAddress is a required property for EndUserDetailsRequest and cannot be null");
@@ -53,39 +55,62 @@ namespace Merge.HRISClient.Model
             this.EndUserOrganizationName = endUserOrganizationName ?? throw new ArgumentNullException("endUserOrganizationName is a required property for EndUserDetailsRequest and cannot be null");
             // to ensure "endUserOriginId" is required (not null)
             this.EndUserOriginId = endUserOriginId ?? throw new ArgumentNullException("endUserOriginId is a required property for EndUserDetailsRequest and cannot be null");
-            this.Categories = categories;
+            // to ensure "categories" is required (not null)
+            this.Categories = categories ?? throw new ArgumentNullException("categories is a required property for EndUserDetailsRequest and cannot be null");
             this.Integration = integration;
+            this.LinkExpiryMins = linkExpiryMins;
+            // use default value if no "shouldCreateMagicLinkUrl" provided
+            this.ShouldCreateMagicLinkUrl = shouldCreateMagicLinkUrl ?? false;
         }
 
         /// <summary>
-        /// Gets or Sets EndUserEmailAddress
+        /// Your end user&#39;s email address.
         /// </summary>
+        /// <value>Your end user&#39;s email address.</value>
         [DataMember(Name = "end_user_email_address", IsRequired = true, EmitDefaultValue = false)]
         public string EndUserEmailAddress { get; set; }
 
         /// <summary>
-        /// Gets or Sets EndUserOrganizationName
+        /// Your end user&#39;s organization.
         /// </summary>
+        /// <value>Your end user&#39;s organization.</value>
         [DataMember(Name = "end_user_organization_name", IsRequired = true, EmitDefaultValue = false)]
         public string EndUserOrganizationName { get; set; }
 
         /// <summary>
-        /// Gets or Sets EndUserOriginId
+        /// Unique ID for your end user.
         /// </summary>
+        /// <value>Unique ID for your end user.</value>
         [DataMember(Name = "end_user_origin_id", IsRequired = true, EmitDefaultValue = false)]
         public string EndUserOriginId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Categories
+        /// The integration categories to show in Merge Link.
         /// </summary>
-        [DataMember(Name = "categories", EmitDefaultValue = false)]
+        /// <value>The integration categories to show in Merge Link.</value>
+        [DataMember(Name = "categories", IsRequired = true, EmitDefaultValue = false)]
         public List<CategoriesEnum> Categories { get; set; }
 
         /// <summary>
-        /// Gets or Sets Integration
+        /// The slug of a specific pre-selected integration for this linking flow token. For examples of slugs, see https://www.merge.dev/docs/basics/integration-metadata/.
         /// </summary>
+        /// <value>The slug of a specific pre-selected integration for this linking flow token. For examples of slugs, see https://www.merge.dev/docs/basics/integration-metadata/.</value>
         [DataMember(Name = "integration", EmitDefaultValue = true)]
         public string Integration { get; set; }
+
+        /// <summary>
+        /// An integer number of minutes between [30, 720 or 10080 if for a Magic Link URL] for how long this token is valid. Defaults to 30.
+        /// </summary>
+        /// <value>An integer number of minutes between [30, 720 or 10080 if for a Magic Link URL] for how long this token is valid. Defaults to 30.</value>
+        [DataMember(Name = "link_expiry_mins", EmitDefaultValue = false)]
+        public int LinkExpiryMins { get; set; }
+
+        /// <summary>
+        /// Whether to generate a Magic Link URL. Defaults to false. For more information on Magic Link, see https://merge.dev/blog/product/integrations,-fast.-say-hello-to-magic-link/.
+        /// </summary>
+        /// <value>Whether to generate a Magic Link URL. Defaults to false. For more information on Magic Link, see https://merge.dev/blog/product/integrations,-fast.-say-hello-to-magic-link/.</value>
+        [DataMember(Name = "should_create_magic_link_url", EmitDefaultValue = true)]
+        public bool? ShouldCreateMagicLinkUrl { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,6 +125,8 @@ namespace Merge.HRISClient.Model
             sb.Append("  EndUserOriginId: ").Append(EndUserOriginId).Append("\n");
             sb.Append("  Categories: ").Append(Categories).Append("\n");
             sb.Append("  Integration: ").Append(Integration).Append("\n");
+            sb.Append("  LinkExpiryMins: ").Append(LinkExpiryMins).Append("\n");
+            sb.Append("  ShouldCreateMagicLinkUrl: ").Append(ShouldCreateMagicLinkUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -159,6 +186,15 @@ namespace Merge.HRISClient.Model
                     this.Integration == input.Integration ||
                     (this.Integration != null &&
                     this.Integration.Equals(input.Integration))
+                ) && 
+                (
+                    this.LinkExpiryMins == input.LinkExpiryMins ||
+                    this.LinkExpiryMins.Equals(input.LinkExpiryMins)
+                ) && 
+                (
+                    this.ShouldCreateMagicLinkUrl == input.ShouldCreateMagicLinkUrl ||
+                    (this.ShouldCreateMagicLinkUrl != null &&
+                    this.ShouldCreateMagicLinkUrl.Equals(input.ShouldCreateMagicLinkUrl))
                 );
         }
 
@@ -181,6 +217,9 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Categories.GetHashCode();
                 if (this.Integration != null)
                     hashCode = hashCode * 59 + this.Integration.GetHashCode();
+                hashCode = hashCode * 59 + this.LinkExpiryMins.GetHashCode();
+                if (this.ShouldCreateMagicLinkUrl != null)
+                    hashCode = hashCode * 59 + this.ShouldCreateMagicLinkUrl.GetHashCode();
                 return hashCode;
             }
         }
@@ -192,16 +231,34 @@ namespace Merge.HRISClient.Model
         /// <returns>Validation Result</returns>
         IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // EndUserEmailAddress (string) maxLength
+            if(this.EndUserEmailAddress != null && this.EndUserEmailAddress.Length > 100)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EndUserEmailAddress, length must be less than 100.", new [] { "EndUserEmailAddress" });
+            }
+
             // EndUserEmailAddress (string) minLength
             if(this.EndUserEmailAddress != null && this.EndUserEmailAddress.Length < 1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EndUserEmailAddress, length must be greater than 1.", new [] { "EndUserEmailAddress" });
             }
 
+            // EndUserOrganizationName (string) maxLength
+            if(this.EndUserOrganizationName != null && this.EndUserOrganizationName.Length > 100)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EndUserOrganizationName, length must be less than 100.", new [] { "EndUserOrganizationName" });
+            }
+
             // EndUserOrganizationName (string) minLength
             if(this.EndUserOrganizationName != null && this.EndUserOrganizationName.Length < 1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EndUserOrganizationName, length must be greater than 1.", new [] { "EndUserOrganizationName" });
+            }
+
+            // EndUserOriginId (string) maxLength
+            if(this.EndUserOriginId != null && this.EndUserOriginId.Length > 100)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for EndUserOriginId, length must be less than 100.", new [] { "EndUserOriginId" });
             }
 
             // EndUserOriginId (string) minLength
@@ -214,6 +271,18 @@ namespace Merge.HRISClient.Model
             if(this.Integration != null && this.Integration.Length < 1)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Integration, length must be greater than 1.", new [] { "Integration" });
+            }
+
+            // LinkExpiryMins (int) maximum
+            if(this.LinkExpiryMins > (int)10080)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LinkExpiryMins, must be a value less than or equal to 10080.", new [] { "LinkExpiryMins" });
+            }
+
+            // LinkExpiryMins (int) minimum
+            if(this.LinkExpiryMins < (int)30)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LinkExpiryMins, must be a value greater than or equal to 30.", new [] { "LinkExpiryMins" });
             }
 
             yield break;

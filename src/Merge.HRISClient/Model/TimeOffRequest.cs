@@ -32,23 +32,50 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "TimeOffRequest")]
     public partial class TimeOffRequest : IEquatable<TimeOffRequest>, IValidatableObject
     {
+
+        /// <summary>
+        /// The status of this time off request.
+        /// </summary>
+        /// <value>The status of this time off request.</value>
+        [DataMember(Name = "status", EmitDefaultValue = true)]
+        public string Status { get; set; }
+
+        /// <summary>
+        /// The unit of time requested.
+        /// </summary>
+        /// <value>The unit of time requested.</value>
+        [DataMember(Name = "units", EmitDefaultValue = true)]
+        public string Units { get; set; }
+
+        /// <summary>
+        /// The type of time off request.
+        /// </summary>
+        /// <value>The type of time off request.</value>
+        [DataMember(Name = "request_type", EmitDefaultValue = true)]
+        public string RequestType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeOffRequest" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">The employee requesting time off..</param>
-        /// <param name="approver">The employee approving the time off request..</param>
+        /// <param name="employee">employee.</param>
+        /// <param name="approver">approver.</param>
+        /// <param name="status">The status of this time off request..</param>
         /// <param name="employeeNote">The employee note for this time off request..</param>
+        /// <param name="units">The unit of time requested..</param>
         /// <param name="amount">The number of time off units requested..</param>
+        /// <param name="requestType">The type of time off request..</param>
         /// <param name="startTime">The day and time of the start of the time requested off..</param>
         /// <param name="endTime">The day and time of the end of the time requested off..</param>
-        public TimeOffRequest(string remoteId = default(string), Guid? employee = default(Guid?), Guid? approver = default(Guid?), string employeeNote = default(string), float? amount = default(float?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?))
+        public TimeOffRequest(string remoteId = default(string), Guid? employee = default(Guid?), Guid? approver = default(Guid?), string status = default(string), string employeeNote = default(string), string units = default(string), float? amount = default(float?), string requestType = default(string), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?))
         {
             this.RemoteId = remoteId;
             this.Employee = employee;
             this.Approver = approver;
+            this.Status = status;
             this.EmployeeNote = employeeNote;
+            this.Units = units;
             this.Amount = amount;
+            this.RequestType = requestType;
             this.StartTime = startTime;
             this.EndTime = endTime;
         }
@@ -61,16 +88,14 @@ namespace Merge.HRISClient.Model
         public string RemoteId { get; set; }
 
         /// <summary>
-        /// The employee requesting time off.
+        /// Gets or Sets Employee
         /// </summary>
-        /// <value>The employee requesting time off.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
         /// <summary>
-        /// The employee approving the time off request.
+        /// Gets or Sets Approver
         /// </summary>
-        /// <value>The employee approving the time off request.</value>
         [DataMember(Name = "approver", EmitDefaultValue = true)]
         public Guid? Approver { get; set; }
 
@@ -113,8 +138,11 @@ namespace Merge.HRISClient.Model
             sb.Append("  RemoteId: ").Append(RemoteId).Append("\n");
             sb.Append("  Employee: ").Append(Employee).Append("\n");
             sb.Append("  Approver: ").Append(Approver).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  EmployeeNote: ").Append(EmployeeNote).Append("\n");
+            sb.Append("  Units: ").Append(Units).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("  RequestType: ").Append(RequestType).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
             sb.Append("}\n");
@@ -167,14 +195,26 @@ namespace Merge.HRISClient.Model
                     this.Approver.Equals(input.Approver))
                 ) && 
                 (
+                    this.Status == input.Status ||
+                    this.Status.Equals(input.Status)
+                ) && 
+                (
                     this.EmployeeNote == input.EmployeeNote ||
                     (this.EmployeeNote != null &&
                     this.EmployeeNote.Equals(input.EmployeeNote))
                 ) && 
                 (
+                    this.Units == input.Units ||
+                    this.Units.Equals(input.Units)
+                ) && 
+                (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
+                ) && 
+                (
+                    this.RequestType == input.RequestType ||
+                    this.RequestType.Equals(input.RequestType)
                 ) && 
                 (
                     this.StartTime == input.StartTime ||
@@ -203,10 +243,13 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Employee.GetHashCode();
                 if (this.Approver != null)
                     hashCode = hashCode * 59 + this.Approver.GetHashCode();
+                hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.EmployeeNote != null)
                     hashCode = hashCode * 59 + this.EmployeeNote.GetHashCode();
+                hashCode = hashCode * 59 + this.Units.GetHashCode();
                 if (this.Amount != null)
                     hashCode = hashCode * 59 + this.Amount.GetHashCode();
+                hashCode = hashCode * 59 + this.RequestType.GetHashCode();
                 if (this.StartTime != null)
                     hashCode = hashCode * 59 + this.StartTime.GetHashCode();
                 if (this.EndTime != null)

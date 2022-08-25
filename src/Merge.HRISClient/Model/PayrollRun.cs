@@ -27,21 +27,39 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// # The PayrollRun Object ### Description The &#x60;PayrollRun&#x60; object is used to represent a payroll run.  ### Usage Example Fetch from the &#x60;LIST PayrollRuns&#x60; endpoint and filter by &#x60;ID&#x60; to show all payroll runs.
+    /// # The PayrollRun Object ### Description The &#x60;PayrollRun&#x60; object is used to represent a payroll run. This payroll run is not specific to an employee.  ### Usage Example Fetch from the &#x60;LIST PayrollRuns&#x60; endpoint and filter by &#x60;ID&#x60; to show all payroll runs.
     /// </summary>
     [DataContract(Name = "PayrollRun")]
     public partial class PayrollRun : IEquatable<PayrollRun>, IValidatableObject
     {
+
+        /// <summary>
+        /// The state of the payroll run
+        /// </summary>
+        /// <value>The state of the payroll run</value>
+        [DataMember(Name = "run_state", EmitDefaultValue = true)]
+        public string RunState { get; set; }
+
+        /// <summary>
+        /// The type of the payroll run
+        /// </summary>
+        /// <value>The type of the payroll run</value>
+        [DataMember(Name = "run_type", EmitDefaultValue = true)]
+        public string RunType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PayrollRun" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
+        /// <param name="runState">The state of the payroll run.</param>
+        /// <param name="runType">The type of the payroll run.</param>
         /// <param name="startDate">The day and time the payroll run started..</param>
         /// <param name="endDate">The day and time the payroll run ended..</param>
         /// <param name="checkDate">The day and time the payroll run was checked..</param>
-        public PayrollRun(string remoteId = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), DateTime? checkDate = default(DateTime?))
+        public PayrollRun(string remoteId = default(string), string runState = default(string), string runType = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), DateTime? checkDate = default(DateTime?))
         {
             this.RemoteId = remoteId;
+            this.RunState = runState;
+            this.RunType = runType;
             this.StartDate = startDate;
             this.EndDate = endDate;
             this.CheckDate = checkDate;
@@ -68,36 +86,6 @@ namespace Merge.HRISClient.Model
         /// <value>The third-party API ID of the matching object.</value>
         [DataMember(Name = "remote_id", EmitDefaultValue = true)]
         public string RemoteId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RunState
-        /// </summary>
-        [DataMember(Name = "run_state", EmitDefaultValue = false)]
-        public string RunState { get; private set; }
-
-        /// <summary>
-        /// Returns false as RunState should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRunState()
-        {
-            return false;
-        }
-
-        /// <summary>
-        /// Gets or Sets RunType
-        /// </summary>
-        [DataMember(Name = "run_type", EmitDefaultValue = false)]
-        public string RunType { get; private set; }
-
-        /// <summary>
-        /// Returns false as RunType should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRunType()
-        {
-            return false;
-        }
 
         /// <summary>
         /// The day and time the payroll run started.
@@ -136,6 +124,22 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
+        /// Indicates whether or not this object has been deleted by third party webhooks.
+        /// </summary>
+        /// <value>Indicates whether or not this object has been deleted by third party webhooks.</value>
+        [DataMember(Name = "remote_was_deleted", EmitDefaultValue = true)]
+        public bool RemoteWasDeleted { get; private set; }
+
+        /// <summary>
+        /// Returns false as RemoteWasDeleted should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRemoteWasDeleted()
+        {
+            return false;
+        }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -151,6 +155,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  EndDate: ").Append(EndDate).Append("\n");
             sb.Append("  CheckDate: ").Append(CheckDate).Append("\n");
             sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
+            sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -197,13 +202,11 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.RunState == input.RunState ||
-                    (this.RunState != null &&
-                    this.RunState.Equals(input.RunState))
+                    this.RunState.Equals(input.RunState)
                 ) && 
                 (
                     this.RunType == input.RunType ||
-                    (this.RunType != null &&
-                    this.RunType.Equals(input.RunType))
+                    this.RunType.Equals(input.RunType)
                 ) && 
                 (
                     this.StartDate == input.StartDate ||
@@ -225,6 +228,10 @@ namespace Merge.HRISClient.Model
                     this.RemoteData != null &&
                     input.RemoteData != null &&
                     this.RemoteData.SequenceEqual(input.RemoteData)
+                ) && 
+                (
+                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
+                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
                 );
         }
 
@@ -241,10 +248,8 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.RemoteId != null)
                     hashCode = hashCode * 59 + this.RemoteId.GetHashCode();
-                if (this.RunState != null)
-                    hashCode = hashCode * 59 + this.RunState.GetHashCode();
-                if (this.RunType != null)
-                    hashCode = hashCode * 59 + this.RunType.GetHashCode();
+                hashCode = hashCode * 59 + this.RunState.GetHashCode();
+                hashCode = hashCode * 59 + this.RunType.GetHashCode();
                 if (this.StartDate != null)
                     hashCode = hashCode * 59 + this.StartDate.GetHashCode();
                 if (this.EndDate != null)
@@ -253,6 +258,7 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.CheckDate.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }

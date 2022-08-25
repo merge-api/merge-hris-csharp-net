@@ -73,8 +73,9 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? modifiedBefore = null;
             //int? pageSize = null;
             //string policyType = null;
+            //string remoteFields = null;
             //string remoteId = null;
-            //var response = instance.TimeOffBalancesList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, policyType, remoteId);
+            //var response = instance.TimeOffBalancesList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, policyType, remoteFields, remoteId);
             //Assert.IsType<PaginatedTimeOffBalanceList>(response);
         }
 
@@ -88,7 +89,8 @@ namespace Merge.HRISClient.Test.Api
             //string xAccountToken = null;
             //Guid id = null;
             //bool? includeRemoteData = null;
-            //var response = instance.TimeOffBalancesRetrieve(xAccountToken, id, includeRemoteData);
+            //string remoteFields = null;
+            //var response = instance.TimeOffBalancesRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
             //Assert.IsType<TimeOffBalance>(response);
         }
     }

@@ -90,12 +90,12 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'Type'
         }
         /// <summary>
-        /// Test the property 'RemoteData'
+        /// Test the property 'RemoteWasDeleted'
         /// </summary>
         [Fact]
-        public void RemoteDataTest()
+        public void RemoteWasDeletedTest()
         {
-            // TODO unit test for the property 'RemoteData'
+            // TODO unit test for the property 'RemoteWasDeleted'
         }
 
     }

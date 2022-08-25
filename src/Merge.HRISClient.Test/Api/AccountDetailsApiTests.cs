@@ -62,7 +62,8 @@ namespace Merge.HRISClient.Test.Api
         public void AccountDetailsRetrieveTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.AccountDetailsRetrieve();
+            //string xAccountToken = null;
+            //var response = instance.AccountDetailsRetrieve(xAccountToken);
             //Assert.IsType<AccountDetails>(response);
         }
     }

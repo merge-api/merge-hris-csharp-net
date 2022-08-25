@@ -13,9 +13,11 @@ Name | Type | Description | Notes
 **Street2** | **string** | Line 2 of the location&#39;s street address. | [optional] 
 **City** | **string** | The location&#39;s city. | [optional] 
 **State** | **string** | The location&#39;s state. Represents a region if outside of the US. | [optional] 
-**ZipCode** | **string** | The location&#39;s zip code. | [optional] 
+**ZipCode** | **string** | The location&#39;s zip code or postal code. | [optional] 
 **Country** | **CountryEnum** | The location&#39;s country. | [optional] 
+**LocationType** | **LocationTypeEnum** | The location&#39;s type. Can be either WORK or HOME | [optional] 
 **RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 
+**RemoteWasDeleted** | **bool** | Indicates whether or not this object has been deleted by third party webhooks. | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

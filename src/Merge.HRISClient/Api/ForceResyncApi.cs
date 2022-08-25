@@ -35,8 +35,8 @@ namespace Merge.HRISClient.Api
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <returns>SyncStatus</returns>
-        SyncStatus SyncStatusResyncCreate(string xAccountToken);
+        /// <returns>List&lt;SyncStatus&gt;</returns>
+        List<SyncStatus> SyncStatusResyncCreate(string xAccountToken);
 
         /// <summary>
         /// 
@@ -46,8 +46,8 @@ namespace Merge.HRISClient.Api
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <returns>ApiResponse of SyncStatus</returns>
-        ApiResponse<SyncStatus> SyncStatusResyncCreateWithHttpInfo(string xAccountToken);
+        /// <returns>ApiResponse of List&lt;SyncStatus&gt;</returns>
+        ApiResponse<List<SyncStatus>> SyncStatusResyncCreateWithHttpInfo(string xAccountToken);
         #endregion Synchronous Operations
     }
 
@@ -66,8 +66,8 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SyncStatus</returns>
-        System.Threading.Tasks.Task<SyncStatus> SyncStatusResyncCreateAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of List&lt;SyncStatus&gt;</returns>
+        System.Threading.Tasks.Task<List<SyncStatus>> SyncStatusResyncCreateAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -78,8 +78,8 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SyncStatus)</returns>
-        System.Threading.Tasks.Task<ApiResponse<SyncStatus>> SyncStatusResyncCreateWithHttpInfoAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (List&lt;SyncStatus&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<SyncStatus>>> SyncStatusResyncCreateWithHttpInfoAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -205,10 +205,10 @@ namespace Merge.HRISClient.Api
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <returns>SyncStatus</returns>
-        public SyncStatus SyncStatusResyncCreate(string xAccountToken)
+        /// <returns>List&lt;SyncStatus&gt;</returns>
+        public List<SyncStatus> SyncStatusResyncCreate(string xAccountToken)
         {
-            Merge.HRISClient.Client.ApiResponse<SyncStatus> localVarResponse = SyncStatusResyncCreateWithHttpInfo(xAccountToken);
+            Merge.HRISClient.Client.ApiResponse<List<SyncStatus>> localVarResponse = SyncStatusResyncCreateWithHttpInfo(xAccountToken);
             return localVarResponse.Data;
         }
 
@@ -217,8 +217,8 @@ namespace Merge.HRISClient.Api
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <returns>ApiResponse of SyncStatus</returns>
-        public Merge.HRISClient.Client.ApiResponse<SyncStatus> SyncStatusResyncCreateWithHttpInfo(string xAccountToken)
+        /// <returns>ApiResponse of List&lt;SyncStatus&gt;</returns>
+        public Merge.HRISClient.Client.ApiResponse<List<SyncStatus>> SyncStatusResyncCreateWithHttpInfo(string xAccountToken)
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -249,7 +249,7 @@ namespace Merge.HRISClient.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<SyncStatus>("/sync-status/resync", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<List<SyncStatus>>("/sync-status/resync", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -266,10 +266,10 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of SyncStatus</returns>
-        public async System.Threading.Tasks.Task<SyncStatus> SyncStatusResyncCreateAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of List&lt;SyncStatus&gt;</returns>
+        public async System.Threading.Tasks.Task<List<SyncStatus>> SyncStatusResyncCreateAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<SyncStatus> localVarResponse = await SyncStatusResyncCreateWithHttpInfoAsync(xAccountToken, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<List<SyncStatus>> localVarResponse = await SyncStatusResyncCreateWithHttpInfoAsync(xAccountToken, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -279,8 +279,8 @@ namespace Merge.HRISClient.Api
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (SyncStatus)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<SyncStatus>> SyncStatusResyncCreateWithHttpInfoAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (List&lt;SyncStatus&gt;)</returns>
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<List<SyncStatus>>> SyncStatusResyncCreateWithHttpInfoAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -314,7 +314,7 @@ namespace Merge.HRISClient.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<SyncStatus>("/sync-status/resync", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<List<SyncStatus>>("/sync-status/resync", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

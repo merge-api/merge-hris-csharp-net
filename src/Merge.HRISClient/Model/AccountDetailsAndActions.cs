@@ -32,6 +32,18 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "AccountDetailsAndActions")]
     public partial class AccountDetailsAndActions : IEquatable<AccountDetailsAndActions>, IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets Category
+        /// </summary>
+        [DataMember(Name = "category", EmitDefaultValue = false)]
+        public CategoryEnum? Category { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
+        public AccountDetailsAndActionsStatusEnum Status { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountDetailsAndActions" /> class.
         /// </summary>
@@ -47,20 +59,24 @@ namespace Merge.HRISClient.Model
         /// <param name="endUserOriginId">endUserOriginId.</param>
         /// <param name="endUserOrganizationName">endUserOrganizationName (required).</param>
         /// <param name="endUserEmailAddress">endUserEmailAddress (required).</param>
+        /// <param name="webhookListenerUrl">webhookListenerUrl (required).</param>
+        /// <param name="isDuplicate">Whether a Production Linked Account&#39;s credentials match another existing Production Linked Account. This field is &#x60;null&#x60; for Test Linked Accounts, incomplete Production Linked Accounts, and ignored duplicate Production Linked Account sets..</param>
         /// <param name="integration">integration.</param>
-        public AccountDetailsAndActions(string id = default(string), string category = default(string), string status = default(string), string statusDetail = default(string), string endUserOriginId = default(string), string endUserOrganizationName = default(string), string endUserEmailAddress = default(string), AccountDetailsAndActionsIntegration integration = default(AccountDetailsAndActionsIntegration))
+        public AccountDetailsAndActions(string id = default(string), CategoryEnum? category = default(CategoryEnum?), AccountDetailsAndActionsStatusEnum status = default(AccountDetailsAndActionsStatusEnum), string statusDetail = default(string), string endUserOriginId = default(string), string endUserOrganizationName = default(string), string endUserEmailAddress = default(string), string webhookListenerUrl = default(string), bool? isDuplicate = default(bool?), AccountDetailsAndActionsIntegration integration = default(AccountDetailsAndActionsIntegration))
         {
             // to ensure "id" is required (not null)
             this.Id = id ?? throw new ArgumentNullException("id is a required property for AccountDetailsAndActions and cannot be null");
-            // to ensure "status" is required (not null)
-            this.Status = status ?? throw new ArgumentNullException("status is a required property for AccountDetailsAndActions and cannot be null");
+            this.Status = status;
             // to ensure "endUserOrganizationName" is required (not null)
             this.EndUserOrganizationName = endUserOrganizationName ?? throw new ArgumentNullException("endUserOrganizationName is a required property for AccountDetailsAndActions and cannot be null");
             // to ensure "endUserEmailAddress" is required (not null)
             this.EndUserEmailAddress = endUserEmailAddress ?? throw new ArgumentNullException("endUserEmailAddress is a required property for AccountDetailsAndActions and cannot be null");
+            // to ensure "webhookListenerUrl" is required (not null)
+            this.WebhookListenerUrl = webhookListenerUrl ?? throw new ArgumentNullException("webhookListenerUrl is a required property for AccountDetailsAndActions and cannot be null");
             this.Category = category;
             this.StatusDetail = statusDetail;
             this.EndUserOriginId = endUserOriginId;
+            this.IsDuplicate = isDuplicate;
             this.Integration = integration;
         }
 
@@ -69,18 +85,6 @@ namespace Merge.HRISClient.Model
         /// </summary>
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = false)]
         public string Id { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Category
-        /// </summary>
-        [DataMember(Name = "category", EmitDefaultValue = false)]
-        public string Category { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = false)]
-        public string Status { get; set; }
 
         /// <summary>
         /// Gets or Sets StatusDetail
@@ -107,6 +111,19 @@ namespace Merge.HRISClient.Model
         public string EndUserEmailAddress { get; set; }
 
         /// <summary>
+        /// Gets or Sets WebhookListenerUrl
+        /// </summary>
+        [DataMember(Name = "webhook_listener_url", IsRequired = true, EmitDefaultValue = false)]
+        public string WebhookListenerUrl { get; set; }
+
+        /// <summary>
+        /// Whether a Production Linked Account&#39;s credentials match another existing Production Linked Account. This field is &#x60;null&#x60; for Test Linked Accounts, incomplete Production Linked Accounts, and ignored duplicate Production Linked Account sets.
+        /// </summary>
+        /// <value>Whether a Production Linked Account&#39;s credentials match another existing Production Linked Account. This field is &#x60;null&#x60; for Test Linked Accounts, incomplete Production Linked Accounts, and ignored duplicate Production Linked Account sets.</value>
+        [DataMember(Name = "is_duplicate", EmitDefaultValue = true)]
+        public bool? IsDuplicate { get; set; }
+
+        /// <summary>
         /// Gets or Sets Integration
         /// </summary>
         [DataMember(Name = "integration", EmitDefaultValue = false)]
@@ -127,6 +144,8 @@ namespace Merge.HRISClient.Model
             sb.Append("  EndUserOriginId: ").Append(EndUserOriginId).Append("\n");
             sb.Append("  EndUserOrganizationName: ").Append(EndUserOrganizationName).Append("\n");
             sb.Append("  EndUserEmailAddress: ").Append(EndUserEmailAddress).Append("\n");
+            sb.Append("  WebhookListenerUrl: ").Append(WebhookListenerUrl).Append("\n");
+            sb.Append("  IsDuplicate: ").Append(IsDuplicate).Append("\n");
             sb.Append("  Integration: ").Append(Integration).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -169,13 +188,11 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.Category == input.Category ||
-                    (this.Category != null &&
-                    this.Category.Equals(input.Category))
+                    this.Category.Equals(input.Category)
                 ) && 
                 (
                     this.Status == input.Status ||
-                    (this.Status != null &&
-                    this.Status.Equals(input.Status))
+                    this.Status.Equals(input.Status)
                 ) && 
                 (
                     this.StatusDetail == input.StatusDetail ||
@@ -198,6 +215,16 @@ namespace Merge.HRISClient.Model
                     this.EndUserEmailAddress.Equals(input.EndUserEmailAddress))
                 ) && 
                 (
+                    this.WebhookListenerUrl == input.WebhookListenerUrl ||
+                    (this.WebhookListenerUrl != null &&
+                    this.WebhookListenerUrl.Equals(input.WebhookListenerUrl))
+                ) && 
+                (
+                    this.IsDuplicate == input.IsDuplicate ||
+                    (this.IsDuplicate != null &&
+                    this.IsDuplicate.Equals(input.IsDuplicate))
+                ) && 
+                (
                     this.Integration == input.Integration ||
                     (this.Integration != null &&
                     this.Integration.Equals(input.Integration))
@@ -215,10 +242,8 @@ namespace Merge.HRISClient.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Category != null)
-                    hashCode = hashCode * 59 + this.Category.GetHashCode();
-                if (this.Status != null)
-                    hashCode = hashCode * 59 + this.Status.GetHashCode();
+                hashCode = hashCode * 59 + this.Category.GetHashCode();
+                hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.StatusDetail != null)
                     hashCode = hashCode * 59 + this.StatusDetail.GetHashCode();
                 if (this.EndUserOriginId != null)
@@ -227,6 +252,10 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.EndUserOrganizationName.GetHashCode();
                 if (this.EndUserEmailAddress != null)
                     hashCode = hashCode * 59 + this.EndUserEmailAddress.GetHashCode();
+                if (this.WebhookListenerUrl != null)
+                    hashCode = hashCode * 59 + this.WebhookListenerUrl.GetHashCode();
+                if (this.IsDuplicate != null)
+                    hashCode = hashCode * 59 + this.IsDuplicate.GetHashCode();
                 if (this.Integration != null)
                     hashCode = hashCode * 59 + this.Integration.GetHashCode();
                 return hashCode;

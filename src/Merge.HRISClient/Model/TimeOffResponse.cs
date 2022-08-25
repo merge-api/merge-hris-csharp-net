@@ -43,7 +43,8 @@ namespace Merge.HRISClient.Model
         /// <param name="model">model (required).</param>
         /// <param name="warnings">warnings (required).</param>
         /// <param name="errors">errors (required).</param>
-        public TimeOffResponse(TimeOff model = default(TimeOff), List<WarningValidationProblem> warnings = default(List<WarningValidationProblem>), List<ErrorValidationProblem> errors = default(List<ErrorValidationProblem>))
+        /// <param name="logs">logs.</param>
+        public TimeOffResponse(TimeOff model = default(TimeOff), List<WarningValidationProblem> warnings = default(List<WarningValidationProblem>), List<ErrorValidationProblem> errors = default(List<ErrorValidationProblem>), List<DebugModeLog> logs = default(List<DebugModeLog>))
         {
             // to ensure "model" is required (not null)
             this.Model = model ?? throw new ArgumentNullException("model is a required property for TimeOffResponse and cannot be null");
@@ -51,6 +52,7 @@ namespace Merge.HRISClient.Model
             this.Warnings = warnings ?? throw new ArgumentNullException("warnings is a required property for TimeOffResponse and cannot be null");
             // to ensure "errors" is required (not null)
             this.Errors = errors ?? throw new ArgumentNullException("errors is a required property for TimeOffResponse and cannot be null");
+            this.Logs = logs;
         }
 
         /// <summary>
@@ -72,6 +74,12 @@ namespace Merge.HRISClient.Model
         public List<ErrorValidationProblem> Errors { get; set; }
 
         /// <summary>
+        /// Gets or Sets Logs
+        /// </summary>
+        [DataMember(Name = "logs", EmitDefaultValue = false)]
+        public List<DebugModeLog> Logs { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -82,6 +90,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  Model: ").Append(Model).Append("\n");
             sb.Append("  Warnings: ").Append(Warnings).Append("\n");
             sb.Append("  Errors: ").Append(Errors).Append("\n");
+            sb.Append("  Logs: ").Append(Logs).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -132,6 +141,12 @@ namespace Merge.HRISClient.Model
                     this.Errors != null &&
                     input.Errors != null &&
                     this.Errors.SequenceEqual(input.Errors)
+                ) && 
+                (
+                    this.Logs == input.Logs ||
+                    this.Logs != null &&
+                    input.Logs != null &&
+                    this.Logs.SequenceEqual(input.Logs)
                 );
         }
 
@@ -150,6 +165,8 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Warnings.GetHashCode();
                 if (this.Errors != null)
                     hashCode = hashCode * 59 + this.Errors.GetHashCode();
+                if (this.Logs != null)
+                    hashCode = hashCode * 59 + this.Logs.GetHashCode();
                 return hashCode;
             }
         }

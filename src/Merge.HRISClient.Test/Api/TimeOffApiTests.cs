@@ -64,8 +64,9 @@ namespace Merge.HRISClient.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string xAccountToken = null;
             //TimeOffEndpointRequest timeOffEndpointRequest = null;
+            //bool? isDebugMode = null;
             //bool? runAsync = null;
-            //var response = instance.TimeOffCreate(xAccountToken, timeOffEndpointRequest, runAsync);
+            //var response = instance.TimeOffCreate(xAccountToken, timeOffEndpointRequest, isDebugMode, runAsync);
             //Assert.IsType<TimeOffResponse>(response);
         }
 
@@ -87,11 +88,24 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? modifiedAfter = null;
             //DateTime? modifiedBefore = null;
             //int? pageSize = null;
+            //string remoteFields = null;
             //string remoteId = null;
             //string requestType = null;
             //string status = null;
-            //var response = instance.TimeOffList(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, requestType, status);
+            //var response = instance.TimeOffList(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, requestType, status);
             //Assert.IsType<PaginatedTimeOffList>(response);
+        }
+
+        /// <summary>
+        /// Test TimeOffMetaPostRetrieve
+        /// </summary>
+        [Fact]
+        public void TimeOffMetaPostRetrieveTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string xAccountToken = null;
+            //var response = instance.TimeOffMetaPostRetrieve(xAccountToken);
+            //Assert.IsType<MetaResponse>(response);
         }
 
         /// <summary>
@@ -104,7 +118,8 @@ namespace Merge.HRISClient.Test.Api
             //string xAccountToken = null;
             //Guid id = null;
             //bool? includeRemoteData = null;
-            //var response = instance.TimeOffRetrieve(xAccountToken, id, includeRemoteData);
+            //string remoteFields = null;
+            //var response = instance.TimeOffRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
             //Assert.IsType<TimeOff>(response);
         }
     }

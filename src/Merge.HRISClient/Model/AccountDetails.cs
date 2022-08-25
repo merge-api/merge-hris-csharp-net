@@ -78,6 +78,21 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
+        /// Gets or Sets IntegrationSlug
+        /// </summary>
+        [DataMember(Name = "integration_slug", EmitDefaultValue = false)]
+        public string IntegrationSlug { get; private set; }
+
+        /// <summary>
+        /// Returns false as IntegrationSlug should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeIntegrationSlug()
+        {
+            return false;
+        }
+
+        /// <summary>
         /// Gets or Sets EndUserOriginId
         /// </summary>
         [DataMember(Name = "end_user_origin_id", EmitDefaultValue = false)]
@@ -138,6 +153,37 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
+        /// Gets or Sets WebhookListenerUrl
+        /// </summary>
+        [DataMember(Name = "webhook_listener_url", EmitDefaultValue = false)]
+        public string WebhookListenerUrl { get; private set; }
+
+        /// <summary>
+        /// Returns false as WebhookListenerUrl should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeWebhookListenerUrl()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Whether a Production Linked Account&#39;s credentials match another existing Production Linked Account. This field is &#x60;null&#x60; for Test Linked Accounts, incomplete Production Linked Accounts, and ignored duplicate Production Linked Account sets.
+        /// </summary>
+        /// <value>Whether a Production Linked Account&#39;s credentials match another existing Production Linked Account. This field is &#x60;null&#x60; for Test Linked Accounts, incomplete Production Linked Accounts, and ignored duplicate Production Linked Account sets.</value>
+        [DataMember(Name = "is_duplicate", EmitDefaultValue = true)]
+        public bool? IsDuplicate { get; private set; }
+
+        /// <summary>
+        /// Returns false as IsDuplicate should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeIsDuplicate()
+        {
+            return false;
+        }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -147,11 +193,14 @@ namespace Merge.HRISClient.Model
             sb.Append("class AccountDetails {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Integration: ").Append(Integration).Append("\n");
+            sb.Append("  IntegrationSlug: ").Append(IntegrationSlug).Append("\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("  EndUserOriginId: ").Append(EndUserOriginId).Append("\n");
             sb.Append("  EndUserOrganizationName: ").Append(EndUserOrganizationName).Append("\n");
             sb.Append("  EndUserEmailAddress: ").Append(EndUserEmailAddress).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  WebhookListenerUrl: ").Append(WebhookListenerUrl).Append("\n");
+            sb.Append("  IsDuplicate: ").Append(IsDuplicate).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -197,6 +246,11 @@ namespace Merge.HRISClient.Model
                     this.Integration.Equals(input.Integration))
                 ) && 
                 (
+                    this.IntegrationSlug == input.IntegrationSlug ||
+                    (this.IntegrationSlug != null &&
+                    this.IntegrationSlug.Equals(input.IntegrationSlug))
+                ) && 
+                (
                     this.Category == input.Category ||
                     this.Category.Equals(input.Category)
                 ) && 
@@ -219,6 +273,16 @@ namespace Merge.HRISClient.Model
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
+                ) && 
+                (
+                    this.WebhookListenerUrl == input.WebhookListenerUrl ||
+                    (this.WebhookListenerUrl != null &&
+                    this.WebhookListenerUrl.Equals(input.WebhookListenerUrl))
+                ) && 
+                (
+                    this.IsDuplicate == input.IsDuplicate ||
+                    (this.IsDuplicate != null &&
+                    this.IsDuplicate.Equals(input.IsDuplicate))
                 );
         }
 
@@ -235,6 +299,8 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Integration != null)
                     hashCode = hashCode * 59 + this.Integration.GetHashCode();
+                if (this.IntegrationSlug != null)
+                    hashCode = hashCode * 59 + this.IntegrationSlug.GetHashCode();
                 hashCode = hashCode * 59 + this.Category.GetHashCode();
                 if (this.EndUserOriginId != null)
                     hashCode = hashCode * 59 + this.EndUserOriginId.GetHashCode();
@@ -244,6 +310,10 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.EndUserEmailAddress.GetHashCode();
                 if (this.Status != null)
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
+                if (this.WebhookListenerUrl != null)
+                    hashCode = hashCode * 59 + this.WebhookListenerUrl.GetHashCode();
+                if (this.IsDuplicate != null)
+                    hashCode = hashCode * 59 + this.IsDuplicate.GetHashCode();
                 return hashCode;
             }
         }

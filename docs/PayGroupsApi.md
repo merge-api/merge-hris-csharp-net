@@ -42,7 +42,7 @@ namespace Example
             var createdAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created after this datetime. (optional) 
             var createdBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created before this datetime. (optional) 
             var cursor = cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw;  // string | The pagination cursor value. (optional) 
-            var includeDeletedData = true;  // bool? | Whether to include data that was deleted in the third-party service. (optional) 
+            var includeDeletedData = true;  // bool? | Whether to include data that was marked as deleted by third party webhooks. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
             var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified after this datetime. (optional) 
             var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified before this datetime. (optional) 
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
  **createdAfter** | **DateTime?**| If provided, will only return objects created after this datetime. | [optional] 
  **createdBefore** | **DateTime?**| If provided, will only return objects created before this datetime. | [optional] 
  **cursor** | **string**| The pagination cursor value. | [optional] 
- **includeDeletedData** | **bool?**| Whether to include data that was deleted in the third-party service. | [optional] 
+ **includeDeletedData** | **bool?**| Whether to include data that was marked as deleted by third party webhooks. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
  **modifiedAfter** | **DateTime?**| If provided, will only return objects modified after this datetime. | [optional] 
  **modifiedBefore** | **DateTime?**| If provided, will only return objects modified before this datetime. | [optional] 

@@ -39,15 +39,16 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off balances for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="policyType">If provided, will only return TimeOffBalance with this policy type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <returns>PaginatedTimeOffBalanceList</returns>
-        PaginatedTimeOffBalanceList TimeOffBalancesList(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteId = default(string));
+        PaginatedTimeOffBalanceList TimeOffBalancesList(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteFields = default(string), string remoteId = default(string));
 
         /// <summary>
         /// 
@@ -61,15 +62,16 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off balances for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="policyType">If provided, will only return TimeOffBalance with this policy type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <returns>ApiResponse of PaginatedTimeOffBalanceList</returns>
-        ApiResponse<PaginatedTimeOffBalanceList> TimeOffBalancesListWithHttpInfo(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteId = default(string));
+        ApiResponse<PaginatedTimeOffBalanceList> TimeOffBalancesListWithHttpInfo(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteFields = default(string), string remoteId = default(string));
         /// <summary>
         /// 
         /// </summary>
@@ -80,8 +82,9 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>TimeOffBalance</returns>
-        TimeOffBalance TimeOffBalancesRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?));
+        TimeOffBalance TimeOffBalancesRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string));
 
         /// <summary>
         /// 
@@ -93,8 +96,9 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>ApiResponse of TimeOffBalance</returns>
-        ApiResponse<TimeOffBalance> TimeOffBalancesRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?));
+        ApiResponse<TimeOffBalance> TimeOffBalancesRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string));
         #endregion Synchronous Operations
     }
 
@@ -116,16 +120,17 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off balances for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="policyType">If provided, will only return TimeOffBalance with this policy type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedTimeOffBalanceList</returns>
-        System.Threading.Tasks.Task<PaginatedTimeOffBalanceList> TimeOffBalancesListAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PaginatedTimeOffBalanceList> TimeOffBalancesListAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteFields = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -139,16 +144,17 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off balances for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="policyType">If provided, will only return TimeOffBalance with this policy type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedTimeOffBalanceList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaginatedTimeOffBalanceList>> TimeOffBalancesListWithHttpInfoAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PaginatedTimeOffBalanceList>> TimeOffBalancesListWithHttpInfoAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteFields = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -159,9 +165,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TimeOffBalance</returns>
-        System.Threading.Tasks.Task<TimeOffBalance> TimeOffBalancesRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TimeOffBalance> TimeOffBalancesRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -173,9 +180,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TimeOffBalance)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimeOffBalance>> TimeOffBalancesRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TimeOffBalance>> TimeOffBalancesRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -305,17 +313,18 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off balances for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="policyType">If provided, will only return TimeOffBalance with this policy type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <returns>PaginatedTimeOffBalanceList</returns>
-        public PaginatedTimeOffBalanceList TimeOffBalancesList(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteId = default(string))
+        public PaginatedTimeOffBalanceList TimeOffBalancesList(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteFields = default(string), string remoteId = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffBalanceList> localVarResponse = TimeOffBalancesListWithHttpInfo(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, policyType, remoteId);
+            Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffBalanceList> localVarResponse = TimeOffBalancesListWithHttpInfo(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, policyType, remoteFields, remoteId);
             return localVarResponse.Data;
         }
 
@@ -328,15 +337,16 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off balances for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="policyType">If provided, will only return TimeOffBalance with this policy type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <returns>ApiResponse of PaginatedTimeOffBalanceList</returns>
-        public Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffBalanceList> TimeOffBalancesListWithHttpInfo(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteId = default(string))
+        public Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffBalanceList> TimeOffBalancesListWithHttpInfo(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteFields = default(string), string remoteId = default(string))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -397,6 +407,10 @@ namespace Merge.HRISClient.Api
             if (policyType != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "policy_type", policyType));
+            }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             if (remoteId != null)
             {
@@ -431,18 +445,19 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off balances for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="policyType">If provided, will only return TimeOffBalance with this policy type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedTimeOffBalanceList</returns>
-        public async System.Threading.Tasks.Task<PaginatedTimeOffBalanceList> TimeOffBalancesListAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PaginatedTimeOffBalanceList> TimeOffBalancesListAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteFields = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffBalanceList> localVarResponse = await TimeOffBalancesListWithHttpInfoAsync(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, policyType, remoteId, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffBalanceList> localVarResponse = await TimeOffBalancesListWithHttpInfoAsync(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, policyType, remoteFields, remoteId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -455,16 +470,17 @@ namespace Merge.HRISClient.Api
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="employeeId">If provided, will only return time off balances for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="policyType">If provided, will only return TimeOffBalance with this policy type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedTimeOffBalanceList)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffBalanceList>> TimeOffBalancesListWithHttpInfoAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffBalanceList>> TimeOffBalancesListWithHttpInfoAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string policyType = default(string), string remoteFields = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -528,6 +544,10 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "policy_type", policyType));
             }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
+            }
             if (remoteId != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_id", remoteId));
@@ -560,10 +580,11 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>TimeOffBalance</returns>
-        public TimeOffBalance TimeOffBalancesRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?))
+        public TimeOffBalance TimeOffBalancesRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<TimeOffBalance> localVarResponse = TimeOffBalancesRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData);
+            Merge.HRISClient.Client.ApiResponse<TimeOffBalance> localVarResponse = TimeOffBalancesRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData, remoteFields);
             return localVarResponse.Data;
         }
 
@@ -574,8 +595,9 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>ApiResponse of TimeOffBalance</returns>
-        public Merge.HRISClient.Client.ApiResponse<TimeOffBalance> TimeOffBalancesRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?))
+        public Merge.HRISClient.Client.ApiResponse<TimeOffBalance> TimeOffBalancesRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -601,6 +623,10 @@ namespace Merge.HRISClient.Api
             if (includeRemoteData != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_remote_data", includeRemoteData));
+            }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
@@ -629,11 +655,12 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TimeOffBalance</returns>
-        public async System.Threading.Tasks.Task<TimeOffBalance> TimeOffBalancesRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TimeOffBalance> TimeOffBalancesRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<TimeOffBalance> localVarResponse = await TimeOffBalancesRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<TimeOffBalance> localVarResponse = await TimeOffBalancesRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, remoteFields, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -644,9 +671,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TimeOffBalance)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<TimeOffBalance>> TimeOffBalancesRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<TimeOffBalance>> TimeOffBalancesRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -674,6 +702,10 @@ namespace Merge.HRISClient.Api
             if (includeRemoteData != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_remote_data", includeRemoteData));
+            }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 

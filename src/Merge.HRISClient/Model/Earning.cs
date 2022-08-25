@@ -32,17 +32,26 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "Earning")]
     public partial class Earning : IEquatable<Earning>, IValidatableObject
     {
+
+        /// <summary>
+        /// The type of earning.
+        /// </summary>
+        /// <value>The type of earning.</value>
+        [DataMember(Name = "type", EmitDefaultValue = true)]
+        public string Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Earning" /> class.
         /// </summary>
-        /// <param name="employeePayrollRun">The earning&#39;s employee payroll run..</param>
+        /// <param name="employeePayrollRun">employeePayrollRun.</param>
         /// <param name="amount">The amount earned..</param>
-        /// <param name="remoteData">remoteData.</param>
-        public Earning(Guid? employeePayrollRun = default(Guid?), float? amount = default(float?), List<Dictionary<string, Object>> remoteData = default(List<Dictionary<string, Object>>))
+        /// <param name="type">The type of earning..</param>
+        /// <param name="remoteWasDeleted">Indicates whether or not this object has been deleted by third party webhooks..</param>
+        public Earning(Guid? employeePayrollRun = default(Guid?), float? amount = default(float?), string type = default(string), bool remoteWasDeleted = default(bool))
         {
             this.EmployeePayrollRun = employeePayrollRun;
             this.Amount = amount;
-            this.RemoteData = remoteData;
+            this.Type = type;
+            this.RemoteWasDeleted = remoteWasDeleted;
         }
 
         /// <summary>
@@ -61,9 +70,8 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
-        /// The earning&#39;s employee payroll run.
+        /// Gets or Sets EmployeePayrollRun
         /// </summary>
-        /// <value>The earning&#39;s employee payroll run.</value>
         [DataMember(Name = "employee_payroll_run", EmitDefaultValue = true)]
         public Guid? EmployeePayrollRun { get; set; }
 
@@ -75,25 +83,11 @@ namespace Merge.HRISClient.Model
         public float? Amount { get; set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// Indicates whether or not this object has been deleted by third party webhooks.
         /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false)]
-        public string Type { get; private set; }
-
-        /// <summary>
-        /// Returns false as Type should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeType()
-        {
-            return false;
-        }
-
-        /// <summary>
-        /// Gets or Sets RemoteData
-        /// </summary>
-        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
-        public List<Dictionary<string, Object>> RemoteData { get; set; }
+        /// <value>Indicates whether or not this object has been deleted by third party webhooks.</value>
+        [DataMember(Name = "remote_was_deleted", EmitDefaultValue = true)]
+        public bool RemoteWasDeleted { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,7 +101,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  EmployeePayrollRun: ").Append(EmployeePayrollRun).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
+            sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -159,14 +153,11 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.Type.Equals(input.Type)
                 ) && 
                 (
-                    this.RemoteData == input.RemoteData ||
-                    this.RemoteData != null &&
-                    input.RemoteData != null &&
-                    this.RemoteData.SequenceEqual(input.RemoteData)
+                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
+                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
                 );
         }
 
@@ -185,10 +176,8 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.EmployeePayrollRun.GetHashCode();
                 if (this.Amount != null)
                     hashCode = hashCode * 59 + this.Amount.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.RemoteData != null)
-                    hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
+                hashCode = hashCode * 59 + this.Type.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }

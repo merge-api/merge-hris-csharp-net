@@ -90,6 +90,14 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'Data'
         }
         /// <summary>
+        /// Test the property 'MultipartFormData'
+        /// </summary>
+        [Fact]
+        public void MultipartFormDataTest()
+        {
+            // TODO unit test for the property 'MultipartFormData'
+        }
+        /// <summary>
         /// Test the property 'Headers'
         /// </summary>
         [Fact]
@@ -104,6 +112,14 @@ namespace Merge.HRISClient.Test.Model
         public void RequestFormatTest()
         {
             // TODO unit test for the property 'RequestFormat'
+        }
+        /// <summary>
+        /// Test the property 'NormalizeResponse'
+        /// </summary>
+        [Fact]
+        public void NormalizeResponseTest()
+        {
+            // TODO unit test for the property 'NormalizeResponse'
         }
 
     }

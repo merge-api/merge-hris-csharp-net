@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Guid** |  | [optional] [readonly] 
 **RemoteId** | **string** | The third-party API ID of the matching object. | [optional] 
-**Employee** | **Guid?** | The employee whose payroll is being run. | [optional] 
-**PayrollRun** | **Guid?** | The payroll being run. | [optional] 
+**Employee** | **Guid?** |  | [optional] 
+**PayrollRun** | **Guid?** |  | [optional] 
 **GrossPay** | **float?** | The gross pay from the run. | [optional] 
 **NetPay** | **float?** | The net pay from the run. | [optional] 
 **StartDate** | **DateTime?** | The day and time the payroll run started. | [optional] 
@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Deductions** | [**List&lt;Deduction&gt;**](Deduction.md) |  | [optional] [readonly] 
 **Taxes** | [**List&lt;Tax&gt;**](Tax.md) |  | [optional] [readonly] 
 **RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 
+**RemoteWasDeleted** | **bool** | Indicates whether or not this object has been deleted by third party webhooks. | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

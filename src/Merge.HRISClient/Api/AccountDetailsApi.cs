@@ -34,8 +34,9 @@ namespace Merge.HRISClient.Api
         /// Get details for a linked account.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <returns>AccountDetails</returns>
-        AccountDetails AccountDetailsRetrieve();
+        AccountDetails AccountDetailsRetrieve(string xAccountToken);
 
         /// <summary>
         /// 
@@ -44,8 +45,9 @@ namespace Merge.HRISClient.Api
         /// Get details for a linked account.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <returns>ApiResponse of AccountDetails</returns>
-        ApiResponse<AccountDetails> AccountDetailsRetrieveWithHttpInfo();
+        ApiResponse<AccountDetails> AccountDetailsRetrieveWithHttpInfo(string xAccountToken);
         #endregion Synchronous Operations
     }
 
@@ -62,9 +64,10 @@ namespace Merge.HRISClient.Api
         /// Get details for a linked account.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccountDetails</returns>
-        System.Threading.Tasks.Task<AccountDetails> AccountDetailsRetrieveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<AccountDetails> AccountDetailsRetrieveAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -73,9 +76,10 @@ namespace Merge.HRISClient.Api
         /// Get details for a linked account.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccountDetails)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AccountDetails>> AccountDetailsRetrieveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<AccountDetails>> AccountDetailsRetrieveWithHttpInfoAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -200,10 +204,11 @@ namespace Merge.HRISClient.Api
         ///  Get details for a linked account.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <returns>AccountDetails</returns>
-        public AccountDetails AccountDetailsRetrieve()
+        public AccountDetails AccountDetailsRetrieve(string xAccountToken)
         {
-            Merge.HRISClient.Client.ApiResponse<AccountDetails> localVarResponse = AccountDetailsRetrieveWithHttpInfo();
+            Merge.HRISClient.Client.ApiResponse<AccountDetails> localVarResponse = AccountDetailsRetrieveWithHttpInfo(xAccountToken);
             return localVarResponse.Data;
         }
 
@@ -211,9 +216,14 @@ namespace Merge.HRISClient.Api
         ///  Get details for a linked account.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <returns>ApiResponse of AccountDetails</returns>
-        public Merge.HRISClient.Client.ApiResponse<AccountDetails> AccountDetailsRetrieveWithHttpInfo()
+        public Merge.HRISClient.Client.ApiResponse<AccountDetails> AccountDetailsRetrieveWithHttpInfo(string xAccountToken)
         {
+            // verify the required parameter 'xAccountToken' is set
+            if (xAccountToken == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling AccountDetailsApi->AccountDetailsRetrieve");
+
             Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
 
             String[] _contentTypes = new String[] {
@@ -230,6 +240,7 @@ namespace Merge.HRISClient.Api
             var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
             // authentication (tokenAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
@@ -253,11 +264,12 @@ namespace Merge.HRISClient.Api
         ///  Get details for a linked account.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of AccountDetails</returns>
-        public async System.Threading.Tasks.Task<AccountDetails> AccountDetailsRetrieveAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<AccountDetails> AccountDetailsRetrieveAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<AccountDetails> localVarResponse = await AccountDetailsRetrieveWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<AccountDetails> localVarResponse = await AccountDetailsRetrieveWithHttpInfoAsync(xAccountToken, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -265,10 +277,15 @@ namespace Merge.HRISClient.Api
         ///  Get details for a linked account.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (AccountDetails)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<AccountDetails>> AccountDetailsRetrieveWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<AccountDetails>> AccountDetailsRetrieveWithHttpInfoAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
+            // verify the required parameter 'xAccountToken' is set
+            if (xAccountToken == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling AccountDetailsApi->AccountDetailsRetrieve");
+
 
             Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
 
@@ -287,6 +304,7 @@ namespace Merge.HRISClient.Api
             var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
             // authentication (tokenAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))

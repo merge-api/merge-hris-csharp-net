@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="locationslist"></a>
 # **LocationsList**
-> PaginatedLocationList LocationsList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string remoteId = null)
+> PaginatedLocationList LocationsList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string remoteFields = null, string remoteId = null)
 
 
 
@@ -42,16 +42,17 @@ namespace Example
             var createdAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created after this datetime. (optional) 
             var createdBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created before this datetime. (optional) 
             var cursor = cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw;  // string | The pagination cursor value. (optional) 
-            var includeDeletedData = true;  // bool? | Whether to include data that was deleted in the third-party service. (optional) 
+            var includeDeletedData = true;  // bool? | Whether to include data that was marked as deleted by third party webhooks. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
             var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified after this datetime. (optional) 
             var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified before this datetime. (optional) 
             var pageSize = 56;  // int? | Number of results to return per page. (optional) 
+            var remoteFields = location_type;  // string | Which fields should be returned in non-normalized form. (optional) 
             var remoteId = remoteId_example;  // string | The API provider's ID for the given object. (optional) 
 
             try
             {
-                PaginatedLocationList result = apiInstance.LocationsList(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId);
+                PaginatedLocationList result = apiInstance.LocationsList(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -73,11 +74,12 @@ Name | Type | Description  | Notes
  **createdAfter** | **DateTime?**| If provided, will only return objects created after this datetime. | [optional] 
  **createdBefore** | **DateTime?**| If provided, will only return objects created before this datetime. | [optional] 
  **cursor** | **string**| The pagination cursor value. | [optional] 
- **includeDeletedData** | **bool?**| Whether to include data that was deleted in the third-party service. | [optional] 
+ **includeDeletedData** | **bool?**| Whether to include data that was marked as deleted by third party webhooks. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
  **modifiedAfter** | **DateTime?**| If provided, will only return objects modified after this datetime. | [optional] 
  **modifiedBefore** | **DateTime?**| If provided, will only return objects modified before this datetime. | [optional] 
  **pageSize** | **int?**| Number of results to return per page. | [optional] 
+ **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
  **remoteId** | **string**| The API provider&#39;s ID for the given object. | [optional] 
 
 ### Return type
@@ -103,7 +105,7 @@ Name | Type | Description  | Notes
 
 <a name="locationsretrieve"></a>
 # **LocationsRetrieve**
-> Location LocationsRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null)
+> Location LocationsRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null, string remoteFields = null)
 
 
 
@@ -134,10 +136,11 @@ namespace Example
             var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
             var id = new Guid(); // Guid | 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
+            var remoteFields = location_type;  // string | Which fields should be returned in non-normalized form. (optional) 
 
             try
             {
-                Location result = apiInstance.LocationsRetrieve(xAccountToken, id, includeRemoteData);
+                Location result = apiInstance.LocationsRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -158,6 +161,7 @@ Name | Type | Description  | Notes
  **xAccountToken** | **string**| Token identifying the end user. | 
  **id** | [**Guid**](Guid.md)|  | 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
+ **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
 
 ### Return type
 

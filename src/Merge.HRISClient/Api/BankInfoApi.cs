@@ -35,23 +35,22 @@ namespace Merge.HRISClient.Api
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type (optional)</param>
-        /// <param name="bankName"> (optional)</param>
+        /// <param name="accountType">If provided, will only return BankInfo&#39;s with this account type. Options: (&#39;SAVINGS&#39;, &#39;CHECKING&#39;) (optional)</param>
+        /// <param name="bankName">If provided, will only return BankInfo&#39;s with this bank name. (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="employee">If provided, will only return bank accounts for this employee. (optional)</param>
         /// <param name="employeeId">If provided, will only return bank accounts for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="orderBy">Overrides the default ordering for this endpoint. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteCreatedAt"> (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <returns>PaginatedBankInfoList</returns>
-        PaginatedBankInfoList BankInfoList(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), Guid? employee = default(Guid?), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), DateTime? remoteCreatedAt = default(DateTime?), string remoteId = default(string));
+        PaginatedBankInfoList BankInfoList(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string));
 
         /// <summary>
         /// 
@@ -61,23 +60,22 @@ namespace Merge.HRISClient.Api
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type (optional)</param>
-        /// <param name="bankName"> (optional)</param>
+        /// <param name="accountType">If provided, will only return BankInfo&#39;s with this account type. Options: (&#39;SAVINGS&#39;, &#39;CHECKING&#39;) (optional)</param>
+        /// <param name="bankName">If provided, will only return BankInfo&#39;s with this bank name. (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="employee">If provided, will only return bank accounts for this employee. (optional)</param>
         /// <param name="employeeId">If provided, will only return bank accounts for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="orderBy">Overrides the default ordering for this endpoint. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteCreatedAt"> (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <returns>ApiResponse of PaginatedBankInfoList</returns>
-        ApiResponse<PaginatedBankInfoList> BankInfoListWithHttpInfo(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), Guid? employee = default(Guid?), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), DateTime? remoteCreatedAt = default(DateTime?), string remoteId = default(string));
+        ApiResponse<PaginatedBankInfoList> BankInfoListWithHttpInfo(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string));
         /// <summary>
         /// 
         /// </summary>
@@ -88,8 +86,9 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>BankInfo</returns>
-        BankInfo BankInfoRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?));
+        BankInfo BankInfoRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string));
 
         /// <summary>
         /// 
@@ -101,8 +100,9 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>ApiResponse of BankInfo</returns>
-        ApiResponse<BankInfo> BankInfoRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?));
+        ApiResponse<BankInfo> BankInfoRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string));
         #endregion Synchronous Operations
     }
 
@@ -120,24 +120,23 @@ namespace Merge.HRISClient.Api
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type (optional)</param>
-        /// <param name="bankName"> (optional)</param>
+        /// <param name="accountType">If provided, will only return BankInfo&#39;s with this account type. Options: (&#39;SAVINGS&#39;, &#39;CHECKING&#39;) (optional)</param>
+        /// <param name="bankName">If provided, will only return BankInfo&#39;s with this bank name. (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="employee">If provided, will only return bank accounts for this employee. (optional)</param>
         /// <param name="employeeId">If provided, will only return bank accounts for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="orderBy">Overrides the default ordering for this endpoint. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteCreatedAt"> (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedBankInfoList</returns>
-        System.Threading.Tasks.Task<PaginatedBankInfoList> BankInfoListAsync(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), Guid? employee = default(Guid?), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), DateTime? remoteCreatedAt = default(DateTime?), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PaginatedBankInfoList> BankInfoListAsync(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -147,24 +146,23 @@ namespace Merge.HRISClient.Api
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type (optional)</param>
-        /// <param name="bankName"> (optional)</param>
+        /// <param name="accountType">If provided, will only return BankInfo&#39;s with this account type. Options: (&#39;SAVINGS&#39;, &#39;CHECKING&#39;) (optional)</param>
+        /// <param name="bankName">If provided, will only return BankInfo&#39;s with this bank name. (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="employee">If provided, will only return bank accounts for this employee. (optional)</param>
         /// <param name="employeeId">If provided, will only return bank accounts for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="orderBy">Overrides the default ordering for this endpoint. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteCreatedAt"> (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedBankInfoList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaginatedBankInfoList>> BankInfoListWithHttpInfoAsync(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), Guid? employee = default(Guid?), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), DateTime? remoteCreatedAt = default(DateTime?), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PaginatedBankInfoList>> BankInfoListWithHttpInfoAsync(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -175,9 +173,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankInfo</returns>
-        System.Threading.Tasks.Task<BankInfo> BankInfoRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<BankInfo> BankInfoRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -189,9 +188,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankInfo)</returns>
-        System.Threading.Tasks.Task<ApiResponse<BankInfo>> BankInfoRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<BankInfo>> BankInfoRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -317,25 +317,24 @@ namespace Merge.HRISClient.Api
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type (optional)</param>
-        /// <param name="bankName"> (optional)</param>
+        /// <param name="accountType">If provided, will only return BankInfo&#39;s with this account type. Options: (&#39;SAVINGS&#39;, &#39;CHECKING&#39;) (optional)</param>
+        /// <param name="bankName">If provided, will only return BankInfo&#39;s with this bank name. (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="employee">If provided, will only return bank accounts for this employee. (optional)</param>
         /// <param name="employeeId">If provided, will only return bank accounts for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="orderBy">Overrides the default ordering for this endpoint. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteCreatedAt"> (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <returns>PaginatedBankInfoList</returns>
-        public PaginatedBankInfoList BankInfoList(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), Guid? employee = default(Guid?), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), DateTime? remoteCreatedAt = default(DateTime?), string remoteId = default(string))
+        public PaginatedBankInfoList BankInfoList(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedBankInfoList> localVarResponse = BankInfoListWithHttpInfo(xAccountToken, accountType, bankName, createdAfter, createdBefore, cursor, employee, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteCreatedAt, remoteId);
+            Merge.HRISClient.Client.ApiResponse<PaginatedBankInfoList> localVarResponse = BankInfoListWithHttpInfo(xAccountToken, accountType, bankName, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteFields, remoteId);
             return localVarResponse.Data;
         }
 
@@ -344,23 +343,22 @@ namespace Merge.HRISClient.Api
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type (optional)</param>
-        /// <param name="bankName"> (optional)</param>
+        /// <param name="accountType">If provided, will only return BankInfo&#39;s with this account type. Options: (&#39;SAVINGS&#39;, &#39;CHECKING&#39;) (optional)</param>
+        /// <param name="bankName">If provided, will only return BankInfo&#39;s with this bank name. (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="employee">If provided, will only return bank accounts for this employee. (optional)</param>
         /// <param name="employeeId">If provided, will only return bank accounts for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="orderBy">Overrides the default ordering for this endpoint. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteCreatedAt"> (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <returns>ApiResponse of PaginatedBankInfoList</returns>
-        public Merge.HRISClient.Client.ApiResponse<PaginatedBankInfoList> BankInfoListWithHttpInfo(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), Guid? employee = default(Guid?), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), DateTime? remoteCreatedAt = default(DateTime?), string remoteId = default(string))
+        public Merge.HRISClient.Client.ApiResponse<PaginatedBankInfoList> BankInfoListWithHttpInfo(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -402,10 +400,6 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
-            if (employee != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "employee", employee));
-            }
             if (employeeId != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "employee_id", employeeId));
@@ -434,9 +428,9 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
             }
-            if (remoteCreatedAt != null)
+            if (remoteFields != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_created_at", remoteCreatedAt));
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             if (remoteId != null)
             {
@@ -467,26 +461,25 @@ namespace Merge.HRISClient.Api
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type (optional)</param>
-        /// <param name="bankName"> (optional)</param>
+        /// <param name="accountType">If provided, will only return BankInfo&#39;s with this account type. Options: (&#39;SAVINGS&#39;, &#39;CHECKING&#39;) (optional)</param>
+        /// <param name="bankName">If provided, will only return BankInfo&#39;s with this bank name. (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="employee">If provided, will only return bank accounts for this employee. (optional)</param>
         /// <param name="employeeId">If provided, will only return bank accounts for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="orderBy">Overrides the default ordering for this endpoint. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteCreatedAt"> (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedBankInfoList</returns>
-        public async System.Threading.Tasks.Task<PaginatedBankInfoList> BankInfoListAsync(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), Guid? employee = default(Guid?), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), DateTime? remoteCreatedAt = default(DateTime?), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PaginatedBankInfoList> BankInfoListAsync(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedBankInfoList> localVarResponse = await BankInfoListWithHttpInfoAsync(xAccountToken, accountType, bankName, createdAfter, createdBefore, cursor, employee, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteCreatedAt, remoteId, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<PaginatedBankInfoList> localVarResponse = await BankInfoListWithHttpInfoAsync(xAccountToken, accountType, bankName, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteFields, remoteId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -495,24 +488,23 @@ namespace Merge.HRISClient.Api
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
-        /// <param name="accountType">The bank account type (optional)</param>
-        /// <param name="bankName"> (optional)</param>
+        /// <param name="accountType">If provided, will only return BankInfo&#39;s with this account type. Options: (&#39;SAVINGS&#39;, &#39;CHECKING&#39;) (optional)</param>
+        /// <param name="bankName">If provided, will only return BankInfo&#39;s with this bank name. (optional)</param>
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="employee">If provided, will only return bank accounts for this employee. (optional)</param>
         /// <param name="employeeId">If provided, will only return bank accounts for this employee. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="orderBy">Overrides the default ordering for this endpoint. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteCreatedAt"> (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedBankInfoList)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedBankInfoList>> BankInfoListWithHttpInfoAsync(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), Guid? employee = default(Guid?), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), DateTime? remoteCreatedAt = default(DateTime?), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedBankInfoList>> BankInfoListWithHttpInfoAsync(string xAccountToken, string accountType = default(string), string bankName = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), string orderBy = default(string), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -556,10 +548,6 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
-            if (employee != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "employee", employee));
-            }
             if (employeeId != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "employee_id", employeeId));
@@ -588,9 +576,9 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
             }
-            if (remoteCreatedAt != null)
+            if (remoteFields != null)
             {
-                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_created_at", remoteCreatedAt));
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             if (remoteId != null)
             {
@@ -624,10 +612,11 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>BankInfo</returns>
-        public BankInfo BankInfoRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?))
+        public BankInfo BankInfoRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<BankInfo> localVarResponse = BankInfoRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData);
+            Merge.HRISClient.Client.ApiResponse<BankInfo> localVarResponse = BankInfoRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData, remoteFields);
             return localVarResponse.Data;
         }
 
@@ -638,8 +627,9 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>ApiResponse of BankInfo</returns>
-        public Merge.HRISClient.Client.ApiResponse<BankInfo> BankInfoRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?))
+        public Merge.HRISClient.Client.ApiResponse<BankInfo> BankInfoRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -665,6 +655,10 @@ namespace Merge.HRISClient.Api
             if (includeRemoteData != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_remote_data", includeRemoteData));
+            }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
@@ -693,11 +687,12 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of BankInfo</returns>
-        public async System.Threading.Tasks.Task<BankInfo> BankInfoRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<BankInfo> BankInfoRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<BankInfo> localVarResponse = await BankInfoRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<BankInfo> localVarResponse = await BankInfoRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, remoteFields, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -708,9 +703,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (BankInfo)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<BankInfo>> BankInfoRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<BankInfo>> BankInfoRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -738,6 +734,10 @@ namespace Merge.HRISClient.Api
             if (includeRemoteData != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_remote_data", includeRemoteData));
+            }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 

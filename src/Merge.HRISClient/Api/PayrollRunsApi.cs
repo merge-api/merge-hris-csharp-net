@@ -40,17 +40,18 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endedAfter">If provided, will only return payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="runType">If provided, will only return PayrollRun&#39;s with this status. Options: (&#39;REGULAR&#39;, &#39;OFF_CYCLE&#39;, &#39;CORRECTION&#39;, &#39;TERMINATION&#39;, &#39;SIGN_ON_BONUS&#39;) (optional)</param>
         /// <param name="startedAfter">If provided, will only return payroll runs started after this datetime. (optional)</param>
         /// <param name="startedBefore">If provided, will only return payroll runs started before this datetime. (optional)</param>
         /// <returns>PaginatedPayrollRunList</returns>
-        PaginatedPayrollRunList PayrollRunsList(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?));
+        PaginatedPayrollRunList PayrollRunsList(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?));
 
         /// <summary>
         /// 
@@ -65,17 +66,18 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endedAfter">If provided, will only return payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="runType">If provided, will only return PayrollRun&#39;s with this status. Options: (&#39;REGULAR&#39;, &#39;OFF_CYCLE&#39;, &#39;CORRECTION&#39;, &#39;TERMINATION&#39;, &#39;SIGN_ON_BONUS&#39;) (optional)</param>
         /// <param name="startedAfter">If provided, will only return payroll runs started after this datetime. (optional)</param>
         /// <param name="startedBefore">If provided, will only return payroll runs started before this datetime. (optional)</param>
         /// <returns>ApiResponse of PaginatedPayrollRunList</returns>
-        ApiResponse<PaginatedPayrollRunList> PayrollRunsListWithHttpInfo(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?));
+        ApiResponse<PaginatedPayrollRunList> PayrollRunsListWithHttpInfo(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?));
         /// <summary>
         /// 
         /// </summary>
@@ -86,8 +88,9 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>PayrollRun</returns>
-        PayrollRun PayrollRunsRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?));
+        PayrollRun PayrollRunsRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string));
 
         /// <summary>
         /// 
@@ -99,8 +102,9 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>ApiResponse of PayrollRun</returns>
-        ApiResponse<PayrollRun> PayrollRunsRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?));
+        ApiResponse<PayrollRun> PayrollRunsRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string));
         #endregion Synchronous Operations
     }
 
@@ -123,18 +127,19 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endedAfter">If provided, will only return payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="runType">If provided, will only return PayrollRun&#39;s with this status. Options: (&#39;REGULAR&#39;, &#39;OFF_CYCLE&#39;, &#39;CORRECTION&#39;, &#39;TERMINATION&#39;, &#39;SIGN_ON_BONUS&#39;) (optional)</param>
         /// <param name="startedAfter">If provided, will only return payroll runs started after this datetime. (optional)</param>
         /// <param name="startedBefore">If provided, will only return payroll runs started before this datetime. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedPayrollRunList</returns>
-        System.Threading.Tasks.Task<PaginatedPayrollRunList> PayrollRunsListAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PaginatedPayrollRunList> PayrollRunsListAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -149,18 +154,19 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endedAfter">If provided, will only return payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="runType">If provided, will only return PayrollRun&#39;s with this status. Options: (&#39;REGULAR&#39;, &#39;OFF_CYCLE&#39;, &#39;CORRECTION&#39;, &#39;TERMINATION&#39;, &#39;SIGN_ON_BONUS&#39;) (optional)</param>
         /// <param name="startedAfter">If provided, will only return payroll runs started after this datetime. (optional)</param>
         /// <param name="startedBefore">If provided, will only return payroll runs started before this datetime. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedPayrollRunList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaginatedPayrollRunList>> PayrollRunsListWithHttpInfoAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PaginatedPayrollRunList>> PayrollRunsListWithHttpInfoAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -171,9 +177,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PayrollRun</returns>
-        System.Threading.Tasks.Task<PayrollRun> PayrollRunsRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PayrollRun> PayrollRunsRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -185,9 +192,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PayrollRun)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PayrollRun>> PayrollRunsRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PayrollRun>> PayrollRunsRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -318,19 +326,20 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endedAfter">If provided, will only return payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="runType">If provided, will only return PayrollRun&#39;s with this status. Options: (&#39;REGULAR&#39;, &#39;OFF_CYCLE&#39;, &#39;CORRECTION&#39;, &#39;TERMINATION&#39;, &#39;SIGN_ON_BONUS&#39;) (optional)</param>
         /// <param name="startedAfter">If provided, will only return payroll runs started after this datetime. (optional)</param>
         /// <param name="startedBefore">If provided, will only return payroll runs started before this datetime. (optional)</param>
         /// <returns>PaginatedPayrollRunList</returns>
-        public PaginatedPayrollRunList PayrollRunsList(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?))
+        public PaginatedPayrollRunList PayrollRunsList(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedPayrollRunList> localVarResponse = PayrollRunsListWithHttpInfo(xAccountToken, createdAfter, createdBefore, cursor, endedAfter, endedBefore, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, runType, startedAfter, startedBefore);
+            Merge.HRISClient.Client.ApiResponse<PaginatedPayrollRunList> localVarResponse = PayrollRunsListWithHttpInfo(xAccountToken, createdAfter, createdBefore, cursor, endedAfter, endedBefore, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, runType, startedAfter, startedBefore);
             return localVarResponse.Data;
         }
 
@@ -344,17 +353,18 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endedAfter">If provided, will only return payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="runType">If provided, will only return PayrollRun&#39;s with this status. Options: (&#39;REGULAR&#39;, &#39;OFF_CYCLE&#39;, &#39;CORRECTION&#39;, &#39;TERMINATION&#39;, &#39;SIGN_ON_BONUS&#39;) (optional)</param>
         /// <param name="startedAfter">If provided, will only return payroll runs started after this datetime. (optional)</param>
         /// <param name="startedBefore">If provided, will only return payroll runs started before this datetime. (optional)</param>
         /// <returns>ApiResponse of PaginatedPayrollRunList</returns>
-        public Merge.HRISClient.Client.ApiResponse<PaginatedPayrollRunList> PayrollRunsListWithHttpInfo(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?))
+        public Merge.HRISClient.Client.ApiResponse<PaginatedPayrollRunList> PayrollRunsListWithHttpInfo(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -415,6 +425,10 @@ namespace Merge.HRISClient.Api
             if (pageSize != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
+            }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             if (remoteId != null)
             {
@@ -462,20 +476,21 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endedAfter">If provided, will only return payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="runType">If provided, will only return PayrollRun&#39;s with this status. Options: (&#39;REGULAR&#39;, &#39;OFF_CYCLE&#39;, &#39;CORRECTION&#39;, &#39;TERMINATION&#39;, &#39;SIGN_ON_BONUS&#39;) (optional)</param>
         /// <param name="startedAfter">If provided, will only return payroll runs started after this datetime. (optional)</param>
         /// <param name="startedBefore">If provided, will only return payroll runs started before this datetime. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedPayrollRunList</returns>
-        public async System.Threading.Tasks.Task<PaginatedPayrollRunList> PayrollRunsListAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PaginatedPayrollRunList> PayrollRunsListAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedPayrollRunList> localVarResponse = await PayrollRunsListWithHttpInfoAsync(xAccountToken, createdAfter, createdBefore, cursor, endedAfter, endedBefore, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, runType, startedAfter, startedBefore, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<PaginatedPayrollRunList> localVarResponse = await PayrollRunsListWithHttpInfoAsync(xAccountToken, createdAfter, createdBefore, cursor, endedAfter, endedBefore, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, runType, startedAfter, startedBefore, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -489,18 +504,19 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endedAfter">If provided, will only return payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="runType">If provided, will only return PayrollRun&#39;s with this status. Options: (&#39;REGULAR&#39;, &#39;OFF_CYCLE&#39;, &#39;CORRECTION&#39;, &#39;TERMINATION&#39;, &#39;SIGN_ON_BONUS&#39;) (optional)</param>
         /// <param name="startedAfter">If provided, will only return payroll runs started after this datetime. (optional)</param>
         /// <param name="startedBefore">If provided, will only return payroll runs started before this datetime. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedPayrollRunList)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedPayrollRunList>> PayrollRunsListWithHttpInfoAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedPayrollRunList>> PayrollRunsListWithHttpInfoAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), DateTime? endedAfter = default(DateTime?), DateTime? endedBefore = default(DateTime?), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string runType = default(string), DateTime? startedAfter = default(DateTime?), DateTime? startedBefore = default(DateTime?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -564,6 +580,10 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "page_size", pageSize));
             }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
+            }
             if (remoteId != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_id", remoteId));
@@ -608,10 +628,11 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>PayrollRun</returns>
-        public PayrollRun PayrollRunsRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?))
+        public PayrollRun PayrollRunsRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<PayrollRun> localVarResponse = PayrollRunsRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData);
+            Merge.HRISClient.Client.ApiResponse<PayrollRun> localVarResponse = PayrollRunsRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData, remoteFields);
             return localVarResponse.Data;
         }
 
@@ -622,8 +643,9 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>ApiResponse of PayrollRun</returns>
-        public Merge.HRISClient.Client.ApiResponse<PayrollRun> PayrollRunsRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?))
+        public Merge.HRISClient.Client.ApiResponse<PayrollRun> PayrollRunsRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -649,6 +671,10 @@ namespace Merge.HRISClient.Api
             if (includeRemoteData != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_remote_data", includeRemoteData));
+            }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
@@ -677,11 +703,12 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PayrollRun</returns>
-        public async System.Threading.Tasks.Task<PayrollRun> PayrollRunsRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PayrollRun> PayrollRunsRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<PayrollRun> localVarResponse = await PayrollRunsRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<PayrollRun> localVarResponse = await PayrollRunsRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, remoteFields, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -692,9 +719,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PayrollRun)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PayrollRun>> PayrollRunsRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PayrollRun>> PayrollRunsRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -722,6 +750,10 @@ namespace Merge.HRISClient.Api
             if (includeRemoteData != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_remote_data", includeRemoteData));
+            }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 

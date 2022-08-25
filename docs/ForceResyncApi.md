@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="syncstatusresynccreate"></a>
 # **SyncStatusResyncCreate**
-> SyncStatus SyncStatusResyncCreate (string xAccountToken)
+> List&lt;SyncStatus&gt; SyncStatusResyncCreate (string xAccountToken)
 
 
 
@@ -41,7 +41,7 @@ namespace Example
 
             try
             {
-                SyncStatus result = apiInstance.SyncStatusResyncCreate(xAccountToken);
+                List<SyncStatus> result = apiInstance.SyncStatusResyncCreate(xAccountToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**SyncStatus**](SyncStatus.md)
+[**List&lt;SyncStatus&gt;**](SyncStatus.md)
 
 ### Authorization
 

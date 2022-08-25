@@ -45,7 +45,7 @@ namespace Example
             var employeeId = employeeId_example;  // string | If provided, will only return employee payroll runs for this employee. (optional) 
             var endedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return employee payroll runs ended after this datetime. (optional) 
             var endedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return employee payroll runs ended before this datetime. (optional) 
-            var includeDeletedData = true;  // bool? | Whether to include data that was deleted in the third-party service. (optional) 
+            var includeDeletedData = true;  // bool? | Whether to include data that was marked as deleted by third party webhooks. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
             var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified after this datetime. (optional) 
             var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified before this datetime. (optional) 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
  **employeeId** | **string**| If provided, will only return employee payroll runs for this employee. | [optional] 
  **endedAfter** | **DateTime?**| If provided, will only return employee payroll runs ended after this datetime. | [optional] 
  **endedBefore** | **DateTime?**| If provided, will only return employee payroll runs ended before this datetime. | [optional] 
- **includeDeletedData** | **bool?**| Whether to include data that was deleted in the third-party service. | [optional] 
+ **includeDeletedData** | **bool?**| Whether to include data that was marked as deleted by third party webhooks. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
  **modifiedAfter** | **DateTime?**| If provided, will only return objects modified after this datetime. | [optional] 
  **modifiedBefore** | **DateTime?**| If provided, will only return objects modified before this datetime. | [optional] 
