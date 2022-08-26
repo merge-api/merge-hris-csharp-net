@@ -73,11 +73,12 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? modifiedAfter = null;
             //DateTime? modifiedBefore = null;
             //int? pageSize = null;
+            //string remoteFields = null;
             //string remoteId = null;
             //string runType = null;
             //DateTime? startedAfter = null;
             //DateTime? startedBefore = null;
-            //var response = instance.PayrollRunsList(xAccountToken, createdAfter, createdBefore, cursor, endedAfter, endedBefore, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, runType, startedAfter, startedBefore);
+            //var response = instance.PayrollRunsList(xAccountToken, createdAfter, createdBefore, cursor, endedAfter, endedBefore, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, runType, startedAfter, startedBefore);
             //Assert.IsType<PaginatedPayrollRunList>(response);
         }
 
@@ -91,7 +92,8 @@ namespace Merge.HRISClient.Test.Api
             //string xAccountToken = null;
             //Guid id = null;
             //bool? includeRemoteData = null;
-            //var response = instance.PayrollRunsRetrieve(xAccountToken, id, includeRemoteData);
+            //string remoteFields = null;
+            //var response = instance.PayrollRunsRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
             //Assert.IsType<PayrollRun>(response);
         }
     }

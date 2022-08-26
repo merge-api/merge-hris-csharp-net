@@ -114,6 +114,22 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'EndUserEmailAddress'
         }
         /// <summary>
+        /// Test the property 'WebhookListenerUrl'
+        /// </summary>
+        [Fact]
+        public void WebhookListenerUrlTest()
+        {
+            // TODO unit test for the property 'WebhookListenerUrl'
+        }
+        /// <summary>
+        /// Test the property 'IsDuplicate'
+        /// </summary>
+        [Fact]
+        public void IsDuplicateTest()
+        {
+            // TODO unit test for the property 'IsDuplicate'
+        }
+        /// <summary>
         /// Test the property 'Integration'
         /// </summary>
         [Fact]

@@ -48,7 +48,19 @@ namespace Merge.HRISClient.Model
         /// Enum Accounting for value: accounting
         /// </summary>
         [EnumMember(Value = "accounting")]
-        Accounting = 3
+        Accounting = 3,
+
+        /// <summary>
+        /// Enum Ticketing for value: ticketing
+        /// </summary>
+        [EnumMember(Value = "ticketing")]
+        Ticketing = 4,
+
+        /// <summary>
+        /// Enum Crm for value: crm
+        /// </summary>
+        [EnumMember(Value = "crm")]
+        Crm = 5
 
     }
 

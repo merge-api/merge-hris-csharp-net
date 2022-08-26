@@ -38,13 +38,17 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endDate">If included, will only include issues whose most recent action occurred before this time (optional)</param>
         /// <param name="endUserOrganizationName"> (optional)</param>
+        /// <param name="firstIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="firstIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="includeMuted">If True, will include muted issues (optional)</param>
         /// <param name="integrationName"> (optional)</param>
+        /// <param name="lastIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="lastIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="startDate">If included, will only include issues whose most recent action occurred after this time (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>PaginatedIssueList</returns>
-        PaginatedIssueList IssuesList(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), string includeMuted = default(string), string integrationName = default(string), int? pageSize = default(int?), string startDate = default(string), string status = default(string));
+        PaginatedIssueList IssuesList(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), DateTime? firstIncidentTimeAfter = default(DateTime?), DateTime? firstIncidentTimeBefore = default(DateTime?), string includeMuted = default(string), string integrationName = default(string), DateTime? lastIncidentTimeAfter = default(DateTime?), DateTime? lastIncidentTimeBefore = default(DateTime?), int? pageSize = default(int?), string startDate = default(string), string status = default(string));
 
         /// <summary>
         /// 
@@ -57,13 +61,17 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endDate">If included, will only include issues whose most recent action occurred before this time (optional)</param>
         /// <param name="endUserOrganizationName"> (optional)</param>
+        /// <param name="firstIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="firstIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="includeMuted">If True, will include muted issues (optional)</param>
         /// <param name="integrationName"> (optional)</param>
+        /// <param name="lastIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="lastIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="startDate">If included, will only include issues whose most recent action occurred after this time (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>ApiResponse of PaginatedIssueList</returns>
-        ApiResponse<PaginatedIssueList> IssuesListWithHttpInfo(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), string includeMuted = default(string), string integrationName = default(string), int? pageSize = default(int?), string startDate = default(string), string status = default(string));
+        ApiResponse<PaginatedIssueList> IssuesListWithHttpInfo(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), DateTime? firstIncidentTimeAfter = default(DateTime?), DateTime? firstIncidentTimeBefore = default(DateTime?), string includeMuted = default(string), string integrationName = default(string), DateTime? lastIncidentTimeAfter = default(DateTime?), DateTime? lastIncidentTimeBefore = default(DateTime?), int? pageSize = default(int?), string startDate = default(string), string status = default(string));
         /// <summary>
         /// 
         /// </summary>
@@ -105,14 +113,18 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endDate">If included, will only include issues whose most recent action occurred before this time (optional)</param>
         /// <param name="endUserOrganizationName"> (optional)</param>
+        /// <param name="firstIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="firstIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="includeMuted">If True, will include muted issues (optional)</param>
         /// <param name="integrationName"> (optional)</param>
+        /// <param name="lastIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="lastIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="startDate">If included, will only include issues whose most recent action occurred after this time (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedIssueList</returns>
-        System.Threading.Tasks.Task<PaginatedIssueList> IssuesListAsync(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), string includeMuted = default(string), string integrationName = default(string), int? pageSize = default(int?), string startDate = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PaginatedIssueList> IssuesListAsync(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), DateTime? firstIncidentTimeAfter = default(DateTime?), DateTime? firstIncidentTimeBefore = default(DateTime?), string includeMuted = default(string), string integrationName = default(string), DateTime? lastIncidentTimeAfter = default(DateTime?), DateTime? lastIncidentTimeBefore = default(DateTime?), int? pageSize = default(int?), string startDate = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -125,14 +137,18 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endDate">If included, will only include issues whose most recent action occurred before this time (optional)</param>
         /// <param name="endUserOrganizationName"> (optional)</param>
+        /// <param name="firstIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="firstIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="includeMuted">If True, will include muted issues (optional)</param>
         /// <param name="integrationName"> (optional)</param>
+        /// <param name="lastIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="lastIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="startDate">If included, will only include issues whose most recent action occurred after this time (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedIssueList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaginatedIssueList>> IssuesListWithHttpInfoAsync(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), string includeMuted = default(string), string integrationName = default(string), int? pageSize = default(int?), string startDate = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PaginatedIssueList>> IssuesListWithHttpInfoAsync(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), DateTime? firstIncidentTimeAfter = default(DateTime?), DateTime? firstIncidentTimeBefore = default(DateTime?), string includeMuted = default(string), string integrationName = default(string), DateTime? lastIncidentTimeAfter = default(DateTime?), DateTime? lastIncidentTimeBefore = default(DateTime?), int? pageSize = default(int?), string startDate = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -284,15 +300,19 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endDate">If included, will only include issues whose most recent action occurred before this time (optional)</param>
         /// <param name="endUserOrganizationName"> (optional)</param>
+        /// <param name="firstIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="firstIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="includeMuted">If True, will include muted issues (optional)</param>
         /// <param name="integrationName"> (optional)</param>
+        /// <param name="lastIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="lastIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="startDate">If included, will only include issues whose most recent action occurred after this time (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>PaginatedIssueList</returns>
-        public PaginatedIssueList IssuesList(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), string includeMuted = default(string), string integrationName = default(string), int? pageSize = default(int?), string startDate = default(string), string status = default(string))
+        public PaginatedIssueList IssuesList(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), DateTime? firstIncidentTimeAfter = default(DateTime?), DateTime? firstIncidentTimeBefore = default(DateTime?), string includeMuted = default(string), string integrationName = default(string), DateTime? lastIncidentTimeAfter = default(DateTime?), DateTime? lastIncidentTimeBefore = default(DateTime?), int? pageSize = default(int?), string startDate = default(string), string status = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedIssueList> localVarResponse = IssuesListWithHttpInfo(accountToken, cursor, endDate, endUserOrganizationName, includeMuted, integrationName, pageSize, startDate, status);
+            Merge.HRISClient.Client.ApiResponse<PaginatedIssueList> localVarResponse = IssuesListWithHttpInfo(accountToken, cursor, endDate, endUserOrganizationName, firstIncidentTimeAfter, firstIncidentTimeBefore, includeMuted, integrationName, lastIncidentTimeAfter, lastIncidentTimeBefore, pageSize, startDate, status);
             return localVarResponse.Data;
         }
 
@@ -304,13 +324,17 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endDate">If included, will only include issues whose most recent action occurred before this time (optional)</param>
         /// <param name="endUserOrganizationName"> (optional)</param>
+        /// <param name="firstIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="firstIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="includeMuted">If True, will include muted issues (optional)</param>
         /// <param name="integrationName"> (optional)</param>
+        /// <param name="lastIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="lastIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="startDate">If included, will only include issues whose most recent action occurred after this time (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <returns>ApiResponse of PaginatedIssueList</returns>
-        public Merge.HRISClient.Client.ApiResponse<PaginatedIssueList> IssuesListWithHttpInfo(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), string includeMuted = default(string), string integrationName = default(string), int? pageSize = default(int?), string startDate = default(string), string status = default(string))
+        public Merge.HRISClient.Client.ApiResponse<PaginatedIssueList> IssuesListWithHttpInfo(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), DateTime? firstIncidentTimeAfter = default(DateTime?), DateTime? firstIncidentTimeBefore = default(DateTime?), string includeMuted = default(string), string integrationName = default(string), DateTime? lastIncidentTimeAfter = default(DateTime?), DateTime? lastIncidentTimeBefore = default(DateTime?), int? pageSize = default(int?), string startDate = default(string), string status = default(string))
         {
             Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
 
@@ -344,6 +368,14 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "end_user_organization_name", endUserOrganizationName));
             }
+            if (firstIncidentTimeAfter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "first_incident_time_after", firstIncidentTimeAfter));
+            }
+            if (firstIncidentTimeBefore != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "first_incident_time_before", firstIncidentTimeBefore));
+            }
             if (includeMuted != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_muted", includeMuted));
@@ -351,6 +383,14 @@ namespace Merge.HRISClient.Api
             if (integrationName != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "integration_name", integrationName));
+            }
+            if (lastIncidentTimeAfter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "last_incident_time_after", lastIncidentTimeAfter));
+            }
+            if (lastIncidentTimeBefore != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "last_incident_time_before", lastIncidentTimeBefore));
             }
             if (pageSize != null)
             {
@@ -391,16 +431,20 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endDate">If included, will only include issues whose most recent action occurred before this time (optional)</param>
         /// <param name="endUserOrganizationName"> (optional)</param>
+        /// <param name="firstIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="firstIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="includeMuted">If True, will include muted issues (optional)</param>
         /// <param name="integrationName"> (optional)</param>
+        /// <param name="lastIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="lastIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="startDate">If included, will only include issues whose most recent action occurred after this time (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedIssueList</returns>
-        public async System.Threading.Tasks.Task<PaginatedIssueList> IssuesListAsync(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), string includeMuted = default(string), string integrationName = default(string), int? pageSize = default(int?), string startDate = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PaginatedIssueList> IssuesListAsync(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), DateTime? firstIncidentTimeAfter = default(DateTime?), DateTime? firstIncidentTimeBefore = default(DateTime?), string includeMuted = default(string), string integrationName = default(string), DateTime? lastIncidentTimeAfter = default(DateTime?), DateTime? lastIncidentTimeBefore = default(DateTime?), int? pageSize = default(int?), string startDate = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedIssueList> localVarResponse = await IssuesListWithHttpInfoAsync(accountToken, cursor, endDate, endUserOrganizationName, includeMuted, integrationName, pageSize, startDate, status, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<PaginatedIssueList> localVarResponse = await IssuesListWithHttpInfoAsync(accountToken, cursor, endDate, endUserOrganizationName, firstIncidentTimeAfter, firstIncidentTimeBefore, includeMuted, integrationName, lastIncidentTimeAfter, lastIncidentTimeBefore, pageSize, startDate, status, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -412,14 +456,18 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endDate">If included, will only include issues whose most recent action occurred before this time (optional)</param>
         /// <param name="endUserOrganizationName"> (optional)</param>
+        /// <param name="firstIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="firstIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="includeMuted">If True, will include muted issues (optional)</param>
         /// <param name="integrationName"> (optional)</param>
+        /// <param name="lastIncidentTimeAfter">If provided, will only return issues whose first incident time was after this datetime. (optional)</param>
+        /// <param name="lastIncidentTimeBefore">If provided, will only return issues whose first incident time was before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="startDate">If included, will only include issues whose most recent action occurred after this time (optional)</param>
         /// <param name="status"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedIssueList)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedIssueList>> IssuesListWithHttpInfoAsync(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), string includeMuted = default(string), string integrationName = default(string), int? pageSize = default(int?), string startDate = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedIssueList>> IssuesListWithHttpInfoAsync(string accountToken = default(string), string cursor = default(string), string endDate = default(string), string endUserOrganizationName = default(string), DateTime? firstIncidentTimeAfter = default(DateTime?), DateTime? firstIncidentTimeBefore = default(DateTime?), string includeMuted = default(string), string integrationName = default(string), DateTime? lastIncidentTimeAfter = default(DateTime?), DateTime? lastIncidentTimeBefore = default(DateTime?), int? pageSize = default(int?), string startDate = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
             Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
@@ -455,6 +503,14 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "end_user_organization_name", endUserOrganizationName));
             }
+            if (firstIncidentTimeAfter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "first_incident_time_after", firstIncidentTimeAfter));
+            }
+            if (firstIncidentTimeBefore != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "first_incident_time_before", firstIncidentTimeBefore));
+            }
             if (includeMuted != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_muted", includeMuted));
@@ -462,6 +518,14 @@ namespace Merge.HRISClient.Api
             if (integrationName != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "integration_name", integrationName));
+            }
+            if (lastIncidentTimeAfter != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "last_incident_time_after", lastIncidentTimeAfter));
+            }
+            if (lastIncidentTimeBefore != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "last_incident_time_before", lastIncidentTimeBefore));
             }
             if (pageSize != null)
             {

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="payrollrunslist"></a>
 # **PayrollRunsList**
-> PaginatedPayrollRunList PayrollRunsList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, DateTime? endedAfter = null, DateTime? endedBefore = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string remoteId = null, string runType = null, DateTime? startedAfter = null, DateTime? startedBefore = null)
+> PaginatedPayrollRunList PayrollRunsList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, DateTime? endedAfter = null, DateTime? endedBefore = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string remoteFields = null, string remoteId = null, string runType = null, DateTime? startedAfter = null, DateTime? startedBefore = null)
 
 
 
@@ -44,11 +44,12 @@ namespace Example
             var cursor = cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw;  // string | The pagination cursor value. (optional) 
             var endedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return payroll runs ended after this datetime. (optional) 
             var endedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return payroll runs ended before this datetime. (optional) 
-            var includeDeletedData = true;  // bool? | Whether to include data that was deleted in the third-party service. (optional) 
+            var includeDeletedData = true;  // bool? | Whether to include data that was marked as deleted by third party webhooks. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
             var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified after this datetime. (optional) 
             var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified before this datetime. (optional) 
             var pageSize = 56;  // int? | Number of results to return per page. (optional) 
+            var remoteFields = run_state,run_type;  // string | Which fields should be returned in non-normalized form. (optional) 
             var remoteId = remoteId_example;  // string | The API provider's ID for the given object. (optional) 
             var runType = runType_example;  // string | If provided, will only return PayrollRun's with this status. Options: ('REGULAR', 'OFF_CYCLE', 'CORRECTION', 'TERMINATION', 'SIGN_ON_BONUS') (optional) 
             var startedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return payroll runs started after this datetime. (optional) 
@@ -56,7 +57,7 @@ namespace Example
 
             try
             {
-                PaginatedPayrollRunList result = apiInstance.PayrollRunsList(xAccountToken, createdAfter, createdBefore, cursor, endedAfter, endedBefore, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteId, runType, startedAfter, startedBefore);
+                PaginatedPayrollRunList result = apiInstance.PayrollRunsList(xAccountToken, createdAfter, createdBefore, cursor, endedAfter, endedBefore, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, runType, startedAfter, startedBefore);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -80,11 +81,12 @@ Name | Type | Description  | Notes
  **cursor** | **string**| The pagination cursor value. | [optional] 
  **endedAfter** | **DateTime?**| If provided, will only return payroll runs ended after this datetime. | [optional] 
  **endedBefore** | **DateTime?**| If provided, will only return payroll runs ended before this datetime. | [optional] 
- **includeDeletedData** | **bool?**| Whether to include data that was deleted in the third-party service. | [optional] 
+ **includeDeletedData** | **bool?**| Whether to include data that was marked as deleted by third party webhooks. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
  **modifiedAfter** | **DateTime?**| If provided, will only return objects modified after this datetime. | [optional] 
  **modifiedBefore** | **DateTime?**| If provided, will only return objects modified before this datetime. | [optional] 
  **pageSize** | **int?**| Number of results to return per page. | [optional] 
+ **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
  **remoteId** | **string**| The API provider&#39;s ID for the given object. | [optional] 
  **runType** | **string**| If provided, will only return PayrollRun&#39;s with this status. Options: (&#39;REGULAR&#39;, &#39;OFF_CYCLE&#39;, &#39;CORRECTION&#39;, &#39;TERMINATION&#39;, &#39;SIGN_ON_BONUS&#39;) | [optional] 
  **startedAfter** | **DateTime?**| If provided, will only return payroll runs started after this datetime. | [optional] 
@@ -113,7 +115,7 @@ Name | Type | Description  | Notes
 
 <a name="payrollrunsretrieve"></a>
 # **PayrollRunsRetrieve**
-> PayrollRun PayrollRunsRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null)
+> PayrollRun PayrollRunsRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null, string remoteFields = null)
 
 
 
@@ -144,10 +146,11 @@ namespace Example
             var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
             var id = new Guid(); // Guid | 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
+            var remoteFields = run_state,run_type;  // string | Which fields should be returned in non-normalized form. (optional) 
 
             try
             {
-                PayrollRun result = apiInstance.PayrollRunsRetrieve(xAccountToken, id, includeRemoteData);
+                PayrollRun result = apiInstance.PayrollRunsRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -168,6 +171,7 @@ Name | Type | Description  | Notes
  **xAccountToken** | **string**| Token identifying the end user. | 
  **id** | [**Guid**](Guid.md)|  | 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
+ **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
 
 ### Return type
 

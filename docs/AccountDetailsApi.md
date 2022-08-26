@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="accountdetailsretrieve"></a>
 # **AccountDetailsRetrieve**
-> AccountDetails AccountDetailsRetrieve ()
+> AccountDetails AccountDetailsRetrieve (string xAccountToken)
 
 
 
@@ -37,10 +37,11 @@ namespace Example
             // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new AccountDetailsApi(config);
+            var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
 
             try
             {
-                AccountDetails result = apiInstance.AccountDetailsRetrieve();
+                AccountDetails result = apiInstance.AccountDetailsRetrieve(xAccountToken);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -55,7 +56,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xAccountToken** | **string**| Token identifying the end user. | 
 
 ### Return type
 

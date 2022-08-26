@@ -6,11 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Guid** |  | [optional] [readonly] 
-**EmployeePayrollRun** | **Guid?** | The tax&#39;s employee payroll run. | [optional] 
+**EmployeePayrollRun** | **Guid?** |  | [optional] 
 **Name** | **string** | The tax&#39;s name. | [optional] 
 **Amount** | **float?** | The tax amount. | [optional] 
 **EmployerTax** | **bool?** | Whether or not the employer is responsible for paying the tax. | [optional] 
-**RemoteData** | **List&lt;Dictionary&lt;string, Object&gt;&gt;** |  | [optional] 
+**RemoteWasDeleted** | **bool** | Indicates whether or not this object has been deleted by third party webhooks. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

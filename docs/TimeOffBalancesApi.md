@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="timeoffbalanceslist"></a>
 # **TimeOffBalancesList**
-> PaginatedTimeOffBalanceList TimeOffBalancesList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, string employeeId = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string policyType = null, string remoteId = null)
+> PaginatedTimeOffBalanceList TimeOffBalancesList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, string employeeId = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string policyType = null, string remoteFields = null, string remoteId = null)
 
 
 
@@ -43,17 +43,18 @@ namespace Example
             var createdBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created before this datetime. (optional) 
             var cursor = cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw;  // string | The pagination cursor value. (optional) 
             var employeeId = employeeId_example;  // string | If provided, will only return time off balances for this employee. (optional) 
-            var includeDeletedData = true;  // bool? | Whether to include data that was deleted in the third-party service. (optional) 
+            var includeDeletedData = true;  // bool? | Whether to include data that was marked as deleted by third party webhooks. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
             var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified after this datetime. (optional) 
             var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified before this datetime. (optional) 
             var pageSize = 56;  // int? | Number of results to return per page. (optional) 
             var policyType = policyType_example;  // string | If provided, will only return TimeOffBalance with this policy type. Options: ('VACATION', 'SICK', 'PERSONAL', 'JURY_DUTY', 'VOLUNTEER', 'BEREAVEMENT') (optional) 
+            var remoteFields = policy_type;  // string | Which fields should be returned in non-normalized form. (optional) 
             var remoteId = remoteId_example;  // string | The API provider's ID for the given object. (optional) 
 
             try
             {
-                PaginatedTimeOffBalanceList result = apiInstance.TimeOffBalancesList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, policyType, remoteId);
+                PaginatedTimeOffBalanceList result = apiInstance.TimeOffBalancesList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, policyType, remoteFields, remoteId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -76,12 +77,13 @@ Name | Type | Description  | Notes
  **createdBefore** | **DateTime?**| If provided, will only return objects created before this datetime. | [optional] 
  **cursor** | **string**| The pagination cursor value. | [optional] 
  **employeeId** | **string**| If provided, will only return time off balances for this employee. | [optional] 
- **includeDeletedData** | **bool?**| Whether to include data that was deleted in the third-party service. | [optional] 
+ **includeDeletedData** | **bool?**| Whether to include data that was marked as deleted by third party webhooks. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
  **modifiedAfter** | **DateTime?**| If provided, will only return objects modified after this datetime. | [optional] 
  **modifiedBefore** | **DateTime?**| If provided, will only return objects modified before this datetime. | [optional] 
  **pageSize** | **int?**| Number of results to return per page. | [optional] 
  **policyType** | **string**| If provided, will only return TimeOffBalance with this policy type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) | [optional] 
+ **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
  **remoteId** | **string**| The API provider&#39;s ID for the given object. | [optional] 
 
 ### Return type
@@ -107,7 +109,7 @@ Name | Type | Description  | Notes
 
 <a name="timeoffbalancesretrieve"></a>
 # **TimeOffBalancesRetrieve**
-> TimeOffBalance TimeOffBalancesRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null)
+> TimeOffBalance TimeOffBalancesRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null, string remoteFields = null)
 
 
 
@@ -138,10 +140,11 @@ namespace Example
             var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
             var id = new Guid(); // Guid | 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
+            var remoteFields = policy_type;  // string | Which fields should be returned in non-normalized form. (optional) 
 
             try
             {
-                TimeOffBalance result = apiInstance.TimeOffBalancesRetrieve(xAccountToken, id, includeRemoteData);
+                TimeOffBalance result = apiInstance.TimeOffBalancesRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -162,6 +165,7 @@ Name | Type | Description  | Notes
  **xAccountToken** | **string**| Token identifying the end user. | 
  **id** | [**Guid**](Guid.md)|  | 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
+ **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
 
 ### Return type
 

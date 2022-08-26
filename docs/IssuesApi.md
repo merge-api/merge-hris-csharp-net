@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="issueslist"></a>
 # **IssuesList**
-> PaginatedIssueList IssuesList (string accountToken = null, string cursor = null, string endDate = null, string endUserOrganizationName = null, string includeMuted = null, string integrationName = null, int? pageSize = null, string startDate = null, string status = null)
+> PaginatedIssueList IssuesList (string accountToken = null, string cursor = null, string endDate = null, string endUserOrganizationName = null, DateTime? firstIncidentTimeAfter = null, DateTime? firstIncidentTimeBefore = null, string includeMuted = null, string integrationName = null, DateTime? lastIncidentTimeAfter = null, DateTime? lastIncidentTimeBefore = null, int? pageSize = null, string startDate = null, string status = null)
 
 
 
@@ -42,15 +42,19 @@ namespace Example
             var cursor = cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw;  // string | The pagination cursor value. (optional) 
             var endDate = endDate_example;  // string | If included, will only include issues whose most recent action occurred before this time (optional) 
             var endUserOrganizationName = endUserOrganizationName_example;  // string |  (optional) 
+            var firstIncidentTimeAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return issues whose first incident time was after this datetime. (optional) 
+            var firstIncidentTimeBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return issues whose first incident time was before this datetime. (optional) 
             var includeMuted = includeMuted_example;  // string | If True, will include muted issues (optional) 
             var integrationName = integrationName_example;  // string |  (optional) 
+            var lastIncidentTimeAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return issues whose first incident time was after this datetime. (optional) 
+            var lastIncidentTimeBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return issues whose first incident time was before this datetime. (optional) 
             var pageSize = 56;  // int? | Number of results to return per page. (optional) 
             var startDate = startDate_example;  // string | If included, will only include issues whose most recent action occurred after this time (optional) 
             var status = status_example;  // string |  (optional) 
 
             try
             {
-                PaginatedIssueList result = apiInstance.IssuesList(accountToken, cursor, endDate, endUserOrganizationName, includeMuted, integrationName, pageSize, startDate, status);
+                PaginatedIssueList result = apiInstance.IssuesList(accountToken, cursor, endDate, endUserOrganizationName, firstIncidentTimeAfter, firstIncidentTimeBefore, includeMuted, integrationName, lastIncidentTimeAfter, lastIncidentTimeBefore, pageSize, startDate, status);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -72,8 +76,12 @@ Name | Type | Description  | Notes
  **cursor** | **string**| The pagination cursor value. | [optional] 
  **endDate** | **string**| If included, will only include issues whose most recent action occurred before this time | [optional] 
  **endUserOrganizationName** | **string**|  | [optional] 
+ **firstIncidentTimeAfter** | **DateTime?**| If provided, will only return issues whose first incident time was after this datetime. | [optional] 
+ **firstIncidentTimeBefore** | **DateTime?**| If provided, will only return issues whose first incident time was before this datetime. | [optional] 
  **includeMuted** | **string**| If True, will include muted issues | [optional] 
  **integrationName** | **string**|  | [optional] 
+ **lastIncidentTimeAfter** | **DateTime?**| If provided, will only return issues whose first incident time was after this datetime. | [optional] 
+ **lastIncidentTimeBefore** | **DateTime?**| If provided, will only return issues whose first incident time was before this datetime. | [optional] 
  **pageSize** | **int?**| Number of results to return per page. | [optional] 
  **startDate** | **string**| If included, will only include issues whose most recent action occurred after this time | [optional] 
  **status** | **string**|  | [optional] 

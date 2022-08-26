@@ -74,6 +74,14 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'Integration'
         }
         /// <summary>
+        /// Test the property 'IntegrationSlug'
+        /// </summary>
+        [Fact]
+        public void IntegrationSlugTest()
+        {
+            // TODO unit test for the property 'IntegrationSlug'
+        }
+        /// <summary>
         /// Test the property 'Category'
         /// </summary>
         [Fact]
@@ -112,6 +120,22 @@ namespace Merge.HRISClient.Test.Model
         public void StatusTest()
         {
             // TODO unit test for the property 'Status'
+        }
+        /// <summary>
+        /// Test the property 'WebhookListenerUrl'
+        /// </summary>
+        [Fact]
+        public void WebhookListenerUrlTest()
+        {
+            // TODO unit test for the property 'WebhookListenerUrl'
+        }
+        /// <summary>
+        /// Test the property 'IsDuplicate'
+        /// </summary>
+        [Fact]
+        public void IsDuplicateTest()
+        {
+            // TODO unit test for the property 'IsDuplicate'
         }
 
     }

@@ -66,12 +66,16 @@ namespace Merge.HRISClient.Test.Api
             //string cursor = null;
             //string endDate = null;
             //string endUserOrganizationName = null;
+            //DateTime? firstIncidentTimeAfter = null;
+            //DateTime? firstIncidentTimeBefore = null;
             //string includeMuted = null;
             //string integrationName = null;
+            //DateTime? lastIncidentTimeAfter = null;
+            //DateTime? lastIncidentTimeBefore = null;
             //int? pageSize = null;
             //string startDate = null;
             //string status = null;
-            //var response = instance.IssuesList(accountToken, cursor, endDate, endUserOrganizationName, includeMuted, integrationName, pageSize, startDate, status);
+            //var response = instance.IssuesList(accountToken, cursor, endDate, endUserOrganizationName, firstIncidentTimeAfter, firstIncidentTimeBefore, includeMuted, integrationName, lastIncidentTimeAfter, lastIncidentTimeBefore, pageSize, startDate, status);
             //Assert.IsType<PaginatedIssueList>(response);
         }
 

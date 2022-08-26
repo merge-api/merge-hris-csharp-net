@@ -73,6 +73,14 @@ namespace Merge.HRISClient.Test.Model
         {
             // TODO unit test for the property 'IntegrationName'
         }
+        /// <summary>
+        /// Test the property 'MagicLinkUrl'
+        /// </summary>
+        [Fact]
+        public void MagicLinkUrlTest()
+        {
+            // TODO unit test for the property 'MagicLinkUrl'
+        }
 
     }
 

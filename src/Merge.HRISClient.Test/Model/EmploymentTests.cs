@@ -122,6 +122,14 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'PayCurrency'
         }
         /// <summary>
+        /// Test the property 'PayGroup'
+        /// </summary>
+        [Fact]
+        public void PayGroupTest()
+        {
+            // TODO unit test for the property 'PayGroup'
+        }
+        /// <summary>
         /// Test the property 'FlsaStatus'
         /// </summary>
         [Fact]
@@ -152,6 +160,14 @@ namespace Merge.HRISClient.Test.Model
         public void RemoteDataTest()
         {
             // TODO unit test for the property 'RemoteData'
+        }
+        /// <summary>
+        /// Test the property 'RemoteWasDeleted'
+        /// </summary>
+        [Fact]
+        public void RemoteWasDeletedTest()
+        {
+            // TODO unit test for the property 'RemoteWasDeleted'
         }
 
     }

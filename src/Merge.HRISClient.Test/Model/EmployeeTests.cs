@@ -114,6 +114,22 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'DisplayFullName'
         }
         /// <summary>
+        /// Test the property 'Username'
+        /// </summary>
+        [Fact]
+        public void UsernameTest()
+        {
+            // TODO unit test for the property 'Username'
+        }
+        /// <summary>
+        /// Test the property 'Groups'
+        /// </summary>
+        [Fact]
+        public void GroupsTest()
+        {
+            // TODO unit test for the property 'Groups'
+        }
+        /// <summary>
         /// Test the property 'WorkEmail'
         /// </summary>
         [Fact]
@@ -242,6 +258,14 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'StartDate'
         }
         /// <summary>
+        /// Test the property 'RemoteCreatedAt'
+        /// </summary>
+        [Fact]
+        public void RemoteCreatedAtTest()
+        {
+            // TODO unit test for the property 'RemoteCreatedAt'
+        }
+        /// <summary>
         /// Test the property 'EmploymentStatus'
         /// </summary>
         [Fact]
@@ -280,6 +304,14 @@ namespace Merge.HRISClient.Test.Model
         public void CustomFieldsTest()
         {
             // TODO unit test for the property 'CustomFields'
+        }
+        /// <summary>
+        /// Test the property 'RemoteWasDeleted'
+        /// </summary>
+        [Fact]
+        public void RemoteWasDeletedTest()
+        {
+            // TODO unit test for the property 'RemoteWasDeleted'
         }
 
     }

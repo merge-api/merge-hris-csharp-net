@@ -138,12 +138,28 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'Country'
         }
         /// <summary>
+        /// Test the property 'LocationType'
+        /// </summary>
+        [Fact]
+        public void LocationTypeTest()
+        {
+            // TODO unit test for the property 'LocationType'
+        }
+        /// <summary>
         /// Test the property 'RemoteData'
         /// </summary>
         [Fact]
         public void RemoteDataTest()
         {
             // TODO unit test for the property 'RemoteData'
+        }
+        /// <summary>
+        /// Test the property 'RemoteWasDeleted'
+        /// </summary>
+        [Fact]
+        public void RemoteWasDeletedTest()
+        {
+            // TODO unit test for the property 'RemoteWasDeleted'
         }
 
     }

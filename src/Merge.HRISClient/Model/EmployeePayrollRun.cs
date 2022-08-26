@@ -36,8 +36,8 @@ namespace Merge.HRISClient.Model
         /// Initializes a new instance of the <see cref="EmployeePayrollRun" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">The employee whose payroll is being run..</param>
-        /// <param name="payrollRun">The payroll being run..</param>
+        /// <param name="employee">employee.</param>
+        /// <param name="payrollRun">payrollRun.</param>
         /// <param name="grossPay">The gross pay from the run..</param>
         /// <param name="netPay">The net pay from the run..</param>
         /// <param name="startDate">The day and time the payroll run started..</param>
@@ -78,16 +78,14 @@ namespace Merge.HRISClient.Model
         public string RemoteId { get; set; }
 
         /// <summary>
-        /// The employee whose payroll is being run.
+        /// Gets or Sets Employee
         /// </summary>
-        /// <value>The employee whose payroll is being run.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
         /// <summary>
-        /// The payroll being run.
+        /// Gets or Sets PayrollRun
         /// </summary>
-        /// <value>The payroll being run.</value>
         [DataMember(Name = "payroll_run", EmitDefaultValue = true)]
         public Guid? PayrollRun { get; set; }
 
@@ -187,6 +185,22 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
+        /// Indicates whether or not this object has been deleted by third party webhooks.
+        /// </summary>
+        /// <value>Indicates whether or not this object has been deleted by third party webhooks.</value>
+        [DataMember(Name = "remote_was_deleted", EmitDefaultValue = true)]
+        public bool RemoteWasDeleted { get; private set; }
+
+        /// <summary>
+        /// Returns false as RemoteWasDeleted should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRemoteWasDeleted()
+        {
+            return false;
+        }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -207,6 +221,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  Deductions: ").Append(Deductions).Append("\n");
             sb.Append("  Taxes: ").Append(Taxes).Append("\n");
             sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
+            sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -309,6 +324,10 @@ namespace Merge.HRISClient.Model
                     this.RemoteData != null &&
                     input.RemoteData != null &&
                     this.RemoteData.SequenceEqual(input.RemoteData)
+                ) && 
+                (
+                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
+                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
                 );
         }
 
@@ -347,6 +366,7 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Taxes.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }

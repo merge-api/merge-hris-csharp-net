@@ -41,7 +41,7 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return employee payroll runs for this employee. (optional)</param>
         /// <param name="endedAfter">If provided, will only return employee payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return employee payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -67,7 +67,7 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return employee payroll runs for this employee. (optional)</param>
         /// <param name="endedAfter">If provided, will only return employee payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return employee payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -126,7 +126,7 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return employee payroll runs for this employee. (optional)</param>
         /// <param name="endedAfter">If provided, will only return employee payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return employee payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -153,7 +153,7 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return employee payroll runs for this employee. (optional)</param>
         /// <param name="endedAfter">If provided, will only return employee payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return employee payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -323,7 +323,7 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return employee payroll runs for this employee. (optional)</param>
         /// <param name="endedAfter">If provided, will only return employee payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return employee payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -350,7 +350,7 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return employee payroll runs for this employee. (optional)</param>
         /// <param name="endedAfter">If provided, will only return employee payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return employee payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -473,7 +473,7 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return employee payroll runs for this employee. (optional)</param>
         /// <param name="endedAfter">If provided, will only return employee payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return employee payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
@@ -501,7 +501,7 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return employee payroll runs for this employee. (optional)</param>
         /// <param name="endedAfter">If provided, will only return employee payroll runs ended after this datetime. (optional)</param>
         /// <param name="endedBefore">If provided, will only return employee payroll runs ended before this datetime. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>

@@ -64,7 +64,7 @@ namespace Merge.HRISClient.Test.Api
             // TODO uncomment below to test the method and replace null with proper value
             //string xAccountToken = null;
             //var response = instance.SyncStatusResyncCreate(xAccountToken);
-            //Assert.IsType<SyncStatus>(response);
+            //Assert.IsType<List<SyncStatus>>(response);
         }
     }
 }

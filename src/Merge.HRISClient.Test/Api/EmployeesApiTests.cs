@@ -56,6 +56,35 @@ namespace Merge.HRISClient.Test.Api
         }
 
         /// <summary>
+        /// Test EmployeesCreate
+        /// </summary>
+        [Fact]
+        public void EmployeesCreateTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string xAccountToken = null;
+            //EmployeeEndpointRequest employeeEndpointRequest = null;
+            //bool? isDebugMode = null;
+            //bool? runAsync = null;
+            //var response = instance.EmployeesCreate(xAccountToken, employeeEndpointRequest, isDebugMode, runAsync);
+            //Assert.IsType<EmployeeResponse>(response);
+        }
+
+        /// <summary>
+        /// Test EmployeesIgnoreCreate
+        /// </summary>
+        [Fact]
+        public void EmployeesIgnoreCreateTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string xAccountToken = null;
+            //Guid modelId = null;
+            //IgnoreCommonModelRequest ignoreCommonModelRequest = null;
+            //var response = instance.EmployeesIgnoreCreate(xAccountToken, modelId, ignoreCommonModelRequest);
+            //Assert.IsType<IgnoreCommonModel>(response);
+        }
+
+        /// <summary>
         /// Test EmployeesList
         /// </summary>
         [Fact]
@@ -67,21 +96,38 @@ namespace Merge.HRISClient.Test.Api
             //DateTime? createdAfter = null;
             //DateTime? createdBefore = null;
             //string cursor = null;
+            //string displayFullName = null;
+            //string employmentStatus = null;
+            //string firstName = null;
             //bool? includeDeletedData = null;
             //bool? includeRemoteData = null;
             //bool? includeSensitiveFields = null;
+            //string lastName = null;
             //string managerId = null;
             //DateTime? modifiedAfter = null;
             //DateTime? modifiedBefore = null;
             //int? pageSize = null;
             //string payGroupId = null;
             //string personalEmail = null;
+            //string remoteFields = null;
             //string remoteId = null;
             //string teamId = null;
             //string workEmail = null;
             //string workLocationId = null;
-            //var response = instance.EmployeesList(xAccountToken, companyId, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, includeSensitiveFields, managerId, modifiedAfter, modifiedBefore, pageSize, payGroupId, personalEmail, remoteId, teamId, workEmail, workLocationId);
+            //var response = instance.EmployeesList(xAccountToken, companyId, createdAfter, createdBefore, cursor, displayFullName, employmentStatus, firstName, includeDeletedData, includeRemoteData, includeSensitiveFields, lastName, managerId, modifiedAfter, modifiedBefore, pageSize, payGroupId, personalEmail, remoteFields, remoteId, teamId, workEmail, workLocationId);
             //Assert.IsType<PaginatedEmployeeList>(response);
+        }
+
+        /// <summary>
+        /// Test EmployeesMetaPostRetrieve
+        /// </summary>
+        [Fact]
+        public void EmployeesMetaPostRetrieveTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string xAccountToken = null;
+            //var response = instance.EmployeesMetaPostRetrieve(xAccountToken);
+            //Assert.IsType<MetaResponse>(response);
         }
 
         /// <summary>
@@ -95,7 +141,8 @@ namespace Merge.HRISClient.Test.Api
             //Guid id = null;
             //bool? includeRemoteData = null;
             //bool? includeSensitiveFields = null;
-            //var response = instance.EmployeesRetrieve(xAccountToken, id, includeRemoteData, includeSensitiveFields);
+            //string remoteFields = null;
+            //var response = instance.EmployeesRetrieve(xAccountToken, id, includeRemoteData, includeSensitiveFields, remoteFields);
             //Assert.IsType<Employee>(response);
         }
     }

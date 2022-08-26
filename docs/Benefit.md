@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Guid** |  | [optional] [readonly] 
 **RemoteId** | **string** | The third-party API ID of the matching object. | [optional] 
-**Employee** | **Guid?** | The employee on the plan. | [optional] 
+**Employee** | **Guid?** |  | [optional] 
 **ProviderName** | **string** | The name of the benefit provider. | [optional] 
-**BenefitPlanType** | **string** |  | [optional] [readonly] 
+**BenefitPlanType** | **string** | The type of benefit plan | [optional] 
 **EmployeeContribution** | **float?** | The employee&#39;s contribution. | [optional] 
 **CompanyContribution** | **float?** | The company&#39;s contribution. | [optional] 
 **RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 
+**RemoteWasDeleted** | **bool** | Indicates whether or not this object has been deleted by third party webhooks. | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

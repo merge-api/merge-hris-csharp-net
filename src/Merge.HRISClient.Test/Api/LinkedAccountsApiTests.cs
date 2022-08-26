@@ -70,11 +70,12 @@ namespace Merge.HRISClient.Test.Api
             //string endUserOriginIds = null;
             //Guid? id = null;
             //string ids = null;
+            //bool? includeDuplicates = null;
             //string integrationName = null;
             //string isTestAccount = null;
             //int? pageSize = null;
             //string status = null;
-            //var response = instance.LinkedAccountsList(category, cursor, endUserEmailAddress, endUserOrganizationName, endUserOriginId, endUserOriginIds, id, ids, integrationName, isTestAccount, pageSize, status);
+            //var response = instance.LinkedAccountsList(category, cursor, endUserEmailAddress, endUserOrganizationName, endUserOriginId, endUserOriginIds, id, ids, includeDuplicates, integrationName, isTestAccount, pageSize, status);
             //Assert.IsType<PaginatedAccountDetailsAndActionsList>(response);
         }
     }

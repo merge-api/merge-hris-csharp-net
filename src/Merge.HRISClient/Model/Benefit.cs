@@ -36,15 +36,17 @@ namespace Merge.HRISClient.Model
         /// Initializes a new instance of the <see cref="Benefit" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">The employee on the plan..</param>
+        /// <param name="employee">employee.</param>
         /// <param name="providerName">The name of the benefit provider..</param>
+        /// <param name="benefitPlanType">The type of benefit plan.</param>
         /// <param name="employeeContribution">The employee&#39;s contribution..</param>
         /// <param name="companyContribution">The company&#39;s contribution..</param>
-        public Benefit(string remoteId = default(string), Guid? employee = default(Guid?), string providerName = default(string), float? employeeContribution = default(float?), float? companyContribution = default(float?))
+        public Benefit(string remoteId = default(string), Guid? employee = default(Guid?), string providerName = default(string), string benefitPlanType = default(string), float? employeeContribution = default(float?), float? companyContribution = default(float?))
         {
             this.RemoteId = remoteId;
             this.Employee = employee;
             this.ProviderName = providerName;
+            this.BenefitPlanType = benefitPlanType;
             this.EmployeeContribution = employeeContribution;
             this.CompanyContribution = companyContribution;
         }
@@ -72,9 +74,8 @@ namespace Merge.HRISClient.Model
         public string RemoteId { get; set; }
 
         /// <summary>
-        /// The employee on the plan.
+        /// Gets or Sets Employee
         /// </summary>
-        /// <value>The employee on the plan.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
@@ -86,19 +87,11 @@ namespace Merge.HRISClient.Model
         public string ProviderName { get; set; }
 
         /// <summary>
-        /// Gets or Sets BenefitPlanType
+        /// The type of benefit plan
         /// </summary>
-        [DataMember(Name = "benefit_plan_type", EmitDefaultValue = false)]
-        public string BenefitPlanType { get; private set; }
-
-        /// <summary>
-        /// Returns false as BenefitPlanType should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeBenefitPlanType()
-        {
-            return false;
-        }
+        /// <value>The type of benefit plan</value>
+        [DataMember(Name = "benefit_plan_type", EmitDefaultValue = true)]
+        public string BenefitPlanType { get; set; }
 
         /// <summary>
         /// The employee&#39;s contribution.
@@ -130,6 +123,22 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
+        /// Indicates whether or not this object has been deleted by third party webhooks.
+        /// </summary>
+        /// <value>Indicates whether or not this object has been deleted by third party webhooks.</value>
+        [DataMember(Name = "remote_was_deleted", EmitDefaultValue = true)]
+        public bool RemoteWasDeleted { get; private set; }
+
+        /// <summary>
+        /// Returns false as RemoteWasDeleted should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRemoteWasDeleted()
+        {
+            return false;
+        }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -145,6 +154,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  EmployeeContribution: ").Append(EmployeeContribution).Append("\n");
             sb.Append("  CompanyContribution: ").Append(CompanyContribution).Append("\n");
             sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
+            sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -219,6 +229,10 @@ namespace Merge.HRISClient.Model
                     this.RemoteData != null &&
                     input.RemoteData != null &&
                     this.RemoteData.SequenceEqual(input.RemoteData)
+                ) && 
+                (
+                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
+                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
                 );
         }
 
@@ -247,6 +261,7 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.CompanyContribution.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }

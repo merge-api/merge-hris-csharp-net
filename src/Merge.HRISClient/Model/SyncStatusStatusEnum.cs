@@ -54,7 +54,13 @@ namespace Merge.HRISClient.Model
         /// Enum DISABLED for value: DISABLED
         /// </summary>
         [EnumMember(Value = "DISABLED")]
-        DISABLED = 4
+        DISABLED = 4,
+
+        /// <summary>
+        /// Enum PAUSED for value: PAUSED
+        /// </summary>
+        [EnumMember(Value = "PAUSED")]
+        PAUSED = 5
 
     }
 

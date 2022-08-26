@@ -35,18 +35,18 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Deduction" /> class.
         /// </summary>
-        /// <param name="employeePayrollRun">The deduction&#39;s employee payroll run..</param>
+        /// <param name="employeePayrollRun">employeePayrollRun.</param>
         /// <param name="name">The deduction&#39;s name..</param>
         /// <param name="employeeDeduction">The amount the employee is deducting..</param>
         /// <param name="companyDeduction">The amount the company is deducting..</param>
-        /// <param name="remoteData">remoteData.</param>
-        public Deduction(Guid? employeePayrollRun = default(Guid?), string name = default(string), float? employeeDeduction = default(float?), float? companyDeduction = default(float?), List<Dictionary<string, Object>> remoteData = default(List<Dictionary<string, Object>>))
+        /// <param name="remoteWasDeleted">Indicates whether or not this object has been deleted by third party webhooks..</param>
+        public Deduction(Guid? employeePayrollRun = default(Guid?), string name = default(string), float? employeeDeduction = default(float?), float? companyDeduction = default(float?), bool remoteWasDeleted = default(bool))
         {
             this.EmployeePayrollRun = employeePayrollRun;
             this.Name = name;
             this.EmployeeDeduction = employeeDeduction;
             this.CompanyDeduction = companyDeduction;
-            this.RemoteData = remoteData;
+            this.RemoteWasDeleted = remoteWasDeleted;
         }
 
         /// <summary>
@@ -65,9 +65,8 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
-        /// The deduction&#39;s employee payroll run.
+        /// Gets or Sets EmployeePayrollRun
         /// </summary>
-        /// <value>The deduction&#39;s employee payroll run.</value>
         [DataMember(Name = "employee_payroll_run", EmitDefaultValue = true)]
         public Guid? EmployeePayrollRun { get; set; }
 
@@ -96,7 +95,23 @@ namespace Merge.HRISClient.Model
         /// Gets or Sets RemoteData
         /// </summary>
         [DataMember(Name = "remote_data", EmitDefaultValue = true)]
-        public List<Dictionary<string, Object>> RemoteData { get; set; }
+        public List<RemoteData> RemoteData { get; private set; }
+
+        /// <summary>
+        /// Returns false as RemoteData should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRemoteData()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Indicates whether or not this object has been deleted by third party webhooks.
+        /// </summary>
+        /// <value>Indicates whether or not this object has been deleted by third party webhooks.</value>
+        [DataMember(Name = "remote_was_deleted", EmitDefaultValue = true)]
+        public bool RemoteWasDeleted { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -112,6 +127,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  EmployeeDeduction: ").Append(EmployeeDeduction).Append("\n");
             sb.Append("  CompanyDeduction: ").Append(CompanyDeduction).Append("\n");
             sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
+            sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -176,6 +192,10 @@ namespace Merge.HRISClient.Model
                     this.RemoteData != null &&
                     input.RemoteData != null &&
                     this.RemoteData.SequenceEqual(input.RemoteData)
+                ) && 
+                (
+                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
+                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
                 );
         }
 
@@ -200,6 +220,7 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.CompanyDeduction.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }

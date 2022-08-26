@@ -44,8 +44,9 @@ namespace Merge.HRISClient.Model
         /// <param name="path">path (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="response">response (required).</param>
+        /// <param name="responseHeaders">responseHeaders.</param>
         /// <param name="headers">headers.</param>
-        public RemoteResponse(string method = default(string), string path = default(string), int status = default(int), Dictionary<string, Object> response = default(Dictionary<string, Object>), Dictionary<string, Object> headers = default(Dictionary<string, Object>))
+        public RemoteResponse(string method = default(string), string path = default(string), int status = default(int), Dictionary<string, Object> response = default(Dictionary<string, Object>), Dictionary<string, Object> responseHeaders = default(Dictionary<string, Object>), Dictionary<string, Object> headers = default(Dictionary<string, Object>))
         {
             // to ensure "method" is required (not null)
             this.Method = method ?? throw new ArgumentNullException("method is a required property for RemoteResponse and cannot be null");
@@ -54,6 +55,7 @@ namespace Merge.HRISClient.Model
             this.Status = status;
             // to ensure "response" is required (not null)
             this.Response = response ?? throw new ArgumentNullException("response is a required property for RemoteResponse and cannot be null");
+            this.ResponseHeaders = responseHeaders;
             this.Headers = headers;
         }
 
@@ -82,6 +84,12 @@ namespace Merge.HRISClient.Model
         public Dictionary<string, Object> Response { get; set; }
 
         /// <summary>
+        /// Gets or Sets ResponseHeaders
+        /// </summary>
+        [DataMember(Name = "response_headers", EmitDefaultValue = false)]
+        public Dictionary<string, Object> ResponseHeaders { get; set; }
+
+        /// <summary>
         /// Gets or Sets Headers
         /// </summary>
         [DataMember(Name = "headers", EmitDefaultValue = false)]
@@ -99,6 +107,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  Path: ").Append(Path).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Response: ").Append(Response).Append("\n");
+            sb.Append("  ResponseHeaders: ").Append(ResponseHeaders).Append("\n");
             sb.Append("  Headers: ").Append(Headers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -155,6 +164,12 @@ namespace Merge.HRISClient.Model
                     this.Response.SequenceEqual(input.Response)
                 ) && 
                 (
+                    this.ResponseHeaders == input.ResponseHeaders ||
+                    this.ResponseHeaders != null &&
+                    input.ResponseHeaders != null &&
+                    this.ResponseHeaders.SequenceEqual(input.ResponseHeaders)
+                ) && 
+                (
                     this.Headers == input.Headers ||
                     this.Headers != null &&
                     input.Headers != null &&
@@ -178,6 +193,8 @@ namespace Merge.HRISClient.Model
                 hashCode = hashCode * 59 + this.Status.GetHashCode();
                 if (this.Response != null)
                     hashCode = hashCode * 59 + this.Response.GetHashCode();
+                if (this.ResponseHeaders != null)
+                    hashCode = hashCode * 59 + this.ResponseHeaders.GetHashCode();
                 if (this.Headers != null)
                     hashCode = hashCode * 59 + this.Headers.GetHashCode();
                 return hashCode;

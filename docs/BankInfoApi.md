@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="bankinfolist"></a>
 # **BankInfoList**
-> PaginatedBankInfoList BankInfoList (string xAccountToken, string accountType = null, string bankName = null, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, Guid? employee = null, string employeeId = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, string orderBy = null, int? pageSize = null, DateTime? remoteCreatedAt = null, string remoteId = null)
+> PaginatedBankInfoList BankInfoList (string xAccountToken, string accountType = null, string bankName = null, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, string employeeId = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, string orderBy = null, int? pageSize = null, string remoteFields = null, string remoteId = null)
 
 
 
@@ -39,25 +39,24 @@ namespace Example
 
             var apiInstance = new BankInfoApi(config);
             var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
-            var accountType = accountType_example;  // string | The bank account type (optional) 
-            var bankName = bankName_example;  // string |  (optional) 
+            var accountType = accountType_example;  // string | If provided, will only return BankInfo's with this account type. Options: ('SAVINGS', 'CHECKING') (optional) 
+            var bankName = bankName_example;  // string | If provided, will only return BankInfo's with this bank name. (optional) 
             var createdAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created after this datetime. (optional) 
             var createdBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects created before this datetime. (optional) 
             var cursor = cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw;  // string | The pagination cursor value. (optional) 
-            var employee = new Guid?(); // Guid? | If provided, will only return bank accounts for this employee. (optional) 
             var employeeId = employeeId_example;  // string | If provided, will only return bank accounts for this employee. (optional) 
-            var includeDeletedData = true;  // bool? | Whether to include data that was deleted in the third-party service. (optional) 
+            var includeDeletedData = true;  // bool? | Whether to include data that was marked as deleted by third party webhooks. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
             var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified after this datetime. (optional) 
             var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified before this datetime. (optional) 
             var orderBy = orderBy_example;  // string | Overrides the default ordering for this endpoint. (optional) 
             var pageSize = 56;  // int? | Number of results to return per page. (optional) 
-            var remoteCreatedAt = 2013-10-20T19:20:30+01:00;  // DateTime? |  (optional) 
+            var remoteFields = account_type;  // string | Which fields should be returned in non-normalized form. (optional) 
             var remoteId = remoteId_example;  // string | The API provider's ID for the given object. (optional) 
 
             try
             {
-                PaginatedBankInfoList result = apiInstance.BankInfoList(xAccountToken, accountType, bankName, createdAfter, createdBefore, cursor, employee, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteCreatedAt, remoteId);
+                PaginatedBankInfoList result = apiInstance.BankInfoList(xAccountToken, accountType, bankName, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteFields, remoteId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -76,20 +75,19 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **xAccountToken** | **string**| Token identifying the end user. | 
- **accountType** | **string**| The bank account type | [optional] 
- **bankName** | **string**|  | [optional] 
+ **accountType** | **string**| If provided, will only return BankInfo&#39;s with this account type. Options: (&#39;SAVINGS&#39;, &#39;CHECKING&#39;) | [optional] 
+ **bankName** | **string**| If provided, will only return BankInfo&#39;s with this bank name. | [optional] 
  **createdAfter** | **DateTime?**| If provided, will only return objects created after this datetime. | [optional] 
  **createdBefore** | **DateTime?**| If provided, will only return objects created before this datetime. | [optional] 
  **cursor** | **string**| The pagination cursor value. | [optional] 
- **employee** | [**Guid?**](Guid?.md)| If provided, will only return bank accounts for this employee. | [optional] 
  **employeeId** | **string**| If provided, will only return bank accounts for this employee. | [optional] 
- **includeDeletedData** | **bool?**| Whether to include data that was deleted in the third-party service. | [optional] 
+ **includeDeletedData** | **bool?**| Whether to include data that was marked as deleted by third party webhooks. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
  **modifiedAfter** | **DateTime?**| If provided, will only return objects modified after this datetime. | [optional] 
  **modifiedBefore** | **DateTime?**| If provided, will only return objects modified before this datetime. | [optional] 
  **orderBy** | **string**| Overrides the default ordering for this endpoint. | [optional] 
  **pageSize** | **int?**| Number of results to return per page. | [optional] 
- **remoteCreatedAt** | **DateTime?**|  | [optional] 
+ **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
  **remoteId** | **string**| The API provider&#39;s ID for the given object. | [optional] 
 
 ### Return type
@@ -115,7 +113,7 @@ Name | Type | Description  | Notes
 
 <a name="bankinforetrieve"></a>
 # **BankInfoRetrieve**
-> BankInfo BankInfoRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null)
+> BankInfo BankInfoRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null, string remoteFields = null)
 
 
 
@@ -146,10 +144,11 @@ namespace Example
             var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
             var id = new Guid(); // Guid | 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
+            var remoteFields = account_type;  // string | Which fields should be returned in non-normalized form. (optional) 
 
             try
             {
-                BankInfo result = apiInstance.BankInfoRetrieve(xAccountToken, id, includeRemoteData);
+                BankInfo result = apiInstance.BankInfoRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -170,6 +169,7 @@ Name | Type | Description  | Notes
  **xAccountToken** | **string**| Token identifying the end user. | 
  **id** | [**Guid**](Guid.md)|  | 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
+ **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
 
 ### Return type
 

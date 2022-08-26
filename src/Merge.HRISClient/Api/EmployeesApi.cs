@@ -31,6 +31,58 @@ namespace Merge.HRISClient.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// Creates an &#x60;Employee&#x60; object with the given values.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <returns>EmployeeResponse</returns>
+        EmployeeResponse EmployeesCreate(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates an &#x60;Employee&#x60; object with the given values.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <returns>ApiResponse of EmployeeResponse</returns>
+        ApiResponse<EmployeeResponse> EmployeesCreateWithHttpInfo(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <returns>IgnoreCommonModel</returns>
+        IgnoreCommonModel EmployeesIgnoreCreate(string xAccountToken, Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <returns>ApiResponse of IgnoreCommonModel</returns>
+        ApiResponse<IgnoreCommonModel> EmployeesIgnoreCreateWithHttpInfo(string xAccountToken, Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Returns a list of &#x60;Employee&#x60; objects.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -39,21 +91,26 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="displayFullName">If provided, will only return employees with this display name. (optional)</param>
+        /// <param name="employmentStatus">If provided, will only return employees with this employment status. (optional)</param>
+        /// <param name="firstName">If provided, will only return employees with this first name. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="lastName">If provided, will only return employees with this last name. (optional)</param>
         /// <param name="managerId">If provided, will only return employees for this manager. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="payGroupId">If provided, will only return employees for this pay group (optional)</param>
         /// <param name="personalEmail">If provided, will only return Employees with this personal email (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="teamId">If provided, will only return employees for this team. (optional)</param>
         /// <param name="workEmail">If provided, will only return Employees with this work email (optional)</param>
         /// <param name="workLocationId">If provided, will only return employees for this location. (optional)</param>
         /// <returns>PaginatedEmployeeList</returns>
-        PaginatedEmployeeList EmployeesList(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string));
+        PaginatedEmployeeList EmployeesList(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string displayFullName = default(string), string employmentStatus = default(string), string firstName = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string lastName = default(string), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteFields = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string));
 
         /// <summary>
         /// 
@@ -67,21 +124,47 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="displayFullName">If provided, will only return employees with this display name. (optional)</param>
+        /// <param name="employmentStatus">If provided, will only return employees with this employment status. (optional)</param>
+        /// <param name="firstName">If provided, will only return employees with this first name. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="lastName">If provided, will only return employees with this last name. (optional)</param>
         /// <param name="managerId">If provided, will only return employees for this manager. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="payGroupId">If provided, will only return employees for this pay group (optional)</param>
         /// <param name="personalEmail">If provided, will only return Employees with this personal email (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="teamId">If provided, will only return employees for this team. (optional)</param>
         /// <param name="workEmail">If provided, will only return Employees with this work email (optional)</param>
         /// <param name="workLocationId">If provided, will only return employees for this location. (optional)</param>
         /// <returns>ApiResponse of PaginatedEmployeeList</returns>
-        ApiResponse<PaginatedEmployeeList> EmployeesListWithHttpInfo(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string));
+        ApiResponse<PaginatedEmployeeList> EmployeesListWithHttpInfo(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string displayFullName = default(string), string employmentStatus = default(string), string firstName = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string lastName = default(string), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteFields = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns metadata for &#x60;Employee&#x60; POSTs.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <returns>MetaResponse</returns>
+        MetaResponse EmployeesMetaPostRetrieve(string xAccountToken);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns metadata for &#x60;Employee&#x60; POSTs.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <returns>ApiResponse of MetaResponse</returns>
+        ApiResponse<MetaResponse> EmployeesMetaPostRetrieveWithHttpInfo(string xAccountToken);
         /// <summary>
         /// 
         /// </summary>
@@ -93,8 +176,9 @@ namespace Merge.HRISClient.Api
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>Employee</returns>
-        Employee EmployeesRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?));
+        Employee EmployeesRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string remoteFields = default(string));
 
         /// <summary>
         /// 
@@ -107,8 +191,9 @@ namespace Merge.HRISClient.Api
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>ApiResponse of Employee</returns>
-        ApiResponse<Employee> EmployeesRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?));
+        ApiResponse<Employee> EmployeesRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string remoteFields = default(string));
         #endregion Synchronous Operations
     }
 
@@ -122,6 +207,62 @@ namespace Merge.HRISClient.Api
         /// 
         /// </summary>
         /// <remarks>
+        /// Creates an &#x60;Employee&#x60; object with the given values.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EmployeeResponse</returns>
+        System.Threading.Tasks.Task<EmployeeResponse> EmployeesCreateAsync(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Creates an &#x60;Employee&#x60; object with the given values.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EmployeeResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EmployeeResponse>> EmployeesCreateWithHttpInfoAsync(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of IgnoreCommonModel</returns>
+        System.Threading.Tasks.Task<IgnoreCommonModel> EmployeesIgnoreCreateAsync(string xAccountToken, Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (IgnoreCommonModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<IgnoreCommonModel>> EmployeesIgnoreCreateWithHttpInfoAsync(string xAccountToken, Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
         /// Returns a list of &#x60;Employee&#x60; objects.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -130,22 +271,27 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="displayFullName">If provided, will only return employees with this display name. (optional)</param>
+        /// <param name="employmentStatus">If provided, will only return employees with this employment status. (optional)</param>
+        /// <param name="firstName">If provided, will only return employees with this first name. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="lastName">If provided, will only return employees with this last name. (optional)</param>
         /// <param name="managerId">If provided, will only return employees for this manager. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="payGroupId">If provided, will only return employees for this pay group (optional)</param>
         /// <param name="personalEmail">If provided, will only return Employees with this personal email (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="teamId">If provided, will only return employees for this team. (optional)</param>
         /// <param name="workEmail">If provided, will only return Employees with this work email (optional)</param>
         /// <param name="workLocationId">If provided, will only return employees for this location. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedEmployeeList</returns>
-        System.Threading.Tasks.Task<PaginatedEmployeeList> EmployeesListAsync(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PaginatedEmployeeList> EmployeesListAsync(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string displayFullName = default(string), string employmentStatus = default(string), string firstName = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string lastName = default(string), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteFields = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -159,22 +305,50 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="displayFullName">If provided, will only return employees with this display name. (optional)</param>
+        /// <param name="employmentStatus">If provided, will only return employees with this employment status. (optional)</param>
+        /// <param name="firstName">If provided, will only return employees with this first name. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="lastName">If provided, will only return employees with this last name. (optional)</param>
         /// <param name="managerId">If provided, will only return employees for this manager. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="payGroupId">If provided, will only return employees for this pay group (optional)</param>
         /// <param name="personalEmail">If provided, will only return Employees with this personal email (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="teamId">If provided, will only return employees for this team. (optional)</param>
         /// <param name="workEmail">If provided, will only return Employees with this work email (optional)</param>
         /// <param name="workLocationId">If provided, will only return employees for this location. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedEmployeeList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaginatedEmployeeList>> EmployeesListWithHttpInfoAsync(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PaginatedEmployeeList>> EmployeesListWithHttpInfoAsync(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string displayFullName = default(string), string employmentStatus = default(string), string firstName = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string lastName = default(string), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteFields = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns metadata for &#x60;Employee&#x60; POSTs.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of MetaResponse</returns>
+        System.Threading.Tasks.Task<MetaResponse> EmployeesMetaPostRetrieveAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <remarks>
+        /// Returns metadata for &#x60;Employee&#x60; POSTs.
+        /// </remarks>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (MetaResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MetaResponse>> EmployeesMetaPostRetrieveWithHttpInfoAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -186,9 +360,10 @@ namespace Merge.HRISClient.Api
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Employee</returns>
-        System.Threading.Tasks.Task<Employee> EmployeesRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Employee> EmployeesRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -201,9 +376,10 @@ namespace Merge.HRISClient.Api
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Employee)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Employee>> EmployeesRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Employee>> EmployeesRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -325,6 +501,326 @@ namespace Merge.HRISClient.Api
         }
 
         /// <summary>
+        ///  Creates an &#x60;Employee&#x60; object with the given values.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <returns>EmployeeResponse</returns>
+        public EmployeeResponse EmployeesCreate(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?))
+        {
+            Merge.HRISClient.Client.ApiResponse<EmployeeResponse> localVarResponse = EmployeesCreateWithHttpInfo(xAccountToken, employeeEndpointRequest, isDebugMode, runAsync);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Creates an &#x60;Employee&#x60; object with the given values.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <returns>ApiResponse of EmployeeResponse</returns>
+        public Merge.HRISClient.Client.ApiResponse<EmployeeResponse> EmployeesCreateWithHttpInfo(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?))
+        {
+            // verify the required parameter 'xAccountToken' is set
+            if (xAccountToken == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling EmployeesApi->EmployeesCreate");
+
+            // verify the required parameter 'employeeEndpointRequest' is set
+            if (employeeEndpointRequest == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'employeeEndpointRequest' when calling EmployeesApi->EmployeesCreate");
+
+            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json",
+                "application/x-www-form-urlencoded",
+                "multipart/form-data"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            if (isDebugMode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "is_debug_mode", isDebugMode));
+            }
+            if (runAsync != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "run_async", runAsync));
+            }
+            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
+            localVarRequestOptions.Data = employeeEndpointRequest;
+
+            // authentication (tokenAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<EmployeeResponse>("/employees", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EmployeesCreate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Creates an &#x60;Employee&#x60; object with the given values.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of EmployeeResponse</returns>
+        public async System.Threading.Tasks.Task<EmployeeResponse> EmployeesCreateAsync(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Merge.HRISClient.Client.ApiResponse<EmployeeResponse> localVarResponse = await EmployeesCreateWithHttpInfoAsync(xAccountToken, employeeEndpointRequest, isDebugMode, runAsync, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Creates an &#x60;Employee&#x60; object with the given values.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="employeeEndpointRequest"></param>
+        /// <param name="isDebugMode">Whether to include debug fields (such as log file links) in the response. (optional)</param>
+        /// <param name="runAsync">Whether or not third-party updates should be run asynchronously. (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (EmployeeResponse)</returns>
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<EmployeeResponse>> EmployeesCreateWithHttpInfoAsync(string xAccountToken, EmployeeEndpointRequest employeeEndpointRequest, bool? isDebugMode = default(bool?), bool? runAsync = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'xAccountToken' is set
+            if (xAccountToken == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling EmployeesApi->EmployeesCreate");
+
+            // verify the required parameter 'employeeEndpointRequest' is set
+            if (employeeEndpointRequest == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'employeeEndpointRequest' when calling EmployeesApi->EmployeesCreate");
+
+
+            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json", 
+                "application/x-www-form-urlencoded", 
+                "multipart/form-data"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            if (isDebugMode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "is_debug_mode", isDebugMode));
+            }
+            if (runAsync != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "run_async", runAsync));
+            }
+            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
+            localVarRequestOptions.Data = employeeEndpointRequest;
+
+            // authentication (tokenAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<EmployeeResponse>("/employees", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EmployeesCreate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <returns>IgnoreCommonModel</returns>
+        public IgnoreCommonModel EmployeesIgnoreCreate(string xAccountToken, Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest)
+        {
+            Merge.HRISClient.Client.ApiResponse<IgnoreCommonModel> localVarResponse = EmployeesIgnoreCreateWithHttpInfo(xAccountToken, modelId, ignoreCommonModelRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <returns>ApiResponse of IgnoreCommonModel</returns>
+        public Merge.HRISClient.Client.ApiResponse<IgnoreCommonModel> EmployeesIgnoreCreateWithHttpInfo(string xAccountToken, Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest)
+        {
+            // verify the required parameter 'xAccountToken' is set
+            if (xAccountToken == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling EmployeesApi->EmployeesIgnoreCreate");
+
+            // verify the required parameter 'ignoreCommonModelRequest' is set
+            if (ignoreCommonModelRequest == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'ignoreCommonModelRequest' when calling EmployeesApi->EmployeesIgnoreCreate");
+
+            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json",
+                "application/x-www-form-urlencoded",
+                "multipart/form-data"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("model_id", Merge.HRISClient.Client.ClientUtils.ParameterToString(modelId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
+            localVarRequestOptions.Data = ignoreCommonModelRequest;
+
+            // authentication (tokenAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<IgnoreCommonModel>("/employees/ignore/{model_id}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EmployeesIgnoreCreate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of IgnoreCommonModel</returns>
+        public async System.Threading.Tasks.Task<IgnoreCommonModel> EmployeesIgnoreCreateAsync(string xAccountToken, Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Merge.HRISClient.Client.ApiResponse<IgnoreCommonModel> localVarResponse = await EmployeesIgnoreCreateWithHttpInfoAsync(xAccountToken, modelId, ignoreCommonModelRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Ignores a specific row based on the &#x60;model_id&#x60; in the url. These records will have their properties set to null, and will not be updated in future syncs. The \&quot;reason\&quot; and \&quot;message\&quot; fields in the request body will be stored for audit purposes.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="modelId"></param>
+        /// <param name="ignoreCommonModelRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (IgnoreCommonModel)</returns>
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<IgnoreCommonModel>> EmployeesIgnoreCreateWithHttpInfoAsync(string xAccountToken, Guid modelId, IgnoreCommonModelRequest ignoreCommonModelRequest, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'xAccountToken' is set
+            if (xAccountToken == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling EmployeesApi->EmployeesIgnoreCreate");
+
+            // verify the required parameter 'ignoreCommonModelRequest' is set
+            if (ignoreCommonModelRequest == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'ignoreCommonModelRequest' when calling EmployeesApi->EmployeesIgnoreCreate");
+
+
+            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+                "application/json", 
+                "application/x-www-form-urlencoded", 
+                "multipart/form-data"
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("model_id", Merge.HRISClient.Client.ClientUtils.ParameterToString(modelId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
+            localVarRequestOptions.Data = ignoreCommonModelRequest;
+
+            // authentication (tokenAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<IgnoreCommonModel>("/employees/ignore/{model_id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EmployeesIgnoreCreate", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         ///  Returns a list of &#x60;Employee&#x60; objects.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -333,23 +829,28 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="displayFullName">If provided, will only return employees with this display name. (optional)</param>
+        /// <param name="employmentStatus">If provided, will only return employees with this employment status. (optional)</param>
+        /// <param name="firstName">If provided, will only return employees with this first name. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="lastName">If provided, will only return employees with this last name. (optional)</param>
         /// <param name="managerId">If provided, will only return employees for this manager. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="payGroupId">If provided, will only return employees for this pay group (optional)</param>
         /// <param name="personalEmail">If provided, will only return Employees with this personal email (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="teamId">If provided, will only return employees for this team. (optional)</param>
         /// <param name="workEmail">If provided, will only return Employees with this work email (optional)</param>
         /// <param name="workLocationId">If provided, will only return employees for this location. (optional)</param>
         /// <returns>PaginatedEmployeeList</returns>
-        public PaginatedEmployeeList EmployeesList(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string))
+        public PaginatedEmployeeList EmployeesList(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string displayFullName = default(string), string employmentStatus = default(string), string firstName = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string lastName = default(string), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteFields = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedEmployeeList> localVarResponse = EmployeesListWithHttpInfo(xAccountToken, companyId, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, includeSensitiveFields, managerId, modifiedAfter, modifiedBefore, pageSize, payGroupId, personalEmail, remoteId, teamId, workEmail, workLocationId);
+            Merge.HRISClient.Client.ApiResponse<PaginatedEmployeeList> localVarResponse = EmployeesListWithHttpInfo(xAccountToken, companyId, createdAfter, createdBefore, cursor, displayFullName, employmentStatus, firstName, includeDeletedData, includeRemoteData, includeSensitiveFields, lastName, managerId, modifiedAfter, modifiedBefore, pageSize, payGroupId, personalEmail, remoteFields, remoteId, teamId, workEmail, workLocationId);
             return localVarResponse.Data;
         }
 
@@ -362,21 +863,26 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="displayFullName">If provided, will only return employees with this display name. (optional)</param>
+        /// <param name="employmentStatus">If provided, will only return employees with this employment status. (optional)</param>
+        /// <param name="firstName">If provided, will only return employees with this first name. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="lastName">If provided, will only return employees with this last name. (optional)</param>
         /// <param name="managerId">If provided, will only return employees for this manager. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="payGroupId">If provided, will only return employees for this pay group (optional)</param>
         /// <param name="personalEmail">If provided, will only return Employees with this personal email (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="teamId">If provided, will only return employees for this team. (optional)</param>
         /// <param name="workEmail">If provided, will only return Employees with this work email (optional)</param>
         /// <param name="workLocationId">If provided, will only return employees for this location. (optional)</param>
         /// <returns>ApiResponse of PaginatedEmployeeList</returns>
-        public Merge.HRISClient.Client.ApiResponse<PaginatedEmployeeList> EmployeesListWithHttpInfo(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string))
+        public Merge.HRISClient.Client.ApiResponse<PaginatedEmployeeList> EmployeesListWithHttpInfo(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string displayFullName = default(string), string employmentStatus = default(string), string firstName = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string lastName = default(string), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteFields = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -414,6 +920,18 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
+            if (displayFullName != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "display_full_name", displayFullName));
+            }
+            if (employmentStatus != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "employment_status", employmentStatus));
+            }
+            if (firstName != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "first_name", firstName));
+            }
             if (includeDeletedData != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_deleted_data", includeDeletedData));
@@ -425,6 +943,10 @@ namespace Merge.HRISClient.Api
             if (includeSensitiveFields != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_sensitive_fields", includeSensitiveFields));
+            }
+            if (lastName != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "last_name", lastName));
             }
             if (managerId != null)
             {
@@ -449,6 +971,10 @@ namespace Merge.HRISClient.Api
             if (personalEmail != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "personal_email", personalEmail));
+            }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             if (remoteId != null)
             {
@@ -495,24 +1021,29 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="displayFullName">If provided, will only return employees with this display name. (optional)</param>
+        /// <param name="employmentStatus">If provided, will only return employees with this employment status. (optional)</param>
+        /// <param name="firstName">If provided, will only return employees with this first name. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="lastName">If provided, will only return employees with this last name. (optional)</param>
         /// <param name="managerId">If provided, will only return employees for this manager. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="payGroupId">If provided, will only return employees for this pay group (optional)</param>
         /// <param name="personalEmail">If provided, will only return Employees with this personal email (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="teamId">If provided, will only return employees for this team. (optional)</param>
         /// <param name="workEmail">If provided, will only return Employees with this work email (optional)</param>
         /// <param name="workLocationId">If provided, will only return employees for this location. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedEmployeeList</returns>
-        public async System.Threading.Tasks.Task<PaginatedEmployeeList> EmployeesListAsync(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PaginatedEmployeeList> EmployeesListAsync(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string displayFullName = default(string), string employmentStatus = default(string), string firstName = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string lastName = default(string), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteFields = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedEmployeeList> localVarResponse = await EmployeesListWithHttpInfoAsync(xAccountToken, companyId, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, includeSensitiveFields, managerId, modifiedAfter, modifiedBefore, pageSize, payGroupId, personalEmail, remoteId, teamId, workEmail, workLocationId, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<PaginatedEmployeeList> localVarResponse = await EmployeesListWithHttpInfoAsync(xAccountToken, companyId, createdAfter, createdBefore, cursor, displayFullName, employmentStatus, firstName, includeDeletedData, includeRemoteData, includeSensitiveFields, lastName, managerId, modifiedAfter, modifiedBefore, pageSize, payGroupId, personalEmail, remoteFields, remoteId, teamId, workEmail, workLocationId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -525,22 +1056,27 @@ namespace Merge.HRISClient.Api
         /// <param name="createdAfter">If provided, will only return objects created after this datetime. (optional)</param>
         /// <param name="createdBefore">If provided, will only return objects created before this datetime. (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
-        /// <param name="includeDeletedData">Whether to include data that was deleted in the third-party service. (optional)</param>
+        /// <param name="displayFullName">If provided, will only return employees with this display name. (optional)</param>
+        /// <param name="employmentStatus">If provided, will only return employees with this employment status. (optional)</param>
+        /// <param name="firstName">If provided, will only return employees with this first name. (optional)</param>
+        /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="lastName">If provided, will only return employees with this last name. (optional)</param>
         /// <param name="managerId">If provided, will only return employees for this manager. (optional)</param>
         /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
         /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
         /// <param name="payGroupId">If provided, will only return employees for this pay group (optional)</param>
         /// <param name="personalEmail">If provided, will only return Employees with this personal email (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
         /// <param name="teamId">If provided, will only return employees for this team. (optional)</param>
         /// <param name="workEmail">If provided, will only return Employees with this work email (optional)</param>
         /// <param name="workLocationId">If provided, will only return employees for this location. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedEmployeeList)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedEmployeeList>> EmployeesListWithHttpInfoAsync(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedEmployeeList>> EmployeesListWithHttpInfoAsync(string xAccountToken, string companyId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string displayFullName = default(string), string employmentStatus = default(string), string firstName = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string lastName = default(string), string managerId = default(string), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string payGroupId = default(string), string personalEmail = default(string), string remoteFields = default(string), string remoteId = default(string), string teamId = default(string), string workEmail = default(string), string workLocationId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -580,6 +1116,18 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
+            if (displayFullName != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "display_full_name", displayFullName));
+            }
+            if (employmentStatus != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "employment_status", employmentStatus));
+            }
+            if (firstName != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "first_name", firstName));
+            }
             if (includeDeletedData != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_deleted_data", includeDeletedData));
@@ -591,6 +1139,10 @@ namespace Merge.HRISClient.Api
             if (includeSensitiveFields != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_sensitive_fields", includeSensitiveFields));
+            }
+            if (lastName != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "last_name", lastName));
             }
             if (managerId != null)
             {
@@ -615,6 +1167,10 @@ namespace Merge.HRISClient.Api
             if (personalEmail != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "personal_email", personalEmail));
+            }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             if (remoteId != null)
             {
@@ -654,6 +1210,131 @@ namespace Merge.HRISClient.Api
         }
 
         /// <summary>
+        ///  Returns metadata for &#x60;Employee&#x60; POSTs.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <returns>MetaResponse</returns>
+        public MetaResponse EmployeesMetaPostRetrieve(string xAccountToken)
+        {
+            Merge.HRISClient.Client.ApiResponse<MetaResponse> localVarResponse = EmployeesMetaPostRetrieveWithHttpInfo(xAccountToken);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Returns metadata for &#x60;Employee&#x60; POSTs.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <returns>ApiResponse of MetaResponse</returns>
+        public Merge.HRISClient.Client.ApiResponse<MetaResponse> EmployeesMetaPostRetrieveWithHttpInfo(string xAccountToken)
+        {
+            // verify the required parameter 'xAccountToken' is set
+            if (xAccountToken == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling EmployeesApi->EmployeesMetaPostRetrieve");
+
+            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
+
+            // authentication (tokenAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<MetaResponse>("/employees/meta/post", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EmployeesMetaPostRetrieve", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        ///  Returns metadata for &#x60;Employee&#x60; POSTs.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of MetaResponse</returns>
+        public async System.Threading.Tasks.Task<MetaResponse> EmployeesMetaPostRetrieveAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            Merge.HRISClient.Client.ApiResponse<MetaResponse> localVarResponse = await EmployeesMetaPostRetrieveWithHttpInfoAsync(xAccountToken, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        ///  Returns metadata for &#x60;Employee&#x60; POSTs.
+        /// </summary>
+        /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="xAccountToken">Token identifying the end user.</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (MetaResponse)</returns>
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<MetaResponse>> EmployeesMetaPostRetrieveWithHttpInfoAsync(string xAccountToken, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            // verify the required parameter 'xAccountToken' is set
+            if (xAccountToken == null)
+                throw new Merge.HRISClient.Client.ApiException(400, "Missing required parameter 'xAccountToken' when calling EmployeesApi->EmployeesMetaPostRetrieve");
+
+
+            Merge.HRISClient.Client.RequestOptions localVarRequestOptions = new Merge.HRISClient.Client.RequestOptions();
+
+            String[] _contentTypes = new String[] {
+            };
+
+            // to determine the Accept header
+            String[] _accepts = new String[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Merge.HRISClient.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Merge.HRISClient.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
+
+            // authentication (tokenAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<MetaResponse>("/employees/meta/post", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("EmployeesMetaPostRetrieve", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         ///  Returns an &#x60;Employee&#x60; object with the given &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
@@ -661,10 +1342,11 @@ namespace Merge.HRISClient.Api
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>Employee</returns>
-        public Employee EmployeesRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?))
+        public Employee EmployeesRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string remoteFields = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<Employee> localVarResponse = EmployeesRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData, includeSensitiveFields);
+            Merge.HRISClient.Client.ApiResponse<Employee> localVarResponse = EmployeesRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData, includeSensitiveFields, remoteFields);
             return localVarResponse.Data;
         }
 
@@ -676,8 +1358,9 @@ namespace Merge.HRISClient.Api
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>ApiResponse of Employee</returns>
-        public Merge.HRISClient.Client.ApiResponse<Employee> EmployeesRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?))
+        public Merge.HRISClient.Client.ApiResponse<Employee> EmployeesRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string remoteFields = default(string))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -707,6 +1390,10 @@ namespace Merge.HRISClient.Api
             if (includeSensitiveFields != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_sensitive_fields", includeSensitiveFields));
+            }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
@@ -736,11 +1423,12 @@ namespace Merge.HRISClient.Api
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Employee</returns>
-        public async System.Threading.Tasks.Task<Employee> EmployeesRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Employee> EmployeesRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<Employee> localVarResponse = await EmployeesRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, includeSensitiveFields, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<Employee> localVarResponse = await EmployeesRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, includeSensitiveFields, remoteFields, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -752,9 +1440,10 @@ namespace Merge.HRISClient.Api
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
         /// <param name="includeSensitiveFields">Whether to include sensitive fields (such as social security numbers) in the response. (optional)</param>
+        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Employee)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<Employee>> EmployeesRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<Employee>> EmployeesRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), bool? includeSensitiveFields = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -786,6 +1475,10 @@ namespace Merge.HRISClient.Api
             if (includeSensitiveFields != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "include_sensitive_fields", includeSensitiveFields));
+            }
+            if (remoteFields != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
