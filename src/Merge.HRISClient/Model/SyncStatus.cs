@@ -80,13 +80,13 @@ namespace Merge.HRISClient.Model
         /// Gets or Sets LastSyncStart
         /// </summary>
         [DataMember(Name = "last_sync_start", EmitDefaultValue = false)]
-        public DateTime LastSyncStart { get; set; }
+        public DateTime? LastSyncStart { get; set; }
 
         /// <summary>
         /// Gets or Sets NextSyncStart
         /// </summary>
         [DataMember(Name = "next_sync_start", EmitDefaultValue = false)]
-        public DateTime NextSyncStart { get; set; }
+        public DateTime? NextSyncStart { get; set; }
 
         /// <summary>
         /// Gets or Sets IsInitialSync

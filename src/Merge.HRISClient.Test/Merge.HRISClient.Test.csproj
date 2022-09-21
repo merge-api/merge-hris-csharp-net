@@ -5,7 +5,7 @@
     <RootNamespace>Merge.HRISClient.Test</RootNamespace>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <IsPackable>false</IsPackable>
-    <ReleaseVersion>2.0.1</ReleaseVersion>
+    <ReleaseVersion>2.0.2</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>
