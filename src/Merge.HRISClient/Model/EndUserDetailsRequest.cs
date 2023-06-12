@@ -40,14 +40,15 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EndUserDetailsRequest" /> class.
         /// </summary>
-        /// <param name="endUserEmailAddress">Your end user&#39;s email address. (required).</param>
+        /// <param name="endUserEmailAddress">Your end user&#39;s email address. This is purely for identification purposes - setting this value will not cause any emails to be sent. (required).</param>
         /// <param name="endUserOrganizationName">Your end user&#39;s organization. (required).</param>
-        /// <param name="endUserOriginId">Unique ID for your end user. (required).</param>
+        /// <param name="endUserOriginId">This unique identifier typically represents the ID for your end user in your product&#39;s database. This value must be distinct from other Linked Accounts&#39; unique identifiers. (required).</param>
         /// <param name="categories">The integration categories to show in Merge Link. (required).</param>
         /// <param name="integration">The slug of a specific pre-selected integration for this linking flow token. For examples of slugs, see https://www.merge.dev/docs/basics/integration-metadata/..</param>
         /// <param name="linkExpiryMins">An integer number of minutes between [30, 720 or 10080 if for a Magic Link URL] for how long this token is valid. Defaults to 30. (default to 30).</param>
         /// <param name="shouldCreateMagicLinkUrl">Whether to generate a Magic Link URL. Defaults to false. For more information on Magic Link, see https://merge.dev/blog/product/integrations,-fast.-say-hello-to-magic-link/. (default to false).</param>
-        public EndUserDetailsRequest(string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), List<CategoriesEnum> categories = default(List<CategoriesEnum>), string integration = default(string), int linkExpiryMins = 30, bool? shouldCreateMagicLinkUrl = false)
+        /// <param name="commonModels">An array of objects to specify the models and fields that will be disabled for a given Linked Account. Each object uses model_id, enabled_actions, and disabled_fields to specify the model, method, and fields that are scoped for a given Linked Account..</param>
+        public EndUserDetailsRequest(string endUserEmailAddress = default(string), string endUserOrganizationName = default(string), string endUserOriginId = default(string), List<CategoriesEnum> categories = default(List<CategoriesEnum>), string integration = default(string), int linkExpiryMins = 30, bool? shouldCreateMagicLinkUrl = false, List<CommonModelScopesBodyRequest> commonModels = default(List<CommonModelScopesBodyRequest>))
         {
             // to ensure "endUserEmailAddress" is required (not null)
             this.EndUserEmailAddress = endUserEmailAddress ?? throw new ArgumentNullException("endUserEmailAddress is a required property for EndUserDetailsRequest and cannot be null");
@@ -61,12 +62,13 @@ namespace Merge.HRISClient.Model
             this.LinkExpiryMins = linkExpiryMins;
             // use default value if no "shouldCreateMagicLinkUrl" provided
             this.ShouldCreateMagicLinkUrl = shouldCreateMagicLinkUrl ?? false;
+            this.CommonModels = commonModels;
         }
 
         /// <summary>
-        /// Your end user&#39;s email address.
+        /// Your end user&#39;s email address. This is purely for identification purposes - setting this value will not cause any emails to be sent.
         /// </summary>
-        /// <value>Your end user&#39;s email address.</value>
+        /// <value>Your end user&#39;s email address. This is purely for identification purposes - setting this value will not cause any emails to be sent.</value>
         [DataMember(Name = "end_user_email_address", IsRequired = true, EmitDefaultValue = false)]
         public string EndUserEmailAddress { get; set; }
 
@@ -78,9 +80,9 @@ namespace Merge.HRISClient.Model
         public string EndUserOrganizationName { get; set; }
 
         /// <summary>
-        /// Unique ID for your end user.
+        /// This unique identifier typically represents the ID for your end user in your product&#39;s database. This value must be distinct from other Linked Accounts&#39; unique identifiers.
         /// </summary>
-        /// <value>Unique ID for your end user.</value>
+        /// <value>This unique identifier typically represents the ID for your end user in your product&#39;s database. This value must be distinct from other Linked Accounts&#39; unique identifiers.</value>
         [DataMember(Name = "end_user_origin_id", IsRequired = true, EmitDefaultValue = false)]
         public string EndUserOriginId { get; set; }
 
@@ -113,6 +115,13 @@ namespace Merge.HRISClient.Model
         public bool? ShouldCreateMagicLinkUrl { get; set; }
 
         /// <summary>
+        /// An array of objects to specify the models and fields that will be disabled for a given Linked Account. Each object uses model_id, enabled_actions, and disabled_fields to specify the model, method, and fields that are scoped for a given Linked Account.
+        /// </summary>
+        /// <value>An array of objects to specify the models and fields that will be disabled for a given Linked Account. Each object uses model_id, enabled_actions, and disabled_fields to specify the model, method, and fields that are scoped for a given Linked Account.</value>
+        [DataMember(Name = "common_models", EmitDefaultValue = true)]
+        public List<CommonModelScopesBodyRequest> CommonModels { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -127,6 +136,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  Integration: ").Append(Integration).Append("\n");
             sb.Append("  LinkExpiryMins: ").Append(LinkExpiryMins).Append("\n");
             sb.Append("  ShouldCreateMagicLinkUrl: ").Append(ShouldCreateMagicLinkUrl).Append("\n");
+            sb.Append("  CommonModels: ").Append(CommonModels).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -195,6 +205,12 @@ namespace Merge.HRISClient.Model
                     this.ShouldCreateMagicLinkUrl == input.ShouldCreateMagicLinkUrl ||
                     (this.ShouldCreateMagicLinkUrl != null &&
                     this.ShouldCreateMagicLinkUrl.Equals(input.ShouldCreateMagicLinkUrl))
+                ) && 
+                (
+                    this.CommonModels == input.CommonModels ||
+                    this.CommonModels != null &&
+                    input.CommonModels != null &&
+                    this.CommonModels.SequenceEqual(input.CommonModels)
                 );
         }
 
@@ -220,6 +236,8 @@ namespace Merge.HRISClient.Model
                 hashCode = hashCode * 59 + this.LinkExpiryMins.GetHashCode();
                 if (this.ShouldCreateMagicLinkUrl != null)
                     hashCode = hashCode * 59 + this.ShouldCreateMagicLinkUrl.GetHashCode();
+                if (this.CommonModels != null)
+                    hashCode = hashCode * 59 + this.CommonModels.GetHashCode();
                 return hashCode;
             }
         }

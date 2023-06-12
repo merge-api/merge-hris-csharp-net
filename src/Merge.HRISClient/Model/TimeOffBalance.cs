@@ -27,27 +27,27 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// # The TimeOffBalance Object ### Description The &#x60;TimeOffBalance&#x60; object is used to represent a Time Off Balance for an employee.  ### Usage Example Fetch from the &#x60;LIST TimeOffBalances&#x60; endpoint and filter by &#x60;ID&#x60; to show all time off balances.
+    /// # The TimeOffBalance Object ### Description The &#x60;TimeOffBalance&#x60; object is used to represent current balances for an employee&#39;s Time Off plan.  ### Usage Example Fetch from the &#x60;LIST TimeOffBalances&#x60; endpoint and filter by &#x60;ID&#x60; to show all time off balances.
     /// </summary>
     [DataContract(Name = "TimeOffBalance")]
     public partial class TimeOffBalance : IEquatable<TimeOffBalance>, IValidatableObject
     {
 
         /// <summary>
-        /// The policy type of this time off balance.
+        /// The policy type of this time off balance.  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT
         /// </summary>
-        /// <value>The policy type of this time off balance.</value>
+        /// <value>The policy type of this time off balance.  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT</value>
         [DataMember(Name = "policy_type", EmitDefaultValue = true)]
-        public string PolicyType { get; set; }
+        public PolicyTypeEnum? PolicyType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeOffBalance" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">employee.</param>
-        /// <param name="balance">The current remaining PTO balance in terms of hours. This does not represent the starting PTO balance. If the API provider only provides PTO balance in terms of days, we estimate 8 hours per day..</param>
+        /// <param name="employee">The employee the balance belongs to..</param>
+        /// <param name="balance">The current remaining PTO balance, always measured in terms of hours..</param>
         /// <param name="used">The amount of PTO used in terms of hours..</param>
-        /// <param name="policyType">The policy type of this time off balance..</param>
-        public TimeOffBalance(string remoteId = default(string), Guid? employee = default(Guid?), float? balance = default(float?), float? used = default(float?), string policyType = default(string))
+        /// <param name="policyType">The policy type of this time off balance.  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT.</param>
+        public TimeOffBalance(string remoteId = default(string), Guid? employee = default(Guid?), double? balance = default(double?), double? used = default(double?), PolicyTypeEnum? policyType = default(PolicyTypeEnum?))
         {
             this.RemoteId = remoteId;
             this.Employee = employee;
@@ -79,39 +79,25 @@ namespace Merge.HRISClient.Model
         public string RemoteId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Employee
+        /// The employee the balance belongs to.
         /// </summary>
+        /// <value>The employee the balance belongs to.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
         /// <summary>
-        /// The current remaining PTO balance in terms of hours. This does not represent the starting PTO balance. If the API provider only provides PTO balance in terms of days, we estimate 8 hours per day.
+        /// The current remaining PTO balance, always measured in terms of hours.
         /// </summary>
-        /// <value>The current remaining PTO balance in terms of hours. This does not represent the starting PTO balance. If the API provider only provides PTO balance in terms of days, we estimate 8 hours per day.</value>
+        /// <value>The current remaining PTO balance, always measured in terms of hours.</value>
         [DataMember(Name = "balance", EmitDefaultValue = true)]
-        public float? Balance { get; set; }
+        public double? Balance { get; set; }
 
         /// <summary>
         /// The amount of PTO used in terms of hours.
         /// </summary>
         /// <value>The amount of PTO used in terms of hours.</value>
         [DataMember(Name = "used", EmitDefaultValue = true)]
-        public float? Used { get; set; }
-
-        /// <summary>
-        /// Gets or Sets RemoteData
-        /// </summary>
-        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
-        public List<RemoteData> RemoteData { get; private set; }
-
-        /// <summary>
-        /// Returns false as RemoteData should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRemoteData()
-        {
-            return false;
-        }
+        public double? Used { get; set; }
 
         /// <summary>
         /// Indicates whether or not this object has been deleted by third party webhooks.
@@ -130,6 +116,52 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
+        /// Gets or Sets FieldMappings
+        /// </summary>
+        [DataMember(Name = "field_mappings", EmitDefaultValue = true)]
+        public Dictionary<string, Object> FieldMappings { get; private set; }
+
+        /// <summary>
+        /// Returns false as FieldMappings should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFieldMappings()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// This is the datetime that this object was last updated by Merge
+        /// </summary>
+        /// <value>This is the datetime that this object was last updated by Merge</value>
+        [DataMember(Name = "modified_at", EmitDefaultValue = false)]
+        public DateTime ModifiedAt { get; private set; }
+
+        /// <summary>
+        /// Returns false as ModifiedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeModifiedAt()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Gets or Sets RemoteData
+        /// </summary>
+        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
+        public List<RemoteData> RemoteData { get; private set; }
+
+        /// <summary>
+        /// Returns false as RemoteData should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRemoteData()
+        {
+            return false;
+        }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -143,8 +175,10 @@ namespace Merge.HRISClient.Model
             sb.Append("  Balance: ").Append(Balance).Append("\n");
             sb.Append("  Used: ").Append(Used).Append("\n");
             sb.Append("  PolicyType: ").Append(PolicyType).Append("\n");
-            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
+            sb.Append("  FieldMappings: ").Append(FieldMappings).Append("\n");
+            sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
+            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -209,14 +243,25 @@ namespace Merge.HRISClient.Model
                     this.PolicyType.Equals(input.PolicyType)
                 ) && 
                 (
+                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
+                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
+                ) && 
+                (
+                    this.FieldMappings == input.FieldMappings ||
+                    this.FieldMappings != null &&
+                    input.FieldMappings != null &&
+                    this.FieldMappings.SequenceEqual(input.FieldMappings)
+                ) && 
+                (
+                    this.ModifiedAt == input.ModifiedAt ||
+                    (this.ModifiedAt != null &&
+                    this.ModifiedAt.Equals(input.ModifiedAt))
+                ) && 
+                (
                     this.RemoteData == input.RemoteData ||
                     this.RemoteData != null &&
                     input.RemoteData != null &&
                     this.RemoteData.SequenceEqual(input.RemoteData)
-                ) && 
-                (
-                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
-                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
                 );
         }
 
@@ -240,9 +285,13 @@ namespace Merge.HRISClient.Model
                 if (this.Used != null)
                     hashCode = hashCode * 59 + this.Used.GetHashCode();
                 hashCode = hashCode * 59 + this.PolicyType.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
+                if (this.FieldMappings != null)
+                    hashCode = hashCode * 59 + this.FieldMappings.GetHashCode();
+                if (this.ModifiedAt != null)
+                    hashCode = hashCode * 59 + this.ModifiedAt.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
-                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }

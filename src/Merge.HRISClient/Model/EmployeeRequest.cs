@@ -27,45 +27,44 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// # The Employee Object ### Description The &#x60;Employee&#x60; object is used to represent an Employee for a company.  ### Usage Example Fetch from the &#x60;LIST Employee&#x60; endpoint and filter by &#x60;ID&#x60; to show all employees.
+    /// # The Employee Object ### Description The &#x60;Employee&#x60; object is used to represent any person who has been employed by a company.  ### Usage Example Fetch from the &#x60;LIST Employee&#x60; endpoint and filter by &#x60;ID&#x60; to show all employees.
     /// </summary>
     [DataContract(Name = "EmployeeRequest")]
     public partial class EmployeeRequest : IEquatable<EmployeeRequest>, IValidatableObject
     {
 
         /// <summary>
-        /// The employee&#39;s gender.
+        /// The employee&#39;s gender.  * &#x60;MALE&#x60; - MALE * &#x60;FEMALE&#x60; - FEMALE * &#x60;NON-BINARY&#x60; - NON-BINARY * &#x60;OTHER&#x60; - OTHER * &#x60;PREFER_NOT_TO_DISCLOSE&#x60; - PREFER_NOT_TO_DISCLOSE
         /// </summary>
-        /// <value>The employee&#39;s gender.</value>
+        /// <value>The employee&#39;s gender.  * &#x60;MALE&#x60; - MALE * &#x60;FEMALE&#x60; - FEMALE * &#x60;NON-BINARY&#x60; - NON-BINARY * &#x60;OTHER&#x60; - OTHER * &#x60;PREFER_NOT_TO_DISCLOSE&#x60; - PREFER_NOT_TO_DISCLOSE</value>
         [DataMember(Name = "gender", EmitDefaultValue = true)]
         public GenderEnum? Gender { get; set; }
 
         /// <summary>
-        /// The employee&#39;s ethnicity.
+        /// The employee&#39;s ethnicity.  * &#x60;AMERICAN_INDIAN_OR_ALASKA_NATIVE&#x60; - AMERICAN_INDIAN_OR_ALASKA_NATIVE * &#x60;ASIAN_OR_INDIAN_SUBCONTINENT&#x60; - ASIAN_OR_INDIAN_SUBCONTINENT * &#x60;BLACK_OR_AFRICAN_AMERICAN&#x60; - BLACK_OR_AFRICAN_AMERICAN * &#x60;HISPANIC_OR_LATINO&#x60; - HISPANIC_OR_LATINO * &#x60;NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER&#x60; - NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER * &#x60;TWO_OR_MORE_RACES&#x60; - TWO_OR_MORE_RACES * &#x60;WHITE&#x60; - WHITE * &#x60;PREFER_NOT_TO_DISCLOSE&#x60; - PREFER_NOT_TO_DISCLOSE
         /// </summary>
-        /// <value>The employee&#39;s ethnicity.</value>
+        /// <value>The employee&#39;s ethnicity.  * &#x60;AMERICAN_INDIAN_OR_ALASKA_NATIVE&#x60; - AMERICAN_INDIAN_OR_ALASKA_NATIVE * &#x60;ASIAN_OR_INDIAN_SUBCONTINENT&#x60; - ASIAN_OR_INDIAN_SUBCONTINENT * &#x60;BLACK_OR_AFRICAN_AMERICAN&#x60; - BLACK_OR_AFRICAN_AMERICAN * &#x60;HISPANIC_OR_LATINO&#x60; - HISPANIC_OR_LATINO * &#x60;NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER&#x60; - NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER * &#x60;TWO_OR_MORE_RACES&#x60; - TWO_OR_MORE_RACES * &#x60;WHITE&#x60; - WHITE * &#x60;PREFER_NOT_TO_DISCLOSE&#x60; - PREFER_NOT_TO_DISCLOSE</value>
         [DataMember(Name = "ethnicity", EmitDefaultValue = true)]
         public EthnicityEnum? Ethnicity { get; set; }
 
         /// <summary>
-        /// The employee&#39;s marital status.
+        /// The employee&#39;s filing status as related to marital status.  * &#x60;SINGLE&#x60; - SINGLE * &#x60;MARRIED_FILING_JOINTLY&#x60; - MARRIED_FILING_JOINTLY * &#x60;MARRIED_FILING_SEPARATELY&#x60; - MARRIED_FILING_SEPARATELY * &#x60;HEAD_OF_HOUSEHOLD&#x60; - HEAD_OF_HOUSEHOLD * &#x60;QUALIFYING_WIDOW_OR_WIDOWER_WITH_DEPENDENT_CHILD&#x60; - QUALIFYING_WIDOW_OR_WIDOWER_WITH_DEPENDENT_CHILD
         /// </summary>
-        /// <value>The employee&#39;s marital status.</value>
+        /// <value>The employee&#39;s filing status as related to marital status.  * &#x60;SINGLE&#x60; - SINGLE * &#x60;MARRIED_FILING_JOINTLY&#x60; - MARRIED_FILING_JOINTLY * &#x60;MARRIED_FILING_SEPARATELY&#x60; - MARRIED_FILING_SEPARATELY * &#x60;HEAD_OF_HOUSEHOLD&#x60; - HEAD_OF_HOUSEHOLD * &#x60;QUALIFYING_WIDOW_OR_WIDOWER_WITH_DEPENDENT_CHILD&#x60; - QUALIFYING_WIDOW_OR_WIDOWER_WITH_DEPENDENT_CHILD</value>
         [DataMember(Name = "marital_status", EmitDefaultValue = true)]
         public MaritalStatusEnum? MaritalStatus { get; set; }
 
         /// <summary>
-        /// The employment status of the employee.
+        /// The employment status of the employee.  * &#x60;ACTIVE&#x60; - ACTIVE * &#x60;PENDING&#x60; - PENDING * &#x60;INACTIVE&#x60; - INACTIVE
         /// </summary>
-        /// <value>The employment status of the employee.</value>
+        /// <value>The employment status of the employee.  * &#x60;ACTIVE&#x60; - ACTIVE * &#x60;PENDING&#x60; - PENDING * &#x60;INACTIVE&#x60; - INACTIVE</value>
         [DataMember(Name = "employment_status", EmitDefaultValue = true)]
         public EmploymentStatusEnum? EmploymentStatus { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="EmployeeRequest" /> class.
         /// </summary>
-        /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employeeNumber">The employee&#39;s number that appears in the remote UI. Note: This is distinct from the remote_id field, which is a unique identifier for the employee set by the remote API, and is not exposed to the user. This value can also change in many API providers..</param>
-        /// <param name="company">company.</param>
+        /// <param name="employeeNumber">The employee&#39;s number that appears in the third-party integration&#39;s UI..</param>
+        /// <param name="company">The ID of the employee&#39;s company..</param>
         /// <param name="firstName">The employee&#39;s first name..</param>
         /// <param name="lastName">The employee&#39;s last name..</param>
         /// <param name="displayFullName">The employee&#39;s full name, to use for display purposes. If a preferred first name is available, the full name will include the preferred first name..</param>
@@ -75,26 +74,25 @@ namespace Merge.HRISClient.Model
         /// <param name="personalEmail">The employee&#39;s personal email..</param>
         /// <param name="mobilePhoneNumber">The employee&#39;s mobile phone number..</param>
         /// <param name="employments">Array of &#x60;Employment&#x60; IDs for this Employee..</param>
-        /// <param name="homeLocation">homeLocation.</param>
-        /// <param name="workLocation">workLocation.</param>
-        /// <param name="manager">manager.</param>
-        /// <param name="team">team.</param>
-        /// <param name="payGroup">payGroup.</param>
+        /// <param name="homeLocation">The employee&#39;s home address..</param>
+        /// <param name="workLocation">The employee&#39;s work address..</param>
+        /// <param name="manager">The employee ID of the employee&#39;s manager..</param>
+        /// <param name="team">The employee&#39;s team..</param>
+        /// <param name="payGroup">The employee&#39;s pay group.</param>
         /// <param name="ssn">The employee&#39;s social security number..</param>
-        /// <param name="gender">The employee&#39;s gender..</param>
-        /// <param name="ethnicity">The employee&#39;s ethnicity..</param>
-        /// <param name="maritalStatus">The employee&#39;s marital status..</param>
+        /// <param name="gender">The employee&#39;s gender.  * &#x60;MALE&#x60; - MALE * &#x60;FEMALE&#x60; - FEMALE * &#x60;NON-BINARY&#x60; - NON-BINARY * &#x60;OTHER&#x60; - OTHER * &#x60;PREFER_NOT_TO_DISCLOSE&#x60; - PREFER_NOT_TO_DISCLOSE.</param>
+        /// <param name="ethnicity">The employee&#39;s ethnicity.  * &#x60;AMERICAN_INDIAN_OR_ALASKA_NATIVE&#x60; - AMERICAN_INDIAN_OR_ALASKA_NATIVE * &#x60;ASIAN_OR_INDIAN_SUBCONTINENT&#x60; - ASIAN_OR_INDIAN_SUBCONTINENT * &#x60;BLACK_OR_AFRICAN_AMERICAN&#x60; - BLACK_OR_AFRICAN_AMERICAN * &#x60;HISPANIC_OR_LATINO&#x60; - HISPANIC_OR_LATINO * &#x60;NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER&#x60; - NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER * &#x60;TWO_OR_MORE_RACES&#x60; - TWO_OR_MORE_RACES * &#x60;WHITE&#x60; - WHITE * &#x60;PREFER_NOT_TO_DISCLOSE&#x60; - PREFER_NOT_TO_DISCLOSE.</param>
+        /// <param name="maritalStatus">The employee&#39;s filing status as related to marital status.  * &#x60;SINGLE&#x60; - SINGLE * &#x60;MARRIED_FILING_JOINTLY&#x60; - MARRIED_FILING_JOINTLY * &#x60;MARRIED_FILING_SEPARATELY&#x60; - MARRIED_FILING_SEPARATELY * &#x60;HEAD_OF_HOUSEHOLD&#x60; - HEAD_OF_HOUSEHOLD * &#x60;QUALIFYING_WIDOW_OR_WIDOWER_WITH_DEPENDENT_CHILD&#x60; - QUALIFYING_WIDOW_OR_WIDOWER_WITH_DEPENDENT_CHILD.</param>
         /// <param name="dateOfBirth">The employee&#39;s date of birth..</param>
         /// <param name="hireDate">The date that the employee was hired, usually the day that an offer letter is signed. If an employee has multiple hire dates from previous employments, this represents the most recent hire date. Note: If you&#39;re looking for the employee&#39;s start date, refer to the start_date field..</param>
-        /// <param name="startDate">The date that the employee started working. If an employee has multiple start dates from previous employments, this represents the most recent start date..</param>
-        /// <param name="remoteCreatedAt">When the third party&#39;s employee was created..</param>
-        /// <param name="employmentStatus">The employment status of the employee..</param>
+        /// <param name="startDate">The date that the employee started working. If an employee was rehired, the most recent start date will be returned..</param>
+        /// <param name="employmentStatus">The employment status of the employee.  * &#x60;ACTIVE&#x60; - ACTIVE * &#x60;PENDING&#x60; - PENDING * &#x60;INACTIVE&#x60; - INACTIVE.</param>
         /// <param name="terminationDate">The employee&#39;s termination date..</param>
         /// <param name="avatar">The URL of the employee&#39;s avatar image..</param>
-        /// <param name="customFields">Custom fields configured for a given model..</param>
-        public EmployeeRequest(string remoteId = default(string), string employeeNumber = default(string), Guid? company = default(Guid?), string firstName = default(string), string lastName = default(string), string displayFullName = default(string), string username = default(string), List<Guid?> groups = default(List<Guid?>), string workEmail = default(string), string personalEmail = default(string), string mobilePhoneNumber = default(string), List<Guid?> employments = default(List<Guid?>), Guid? homeLocation = default(Guid?), Guid? workLocation = default(Guid?), Guid? manager = default(Guid?), Guid? team = default(Guid?), Guid? payGroup = default(Guid?), string ssn = default(string), GenderEnum? gender = default(GenderEnum?), EthnicityEnum? ethnicity = default(EthnicityEnum?), MaritalStatusEnum? maritalStatus = default(MaritalStatusEnum?), DateTime? dateOfBirth = default(DateTime?), DateTime? hireDate = default(DateTime?), DateTime? startDate = default(DateTime?), DateTime? remoteCreatedAt = default(DateTime?), EmploymentStatusEnum? employmentStatus = default(EmploymentStatusEnum?), DateTime? terminationDate = default(DateTime?), string avatar = default(string), Dictionary<string, Object> customFields = default(Dictionary<string, Object>))
+        /// <param name="integrationParams">integrationParams.</param>
+        /// <param name="linkedAccountParams">linkedAccountParams.</param>
+        public EmployeeRequest(string employeeNumber = default(string), Guid? company = default(Guid?), string firstName = default(string), string lastName = default(string), string displayFullName = default(string), string username = default(string), List<Guid?> groups = default(List<Guid?>), string workEmail = default(string), string personalEmail = default(string), string mobilePhoneNumber = default(string), List<Guid?> employments = default(List<Guid?>), Guid? homeLocation = default(Guid?), Guid? workLocation = default(Guid?), Guid? manager = default(Guid?), Guid? team = default(Guid?), Guid? payGroup = default(Guid?), string ssn = default(string), GenderEnum? gender = default(GenderEnum?), EthnicityEnum? ethnicity = default(EthnicityEnum?), MaritalStatusEnum? maritalStatus = default(MaritalStatusEnum?), DateTime? dateOfBirth = default(DateTime?), DateTime? hireDate = default(DateTime?), DateTime? startDate = default(DateTime?), EmploymentStatusEnum? employmentStatus = default(EmploymentStatusEnum?), DateTime? terminationDate = default(DateTime?), string avatar = default(string), Dictionary<string, Object> integrationParams = default(Dictionary<string, Object>), Dictionary<string, Object> linkedAccountParams = default(Dictionary<string, Object>))
         {
-            this.RemoteId = remoteId;
             this.EmployeeNumber = employeeNumber;
             this.Company = company;
             this.FirstName = firstName;
@@ -118,30 +116,24 @@ namespace Merge.HRISClient.Model
             this.DateOfBirth = dateOfBirth;
             this.HireDate = hireDate;
             this.StartDate = startDate;
-            this.RemoteCreatedAt = remoteCreatedAt;
             this.EmploymentStatus = employmentStatus;
             this.TerminationDate = terminationDate;
             this.Avatar = avatar;
-            this.CustomFields = customFields;
+            this.IntegrationParams = integrationParams;
+            this.LinkedAccountParams = linkedAccountParams;
         }
 
         /// <summary>
-        /// The third-party API ID of the matching object.
+        /// The employee&#39;s number that appears in the third-party integration&#39;s UI.
         /// </summary>
-        /// <value>The third-party API ID of the matching object.</value>
-        [DataMember(Name = "remote_id", EmitDefaultValue = true)]
-        public string RemoteId { get; set; }
-
-        /// <summary>
-        /// The employee&#39;s number that appears in the remote UI. Note: This is distinct from the remote_id field, which is a unique identifier for the employee set by the remote API, and is not exposed to the user. This value can also change in many API providers.
-        /// </summary>
-        /// <value>The employee&#39;s number that appears in the remote UI. Note: This is distinct from the remote_id field, which is a unique identifier for the employee set by the remote API, and is not exposed to the user. This value can also change in many API providers.</value>
+        /// <value>The employee&#39;s number that appears in the third-party integration&#39;s UI.</value>
         [DataMember(Name = "employee_number", EmitDefaultValue = true)]
         public string EmployeeNumber { get; set; }
 
         /// <summary>
-        /// Gets or Sets Company
+        /// The ID of the employee&#39;s company.
         /// </summary>
+        /// <value>The ID of the employee&#39;s company.</value>
         [DataMember(Name = "company", EmitDefaultValue = true)]
         public Guid? Company { get; set; }
 
@@ -208,32 +200,37 @@ namespace Merge.HRISClient.Model
         public List<Guid?> Employments { get; set; }
 
         /// <summary>
-        /// Gets or Sets HomeLocation
+        /// The employee&#39;s home address.
         /// </summary>
+        /// <value>The employee&#39;s home address.</value>
         [DataMember(Name = "home_location", EmitDefaultValue = true)]
         public Guid? HomeLocation { get; set; }
 
         /// <summary>
-        /// Gets or Sets WorkLocation
+        /// The employee&#39;s work address.
         /// </summary>
+        /// <value>The employee&#39;s work address.</value>
         [DataMember(Name = "work_location", EmitDefaultValue = true)]
         public Guid? WorkLocation { get; set; }
 
         /// <summary>
-        /// Gets or Sets Manager
+        /// The employee ID of the employee&#39;s manager.
         /// </summary>
+        /// <value>The employee ID of the employee&#39;s manager.</value>
         [DataMember(Name = "manager", EmitDefaultValue = true)]
         public Guid? Manager { get; set; }
 
         /// <summary>
-        /// Gets or Sets Team
+        /// The employee&#39;s team.
         /// </summary>
+        /// <value>The employee&#39;s team.</value>
         [DataMember(Name = "team", EmitDefaultValue = true)]
         public Guid? Team { get; set; }
 
         /// <summary>
-        /// Gets or Sets PayGroup
+        /// The employee&#39;s pay group
         /// </summary>
+        /// <value>The employee&#39;s pay group</value>
         [DataMember(Name = "pay_group", EmitDefaultValue = true)]
         public Guid? PayGroup { get; set; }
 
@@ -259,18 +256,11 @@ namespace Merge.HRISClient.Model
         public DateTime? HireDate { get; set; }
 
         /// <summary>
-        /// The date that the employee started working. If an employee has multiple start dates from previous employments, this represents the most recent start date.
+        /// The date that the employee started working. If an employee was rehired, the most recent start date will be returned.
         /// </summary>
-        /// <value>The date that the employee started working. If an employee has multiple start dates from previous employments, this represents the most recent start date.</value>
+        /// <value>The date that the employee started working. If an employee was rehired, the most recent start date will be returned.</value>
         [DataMember(Name = "start_date", EmitDefaultValue = true)]
         public DateTime? StartDate { get; set; }
-
-        /// <summary>
-        /// When the third party&#39;s employee was created.
-        /// </summary>
-        /// <value>When the third party&#39;s employee was created.</value>
-        [DataMember(Name = "remote_created_at", EmitDefaultValue = true)]
-        public DateTime? RemoteCreatedAt { get; set; }
 
         /// <summary>
         /// The employee&#39;s termination date.
@@ -287,11 +277,16 @@ namespace Merge.HRISClient.Model
         public string Avatar { get; set; }
 
         /// <summary>
-        /// Custom fields configured for a given model.
+        /// Gets or Sets IntegrationParams
         /// </summary>
-        /// <value>Custom fields configured for a given model.</value>
-        [DataMember(Name = "custom_fields", EmitDefaultValue = true)]
-        public Dictionary<string, Object> CustomFields { get; set; }
+        [DataMember(Name = "integration_params", EmitDefaultValue = true)]
+        public Dictionary<string, Object> IntegrationParams { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LinkedAccountParams
+        /// </summary>
+        [DataMember(Name = "linked_account_params", EmitDefaultValue = true)]
+        public Dictionary<string, Object> LinkedAccountParams { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -301,7 +296,6 @@ namespace Merge.HRISClient.Model
         {
             var sb = new StringBuilder();
             sb.Append("class EmployeeRequest {\n");
-            sb.Append("  RemoteId: ").Append(RemoteId).Append("\n");
             sb.Append("  EmployeeNumber: ").Append(EmployeeNumber).Append("\n");
             sb.Append("  Company: ").Append(Company).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
@@ -325,11 +319,11 @@ namespace Merge.HRISClient.Model
             sb.Append("  DateOfBirth: ").Append(DateOfBirth).Append("\n");
             sb.Append("  HireDate: ").Append(HireDate).Append("\n");
             sb.Append("  StartDate: ").Append(StartDate).Append("\n");
-            sb.Append("  RemoteCreatedAt: ").Append(RemoteCreatedAt).Append("\n");
             sb.Append("  EmploymentStatus: ").Append(EmploymentStatus).Append("\n");
             sb.Append("  TerminationDate: ").Append(TerminationDate).Append("\n");
             sb.Append("  Avatar: ").Append(Avatar).Append("\n");
-            sb.Append("  CustomFields: ").Append(CustomFields).Append("\n");
+            sb.Append("  IntegrationParams: ").Append(IntegrationParams).Append("\n");
+            sb.Append("  LinkedAccountParams: ").Append(LinkedAccountParams).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -364,11 +358,6 @@ namespace Merge.HRISClient.Model
                 return false;
 
             return 
-                (
-                    this.RemoteId == input.RemoteId ||
-                    (this.RemoteId != null &&
-                    this.RemoteId.Equals(input.RemoteId))
-                ) && 
                 (
                     this.EmployeeNumber == input.EmployeeNumber ||
                     (this.EmployeeNumber != null &&
@@ -484,11 +473,6 @@ namespace Merge.HRISClient.Model
                     this.StartDate.Equals(input.StartDate))
                 ) && 
                 (
-                    this.RemoteCreatedAt == input.RemoteCreatedAt ||
-                    (this.RemoteCreatedAt != null &&
-                    this.RemoteCreatedAt.Equals(input.RemoteCreatedAt))
-                ) && 
-                (
                     this.EmploymentStatus == input.EmploymentStatus ||
                     this.EmploymentStatus.Equals(input.EmploymentStatus)
                 ) && 
@@ -503,10 +487,16 @@ namespace Merge.HRISClient.Model
                     this.Avatar.Equals(input.Avatar))
                 ) && 
                 (
-                    this.CustomFields == input.CustomFields ||
-                    this.CustomFields != null &&
-                    input.CustomFields != null &&
-                    this.CustomFields.SequenceEqual(input.CustomFields)
+                    this.IntegrationParams == input.IntegrationParams ||
+                    this.IntegrationParams != null &&
+                    input.IntegrationParams != null &&
+                    this.IntegrationParams.SequenceEqual(input.IntegrationParams)
+                ) && 
+                (
+                    this.LinkedAccountParams == input.LinkedAccountParams ||
+                    this.LinkedAccountParams != null &&
+                    input.LinkedAccountParams != null &&
+                    this.LinkedAccountParams.SequenceEqual(input.LinkedAccountParams)
                 );
         }
 
@@ -519,8 +509,6 @@ namespace Merge.HRISClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.RemoteId != null)
-                    hashCode = hashCode * 59 + this.RemoteId.GetHashCode();
                 if (this.EmployeeNumber != null)
                     hashCode = hashCode * 59 + this.EmployeeNumber.GetHashCode();
                 if (this.Company != null)
@@ -564,15 +552,15 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.HireDate.GetHashCode();
                 if (this.StartDate != null)
                     hashCode = hashCode * 59 + this.StartDate.GetHashCode();
-                if (this.RemoteCreatedAt != null)
-                    hashCode = hashCode * 59 + this.RemoteCreatedAt.GetHashCode();
                 hashCode = hashCode * 59 + this.EmploymentStatus.GetHashCode();
                 if (this.TerminationDate != null)
                     hashCode = hashCode * 59 + this.TerminationDate.GetHashCode();
                 if (this.Avatar != null)
                     hashCode = hashCode * 59 + this.Avatar.GetHashCode();
-                if (this.CustomFields != null)
-                    hashCode = hashCode * 59 + this.CustomFields.GetHashCode();
+                if (this.IntegrationParams != null)
+                    hashCode = hashCode * 59 + this.IntegrationParams.GetHashCode();
+                if (this.LinkedAccountParams != null)
+                    hashCode = hashCode * 59 + this.LinkedAccountParams.GetHashCode();
                 return hashCode;
             }
         }

@@ -27,7 +27,7 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// # The Company Object ### Description The &#x60;Company&#x60; object is used to represent a Company within the HRIS / Payroll system.  ### Usage Example Fetch from the &#x60;LIST Companies&#x60; endpoint and filter by &#x60;ID&#x60; to show all companies.
+    /// # The Company Object ### Description The &#x60;Company&#x60; object is used to represent a company within the HRIS / Payroll system.  ### Usage Example Fetch from the &#x60;LIST Companies&#x60; endpoint and filter by &#x60;ID&#x60; to show all companies.
     /// </summary>
     [DataContract(Name = "Company")]
     public partial class Company : IEquatable<Company>, IValidatableObject
@@ -91,21 +91,6 @@ namespace Merge.HRISClient.Model
         public List<string> Eins { get; set; }
 
         /// <summary>
-        /// Gets or Sets RemoteData
-        /// </summary>
-        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
-        public List<RemoteData> RemoteData { get; private set; }
-
-        /// <summary>
-        /// Returns false as RemoteData should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRemoteData()
-        {
-            return false;
-        }
-
-        /// <summary>
         /// Indicates whether or not this object has been deleted by third party webhooks.
         /// </summary>
         /// <value>Indicates whether or not this object has been deleted by third party webhooks.</value>
@@ -117,6 +102,52 @@ namespace Merge.HRISClient.Model
         /// </summary>
         /// <returns>false (boolean)</returns>
         public bool ShouldSerializeRemoteWasDeleted()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Gets or Sets FieldMappings
+        /// </summary>
+        [DataMember(Name = "field_mappings", EmitDefaultValue = true)]
+        public Dictionary<string, Object> FieldMappings { get; private set; }
+
+        /// <summary>
+        /// Returns false as FieldMappings should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFieldMappings()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// This is the datetime that this object was last updated by Merge
+        /// </summary>
+        /// <value>This is the datetime that this object was last updated by Merge</value>
+        [DataMember(Name = "modified_at", EmitDefaultValue = false)]
+        public DateTime ModifiedAt { get; private set; }
+
+        /// <summary>
+        /// Returns false as ModifiedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeModifiedAt()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Gets or Sets RemoteData
+        /// </summary>
+        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
+        public List<RemoteData> RemoteData { get; private set; }
+
+        /// <summary>
+        /// Returns false as RemoteData should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRemoteData()
         {
             return false;
         }
@@ -134,8 +165,10 @@ namespace Merge.HRISClient.Model
             sb.Append("  LegalName: ").Append(LegalName).Append("\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Eins: ").Append(Eins).Append("\n");
-            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
+            sb.Append("  FieldMappings: ").Append(FieldMappings).Append("\n");
+            sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
+            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -197,14 +230,25 @@ namespace Merge.HRISClient.Model
                     this.Eins.SequenceEqual(input.Eins)
                 ) && 
                 (
+                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
+                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
+                ) && 
+                (
+                    this.FieldMappings == input.FieldMappings ||
+                    this.FieldMappings != null &&
+                    input.FieldMappings != null &&
+                    this.FieldMappings.SequenceEqual(input.FieldMappings)
+                ) && 
+                (
+                    this.ModifiedAt == input.ModifiedAt ||
+                    (this.ModifiedAt != null &&
+                    this.ModifiedAt.Equals(input.ModifiedAt))
+                ) && 
+                (
                     this.RemoteData == input.RemoteData ||
                     this.RemoteData != null &&
                     input.RemoteData != null &&
                     this.RemoteData.SequenceEqual(input.RemoteData)
-                ) && 
-                (
-                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
-                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
                 );
         }
 
@@ -227,9 +271,13 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
                 if (this.Eins != null)
                     hashCode = hashCode * 59 + this.Eins.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
+                if (this.FieldMappings != null)
+                    hashCode = hashCode * 59 + this.FieldMappings.GetHashCode();
+                if (this.ModifiedAt != null)
+                    hashCode = hashCode * 59 + this.ModifiedAt.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
-                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }

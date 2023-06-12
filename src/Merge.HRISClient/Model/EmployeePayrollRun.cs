@@ -27,7 +27,7 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// # The EmployeePayrollRun Object ### Description The &#x60;EmployeePayrollRun&#x60; object is used to represent a payroll run for a specific employee.  ### Usage Example Fetch from the &#x60;LIST EmployeePayrollRun&#x60; endpoint and filter by &#x60;ID&#x60; to show all employee payroll runs.
+    /// # The EmployeePayrollRun Object ### Description The &#x60;EmployeePayrollRun&#x60; object is used to represent an employee&#39;s pay statement for a specific payroll run.  ### Usage Example Fetch from the &#x60;LIST EmployeePayrollRun&#x60; endpoint and filter by &#x60;ID&#x60; to show all employee payroll runs.
     /// </summary>
     [DataContract(Name = "EmployeePayrollRun")]
     public partial class EmployeePayrollRun : IEquatable<EmployeePayrollRun>, IValidatableObject
@@ -36,14 +36,14 @@ namespace Merge.HRISClient.Model
         /// Initializes a new instance of the <see cref="EmployeePayrollRun" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">employee.</param>
-        /// <param name="payrollRun">payrollRun.</param>
-        /// <param name="grossPay">The gross pay from the run..</param>
-        /// <param name="netPay">The net pay from the run..</param>
+        /// <param name="employee">The employee whose payroll is being run..</param>
+        /// <param name="payrollRun">The payroll being run..</param>
+        /// <param name="grossPay">The total earnings throughout a given period for an employee before any deductions are made..</param>
+        /// <param name="netPay">The take-home pay throughout a given period for an employee after deductions are made..</param>
         /// <param name="startDate">The day and time the payroll run started..</param>
         /// <param name="endDate">The day and time the payroll run ended..</param>
         /// <param name="checkDate">The day and time the payroll run was checked..</param>
-        public EmployeePayrollRun(string remoteId = default(string), Guid? employee = default(Guid?), Guid? payrollRun = default(Guid?), float? grossPay = default(float?), float? netPay = default(float?), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), DateTime? checkDate = default(DateTime?))
+        public EmployeePayrollRun(string remoteId = default(string), Guid? employee = default(Guid?), Guid? payrollRun = default(Guid?), double? grossPay = default(double?), double? netPay = default(double?), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), DateTime? checkDate = default(DateTime?))
         {
             this.RemoteId = remoteId;
             this.Employee = employee;
@@ -78,30 +78,32 @@ namespace Merge.HRISClient.Model
         public string RemoteId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Employee
+        /// The employee whose payroll is being run.
         /// </summary>
+        /// <value>The employee whose payroll is being run.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
         /// <summary>
-        /// Gets or Sets PayrollRun
+        /// The payroll being run.
         /// </summary>
+        /// <value>The payroll being run.</value>
         [DataMember(Name = "payroll_run", EmitDefaultValue = true)]
         public Guid? PayrollRun { get; set; }
 
         /// <summary>
-        /// The gross pay from the run.
+        /// The total earnings throughout a given period for an employee before any deductions are made.
         /// </summary>
-        /// <value>The gross pay from the run.</value>
+        /// <value>The total earnings throughout a given period for an employee before any deductions are made.</value>
         [DataMember(Name = "gross_pay", EmitDefaultValue = true)]
-        public float? GrossPay { get; set; }
+        public double? GrossPay { get; set; }
 
         /// <summary>
-        /// The net pay from the run.
+        /// The take-home pay throughout a given period for an employee after deductions are made.
         /// </summary>
-        /// <value>The net pay from the run.</value>
+        /// <value>The take-home pay throughout a given period for an employee after deductions are made.</value>
         [DataMember(Name = "net_pay", EmitDefaultValue = true)]
-        public float? NetPay { get; set; }
+        public double? NetPay { get; set; }
 
         /// <summary>
         /// The day and time the payroll run started.
@@ -170,21 +172,6 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
-        /// Gets or Sets RemoteData
-        /// </summary>
-        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
-        public List<RemoteData> RemoteData { get; private set; }
-
-        /// <summary>
-        /// Returns false as RemoteData should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRemoteData()
-        {
-            return false;
-        }
-
-        /// <summary>
         /// Indicates whether or not this object has been deleted by third party webhooks.
         /// </summary>
         /// <value>Indicates whether or not this object has been deleted by third party webhooks.</value>
@@ -196,6 +183,52 @@ namespace Merge.HRISClient.Model
         /// </summary>
         /// <returns>false (boolean)</returns>
         public bool ShouldSerializeRemoteWasDeleted()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Gets or Sets FieldMappings
+        /// </summary>
+        [DataMember(Name = "field_mappings", EmitDefaultValue = true)]
+        public Dictionary<string, Object> FieldMappings { get; private set; }
+
+        /// <summary>
+        /// Returns false as FieldMappings should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFieldMappings()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// This is the datetime that this object was last updated by Merge
+        /// </summary>
+        /// <value>This is the datetime that this object was last updated by Merge</value>
+        [DataMember(Name = "modified_at", EmitDefaultValue = false)]
+        public DateTime ModifiedAt { get; private set; }
+
+        /// <summary>
+        /// Returns false as ModifiedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeModifiedAt()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Gets or Sets RemoteData
+        /// </summary>
+        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
+        public List<RemoteData> RemoteData { get; private set; }
+
+        /// <summary>
+        /// Returns false as RemoteData should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRemoteData()
         {
             return false;
         }
@@ -220,8 +253,10 @@ namespace Merge.HRISClient.Model
             sb.Append("  Earnings: ").Append(Earnings).Append("\n");
             sb.Append("  Deductions: ").Append(Deductions).Append("\n");
             sb.Append("  Taxes: ").Append(Taxes).Append("\n");
-            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
+            sb.Append("  FieldMappings: ").Append(FieldMappings).Append("\n");
+            sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
+            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -320,14 +355,25 @@ namespace Merge.HRISClient.Model
                     this.Taxes.SequenceEqual(input.Taxes)
                 ) && 
                 (
+                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
+                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
+                ) && 
+                (
+                    this.FieldMappings == input.FieldMappings ||
+                    this.FieldMappings != null &&
+                    input.FieldMappings != null &&
+                    this.FieldMappings.SequenceEqual(input.FieldMappings)
+                ) && 
+                (
+                    this.ModifiedAt == input.ModifiedAt ||
+                    (this.ModifiedAt != null &&
+                    this.ModifiedAt.Equals(input.ModifiedAt))
+                ) && 
+                (
                     this.RemoteData == input.RemoteData ||
                     this.RemoteData != null &&
                     input.RemoteData != null &&
                     this.RemoteData.SequenceEqual(input.RemoteData)
-                ) && 
-                (
-                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
-                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
                 );
         }
 
@@ -364,9 +410,13 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Deductions.GetHashCode();
                 if (this.Taxes != null)
                     hashCode = hashCode * 59 + this.Taxes.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
+                if (this.FieldMappings != null)
+                    hashCode = hashCode * 59 + this.FieldMappings.GetHashCode();
+                if (this.ModifiedAt != null)
+                    hashCode = hashCode * 59 + this.ModifiedAt.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
-                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }

@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.RunStateEnum
+* `PAID` - PAID * `DRAFT` - DRAFT * `APPROVED` - APPROVED * `FAILED` - FAILED * `CLOSED` - CLOSED
 
 ## Properties
 

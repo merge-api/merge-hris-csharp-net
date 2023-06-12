@@ -32,6 +32,12 @@ namespace Merge.HRISClient.Model
     [DataContract(Name = "RemoteResponse")]
     public partial class RemoteResponse : IEquatable<RemoteResponse>, IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets ResponseType
+        /// </summary>
+        [DataMember(Name = "response_type", EmitDefaultValue = false)]
+        public ResponseTypeEnum? ResponseType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="RemoteResponse" /> class.
         /// </summary>
@@ -45,8 +51,9 @@ namespace Merge.HRISClient.Model
         /// <param name="status">status (required).</param>
         /// <param name="response">response (required).</param>
         /// <param name="responseHeaders">responseHeaders.</param>
+        /// <param name="responseType">responseType.</param>
         /// <param name="headers">headers.</param>
-        public RemoteResponse(string method = default(string), string path = default(string), int status = default(int), Dictionary<string, Object> response = default(Dictionary<string, Object>), Dictionary<string, Object> responseHeaders = default(Dictionary<string, Object>), Dictionary<string, Object> headers = default(Dictionary<string, Object>))
+        public RemoteResponse(string method = default(string), string path = default(string), int status = default(int), Object response = default(Object), Dictionary<string, Object> responseHeaders = default(Dictionary<string, Object>), ResponseTypeEnum? responseType = default(ResponseTypeEnum?), Dictionary<string, Object> headers = default(Dictionary<string, Object>))
         {
             // to ensure "method" is required (not null)
             this.Method = method ?? throw new ArgumentNullException("method is a required property for RemoteResponse and cannot be null");
@@ -56,6 +63,7 @@ namespace Merge.HRISClient.Model
             // to ensure "response" is required (not null)
             this.Response = response ?? throw new ArgumentNullException("response is a required property for RemoteResponse and cannot be null");
             this.ResponseHeaders = responseHeaders;
+            this.ResponseType = responseType;
             this.Headers = headers;
         }
 
@@ -80,8 +88,8 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets Response
         /// </summary>
-        [DataMember(Name = "response", IsRequired = true, EmitDefaultValue = false)]
-        public Dictionary<string, Object> Response { get; set; }
+        [DataMember(Name = "response", IsRequired = true, EmitDefaultValue = true)]
+        public Object Response { get; set; }
 
         /// <summary>
         /// Gets or Sets ResponseHeaders
@@ -108,6 +116,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Response: ").Append(Response).Append("\n");
             sb.Append("  ResponseHeaders: ").Append(ResponseHeaders).Append("\n");
+            sb.Append("  ResponseType: ").Append(ResponseType).Append("\n");
             sb.Append("  Headers: ").Append(Headers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -159,15 +168,18 @@ namespace Merge.HRISClient.Model
                 ) && 
                 (
                     this.Response == input.Response ||
-                    this.Response != null &&
-                    input.Response != null &&
-                    this.Response.SequenceEqual(input.Response)
+                    (this.Response != null &&
+                    this.Response.Equals(input.Response))
                 ) && 
                 (
                     this.ResponseHeaders == input.ResponseHeaders ||
                     this.ResponseHeaders != null &&
                     input.ResponseHeaders != null &&
                     this.ResponseHeaders.SequenceEqual(input.ResponseHeaders)
+                ) && 
+                (
+                    this.ResponseType == input.ResponseType ||
+                    this.ResponseType.Equals(input.ResponseType)
                 ) && 
                 (
                     this.Headers == input.Headers ||
@@ -195,6 +207,7 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Response.GetHashCode();
                 if (this.ResponseHeaders != null)
                     hashCode = hashCode * 59 + this.ResponseHeaders.GetHashCode();
+                hashCode = hashCode * 59 + this.ResponseType.GetHashCode();
                 if (this.Headers != null)
                     hashCode = hashCode * 59 + this.Headers.GetHashCode();
                 return hashCode;

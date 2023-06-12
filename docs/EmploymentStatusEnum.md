@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.EmploymentStatusEnum
+* `ACTIVE` - ACTIVE * `PENDING` - PENDING * `INACTIVE` - INACTIVE
 
 ## Properties
 

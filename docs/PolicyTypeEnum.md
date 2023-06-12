@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.PolicyTypeEnum
+* `VACATION` - VACATION * `SICK` - SICK * `PERSONAL` - PERSONAL * `JURY_DUTY` - JURY_DUTY * `VOLUNTEER` - VOLUNTEER * `BEREAVEMENT` - BEREAVEMENT
 
 ## Properties
 

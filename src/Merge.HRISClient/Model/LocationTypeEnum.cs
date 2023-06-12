@@ -27,8 +27,9 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// Defines LocationTypeEnum
+    /// * &#x60;HOME&#x60; - HOME * &#x60;WORK&#x60; - WORK
     /// </summary>
+    /// <value>* &#x60;HOME&#x60; - HOME * &#x60;WORK&#x60; - WORK</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum LocationTypeEnum
     {

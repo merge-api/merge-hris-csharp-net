@@ -113,6 +113,14 @@ namespace Merge.HRISClient.Test.Model
         {
             // TODO unit test for the property 'ShouldCreateMagicLinkUrl'
         }
+        /// <summary>
+        /// Test the property 'CommonModels'
+        /// </summary>
+        [Fact]
+        public void CommonModelsTest()
+        {
+            // TODO unit test for the property 'CommonModels'
+        }
 
     }
 

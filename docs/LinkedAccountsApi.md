@@ -37,7 +37,7 @@ namespace Example
             // config.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new LinkedAccountsApi(config);
-            var category = category_example;  // string |  (optional) 
+            var category = category_example;  // string | Options: ('hris', 'ats', 'accounting', 'ticketing', 'crm', 'mktg', 'filestorage')  * `hris` - hris * `ats` - ats * `accounting` - accounting * `ticketing` - ticketing * `crm` - crm * `mktg` - mktg * `filestorage` - filestorage (optional) 
             var cursor = cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw;  // string | The pagination cursor value. (optional) 
             var endUserEmailAddress = endUserEmailAddress_example;  // string | If provided, will only return linked accounts associated with the given email address. (optional) 
             var endUserOrganizationName = endUserOrganizationName_example;  // string | If provided, will only return linked accounts associated with the given organization name. (optional) 
@@ -71,7 +71,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **category** | **string**|  | [optional] 
+ **category** | **string**| Options: (&#39;hris&#39;, &#39;ats&#39;, &#39;accounting&#39;, &#39;ticketing&#39;, &#39;crm&#39;, &#39;mktg&#39;, &#39;filestorage&#39;)  * &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage | [optional] 
  **cursor** | **string**| The pagination cursor value. | [optional] 
  **endUserEmailAddress** | **string**| If provided, will only return linked accounts associated with the given email address. | [optional] 
  **endUserOrganizationName** | **string**| If provided, will only return linked accounts associated with the given organization name. | [optional] 

@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.GroupTypeEnum
+* `TEAM` - TEAM * `DEPARTMENT` - DEPARTMENT * `COST_CENTER` - COST_CENTER * `BUSINESS_UNIT` - BUSINESS_UNIT * `GROUP` - GROUP
 
 ## Properties
 

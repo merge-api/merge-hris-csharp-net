@@ -27,8 +27,9 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// Defines PayFrequencyEnum
+    /// * &#x60;WEEKLY&#x60; - WEEKLY * &#x60;BIWEEKLY&#x60; - BIWEEKLY * &#x60;MONTHLY&#x60; - MONTHLY * &#x60;QUARTERLY&#x60; - QUARTERLY * &#x60;SEMIANNUALLY&#x60; - SEMIANNUALLY * &#x60;ANNUALLY&#x60; - ANNUALLY * &#x60;THIRTEEN-MONTHLY&#x60; - THIRTEEN-MONTHLY * &#x60;PRO_RATA&#x60; - PRO_RATA * &#x60;SEMIMONTHLY&#x60; - SEMIMONTHLY
     /// </summary>
+    /// <value>* &#x60;WEEKLY&#x60; - WEEKLY * &#x60;BIWEEKLY&#x60; - BIWEEKLY * &#x60;MONTHLY&#x60; - MONTHLY * &#x60;QUARTERLY&#x60; - QUARTERLY * &#x60;SEMIANNUALLY&#x60; - SEMIANNUALLY * &#x60;ANNUALLY&#x60; - ANNUALLY * &#x60;THIRTEEN-MONTHLY&#x60; - THIRTEEN-MONTHLY * &#x60;PRO_RATA&#x60; - PRO_RATA * &#x60;SEMIMONTHLY&#x60; - SEMIMONTHLY</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum PayFrequencyEnum
     {
@@ -78,7 +79,13 @@ namespace Merge.HRISClient.Model
         /// Enum PRORATA for value: PRO_RATA
         /// </summary>
         [EnumMember(Value = "PRO_RATA")]
-        PRORATA = 8
+        PRORATA = 8,
+
+        /// <summary>
+        /// Enum SEMIMONTHLY for value: SEMIMONTHLY
+        /// </summary>
+        [EnumMember(Value = "SEMIMONTHLY")]
+        SEMIMONTHLY = 9
 
     }
 

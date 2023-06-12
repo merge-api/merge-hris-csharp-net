@@ -27,8 +27,9 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// Defines MethodEnum
+    /// * &#x60;GET&#x60; - GET * &#x60;OPTIONS&#x60; - OPTIONS * &#x60;HEAD&#x60; - HEAD * &#x60;POST&#x60; - POST * &#x60;PUT&#x60; - PUT * &#x60;PATCH&#x60; - PATCH * &#x60;DELETE&#x60; - DELETE
     /// </summary>
+    /// <value>* &#x60;GET&#x60; - GET * &#x60;OPTIONS&#x60; - OPTIONS * &#x60;HEAD&#x60; - HEAD * &#x60;POST&#x60; - POST * &#x60;PUT&#x60; - PUT * &#x60;PATCH&#x60; - PATCH * &#x60;DELETE&#x60; - DELETE</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum MethodEnum
     {

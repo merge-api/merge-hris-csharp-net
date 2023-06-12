@@ -1,5 +1,5 @@
 # Merge.HRISClient.Model.Employee
-# The Employee Object ### Description The `Employee` object is used to represent an Employee for a company.  ### Usage Example Fetch from the `LIST Employee` endpoint and filter by `ID` to show all employees.
+# The Employee Object ### Description The `Employee` object is used to represent any person who has been employed by a company.  ### Usage Example Fetch from the `LIST Employee` endpoint and filter by `ID` to show all employees.
 
 ## Properties
 
@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **Guid** |  | [optional] [readonly] 
 **RemoteId** | **string** | The third-party API ID of the matching object. | [optional] 
-**EmployeeNumber** | **string** | The employee&#39;s number that appears in the remote UI. Note: This is distinct from the remote_id field, which is a unique identifier for the employee set by the remote API, and is not exposed to the user. This value can also change in many API providers. | [optional] 
-**Company** | **Guid?** |  | [optional] 
+**EmployeeNumber** | **string** | The employee&#39;s number that appears in the third-party integration&#39;s UI. | [optional] 
+**Company** | **Guid?** | The ID of the employee&#39;s company. | [optional] 
 **FirstName** | **string** | The employee&#39;s first name. | [optional] 
 **LastName** | **string** | The employee&#39;s last name. | [optional] 
 **DisplayFullName** | **string** | The employee&#39;s full name, to use for display purposes. If a preferred first name is available, the full name will include the preferred first name. | [optional] 
@@ -18,25 +18,27 @@ Name | Type | Description | Notes
 **PersonalEmail** | **string** | The employee&#39;s personal email. | [optional] 
 **MobilePhoneNumber** | **string** | The employee&#39;s mobile phone number. | [optional] 
 **Employments** | **List&lt;Guid?&gt;** | Array of &#x60;Employment&#x60; IDs for this Employee. | [optional] 
-**HomeLocation** | **Guid?** |  | [optional] 
-**WorkLocation** | **Guid?** |  | [optional] 
-**Manager** | **Guid?** |  | [optional] 
-**Team** | **Guid?** |  | [optional] 
-**PayGroup** | **Guid?** |  | [optional] 
+**HomeLocation** | **Guid?** | The employee&#39;s home address. | [optional] 
+**WorkLocation** | **Guid?** | The employee&#39;s work address. | [optional] 
+**Manager** | **Guid?** | The employee ID of the employee&#39;s manager. | [optional] 
+**Team** | **Guid?** | The employee&#39;s team. | [optional] 
+**PayGroup** | **Guid?** | The employee&#39;s pay group | [optional] 
 **Ssn** | **string** | The employee&#39;s social security number. | [optional] 
-**Gender** | **GenderEnum** | The employee&#39;s gender. | [optional] 
-**Ethnicity** | **EthnicityEnum** | The employee&#39;s ethnicity. | [optional] 
-**MaritalStatus** | **MaritalStatusEnum** | The employee&#39;s marital status. | [optional] 
+**Gender** | **GenderEnum** | The employee&#39;s gender.  * &#x60;MALE&#x60; - MALE * &#x60;FEMALE&#x60; - FEMALE * &#x60;NON-BINARY&#x60; - NON-BINARY * &#x60;OTHER&#x60; - OTHER * &#x60;PREFER_NOT_TO_DISCLOSE&#x60; - PREFER_NOT_TO_DISCLOSE | [optional] 
+**Ethnicity** | **EthnicityEnum** | The employee&#39;s ethnicity.  * &#x60;AMERICAN_INDIAN_OR_ALASKA_NATIVE&#x60; - AMERICAN_INDIAN_OR_ALASKA_NATIVE * &#x60;ASIAN_OR_INDIAN_SUBCONTINENT&#x60; - ASIAN_OR_INDIAN_SUBCONTINENT * &#x60;BLACK_OR_AFRICAN_AMERICAN&#x60; - BLACK_OR_AFRICAN_AMERICAN * &#x60;HISPANIC_OR_LATINO&#x60; - HISPANIC_OR_LATINO * &#x60;NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER&#x60; - NATIVE_HAWAIIAN_OR_OTHER_PACIFIC_ISLANDER * &#x60;TWO_OR_MORE_RACES&#x60; - TWO_OR_MORE_RACES * &#x60;WHITE&#x60; - WHITE * &#x60;PREFER_NOT_TO_DISCLOSE&#x60; - PREFER_NOT_TO_DISCLOSE | [optional] 
+**MaritalStatus** | **MaritalStatusEnum** | The employee&#39;s filing status as related to marital status.  * &#x60;SINGLE&#x60; - SINGLE * &#x60;MARRIED_FILING_JOINTLY&#x60; - MARRIED_FILING_JOINTLY * &#x60;MARRIED_FILING_SEPARATELY&#x60; - MARRIED_FILING_SEPARATELY * &#x60;HEAD_OF_HOUSEHOLD&#x60; - HEAD_OF_HOUSEHOLD * &#x60;QUALIFYING_WIDOW_OR_WIDOWER_WITH_DEPENDENT_CHILD&#x60; - QUALIFYING_WIDOW_OR_WIDOWER_WITH_DEPENDENT_CHILD | [optional] 
 **DateOfBirth** | **DateTime?** | The employee&#39;s date of birth. | [optional] 
 **HireDate** | **DateTime?** | The date that the employee was hired, usually the day that an offer letter is signed. If an employee has multiple hire dates from previous employments, this represents the most recent hire date. Note: If you&#39;re looking for the employee&#39;s start date, refer to the start_date field. | [optional] 
-**StartDate** | **DateTime?** | The date that the employee started working. If an employee has multiple start dates from previous employments, this represents the most recent start date. | [optional] 
+**StartDate** | **DateTime?** | The date that the employee started working. If an employee was rehired, the most recent start date will be returned. | [optional] 
 **RemoteCreatedAt** | **DateTime?** | When the third party&#39;s employee was created. | [optional] 
-**EmploymentStatus** | **EmploymentStatusEnum** | The employment status of the employee. | [optional] 
+**EmploymentStatus** | **EmploymentStatusEnum** | The employment status of the employee.  * &#x60;ACTIVE&#x60; - ACTIVE * &#x60;PENDING&#x60; - PENDING * &#x60;INACTIVE&#x60; - INACTIVE | [optional] 
 **TerminationDate** | **DateTime?** | The employee&#39;s termination date. | [optional] 
 **Avatar** | **string** | The URL of the employee&#39;s avatar image. | [optional] 
-**RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 
 **CustomFields** | **Dictionary&lt;string, Object&gt;** | Custom fields configured for a given model. | [optional] 
 **RemoteWasDeleted** | **bool** |  | [optional] [readonly] 
+**FieldMappings** | **Dictionary&lt;string, Object&gt;** |  | [optional] [readonly] 
+**ModifiedAt** | **DateTime** | This is the datetime that this object was last updated by Merge | [optional] [readonly] 
+**RemoteData** | [**List&lt;RemoteData&gt;**](RemoteData.md) |  | [optional] [readonly] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.IssueStatusEnum
+* `ONGOING` - ONGOING * `RESOLVED` - RESOLVED
 
 ## Properties
 

@@ -27,35 +27,35 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// # The PayrollRun Object ### Description The &#x60;PayrollRun&#x60; object is used to represent a payroll run. This payroll run is not specific to an employee.  ### Usage Example Fetch from the &#x60;LIST PayrollRuns&#x60; endpoint and filter by &#x60;ID&#x60; to show all payroll runs.
+    /// # The PayrollRun Object ### Description The &#x60;PayrollRun&#x60; object is used to represent a group of pay statements for a specific pay schedule.  ### Usage Example Fetch from the &#x60;LIST PayrollRuns&#x60; endpoint and filter by &#x60;ID&#x60; to show all payroll runs.
     /// </summary>
     [DataContract(Name = "PayrollRun")]
     public partial class PayrollRun : IEquatable<PayrollRun>, IValidatableObject
     {
 
         /// <summary>
-        /// The state of the payroll run
+        /// The state of the payroll run  * &#x60;PAID&#x60; - PAID * &#x60;DRAFT&#x60; - DRAFT * &#x60;APPROVED&#x60; - APPROVED * &#x60;FAILED&#x60; - FAILED * &#x60;CLOSED&#x60; - CLOSED
         /// </summary>
-        /// <value>The state of the payroll run</value>
+        /// <value>The state of the payroll run  * &#x60;PAID&#x60; - PAID * &#x60;DRAFT&#x60; - DRAFT * &#x60;APPROVED&#x60; - APPROVED * &#x60;FAILED&#x60; - FAILED * &#x60;CLOSED&#x60; - CLOSED</value>
         [DataMember(Name = "run_state", EmitDefaultValue = true)]
-        public string RunState { get; set; }
+        public RunStateEnum? RunState { get; set; }
 
         /// <summary>
-        /// The type of the payroll run
+        /// The type of the payroll run  * &#x60;REGULAR&#x60; - REGULAR * &#x60;OFF_CYCLE&#x60; - OFF_CYCLE * &#x60;CORRECTION&#x60; - CORRECTION * &#x60;TERMINATION&#x60; - TERMINATION * &#x60;SIGN_ON_BONUS&#x60; - SIGN_ON_BONUS
         /// </summary>
-        /// <value>The type of the payroll run</value>
+        /// <value>The type of the payroll run  * &#x60;REGULAR&#x60; - REGULAR * &#x60;OFF_CYCLE&#x60; - OFF_CYCLE * &#x60;CORRECTION&#x60; - CORRECTION * &#x60;TERMINATION&#x60; - TERMINATION * &#x60;SIGN_ON_BONUS&#x60; - SIGN_ON_BONUS</value>
         [DataMember(Name = "run_type", EmitDefaultValue = true)]
-        public string RunType { get; set; }
+        public RunTypeEnum? RunType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PayrollRun" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="runState">The state of the payroll run.</param>
-        /// <param name="runType">The type of the payroll run.</param>
+        /// <param name="runState">The state of the payroll run  * &#x60;PAID&#x60; - PAID * &#x60;DRAFT&#x60; - DRAFT * &#x60;APPROVED&#x60; - APPROVED * &#x60;FAILED&#x60; - FAILED * &#x60;CLOSED&#x60; - CLOSED.</param>
+        /// <param name="runType">The type of the payroll run  * &#x60;REGULAR&#x60; - REGULAR * &#x60;OFF_CYCLE&#x60; - OFF_CYCLE * &#x60;CORRECTION&#x60; - CORRECTION * &#x60;TERMINATION&#x60; - TERMINATION * &#x60;SIGN_ON_BONUS&#x60; - SIGN_ON_BONUS.</param>
         /// <param name="startDate">The day and time the payroll run started..</param>
         /// <param name="endDate">The day and time the payroll run ended..</param>
         /// <param name="checkDate">The day and time the payroll run was checked..</param>
-        public PayrollRun(string remoteId = default(string), string runState = default(string), string runType = default(string), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), DateTime? checkDate = default(DateTime?))
+        public PayrollRun(string remoteId = default(string), RunStateEnum? runState = default(RunStateEnum?), RunTypeEnum? runType = default(RunTypeEnum?), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?), DateTime? checkDate = default(DateTime?))
         {
             this.RemoteId = remoteId;
             this.RunState = runState;
@@ -109,21 +109,6 @@ namespace Merge.HRISClient.Model
         public DateTime? CheckDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets RemoteData
-        /// </summary>
-        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
-        public List<RemoteData> RemoteData { get; private set; }
-
-        /// <summary>
-        /// Returns false as RemoteData should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRemoteData()
-        {
-            return false;
-        }
-
-        /// <summary>
         /// Indicates whether or not this object has been deleted by third party webhooks.
         /// </summary>
         /// <value>Indicates whether or not this object has been deleted by third party webhooks.</value>
@@ -135,6 +120,52 @@ namespace Merge.HRISClient.Model
         /// </summary>
         /// <returns>false (boolean)</returns>
         public bool ShouldSerializeRemoteWasDeleted()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Gets or Sets FieldMappings
+        /// </summary>
+        [DataMember(Name = "field_mappings", EmitDefaultValue = true)]
+        public Dictionary<string, Object> FieldMappings { get; private set; }
+
+        /// <summary>
+        /// Returns false as FieldMappings should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFieldMappings()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// This is the datetime that this object was last updated by Merge
+        /// </summary>
+        /// <value>This is the datetime that this object was last updated by Merge</value>
+        [DataMember(Name = "modified_at", EmitDefaultValue = false)]
+        public DateTime ModifiedAt { get; private set; }
+
+        /// <summary>
+        /// Returns false as ModifiedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeModifiedAt()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Gets or Sets RemoteData
+        /// </summary>
+        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
+        public List<RemoteData> RemoteData { get; private set; }
+
+        /// <summary>
+        /// Returns false as RemoteData should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRemoteData()
         {
             return false;
         }
@@ -154,8 +185,10 @@ namespace Merge.HRISClient.Model
             sb.Append("  StartDate: ").Append(StartDate).Append("\n");
             sb.Append("  EndDate: ").Append(EndDate).Append("\n");
             sb.Append("  CheckDate: ").Append(CheckDate).Append("\n");
-            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
+            sb.Append("  FieldMappings: ").Append(FieldMappings).Append("\n");
+            sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
+            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -224,14 +257,25 @@ namespace Merge.HRISClient.Model
                     this.CheckDate.Equals(input.CheckDate))
                 ) && 
                 (
+                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
+                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
+                ) && 
+                (
+                    this.FieldMappings == input.FieldMappings ||
+                    this.FieldMappings != null &&
+                    input.FieldMappings != null &&
+                    this.FieldMappings.SequenceEqual(input.FieldMappings)
+                ) && 
+                (
+                    this.ModifiedAt == input.ModifiedAt ||
+                    (this.ModifiedAt != null &&
+                    this.ModifiedAt.Equals(input.ModifiedAt))
+                ) && 
+                (
                     this.RemoteData == input.RemoteData ||
                     this.RemoteData != null &&
                     input.RemoteData != null &&
                     this.RemoteData.SequenceEqual(input.RemoteData)
-                ) && 
-                (
-                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
-                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
                 );
         }
 
@@ -256,9 +300,13 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.EndDate.GetHashCode();
                 if (this.CheckDate != null)
                     hashCode = hashCode * 59 + this.CheckDate.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
+                if (this.FieldMappings != null)
+                    hashCode = hashCode * 59 + this.FieldMappings.GetHashCode();
+                if (this.ModifiedAt != null)
+                    hashCode = hashCode * 59 + this.ModifiedAt.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
-                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }

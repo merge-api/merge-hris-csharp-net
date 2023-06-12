@@ -59,7 +59,7 @@ namespace Merge.HRISClient.Model
         /// <param name="multipartFormData">Pass an array of &#x60;MultipartFormField&#x60; objects in here instead of using the &#x60;data&#x60; param if &#x60;request_format&#x60; is set to &#x60;MULTIPART&#x60;..</param>
         /// <param name="headers">The headers to use for the request (Merge will handle the account&#39;s authorization headers). &#x60;Content-Type&#x60; header is required for passthrough. Choose content type corresponding to expected format of receiving server..</param>
         /// <param name="requestFormat">requestFormat.</param>
-        /// <param name="normalizeResponse">normalizeResponse.</param>
+        /// <param name="normalizeResponse">Optional. If true, the response will always be an object of the form &#x60;{\&quot;type\&quot;: T, \&quot;value\&quot;: ...}&#x60; where &#x60;T&#x60; will be one of &#x60;string, boolean, number, null, array, object&#x60;..</param>
         public DataPassthroughRequest(MethodEnum method = default(MethodEnum), string path = default(string), string baseUrlOverride = default(string), string data = default(string), List<MultipartFormFieldRequest> multipartFormData = default(List<MultipartFormFieldRequest>), Dictionary<string, Object> headers = default(Dictionary<string, Object>), RequestFormatEnum? requestFormat = default(RequestFormatEnum?), bool normalizeResponse = default(bool))
         {
             this.Method = method;
@@ -106,8 +106,9 @@ namespace Merge.HRISClient.Model
         public Dictionary<string, Object> Headers { get; set; }
 
         /// <summary>
-        /// Gets or Sets NormalizeResponse
+        /// Optional. If true, the response will always be an object of the form &#x60;{\&quot;type\&quot;: T, \&quot;value\&quot;: ...}&#x60; where &#x60;T&#x60; will be one of &#x60;string, boolean, number, null, array, object&#x60;.
         /// </summary>
+        /// <value>Optional. If true, the response will always be an object of the form &#x60;{\&quot;type\&quot;: T, \&quot;value\&quot;: ...}&#x60; where &#x60;T&#x60; will be one of &#x60;string, boolean, number, null, array, object&#x60;.</value>
         [DataMember(Name = "normalize_response", EmitDefaultValue = true)]
         public bool NormalizeResponse { get; set; }
 

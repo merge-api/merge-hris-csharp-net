@@ -27,8 +27,9 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// Defines EncodingEnum
+    /// * &#x60;RAW&#x60; - RAW * &#x60;BASE64&#x60; - BASE64 * &#x60;GZIP_BASE64&#x60; - GZIP_BASE64
     /// </summary>
+    /// <value>* &#x60;RAW&#x60; - RAW * &#x60;BASE64&#x60; - BASE64 * &#x60;GZIP_BASE64&#x60; - GZIP_BASE64</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum EncodingEnum
     {

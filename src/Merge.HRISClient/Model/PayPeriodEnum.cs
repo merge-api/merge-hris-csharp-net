@@ -27,8 +27,9 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// Defines PayPeriodEnum
+    /// * &#x60;HOUR&#x60; - HOUR * &#x60;DAY&#x60; - DAY * &#x60;WEEK&#x60; - WEEK * &#x60;EVERY_TWO_WEEKS&#x60; - EVERY_TWO_WEEKS * &#x60;SEMIMONTHLY&#x60; - SEMIMONTHLY * &#x60;MONTH&#x60; - MONTH * &#x60;QUARTER&#x60; - QUARTER * &#x60;EVERY_SIX_MONTHS&#x60; - EVERY_SIX_MONTHS * &#x60;YEAR&#x60; - YEAR
     /// </summary>
+    /// <value>* &#x60;HOUR&#x60; - HOUR * &#x60;DAY&#x60; - DAY * &#x60;WEEK&#x60; - WEEK * &#x60;EVERY_TWO_WEEKS&#x60; - EVERY_TWO_WEEKS * &#x60;SEMIMONTHLY&#x60; - SEMIMONTHLY * &#x60;MONTH&#x60; - MONTH * &#x60;QUARTER&#x60; - QUARTER * &#x60;EVERY_SIX_MONTHS&#x60; - EVERY_SIX_MONTHS * &#x60;YEAR&#x60; - YEAR</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum PayPeriodEnum
     {
@@ -57,28 +58,34 @@ namespace Merge.HRISClient.Model
         EVERYTWOWEEKS = 4,
 
         /// <summary>
+        /// Enum SEMIMONTHLY for value: SEMIMONTHLY
+        /// </summary>
+        [EnumMember(Value = "SEMIMONTHLY")]
+        SEMIMONTHLY = 5,
+
+        /// <summary>
         /// Enum MONTH for value: MONTH
         /// </summary>
         [EnumMember(Value = "MONTH")]
-        MONTH = 5,
+        MONTH = 6,
 
         /// <summary>
         /// Enum QUARTER for value: QUARTER
         /// </summary>
         [EnumMember(Value = "QUARTER")]
-        QUARTER = 6,
+        QUARTER = 7,
 
         /// <summary>
         /// Enum EVERYSIXMONTHS for value: EVERY_SIX_MONTHS
         /// </summary>
         [EnumMember(Value = "EVERY_SIX_MONTHS")]
-        EVERYSIXMONTHS = 7,
+        EVERYSIXMONTHS = 8,
 
         /// <summary>
         /// Enum YEAR for value: YEAR
         /// </summary>
         [EnumMember(Value = "YEAR")]
-        YEAR = 8
+        YEAR = 9
 
     }
 

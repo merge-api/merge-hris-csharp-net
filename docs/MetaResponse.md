@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **RequestSchema** | **Dictionary&lt;string, Object&gt;** |  | 
+**RemoteFieldClasses** | **Dictionary&lt;string, Object&gt;** |  | [optional] 
 **Status** | [**LinkedAccountStatus**](LinkedAccountStatus.md) |  | [optional] 
 **HasConditionalParams** | **bool** |  | 
 **HasRequiredLinkedAccountParams** | **bool** |  | 

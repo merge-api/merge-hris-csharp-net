@@ -27,7 +27,7 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// # The Deduction Object ### Description The &#x60;Deduction&#x60; object is used to represent a deduction for a given employee&#39;s payroll run. One run could include several deductions.  ### Usage Example Fetch from the &#x60;LIST Deductions&#x60; endpoint and filter by &#x60;ID&#x60; to show all deductions.
+    /// # The Deduction Object ### Description The &#x60;Deduction&#x60; object is used to represent an array of the wages withheld from total earnings for the purpose of paying taxes.  ### Usage Example Fetch from the &#x60;LIST Deductions&#x60; endpoint and filter by &#x60;ID&#x60; to show all deductions.
     /// </summary>
     [DataContract(Name = "Deduction")]
     public partial class Deduction : IEquatable<Deduction>, IValidatableObject
@@ -35,13 +35,15 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Deduction" /> class.
         /// </summary>
+        /// <param name="remoteId">The third-party API ID of the matching object..</param>
         /// <param name="employeePayrollRun">employeePayrollRun.</param>
         /// <param name="name">The deduction&#39;s name..</param>
-        /// <param name="employeeDeduction">The amount the employee is deducting..</param>
-        /// <param name="companyDeduction">The amount the company is deducting..</param>
+        /// <param name="employeeDeduction">The amount of money that is withheld from an employee&#39;s gross pay by the employee..</param>
+        /// <param name="companyDeduction">The amount of money that is withheld on behalf of an employee by the company..</param>
         /// <param name="remoteWasDeleted">Indicates whether or not this object has been deleted by third party webhooks..</param>
-        public Deduction(Guid? employeePayrollRun = default(Guid?), string name = default(string), float? employeeDeduction = default(float?), float? companyDeduction = default(float?), bool remoteWasDeleted = default(bool))
+        public Deduction(string remoteId = default(string), Guid? employeePayrollRun = default(Guid?), string name = default(string), double? employeeDeduction = default(double?), double? companyDeduction = default(double?), bool remoteWasDeleted = default(bool))
         {
+            this.RemoteId = remoteId;
             this.EmployeePayrollRun = employeePayrollRun;
             this.Name = name;
             this.EmployeeDeduction = employeeDeduction;
@@ -65,6 +67,13 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
+        /// The third-party API ID of the matching object.
+        /// </summary>
+        /// <value>The third-party API ID of the matching object.</value>
+        [DataMember(Name = "remote_id", EmitDefaultValue = true)]
+        public string RemoteId { get; set; }
+
+        /// <summary>
         /// Gets or Sets EmployeePayrollRun
         /// </summary>
         [DataMember(Name = "employee_payroll_run", EmitDefaultValue = true)]
@@ -78,18 +87,56 @@ namespace Merge.HRISClient.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// The amount the employee is deducting.
+        /// The amount of money that is withheld from an employee&#39;s gross pay by the employee.
         /// </summary>
-        /// <value>The amount the employee is deducting.</value>
+        /// <value>The amount of money that is withheld from an employee&#39;s gross pay by the employee.</value>
         [DataMember(Name = "employee_deduction", EmitDefaultValue = true)]
-        public float? EmployeeDeduction { get; set; }
+        public double? EmployeeDeduction { get; set; }
 
         /// <summary>
-        /// The amount the company is deducting.
+        /// The amount of money that is withheld on behalf of an employee by the company.
         /// </summary>
-        /// <value>The amount the company is deducting.</value>
+        /// <value>The amount of money that is withheld on behalf of an employee by the company.</value>
         [DataMember(Name = "company_deduction", EmitDefaultValue = true)]
-        public float? CompanyDeduction { get; set; }
+        public double? CompanyDeduction { get; set; }
+
+        /// <summary>
+        /// Indicates whether or not this object has been deleted by third party webhooks.
+        /// </summary>
+        /// <value>Indicates whether or not this object has been deleted by third party webhooks.</value>
+        [DataMember(Name = "remote_was_deleted", EmitDefaultValue = true)]
+        public bool RemoteWasDeleted { get; set; }
+
+        /// <summary>
+        /// Gets or Sets FieldMappings
+        /// </summary>
+        [DataMember(Name = "field_mappings", EmitDefaultValue = true)]
+        public Dictionary<string, Object> FieldMappings { get; private set; }
+
+        /// <summary>
+        /// Returns false as FieldMappings should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFieldMappings()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// This is the datetime that this object was last updated by Merge
+        /// </summary>
+        /// <value>This is the datetime that this object was last updated by Merge</value>
+        [DataMember(Name = "modified_at", EmitDefaultValue = false)]
+        public DateTime ModifiedAt { get; private set; }
+
+        /// <summary>
+        /// Returns false as ModifiedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeModifiedAt()
+        {
+            return false;
+        }
 
         /// <summary>
         /// Gets or Sets RemoteData
@@ -107,13 +154,6 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
-        /// Indicates whether or not this object has been deleted by third party webhooks.
-        /// </summary>
-        /// <value>Indicates whether or not this object has been deleted by third party webhooks.</value>
-        [DataMember(Name = "remote_was_deleted", EmitDefaultValue = true)]
-        public bool RemoteWasDeleted { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -122,12 +162,15 @@ namespace Merge.HRISClient.Model
             var sb = new StringBuilder();
             sb.Append("class Deduction {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  RemoteId: ").Append(RemoteId).Append("\n");
             sb.Append("  EmployeePayrollRun: ").Append(EmployeePayrollRun).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  EmployeeDeduction: ").Append(EmployeeDeduction).Append("\n");
             sb.Append("  CompanyDeduction: ").Append(CompanyDeduction).Append("\n");
-            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
+            sb.Append("  FieldMappings: ").Append(FieldMappings).Append("\n");
+            sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
+            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -168,6 +211,11 @@ namespace Merge.HRISClient.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.RemoteId == input.RemoteId ||
+                    (this.RemoteId != null &&
+                    this.RemoteId.Equals(input.RemoteId))
+                ) && 
+                (
                     this.EmployeePayrollRun == input.EmployeePayrollRun ||
                     (this.EmployeePayrollRun != null &&
                     this.EmployeePayrollRun.Equals(input.EmployeePayrollRun))
@@ -188,14 +236,25 @@ namespace Merge.HRISClient.Model
                     this.CompanyDeduction.Equals(input.CompanyDeduction))
                 ) && 
                 (
+                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
+                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
+                ) && 
+                (
+                    this.FieldMappings == input.FieldMappings ||
+                    this.FieldMappings != null &&
+                    input.FieldMappings != null &&
+                    this.FieldMappings.SequenceEqual(input.FieldMappings)
+                ) && 
+                (
+                    this.ModifiedAt == input.ModifiedAt ||
+                    (this.ModifiedAt != null &&
+                    this.ModifiedAt.Equals(input.ModifiedAt))
+                ) && 
+                (
                     this.RemoteData == input.RemoteData ||
                     this.RemoteData != null &&
                     input.RemoteData != null &&
                     this.RemoteData.SequenceEqual(input.RemoteData)
-                ) && 
-                (
-                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
-                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
                 );
         }
 
@@ -210,6 +269,8 @@ namespace Merge.HRISClient.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.RemoteId != null)
+                    hashCode = hashCode * 59 + this.RemoteId.GetHashCode();
                 if (this.EmployeePayrollRun != null)
                     hashCode = hashCode * 59 + this.EmployeePayrollRun.GetHashCode();
                 if (this.Name != null)
@@ -218,9 +279,13 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.EmployeeDeduction.GetHashCode();
                 if (this.CompanyDeduction != null)
                     hashCode = hashCode * 59 + this.CompanyDeduction.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
+                if (this.FieldMappings != null)
+                    hashCode = hashCode * 59 + this.FieldMappings.GetHashCode();
+                if (this.ModifiedAt != null)
+                    hashCode = hashCode * 59 + this.ModifiedAt.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
-                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }

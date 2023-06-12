@@ -34,7 +34,7 @@ namespace Merge.HRISClient.Api
         /// List linked accounts for your organization.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="category"> (optional)</param>
+        /// <param name="category">Options: (&#39;hris&#39;, &#39;ats&#39;, &#39;accounting&#39;, &#39;ticketing&#39;, &#39;crm&#39;, &#39;mktg&#39;, &#39;filestorage&#39;)  * &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
         /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
@@ -57,7 +57,7 @@ namespace Merge.HRISClient.Api
         /// List linked accounts for your organization.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="category"> (optional)</param>
+        /// <param name="category">Options: (&#39;hris&#39;, &#39;ats&#39;, &#39;accounting&#39;, &#39;ticketing&#39;, &#39;crm&#39;, &#39;mktg&#39;, &#39;filestorage&#39;)  * &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
         /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
@@ -88,7 +88,7 @@ namespace Merge.HRISClient.Api
         /// List linked accounts for your organization.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="category"> (optional)</param>
+        /// <param name="category">Options: (&#39;hris&#39;, &#39;ats&#39;, &#39;accounting&#39;, &#39;ticketing&#39;, &#39;crm&#39;, &#39;mktg&#39;, &#39;filestorage&#39;)  * &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
         /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
@@ -112,7 +112,7 @@ namespace Merge.HRISClient.Api
         /// List linked accounts for your organization.
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="category"> (optional)</param>
+        /// <param name="category">Options: (&#39;hris&#39;, &#39;ats&#39;, &#39;accounting&#39;, &#39;ticketing&#39;, &#39;crm&#39;, &#39;mktg&#39;, &#39;filestorage&#39;)  * &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
         /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
@@ -252,7 +252,7 @@ namespace Merge.HRISClient.Api
         ///  List linked accounts for your organization.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="category"> (optional)</param>
+        /// <param name="category">Options: (&#39;hris&#39;, &#39;ats&#39;, &#39;accounting&#39;, &#39;ticketing&#39;, &#39;crm&#39;, &#39;mktg&#39;, &#39;filestorage&#39;)  * &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
         /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
@@ -276,7 +276,7 @@ namespace Merge.HRISClient.Api
         ///  List linked accounts for your organization.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="category"> (optional)</param>
+        /// <param name="category">Options: (&#39;hris&#39;, &#39;ats&#39;, &#39;accounting&#39;, &#39;ticketing&#39;, &#39;crm&#39;, &#39;mktg&#39;, &#39;filestorage&#39;)  * &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
         /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
@@ -383,7 +383,7 @@ namespace Merge.HRISClient.Api
         ///  List linked accounts for your organization.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="category"> (optional)</param>
+        /// <param name="category">Options: (&#39;hris&#39;, &#39;ats&#39;, &#39;accounting&#39;, &#39;ticketing&#39;, &#39;crm&#39;, &#39;mktg&#39;, &#39;filestorage&#39;)  * &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
         /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>
@@ -408,7 +408,7 @@ namespace Merge.HRISClient.Api
         ///  List linked accounts for your organization.
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="category"> (optional)</param>
+        /// <param name="category">Options: (&#39;hris&#39;, &#39;ats&#39;, &#39;accounting&#39;, &#39;ticketing&#39;, &#39;crm&#39;, &#39;mktg&#39;, &#39;filestorage&#39;)  * &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage (optional)</param>
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="endUserEmailAddress">If provided, will only return linked accounts associated with the given email address. (optional)</param>
         /// <param name="endUserOrganizationName">If provided, will only return linked accounts associated with the given organization name. (optional)</param>

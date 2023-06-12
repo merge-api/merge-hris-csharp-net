@@ -27,8 +27,9 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// Defines CategoriesEnum
+    /// * &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage
     /// </summary>
+    /// <value>* &#x60;hris&#x60; - hris * &#x60;ats&#x60; - ats * &#x60;accounting&#x60; - accounting * &#x60;ticketing&#x60; - ticketing * &#x60;crm&#x60; - crm * &#x60;mktg&#x60; - mktg * &#x60;filestorage&#x60; - filestorage</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum CategoriesEnum
     {
@@ -60,7 +61,19 @@ namespace Merge.HRISClient.Model
         /// Enum Crm for value: crm
         /// </summary>
         [EnumMember(Value = "crm")]
-        Crm = 5
+        Crm = 5,
+
+        /// <summary>
+        /// Enum Mktg for value: mktg
+        /// </summary>
+        [EnumMember(Value = "mktg")]
+        Mktg = 6,
+
+        /// <summary>
+        /// Enum Filestorage for value: filestorage
+        /// </summary>
+        [EnumMember(Value = "filestorage")]
+        Filestorage = 7
 
     }
 

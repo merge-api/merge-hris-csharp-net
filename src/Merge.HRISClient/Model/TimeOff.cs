@@ -27,46 +27,46 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// # The TimeOff Object ### Description The &#x60;TimeOff&#x60; object is used to represent a Time Off Request filed by an employee.  ### Usage Example Fetch from the &#x60;LIST TimeOffs&#x60; endpoint and filter by &#x60;ID&#x60; to show all time off requests.
+    /// # The TimeOff Object ### Description The &#x60;TimeOff&#x60; object is used to represent all employees&#39; Time Off entries.  ### Usage Example Fetch from the &#x60;LIST TimeOffs&#x60; endpoint and filter by &#x60;ID&#x60; to show all time off requests.
     /// </summary>
     [DataContract(Name = "TimeOff")]
     public partial class TimeOff : IEquatable<TimeOff>, IValidatableObject
     {
 
         /// <summary>
-        /// The status of this time off request.
+        /// The status of this time off request.  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED
         /// </summary>
-        /// <value>The status of this time off request.</value>
+        /// <value>The status of this time off request.  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED</value>
         [DataMember(Name = "status", EmitDefaultValue = true)]
-        public string Status { get; set; }
+        public TimeOffStatusEnum? Status { get; set; }
 
         /// <summary>
-        /// The unit of time requested.
+        /// The measurement that the third-party integration uses to count time requested.  * &#x60;HOURS&#x60; - HOURS * &#x60;DAYS&#x60; - DAYS
         /// </summary>
-        /// <value>The unit of time requested.</value>
+        /// <value>The measurement that the third-party integration uses to count time requested.  * &#x60;HOURS&#x60; - HOURS * &#x60;DAYS&#x60; - DAYS</value>
         [DataMember(Name = "units", EmitDefaultValue = true)]
-        public string Units { get; set; }
+        public UnitsEnum? Units { get; set; }
 
         /// <summary>
-        /// The type of time off request.
+        /// The type of time off request.  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT
         /// </summary>
-        /// <value>The type of time off request.</value>
+        /// <value>The type of time off request.  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT</value>
         [DataMember(Name = "request_type", EmitDefaultValue = true)]
-        public string RequestType { get; set; }
+        public RequestTypeEnum? RequestType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeOff" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">employee.</param>
-        /// <param name="approver">approver.</param>
-        /// <param name="status">The status of this time off request..</param>
+        /// <param name="employee">The employee requesting time off..</param>
+        /// <param name="approver">The Merge ID of the employee with the ability to approve the time off request..</param>
+        /// <param name="status">The status of this time off request.  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED.</param>
         /// <param name="employeeNote">The employee note for this time off request..</param>
-        /// <param name="units">The unit of time requested..</param>
-        /// <param name="amount">The number of time off units requested..</param>
-        /// <param name="requestType">The type of time off request..</param>
+        /// <param name="units">The measurement that the third-party integration uses to count time requested.  * &#x60;HOURS&#x60; - HOURS * &#x60;DAYS&#x60; - DAYS.</param>
+        /// <param name="amount">The time off quantity measured by the prescribed “units”..</param>
+        /// <param name="requestType">The type of time off request.  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT.</param>
         /// <param name="startTime">The day and time of the start of the time requested off..</param>
         /// <param name="endTime">The day and time of the end of the time requested off..</param>
-        public TimeOff(string remoteId = default(string), Guid? employee = default(Guid?), Guid? approver = default(Guid?), string status = default(string), string employeeNote = default(string), string units = default(string), float? amount = default(float?), string requestType = default(string), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?))
+        public TimeOff(string remoteId = default(string), Guid? employee = default(Guid?), Guid? approver = default(Guid?), TimeOffStatusEnum? status = default(TimeOffStatusEnum?), string employeeNote = default(string), UnitsEnum? units = default(UnitsEnum?), double? amount = default(double?), RequestTypeEnum? requestType = default(RequestTypeEnum?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?))
         {
             this.RemoteId = remoteId;
             this.Employee = employee;
@@ -103,14 +103,16 @@ namespace Merge.HRISClient.Model
         public string RemoteId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Employee
+        /// The employee requesting time off.
         /// </summary>
+        /// <value>The employee requesting time off.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
         /// <summary>
-        /// Gets or Sets Approver
+        /// The Merge ID of the employee with the ability to approve the time off request.
         /// </summary>
+        /// <value>The Merge ID of the employee with the ability to approve the time off request.</value>
         [DataMember(Name = "approver", EmitDefaultValue = true)]
         public Guid? Approver { get; set; }
 
@@ -122,11 +124,11 @@ namespace Merge.HRISClient.Model
         public string EmployeeNote { get; set; }
 
         /// <summary>
-        /// The number of time off units requested.
+        /// The time off quantity measured by the prescribed “units”.
         /// </summary>
-        /// <value>The number of time off units requested.</value>
+        /// <value>The time off quantity measured by the prescribed “units”.</value>
         [DataMember(Name = "amount", EmitDefaultValue = true)]
-        public float? Amount { get; set; }
+        public double? Amount { get; set; }
 
         /// <summary>
         /// The day and time of the start of the time requested off.
@@ -143,21 +145,6 @@ namespace Merge.HRISClient.Model
         public DateTime? EndTime { get; set; }
 
         /// <summary>
-        /// Gets or Sets RemoteData
-        /// </summary>
-        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
-        public List<RemoteData> RemoteData { get; private set; }
-
-        /// <summary>
-        /// Returns false as RemoteData should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRemoteData()
-        {
-            return false;
-        }
-
-        /// <summary>
         /// Gets or Sets RemoteWasDeleted
         /// </summary>
         [DataMember(Name = "remote_was_deleted", EmitDefaultValue = true)]
@@ -168,6 +155,52 @@ namespace Merge.HRISClient.Model
         /// </summary>
         /// <returns>false (boolean)</returns>
         public bool ShouldSerializeRemoteWasDeleted()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Gets or Sets FieldMappings
+        /// </summary>
+        [DataMember(Name = "field_mappings", EmitDefaultValue = true)]
+        public Dictionary<string, Object> FieldMappings { get; private set; }
+
+        /// <summary>
+        /// Returns false as FieldMappings should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFieldMappings()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// This is the datetime that this object was last updated by Merge
+        /// </summary>
+        /// <value>This is the datetime that this object was last updated by Merge</value>
+        [DataMember(Name = "modified_at", EmitDefaultValue = false)]
+        public DateTime ModifiedAt { get; private set; }
+
+        /// <summary>
+        /// Returns false as ModifiedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeModifiedAt()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Gets or Sets RemoteData
+        /// </summary>
+        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
+        public List<RemoteData> RemoteData { get; private set; }
+
+        /// <summary>
+        /// Returns false as RemoteData should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRemoteData()
         {
             return false;
         }
@@ -191,8 +224,10 @@ namespace Merge.HRISClient.Model
             sb.Append("  RequestType: ").Append(RequestType).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
-            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
+            sb.Append("  FieldMappings: ").Append(FieldMappings).Append("\n");
+            sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
+            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -280,14 +315,25 @@ namespace Merge.HRISClient.Model
                     this.EndTime.Equals(input.EndTime))
                 ) && 
                 (
+                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
+                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
+                ) && 
+                (
+                    this.FieldMappings == input.FieldMappings ||
+                    this.FieldMappings != null &&
+                    input.FieldMappings != null &&
+                    this.FieldMappings.SequenceEqual(input.FieldMappings)
+                ) && 
+                (
+                    this.ModifiedAt == input.ModifiedAt ||
+                    (this.ModifiedAt != null &&
+                    this.ModifiedAt.Equals(input.ModifiedAt))
+                ) && 
+                (
                     this.RemoteData == input.RemoteData ||
                     this.RemoteData != null &&
                     input.RemoteData != null &&
                     this.RemoteData.SequenceEqual(input.RemoteData)
-                ) && 
-                (
-                    this.RemoteWasDeleted == input.RemoteWasDeleted ||
-                    this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
                 );
         }
 
@@ -319,9 +365,13 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.StartTime.GetHashCode();
                 if (this.EndTime != null)
                     hashCode = hashCode * 59 + this.EndTime.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
+                if (this.FieldMappings != null)
+                    hashCode = hashCode * 59 + this.FieldMappings.GetHashCode();
+                if (this.ModifiedAt != null)
+                    hashCode = hashCode * 59 + this.ModifiedAt.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
-                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }

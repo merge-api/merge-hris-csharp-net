@@ -75,7 +75,8 @@ namespace Merge.HRISClient.Test.Api
             //int? pageSize = null;
             //string remoteFields = null;
             //string remoteId = null;
-            //var response = instance.EmploymentsList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteFields, remoteId);
+            //string showEnumOrigins = null;
+            //var response = instance.EmploymentsList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteFields, remoteId, showEnumOrigins);
             //Assert.IsType<PaginatedEmploymentList>(response);
         }
 
@@ -90,7 +91,8 @@ namespace Merge.HRISClient.Test.Api
             //Guid id = null;
             //bool? includeRemoteData = null;
             //string remoteFields = null;
-            //var response = instance.EmploymentsRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
+            //string showEnumOrigins = null;
+            //var response = instance.EmploymentsRetrieve(xAccountToken, id, includeRemoteData, remoteFields, showEnumOrigins);
             //Assert.IsType<Employment>(response);
         }
     }

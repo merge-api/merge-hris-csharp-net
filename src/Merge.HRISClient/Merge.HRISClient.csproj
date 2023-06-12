@@ -6,18 +6,17 @@
     <AssemblyName>Merge.HRISClient</AssemblyName>
     <PackageId>Merge.HRISClient</PackageId>
     <OutputType>Library</OutputType>
-    <Authors>Merge API, Inc.</Authors>
-    <Company>Merge API, Inc.</Company>
-    <AssemblyTitle>Merge HRIS SDK</AssemblyTitle>
-    <Description>The C# API Client for the Merge HRIS API.</Description>
+    <Authors>OpenAPI</Authors>
+    <Company>OpenAPI</Company>
+    <AssemblyTitle>OpenAPI Library</AssemblyTitle>
+    <Description>A library generated from a OpenAPI doc</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>Merge.HRISClient</RootNamespace>
-    <Version>2.0.2</Version>
+    <Version>2.1.0</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Merge.HRISClient.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/merge-api/merge-hris-csharp-net.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
-    <ReleaseVersion>2.0.2</ReleaseVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.CategoriesEnum
+* `hris` - hris * `ats` - ats * `accounting` - accounting * `ticketing` - ticketing * `crm` - crm * `mktg` - mktg * `filestorage` - filestorage
 
 ## Properties
 

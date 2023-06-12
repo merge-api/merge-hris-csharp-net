@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.AccountTypeEnum
+* `SAVINGS` - SAVINGS * `CHECKING` - CHECKING
 
 ## Properties
 

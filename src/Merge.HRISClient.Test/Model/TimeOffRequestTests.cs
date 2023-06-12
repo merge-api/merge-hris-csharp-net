@@ -58,14 +58,6 @@ namespace Merge.HRISClient.Test.Model
 
 
         /// <summary>
-        /// Test the property 'RemoteId'
-        /// </summary>
-        [Fact]
-        public void RemoteIdTest()
-        {
-            // TODO unit test for the property 'RemoteId'
-        }
-        /// <summary>
         /// Test the property 'Employee'
         /// </summary>
         [Fact]
@@ -136,6 +128,22 @@ namespace Merge.HRISClient.Test.Model
         public void EndTimeTest()
         {
             // TODO unit test for the property 'EndTime'
+        }
+        /// <summary>
+        /// Test the property 'IntegrationParams'
+        /// </summary>
+        [Fact]
+        public void IntegrationParamsTest()
+        {
+            // TODO unit test for the property 'IntegrationParams'
+        }
+        /// <summary>
+        /// Test the property 'LinkedAccountParams'
+        /// </summary>
+        [Fact]
+        public void LinkedAccountParamsTest()
+        {
+            // TODO unit test for the property 'LinkedAccountParams'
         }
 
     }

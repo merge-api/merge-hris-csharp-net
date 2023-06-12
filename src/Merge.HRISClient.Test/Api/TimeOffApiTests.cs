@@ -91,8 +91,9 @@ namespace Merge.HRISClient.Test.Api
             //string remoteFields = null;
             //string remoteId = null;
             //string requestType = null;
+            //string showEnumOrigins = null;
             //string status = null;
-            //var response = instance.TimeOffList(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, requestType, status);
+            //var response = instance.TimeOffList(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, requestType, showEnumOrigins, status);
             //Assert.IsType<PaginatedTimeOffList>(response);
         }
 
@@ -119,7 +120,8 @@ namespace Merge.HRISClient.Test.Api
             //Guid id = null;
             //bool? includeRemoteData = null;
             //string remoteFields = null;
-            //var response = instance.TimeOffRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
+            //string showEnumOrigins = null;
+            //var response = instance.TimeOffRetrieve(xAccountToken, id, includeRemoteData, remoteFields, showEnumOrigins);
             //Assert.IsType<TimeOff>(response);
         }
     }

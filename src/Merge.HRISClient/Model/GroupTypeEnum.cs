@@ -27,8 +27,9 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// Defines GroupTypeEnum
+    /// * &#x60;TEAM&#x60; - TEAM * &#x60;DEPARTMENT&#x60; - DEPARTMENT * &#x60;COST_CENTER&#x60; - COST_CENTER * &#x60;BUSINESS_UNIT&#x60; - BUSINESS_UNIT * &#x60;GROUP&#x60; - GROUP
     /// </summary>
+    /// <value>* &#x60;TEAM&#x60; - TEAM * &#x60;DEPARTMENT&#x60; - DEPARTMENT * &#x60;COST_CENTER&#x60; - COST_CENTER * &#x60;BUSINESS_UNIT&#x60; - BUSINESS_UNIT * &#x60;GROUP&#x60; - GROUP</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum GroupTypeEnum
     {
@@ -54,7 +55,13 @@ namespace Merge.HRISClient.Model
         /// Enum BUSINESSUNIT for value: BUSINESS_UNIT
         /// </summary>
         [EnumMember(Value = "BUSINESS_UNIT")]
-        BUSINESSUNIT = 4
+        BUSINESSUNIT = 4,
+
+        /// <summary>
+        /// Enum GROUP for value: GROUP
+        /// </summary>
+        [EnumMember(Value = "GROUP")]
+        GROUP = 5
 
     }
 
