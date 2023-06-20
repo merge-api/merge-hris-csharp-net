@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.LocationTypeEnum
+* `HOME` - HOME * `WORK` - WORK
 
 ## Properties
 

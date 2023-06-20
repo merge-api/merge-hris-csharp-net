@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **NextSyncStart** | **DateTime** |  | [optional] 
 **Status** | **SyncStatusStatusEnum** |  | 
 **IsInitialSync** | **bool** |  | 
+**SelectiveSyncConfigurationsUsage** | **SelectiveSyncConfigurationsUsageEnum** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

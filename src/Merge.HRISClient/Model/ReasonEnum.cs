@@ -27,8 +27,9 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// Defines ReasonEnum
+    /// * &#x60;GENERAL_CUSTOMER_REQUEST&#x60; - GENERAL_CUSTOMER_REQUEST * &#x60;GDPR&#x60; - GDPR * &#x60;OTHER&#x60; - OTHER
     /// </summary>
+    /// <value>* &#x60;GENERAL_CUSTOMER_REQUEST&#x60; - GENERAL_CUSTOMER_REQUEST * &#x60;GDPR&#x60; - GDPR * &#x60;OTHER&#x60; - OTHER</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum ReasonEnum
     {

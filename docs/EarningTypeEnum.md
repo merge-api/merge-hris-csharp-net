@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.EarningTypeEnum
+* `SALARY` - SALARY * `REIMBURSEMENT` - REIMBURSEMENT * `OVERTIME` - OVERTIME * `BONUS` - BONUS
 
 ## Properties
 

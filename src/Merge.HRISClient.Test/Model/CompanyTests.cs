@@ -98,20 +98,36 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'Eins'
         }
         /// <summary>
-        /// Test the property 'RemoteData'
-        /// </summary>
-        [Fact]
-        public void RemoteDataTest()
-        {
-            // TODO unit test for the property 'RemoteData'
-        }
-        /// <summary>
         /// Test the property 'RemoteWasDeleted'
         /// </summary>
         [Fact]
         public void RemoteWasDeletedTest()
         {
             // TODO unit test for the property 'RemoteWasDeleted'
+        }
+        /// <summary>
+        /// Test the property 'FieldMappings'
+        /// </summary>
+        [Fact]
+        public void FieldMappingsTest()
+        {
+            // TODO unit test for the property 'FieldMappings'
+        }
+        /// <summary>
+        /// Test the property 'ModifiedAt'
+        /// </summary>
+        [Fact]
+        public void ModifiedAtTest()
+        {
+            // TODO unit test for the property 'ModifiedAt'
+        }
+        /// <summary>
+        /// Test the property 'RemoteData'
+        /// </summary>
+        [Fact]
+        public void RemoteDataTest()
+        {
+            // TODO unit test for the property 'RemoteData'
         }
 
     }

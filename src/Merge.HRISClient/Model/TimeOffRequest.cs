@@ -27,48 +27,48 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// # The TimeOff Object ### Description The &#x60;TimeOff&#x60; object is used to represent a Time Off Request filed by an employee.  ### Usage Example Fetch from the &#x60;LIST TimeOffs&#x60; endpoint and filter by &#x60;ID&#x60; to show all time off requests.
+    /// # The TimeOff Object ### Description The &#x60;TimeOff&#x60; object is used to represent all employees&#39; Time Off entries.  ### Usage Example Fetch from the &#x60;LIST TimeOffs&#x60; endpoint and filter by &#x60;ID&#x60; to show all time off requests.
     /// </summary>
     [DataContract(Name = "TimeOffRequest")]
     public partial class TimeOffRequest : IEquatable<TimeOffRequest>, IValidatableObject
     {
 
         /// <summary>
-        /// The status of this time off request.
+        /// The status of this time off request.  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED
         /// </summary>
-        /// <value>The status of this time off request.</value>
+        /// <value>The status of this time off request.  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED</value>
         [DataMember(Name = "status", EmitDefaultValue = true)]
-        public string Status { get; set; }
+        public TimeOffStatusEnum? Status { get; set; }
 
         /// <summary>
-        /// The unit of time requested.
+        /// The measurement that the third-party integration uses to count time requested.  * &#x60;HOURS&#x60; - HOURS * &#x60;DAYS&#x60; - DAYS
         /// </summary>
-        /// <value>The unit of time requested.</value>
+        /// <value>The measurement that the third-party integration uses to count time requested.  * &#x60;HOURS&#x60; - HOURS * &#x60;DAYS&#x60; - DAYS</value>
         [DataMember(Name = "units", EmitDefaultValue = true)]
-        public string Units { get; set; }
+        public UnitsEnum? Units { get; set; }
 
         /// <summary>
-        /// The type of time off request.
+        /// The type of time off request.  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT
         /// </summary>
-        /// <value>The type of time off request.</value>
+        /// <value>The type of time off request.  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT</value>
         [DataMember(Name = "request_type", EmitDefaultValue = true)]
-        public string RequestType { get; set; }
+        public RequestTypeEnum? RequestType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TimeOffRequest" /> class.
         /// </summary>
-        /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">employee.</param>
-        /// <param name="approver">approver.</param>
-        /// <param name="status">The status of this time off request..</param>
+        /// <param name="employee">The employee requesting time off..</param>
+        /// <param name="approver">The Merge ID of the employee with the ability to approve the time off request..</param>
+        /// <param name="status">The status of this time off request.  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED.</param>
         /// <param name="employeeNote">The employee note for this time off request..</param>
-        /// <param name="units">The unit of time requested..</param>
-        /// <param name="amount">The number of time off units requested..</param>
-        /// <param name="requestType">The type of time off request..</param>
+        /// <param name="units">The measurement that the third-party integration uses to count time requested.  * &#x60;HOURS&#x60; - HOURS * &#x60;DAYS&#x60; - DAYS.</param>
+        /// <param name="amount">The time off quantity measured by the prescribed “units”..</param>
+        /// <param name="requestType">The type of time off request.  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT.</param>
         /// <param name="startTime">The day and time of the start of the time requested off..</param>
         /// <param name="endTime">The day and time of the end of the time requested off..</param>
-        public TimeOffRequest(string remoteId = default(string), Guid? employee = default(Guid?), Guid? approver = default(Guid?), string status = default(string), string employeeNote = default(string), string units = default(string), float? amount = default(float?), string requestType = default(string), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?))
+        /// <param name="integrationParams">integrationParams.</param>
+        /// <param name="linkedAccountParams">linkedAccountParams.</param>
+        public TimeOffRequest(Guid? employee = default(Guid?), Guid? approver = default(Guid?), TimeOffStatusEnum? status = default(TimeOffStatusEnum?), string employeeNote = default(string), UnitsEnum? units = default(UnitsEnum?), double? amount = default(double?), RequestTypeEnum? requestType = default(RequestTypeEnum?), DateTime? startTime = default(DateTime?), DateTime? endTime = default(DateTime?), Dictionary<string, Object> integrationParams = default(Dictionary<string, Object>), Dictionary<string, Object> linkedAccountParams = default(Dictionary<string, Object>))
         {
-            this.RemoteId = remoteId;
             this.Employee = employee;
             this.Approver = approver;
             this.Status = status;
@@ -78,24 +78,21 @@ namespace Merge.HRISClient.Model
             this.RequestType = requestType;
             this.StartTime = startTime;
             this.EndTime = endTime;
+            this.IntegrationParams = integrationParams;
+            this.LinkedAccountParams = linkedAccountParams;
         }
 
         /// <summary>
-        /// The third-party API ID of the matching object.
+        /// The employee requesting time off.
         /// </summary>
-        /// <value>The third-party API ID of the matching object.</value>
-        [DataMember(Name = "remote_id", EmitDefaultValue = true)]
-        public string RemoteId { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Employee
-        /// </summary>
+        /// <value>The employee requesting time off.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
         /// <summary>
-        /// Gets or Sets Approver
+        /// The Merge ID of the employee with the ability to approve the time off request.
         /// </summary>
+        /// <value>The Merge ID of the employee with the ability to approve the time off request.</value>
         [DataMember(Name = "approver", EmitDefaultValue = true)]
         public Guid? Approver { get; set; }
 
@@ -107,11 +104,11 @@ namespace Merge.HRISClient.Model
         public string EmployeeNote { get; set; }
 
         /// <summary>
-        /// The number of time off units requested.
+        /// The time off quantity measured by the prescribed “units”.
         /// </summary>
-        /// <value>The number of time off units requested.</value>
+        /// <value>The time off quantity measured by the prescribed “units”.</value>
         [DataMember(Name = "amount", EmitDefaultValue = true)]
-        public float? Amount { get; set; }
+        public double? Amount { get; set; }
 
         /// <summary>
         /// The day and time of the start of the time requested off.
@@ -128,6 +125,18 @@ namespace Merge.HRISClient.Model
         public DateTime? EndTime { get; set; }
 
         /// <summary>
+        /// Gets or Sets IntegrationParams
+        /// </summary>
+        [DataMember(Name = "integration_params", EmitDefaultValue = true)]
+        public Dictionary<string, Object> IntegrationParams { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LinkedAccountParams
+        /// </summary>
+        [DataMember(Name = "linked_account_params", EmitDefaultValue = true)]
+        public Dictionary<string, Object> LinkedAccountParams { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -135,7 +144,6 @@ namespace Merge.HRISClient.Model
         {
             var sb = new StringBuilder();
             sb.Append("class TimeOffRequest {\n");
-            sb.Append("  RemoteId: ").Append(RemoteId).Append("\n");
             sb.Append("  Employee: ").Append(Employee).Append("\n");
             sb.Append("  Approver: ").Append(Approver).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
@@ -145,6 +153,8 @@ namespace Merge.HRISClient.Model
             sb.Append("  RequestType: ").Append(RequestType).Append("\n");
             sb.Append("  StartTime: ").Append(StartTime).Append("\n");
             sb.Append("  EndTime: ").Append(EndTime).Append("\n");
+            sb.Append("  IntegrationParams: ").Append(IntegrationParams).Append("\n");
+            sb.Append("  LinkedAccountParams: ").Append(LinkedAccountParams).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -179,11 +189,6 @@ namespace Merge.HRISClient.Model
                 return false;
 
             return 
-                (
-                    this.RemoteId == input.RemoteId ||
-                    (this.RemoteId != null &&
-                    this.RemoteId.Equals(input.RemoteId))
-                ) && 
                 (
                     this.Employee == input.Employee ||
                     (this.Employee != null &&
@@ -225,6 +230,18 @@ namespace Merge.HRISClient.Model
                     this.EndTime == input.EndTime ||
                     (this.EndTime != null &&
                     this.EndTime.Equals(input.EndTime))
+                ) && 
+                (
+                    this.IntegrationParams == input.IntegrationParams ||
+                    this.IntegrationParams != null &&
+                    input.IntegrationParams != null &&
+                    this.IntegrationParams.SequenceEqual(input.IntegrationParams)
+                ) && 
+                (
+                    this.LinkedAccountParams == input.LinkedAccountParams ||
+                    this.LinkedAccountParams != null &&
+                    input.LinkedAccountParams != null &&
+                    this.LinkedAccountParams.SequenceEqual(input.LinkedAccountParams)
                 );
         }
 
@@ -237,8 +254,6 @@ namespace Merge.HRISClient.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.RemoteId != null)
-                    hashCode = hashCode * 59 + this.RemoteId.GetHashCode();
                 if (this.Employee != null)
                     hashCode = hashCode * 59 + this.Employee.GetHashCode();
                 if (this.Approver != null)
@@ -254,6 +269,10 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.StartTime.GetHashCode();
                 if (this.EndTime != null)
                     hashCode = hashCode * 59 + this.EndTime.GetHashCode();
+                if (this.IntegrationParams != null)
+                    hashCode = hashCode * 59 + this.IntegrationParams.GetHashCode();
+                if (this.LinkedAccountParams != null)
+                    hashCode = hashCode * 59 + this.LinkedAccountParams.GetHashCode();
                 return hashCode;
             }
         }

@@ -66,6 +66,14 @@ namespace Merge.HRISClient.Test.Model
             // TODO unit test for the property 'RequestSchema'
         }
         /// <summary>
+        /// Test the property 'RemoteFieldClasses'
+        /// </summary>
+        [Fact]
+        public void RemoteFieldClassesTest()
+        {
+            // TODO unit test for the property 'RemoteFieldClasses'
+        }
+        /// <summary>
         /// Test the property 'Status'
         /// </summary>
         [Fact]

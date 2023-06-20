@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="groupslist"></a>
 # **GroupsList**
-> PaginatedGroupList GroupsList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string remoteFields = null, string remoteId = null)
+> PaginatedGroupList GroupsList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string remoteFields = null, string remoteId = null, string showEnumOrigins = null, string types = null)
 
 
 
@@ -44,15 +44,17 @@ namespace Example
             var cursor = cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw;  // string | The pagination cursor value. (optional) 
             var includeDeletedData = true;  // bool? | Whether to include data that was marked as deleted by third party webhooks. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
-            var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified after this datetime. (optional) 
-            var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified before this datetime. (optional) 
+            var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, only objects synced by Merge after this date time will be returned. (optional) 
+            var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, only objects synced by Merge before this date time will be returned. (optional) 
             var pageSize = 56;  // int? | Number of results to return per page. (optional) 
-            var remoteFields = type;  // string | Which fields should be returned in non-normalized form. (optional) 
+            var remoteFields = type;  // string | Deprecated. Use show_enum_origins. (optional) 
             var remoteId = remoteId_example;  // string | The API provider's ID for the given object. (optional) 
+            var showEnumOrigins = type;  // string | Which fields should be returned in non-normalized form. (optional) 
+            var types = types_example;  // string | If provided, will only return groups of these types. Multiple values can be separated by commas. (optional) 
 
             try
             {
-                PaginatedGroupList result = apiInstance.GroupsList(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId);
+                PaginatedGroupList result = apiInstance.GroupsList(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, showEnumOrigins, types);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -76,11 +78,13 @@ Name | Type | Description  | Notes
  **cursor** | **string**| The pagination cursor value. | [optional] 
  **includeDeletedData** | **bool?**| Whether to include data that was marked as deleted by third party webhooks. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
- **modifiedAfter** | **DateTime?**| If provided, will only return objects modified after this datetime. | [optional] 
- **modifiedBefore** | **DateTime?**| If provided, will only return objects modified before this datetime. | [optional] 
+ **modifiedAfter** | **DateTime?**| If provided, only objects synced by Merge after this date time will be returned. | [optional] 
+ **modifiedBefore** | **DateTime?**| If provided, only objects synced by Merge before this date time will be returned. | [optional] 
  **pageSize** | **int?**| Number of results to return per page. | [optional] 
- **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
+ **remoteFields** | **string**| Deprecated. Use show_enum_origins. | [optional] 
  **remoteId** | **string**| The API provider&#39;s ID for the given object. | [optional] 
+ **showEnumOrigins** | **string**| Which fields should be returned in non-normalized form. | [optional] 
+ **types** | **string**| If provided, will only return groups of these types. Multiple values can be separated by commas. | [optional] 
 
 ### Return type
 
@@ -105,7 +109,7 @@ Name | Type | Description  | Notes
 
 <a name="groupsretrieve"></a>
 # **GroupsRetrieve**
-> Group GroupsRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null, string remoteFields = null)
+> Group GroupsRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null, string remoteFields = null, string showEnumOrigins = null)
 
 
 
@@ -136,11 +140,12 @@ namespace Example
             var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
             var id = new Guid(); // Guid | 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
-            var remoteFields = type;  // string | Which fields should be returned in non-normalized form. (optional) 
+            var remoteFields = type;  // string | Deprecated. Use show_enum_origins. (optional) 
+            var showEnumOrigins = type;  // string | Which fields should be returned in non-normalized form. (optional) 
 
             try
             {
-                Group result = apiInstance.GroupsRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
+                Group result = apiInstance.GroupsRetrieve(xAccountToken, id, includeRemoteData, remoteFields, showEnumOrigins);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -161,7 +166,8 @@ Name | Type | Description  | Notes
  **xAccountToken** | **string**| Token identifying the end user. | 
  **id** | [**Guid**](Guid.md)|  | 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
- **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
+ **remoteFields** | **string**| Deprecated. Use show_enum_origins. | [optional] 
+ **showEnumOrigins** | **string**| Which fields should be returned in non-normalized form. | [optional] 
 
 ### Return type
 

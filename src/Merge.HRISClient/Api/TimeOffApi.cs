@@ -69,15 +69,16 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
-        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
-        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;)  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;)  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED (optional)</param>
         /// <returns>PaginatedTimeOffList</returns>
-        PaginatedTimeOffList TimeOffList(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string status = default(string));
+        PaginatedTimeOffList TimeOffList(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string showEnumOrigins = default(string), string status = default(string));
 
         /// <summary>
         /// 
@@ -94,15 +95,16 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
-        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
-        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;)  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;)  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED (optional)</param>
         /// <returns>ApiResponse of PaginatedTimeOffList</returns>
-        ApiResponse<PaginatedTimeOffList> TimeOffListWithHttpInfo(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string status = default(string));
+        ApiResponse<PaginatedTimeOffList> TimeOffListWithHttpInfo(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string showEnumOrigins = default(string), string status = default(string));
         /// <summary>
         /// 
         /// </summary>
@@ -134,9 +136,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>TimeOff</returns>
-        TimeOff TimeOffRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string));
+        TimeOff TimeOffRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string));
 
         /// <summary>
         /// 
@@ -148,9 +151,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>ApiResponse of TimeOff</returns>
-        ApiResponse<TimeOff> TimeOffRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string));
+        ApiResponse<TimeOff> TimeOffRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string));
         #endregion Synchronous Operations
     }
 
@@ -204,16 +208,17 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
-        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
-        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;)  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;)  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedTimeOffList</returns>
-        System.Threading.Tasks.Task<PaginatedTimeOffList> TimeOffListAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PaginatedTimeOffList> TimeOffListAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string showEnumOrigins = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -230,16 +235,17 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
-        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
-        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;)  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;)  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedTimeOffList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaginatedTimeOffList>> TimeOffListWithHttpInfoAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PaginatedTimeOffList>> TimeOffListWithHttpInfoAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string showEnumOrigins = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -273,10 +279,11 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TimeOff</returns>
-        System.Threading.Tasks.Task<TimeOff> TimeOffRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<TimeOff> TimeOffRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -288,10 +295,11 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TimeOff)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TimeOff>> TimeOffRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<TimeOff>> TimeOffRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -593,17 +601,18 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
-        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
-        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;)  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;)  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED (optional)</param>
         /// <returns>PaginatedTimeOffList</returns>
-        public PaginatedTimeOffList TimeOffList(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string status = default(string))
+        public PaginatedTimeOffList TimeOffList(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string showEnumOrigins = default(string), string status = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList> localVarResponse = TimeOffListWithHttpInfo(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, requestType, status);
+            Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList> localVarResponse = TimeOffListWithHttpInfo(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, requestType, showEnumOrigins, status);
             return localVarResponse.Data;
         }
 
@@ -619,15 +628,16 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
-        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
-        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;)  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;)  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED (optional)</param>
         /// <returns>ApiResponse of PaginatedTimeOffList</returns>
-        public Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList> TimeOffListWithHttpInfo(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string status = default(string))
+        public Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList> TimeOffListWithHttpInfo(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string showEnumOrigins = default(string), string status = default(string))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -700,6 +710,10 @@ namespace Merge.HRISClient.Api
             if (requestType != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "request_type", requestType));
+            }
+            if (showEnumOrigins != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "show_enum_origins", showEnumOrigins));
             }
             if (status != null)
             {
@@ -737,18 +751,19 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
-        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
-        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;)  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;)  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedTimeOffList</returns>
-        public async System.Threading.Tasks.Task<PaginatedTimeOffList> TimeOffListAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PaginatedTimeOffList> TimeOffListAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string showEnumOrigins = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList> localVarResponse = await TimeOffListWithHttpInfoAsync(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, requestType, status, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList> localVarResponse = await TimeOffListWithHttpInfoAsync(xAccountToken, approverId, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, requestType, showEnumOrigins, status, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -764,16 +779,17 @@ namespace Merge.HRISClient.Api
         /// <param name="employeeId">If provided, will only return time off for this employee. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
-        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) (optional)</param>
-        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;) (optional)</param>
+        /// <param name="requestType">If provided, will only return TimeOff with this request type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;)  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="status">If provided, will only return TimeOff with this status. Options: (&#39;REQUESTED&#39;, &#39;APPROVED&#39;, &#39;DECLINED&#39;, &#39;CANCELLED&#39;, &#39;DELETED&#39;)  * &#x60;REQUESTED&#x60; - REQUESTED * &#x60;APPROVED&#x60; - APPROVED * &#x60;DECLINED&#x60; - DECLINED * &#x60;CANCELLED&#x60; - CANCELLED * &#x60;DELETED&#x60; - DELETED (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedTimeOffList)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList>> TimeOffListWithHttpInfoAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedTimeOffList>> TimeOffListWithHttpInfoAsync(string xAccountToken, string approverId = default(string), DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), string employeeId = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string requestType = default(string), string showEnumOrigins = default(string), string status = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -848,6 +864,10 @@ namespace Merge.HRISClient.Api
             if (requestType != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "request_type", requestType));
+            }
+            if (showEnumOrigins != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "show_enum_origins", showEnumOrigins));
             }
             if (status != null)
             {
@@ -1006,11 +1026,12 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>TimeOff</returns>
-        public TimeOff TimeOffRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string))
+        public TimeOff TimeOffRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<TimeOff> localVarResponse = TimeOffRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData, remoteFields);
+            Merge.HRISClient.Client.ApiResponse<TimeOff> localVarResponse = TimeOffRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData, remoteFields, showEnumOrigins);
             return localVarResponse.Data;
         }
 
@@ -1021,9 +1042,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>ApiResponse of TimeOff</returns>
-        public Merge.HRISClient.Client.ApiResponse<TimeOff> TimeOffRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string))
+        public Merge.HRISClient.Client.ApiResponse<TimeOff> TimeOffRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -1053,6 +1075,10 @@ namespace Merge.HRISClient.Api
             if (remoteFields != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
+            }
+            if (showEnumOrigins != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "show_enum_origins", showEnumOrigins));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
@@ -1081,12 +1107,13 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of TimeOff</returns>
-        public async System.Threading.Tasks.Task<TimeOff> TimeOffRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<TimeOff> TimeOffRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<TimeOff> localVarResponse = await TimeOffRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, remoteFields, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<TimeOff> localVarResponse = await TimeOffRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, remoteFields, showEnumOrigins, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1097,10 +1124,11 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (TimeOff)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<TimeOff>> TimeOffRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<TimeOff>> TimeOffRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -1132,6 +1160,10 @@ namespace Merge.HRISClient.Api
             if (remoteFields != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
+            }
+            if (showEnumOrigins != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "show_enum_origins", showEnumOrigins));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 

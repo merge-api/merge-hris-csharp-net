@@ -73,7 +73,9 @@ namespace Merge.HRISClient.Test.Api
             //int? pageSize = null;
             //string remoteFields = null;
             //string remoteId = null;
-            //var response = instance.GroupsList(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId);
+            //string showEnumOrigins = null;
+            //string types = null;
+            //var response = instance.GroupsList(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, showEnumOrigins, types);
             //Assert.IsType<PaginatedGroupList>(response);
         }
 
@@ -88,7 +90,8 @@ namespace Merge.HRISClient.Test.Api
             //Guid id = null;
             //bool? includeRemoteData = null;
             //string remoteFields = null;
-            //var response = instance.GroupsRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
+            //string showEnumOrigins = null;
+            //var response = instance.GroupsRetrieve(xAccountToken, id, includeRemoteData, remoteFields, showEnumOrigins);
             //Assert.IsType<Group>(response);
         }
     }

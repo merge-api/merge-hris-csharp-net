@@ -31,7 +31,7 @@ namespace Merge.HRISClient.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
+        /// Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PARTIALLY_SYNCED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
@@ -44,7 +44,7 @@ namespace Merge.HRISClient.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
+        /// Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PARTIALLY_SYNCED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
@@ -65,7 +65,7 @@ namespace Merge.HRISClient.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
+        /// Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PARTIALLY_SYNCED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
@@ -79,7 +79,7 @@ namespace Merge.HRISClient.Api
         /// 
         /// </summary>
         /// <remarks>
-        /// Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
+        /// Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PARTIALLY_SYNCED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
         /// </remarks>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
@@ -209,7 +209,7 @@ namespace Merge.HRISClient.Api
         }
 
         /// <summary>
-        ///  Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
+        ///  Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PARTIALLY_SYNCED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
@@ -223,7 +223,7 @@ namespace Merge.HRISClient.Api
         }
 
         /// <summary>
-        ///  Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
+        ///  Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PARTIALLY_SYNCED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
@@ -281,7 +281,7 @@ namespace Merge.HRISClient.Api
         }
 
         /// <summary>
-        ///  Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
+        ///  Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PARTIALLY_SYNCED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>
@@ -296,7 +296,7 @@ namespace Merge.HRISClient.Api
         }
 
         /// <summary>
-        ///  Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
+        ///  Get syncing status. Possible values: &#x60;DISABLED&#x60;, &#x60;DONE&#x60;, &#x60;FAILED&#x60;, &#x60;PARTIALLY_SYNCED&#x60;, &#x60;PAUSED&#x60;, &#x60;SYNCING&#x60;
         /// </summary>
         /// <exception cref="Merge.HRISClient.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="xAccountToken">Token identifying the end user.</param>

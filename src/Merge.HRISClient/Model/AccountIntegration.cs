@@ -41,11 +41,13 @@ namespace Merge.HRISClient.Model
         /// Initializes a new instance of the <see cref="AccountIntegration" /> class.
         /// </summary>
         /// <param name="name">Company name. (required).</param>
-        /// <param name="categories">Category or categories this integration belongs to. Multiple categories should be comma separated.&lt;br/&gt;&lt;br&gt;Example: For [ats, hris], enter &lt;i&gt;ats,hris&lt;/i&gt;.</param>
+        /// <param name="categories">Category or categories this integration belongs to. Multiple categories should be comma separated, i.e. [ats, hris]..</param>
         /// <param name="image">Company logo in rectangular shape. &lt;b&gt;Upload an image with a clear background.&lt;/b&gt;.</param>
         /// <param name="squareImage">Company logo in square shape. &lt;b&gt;Upload an image with a white background.&lt;/b&gt;.</param>
         /// <param name="color">The color of this integration used for buttons and text throughout the app and landing pages. &lt;b&gt;Choose a darker, saturated color.&lt;/b&gt;.</param>
-        public AccountIntegration(string name = default(string), List<CategoriesEnum> categories = default(List<CategoriesEnum>), string image = default(string), string squareImage = default(string), string color = default(string))
+        /// <param name="isInBeta">If checked, this integration will not appear in the linking flow, and will appear elsewhere with a Beta tag..</param>
+        /// <param name="apiEndpointsToDocumentationUrls">Mapping of API endpoints to documentation urls for support. Example: {&#39;GET&#39;: [[&#39;/common-model-scopes&#39;, &#39;https://docs.merge.dev/accounting/common-model-scopes/#common_model_scopes_retrieve&#39;],[&#39;/common-model-actions&#39;, &#39;https://docs.merge.dev/accounting/common-model-actions/#common_model_actions_retrieve&#39;]], &#39;POST&#39;: []}.</param>
+        public AccountIntegration(string name = default(string), List<CategoriesEnum> categories = default(List<CategoriesEnum>), string image = default(string), string squareImage = default(string), string color = default(string), bool isInBeta = default(bool), Dictionary<string, Object> apiEndpointsToDocumentationUrls = default(Dictionary<string, Object>))
         {
             // to ensure "name" is required (not null)
             this.Name = name ?? throw new ArgumentNullException("name is a required property for AccountIntegration and cannot be null");
@@ -53,6 +55,8 @@ namespace Merge.HRISClient.Model
             this.Image = image;
             this.SquareImage = squareImage;
             this.Color = color;
+            this.IsInBeta = isInBeta;
+            this.ApiEndpointsToDocumentationUrls = apiEndpointsToDocumentationUrls;
         }
 
         /// <summary>
@@ -63,9 +67,9 @@ namespace Merge.HRISClient.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Category or categories this integration belongs to. Multiple categories should be comma separated.&lt;br/&gt;&lt;br&gt;Example: For [ats, hris], enter &lt;i&gt;ats,hris&lt;/i&gt;
+        /// Category or categories this integration belongs to. Multiple categories should be comma separated, i.e. [ats, hris].
         /// </summary>
-        /// <value>Category or categories this integration belongs to. Multiple categories should be comma separated.&lt;br/&gt;&lt;br&gt;Example: For [ats, hris], enter &lt;i&gt;ats,hris&lt;/i&gt;</value>
+        /// <value>Category or categories this integration belongs to. Multiple categories should be comma separated, i.e. [ats, hris].</value>
         [DataMember(Name = "categories", EmitDefaultValue = false)]
         public List<CategoriesEnum> Categories { get; set; }
 
@@ -106,6 +110,20 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
+        /// If checked, this integration will not appear in the linking flow, and will appear elsewhere with a Beta tag.
+        /// </summary>
+        /// <value>If checked, this integration will not appear in the linking flow, and will appear elsewhere with a Beta tag.</value>
+        [DataMember(Name = "is_in_beta", EmitDefaultValue = true)]
+        public bool IsInBeta { get; set; }
+
+        /// <summary>
+        /// Mapping of API endpoints to documentation urls for support. Example: {&#39;GET&#39;: [[&#39;/common-model-scopes&#39;, &#39;https://docs.merge.dev/accounting/common-model-scopes/#common_model_scopes_retrieve&#39;],[&#39;/common-model-actions&#39;, &#39;https://docs.merge.dev/accounting/common-model-actions/#common_model_actions_retrieve&#39;]], &#39;POST&#39;: []}
+        /// </summary>
+        /// <value>Mapping of API endpoints to documentation urls for support. Example: {&#39;GET&#39;: [[&#39;/common-model-scopes&#39;, &#39;https://docs.merge.dev/accounting/common-model-scopes/#common_model_scopes_retrieve&#39;],[&#39;/common-model-actions&#39;, &#39;https://docs.merge.dev/accounting/common-model-actions/#common_model_actions_retrieve&#39;]], &#39;POST&#39;: []}</value>
+        [DataMember(Name = "api_endpoints_to_documentation_urls", EmitDefaultValue = false)]
+        public Dictionary<string, Object> ApiEndpointsToDocumentationUrls { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -119,6 +137,8 @@ namespace Merge.HRISClient.Model
             sb.Append("  SquareImage: ").Append(SquareImage).Append("\n");
             sb.Append("  Color: ").Append(Color).Append("\n");
             sb.Append("  Slug: ").Append(Slug).Append("\n");
+            sb.Append("  IsInBeta: ").Append(IsInBeta).Append("\n");
+            sb.Append("  ApiEndpointsToDocumentationUrls: ").Append(ApiEndpointsToDocumentationUrls).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -183,6 +203,16 @@ namespace Merge.HRISClient.Model
                     this.Slug == input.Slug ||
                     (this.Slug != null &&
                     this.Slug.Equals(input.Slug))
+                ) && 
+                (
+                    this.IsInBeta == input.IsInBeta ||
+                    this.IsInBeta.Equals(input.IsInBeta)
+                ) && 
+                (
+                    this.ApiEndpointsToDocumentationUrls == input.ApiEndpointsToDocumentationUrls ||
+                    this.ApiEndpointsToDocumentationUrls != null &&
+                    input.ApiEndpointsToDocumentationUrls != null &&
+                    this.ApiEndpointsToDocumentationUrls.SequenceEqual(input.ApiEndpointsToDocumentationUrls)
                 );
         }
 
@@ -207,6 +237,9 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.Color.GetHashCode();
                 if (this.Slug != null)
                     hashCode = hashCode * 59 + this.Slug.GetHashCode();
+                hashCode = hashCode * 59 + this.IsInBeta.GetHashCode();
+                if (this.ApiEndpointsToDocumentationUrls != null)
+                    hashCode = hashCode * 59 + this.ApiEndpointsToDocumentationUrls.GetHashCode();
                 return hashCode;
             }
         }

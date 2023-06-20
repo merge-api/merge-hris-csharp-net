@@ -34,9 +34,9 @@ namespace Merge.HRISClient.Model
     {
 
         /// <summary>
-        /// The encoding of the value of &#x60;data&#x60;. Defaults to &#x60;RAW&#x60; if not defined.
+        /// The encoding of the value of &#x60;data&#x60;. Defaults to &#x60;RAW&#x60; if not defined.  * &#x60;RAW&#x60; - RAW * &#x60;BASE64&#x60; - BASE64 * &#x60;GZIP_BASE64&#x60; - GZIP_BASE64
         /// </summary>
-        /// <value>The encoding of the value of &#x60;data&#x60;. Defaults to &#x60;RAW&#x60; if not defined.</value>
+        /// <value>The encoding of the value of &#x60;data&#x60;. Defaults to &#x60;RAW&#x60; if not defined.  * &#x60;RAW&#x60; - RAW * &#x60;BASE64&#x60; - BASE64 * &#x60;GZIP_BASE64&#x60; - GZIP_BASE64</value>
         [DataMember(Name = "encoding", EmitDefaultValue = true)]
         public EncodingEnum? Encoding { get; set; }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Merge.HRISClient.Model
         /// </summary>
         /// <param name="name">The name of the form field (required).</param>
         /// <param name="data">The data for the form field. (required).</param>
-        /// <param name="encoding">The encoding of the value of &#x60;data&#x60;. Defaults to &#x60;RAW&#x60; if not defined..</param>
+        /// <param name="encoding">The encoding of the value of &#x60;data&#x60;. Defaults to &#x60;RAW&#x60; if not defined.  * &#x60;RAW&#x60; - RAW * &#x60;BASE64&#x60; - BASE64 * &#x60;GZIP_BASE64&#x60; - GZIP_BASE64.</param>
         /// <param name="fileName">The file name of the form field, if the field is for a file..</param>
         /// <param name="contentType">The MIME type of the file, if the field is for a file..</param>
         public MultipartFormFieldRequest(string name = default(string), string data = default(string), EncodingEnum? encoding = default(EncodingEnum?), string fileName = default(string), string contentType = default(string))

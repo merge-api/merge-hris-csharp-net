@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="timeoffbalanceslist"></a>
 # **TimeOffBalancesList**
-> PaginatedTimeOffBalanceList TimeOffBalancesList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, string employeeId = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string policyType = null, string remoteFields = null, string remoteId = null)
+> PaginatedTimeOffBalanceList TimeOffBalancesList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, string employeeId = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, int? pageSize = null, string policyType = null, string remoteFields = null, string remoteId = null, string showEnumOrigins = null)
 
 
 
@@ -45,16 +45,17 @@ namespace Example
             var employeeId = employeeId_example;  // string | If provided, will only return time off balances for this employee. (optional) 
             var includeDeletedData = true;  // bool? | Whether to include data that was marked as deleted by third party webhooks. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
-            var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified after this datetime. (optional) 
-            var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified before this datetime. (optional) 
+            var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, only objects synced by Merge after this date time will be returned. (optional) 
+            var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, only objects synced by Merge before this date time will be returned. (optional) 
             var pageSize = 56;  // int? | Number of results to return per page. (optional) 
-            var policyType = policyType_example;  // string | If provided, will only return TimeOffBalance with this policy type. Options: ('VACATION', 'SICK', 'PERSONAL', 'JURY_DUTY', 'VOLUNTEER', 'BEREAVEMENT') (optional) 
-            var remoteFields = policy_type;  // string | Which fields should be returned in non-normalized form. (optional) 
+            var policyType = policyType_example;  // string | If provided, will only return TimeOffBalance with this policy type. Options: ('VACATION', 'SICK', 'PERSONAL', 'JURY_DUTY', 'VOLUNTEER', 'BEREAVEMENT')  * `VACATION` - VACATION * `SICK` - SICK * `PERSONAL` - PERSONAL * `JURY_DUTY` - JURY_DUTY * `VOLUNTEER` - VOLUNTEER * `BEREAVEMENT` - BEREAVEMENT (optional) 
+            var remoteFields = policy_type;  // string | Deprecated. Use show_enum_origins. (optional) 
             var remoteId = remoteId_example;  // string | The API provider's ID for the given object. (optional) 
+            var showEnumOrigins = policy_type;  // string | Which fields should be returned in non-normalized form. (optional) 
 
             try
             {
-                PaginatedTimeOffBalanceList result = apiInstance.TimeOffBalancesList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, policyType, remoteFields, remoteId);
+                PaginatedTimeOffBalanceList result = apiInstance.TimeOffBalancesList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, policyType, remoteFields, remoteId, showEnumOrigins);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -79,12 +80,13 @@ Name | Type | Description  | Notes
  **employeeId** | **string**| If provided, will only return time off balances for this employee. | [optional] 
  **includeDeletedData** | **bool?**| Whether to include data that was marked as deleted by third party webhooks. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
- **modifiedAfter** | **DateTime?**| If provided, will only return objects modified after this datetime. | [optional] 
- **modifiedBefore** | **DateTime?**| If provided, will only return objects modified before this datetime. | [optional] 
+ **modifiedAfter** | **DateTime?**| If provided, only objects synced by Merge after this date time will be returned. | [optional] 
+ **modifiedBefore** | **DateTime?**| If provided, only objects synced by Merge before this date time will be returned. | [optional] 
  **pageSize** | **int?**| Number of results to return per page. | [optional] 
- **policyType** | **string**| If provided, will only return TimeOffBalance with this policy type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;) | [optional] 
- **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
+ **policyType** | **string**| If provided, will only return TimeOffBalance with this policy type. Options: (&#39;VACATION&#39;, &#39;SICK&#39;, &#39;PERSONAL&#39;, &#39;JURY_DUTY&#39;, &#39;VOLUNTEER&#39;, &#39;BEREAVEMENT&#39;)  * &#x60;VACATION&#x60; - VACATION * &#x60;SICK&#x60; - SICK * &#x60;PERSONAL&#x60; - PERSONAL * &#x60;JURY_DUTY&#x60; - JURY_DUTY * &#x60;VOLUNTEER&#x60; - VOLUNTEER * &#x60;BEREAVEMENT&#x60; - BEREAVEMENT | [optional] 
+ **remoteFields** | **string**| Deprecated. Use show_enum_origins. | [optional] 
  **remoteId** | **string**| The API provider&#39;s ID for the given object. | [optional] 
+ **showEnumOrigins** | **string**| Which fields should be returned in non-normalized form. | [optional] 
 
 ### Return type
 
@@ -109,7 +111,7 @@ Name | Type | Description  | Notes
 
 <a name="timeoffbalancesretrieve"></a>
 # **TimeOffBalancesRetrieve**
-> TimeOffBalance TimeOffBalancesRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null, string remoteFields = null)
+> TimeOffBalance TimeOffBalancesRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null, string remoteFields = null, string showEnumOrigins = null)
 
 
 
@@ -140,11 +142,12 @@ namespace Example
             var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
             var id = new Guid(); // Guid | 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
-            var remoteFields = policy_type;  // string | Which fields should be returned in non-normalized form. (optional) 
+            var remoteFields = policy_type;  // string | Deprecated. Use show_enum_origins. (optional) 
+            var showEnumOrigins = policy_type;  // string | Which fields should be returned in non-normalized form. (optional) 
 
             try
             {
-                TimeOffBalance result = apiInstance.TimeOffBalancesRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
+                TimeOffBalance result = apiInstance.TimeOffBalancesRetrieve(xAccountToken, id, includeRemoteData, remoteFields, showEnumOrigins);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -165,7 +168,8 @@ Name | Type | Description  | Notes
  **xAccountToken** | **string**| Token identifying the end user. | 
  **id** | [**Guid**](Guid.md)|  | 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
- **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
+ **remoteFields** | **string**| Deprecated. Use show_enum_origins. | [optional] 
+ **showEnumOrigins** | **string**| Which fields should be returned in non-normalized form. | [optional] 
 
 ### Return type
 

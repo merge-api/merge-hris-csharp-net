@@ -46,11 +46,11 @@ namespace Example
             var firstIncidentTimeBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return issues whose first incident time was before this datetime. (optional) 
             var includeMuted = includeMuted_example;  // string | If True, will include muted issues (optional) 
             var integrationName = integrationName_example;  // string |  (optional) 
-            var lastIncidentTimeAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return issues whose first incident time was after this datetime. (optional) 
-            var lastIncidentTimeBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return issues whose first incident time was before this datetime. (optional) 
+            var lastIncidentTimeAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return issues whose last incident time was after this datetime. (optional) 
+            var lastIncidentTimeBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return issues whose last incident time was before this datetime. (optional) 
             var pageSize = 56;  // int? | Number of results to return per page. (optional) 
             var startDate = startDate_example;  // string | If included, will only include issues whose most recent action occurred after this time (optional) 
-            var status = status_example;  // string |  (optional) 
+            var status = status_example;  // string | Status of the issue. Options: ('ONGOING', 'RESOLVED')  * `ONGOING` - ONGOING * `RESOLVED` - RESOLVED (optional) 
 
             try
             {
@@ -80,11 +80,11 @@ Name | Type | Description  | Notes
  **firstIncidentTimeBefore** | **DateTime?**| If provided, will only return issues whose first incident time was before this datetime. | [optional] 
  **includeMuted** | **string**| If True, will include muted issues | [optional] 
  **integrationName** | **string**|  | [optional] 
- **lastIncidentTimeAfter** | **DateTime?**| If provided, will only return issues whose first incident time was after this datetime. | [optional] 
- **lastIncidentTimeBefore** | **DateTime?**| If provided, will only return issues whose first incident time was before this datetime. | [optional] 
+ **lastIncidentTimeAfter** | **DateTime?**| If provided, will only return issues whose last incident time was after this datetime. | [optional] 
+ **lastIncidentTimeBefore** | **DateTime?**| If provided, will only return issues whose last incident time was before this datetime. | [optional] 
  **pageSize** | **int?**| Number of results to return per page. | [optional] 
  **startDate** | **string**| If included, will only include issues whose most recent action occurred after this time | [optional] 
- **status** | **string**|  | [optional] 
+ **status** | **string**| Status of the issue. Options: (&#39;ONGOING&#39;, &#39;RESOLVED&#39;)  * &#x60;ONGOING&#x60; - ONGOING * &#x60;RESOLVED&#x60; - RESOLVED | [optional] 
 
 ### Return type
 

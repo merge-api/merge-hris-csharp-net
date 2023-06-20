@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.GenderEnum
+* `MALE` - MALE * `FEMALE` - FEMALE * `NON-BINARY` - NON-BINARY * `OTHER` - OTHER * `PREFER_NOT_TO_DISCLOSE` - PREFER_NOT_TO_DISCLOSE
 
 ## Properties
 

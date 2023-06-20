@@ -40,13 +40,15 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="types">If provided, will only return groups of these types. Multiple values can be separated by commas. (optional)</param>
         /// <returns>PaginatedGroupList</returns>
-        PaginatedGroupList GroupsList(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string));
+        PaginatedGroupList GroupsList(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string showEnumOrigins = default(string), string types = default(string));
 
         /// <summary>
         /// 
@@ -61,13 +63,15 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="types">If provided, will only return groups of these types. Multiple values can be separated by commas. (optional)</param>
         /// <returns>ApiResponse of PaginatedGroupList</returns>
-        ApiResponse<PaginatedGroupList> GroupsListWithHttpInfo(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string));
+        ApiResponse<PaginatedGroupList> GroupsListWithHttpInfo(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string showEnumOrigins = default(string), string types = default(string));
         /// <summary>
         /// 
         /// </summary>
@@ -78,9 +82,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>Group</returns>
-        Group GroupsRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string));
+        Group GroupsRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string));
 
         /// <summary>
         /// 
@@ -92,9 +97,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>ApiResponse of Group</returns>
-        ApiResponse<Group> GroupsRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string));
+        ApiResponse<Group> GroupsRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string));
         #endregion Synchronous Operations
     }
 
@@ -117,14 +123,16 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="types">If provided, will only return groups of these types. Multiple values can be separated by commas. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedGroupList</returns>
-        System.Threading.Tasks.Task<PaginatedGroupList> GroupsListAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<PaginatedGroupList> GroupsListAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string showEnumOrigins = default(string), string types = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -139,14 +147,16 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="types">If provided, will only return groups of these types. Multiple values can be separated by commas. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedGroupList)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PaginatedGroupList>> GroupsListWithHttpInfoAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<PaginatedGroupList>> GroupsListWithHttpInfoAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string showEnumOrigins = default(string), string types = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// 
         /// </summary>
@@ -157,10 +167,11 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Group</returns>
-        System.Threading.Tasks.Task<Group> GroupsRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Group> GroupsRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// 
@@ -172,10 +183,11 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Group)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Group>> GroupsRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<ApiResponse<Group>> GroupsRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         #endregion Asynchronous Operations
     }
 
@@ -306,15 +318,17 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="types">If provided, will only return groups of these types. Multiple values can be separated by commas. (optional)</param>
         /// <returns>PaginatedGroupList</returns>
-        public PaginatedGroupList GroupsList(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string))
+        public PaginatedGroupList GroupsList(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string showEnumOrigins = default(string), string types = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedGroupList> localVarResponse = GroupsListWithHttpInfo(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId);
+            Merge.HRISClient.Client.ApiResponse<PaginatedGroupList> localVarResponse = GroupsListWithHttpInfo(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, showEnumOrigins, types);
             return localVarResponse.Data;
         }
 
@@ -328,13 +342,15 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="types">If provided, will only return groups of these types. Multiple values can be separated by commas. (optional)</param>
         /// <returns>ApiResponse of PaginatedGroupList</returns>
-        public Merge.HRISClient.Client.ApiResponse<PaginatedGroupList> GroupsListWithHttpInfo(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string))
+        public Merge.HRISClient.Client.ApiResponse<PaginatedGroupList> GroupsListWithHttpInfo(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string showEnumOrigins = default(string), string types = default(string))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -395,6 +411,14 @@ namespace Merge.HRISClient.Api
             if (remoteId != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_id", remoteId));
+            }
+            if (showEnumOrigins != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "show_enum_origins", showEnumOrigins));
+            }
+            if (types != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "types", types));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
@@ -426,16 +450,18 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="types">If provided, will only return groups of these types. Multiple values can be separated by commas. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PaginatedGroupList</returns>
-        public async System.Threading.Tasks.Task<PaginatedGroupList> GroupsListAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<PaginatedGroupList> GroupsListAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string showEnumOrigins = default(string), string types = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<PaginatedGroupList> localVarResponse = await GroupsListWithHttpInfoAsync(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<PaginatedGroupList> localVarResponse = await GroupsListWithHttpInfoAsync(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, showEnumOrigins, types, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -449,14 +475,16 @@ namespace Merge.HRISClient.Api
         /// <param name="cursor">The pagination cursor value. (optional)</param>
         /// <param name="includeDeletedData">Whether to include data that was marked as deleted by third party webhooks. (optional)</param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="modifiedAfter">If provided, will only return objects modified after this datetime. (optional)</param>
-        /// <param name="modifiedBefore">If provided, will only return objects modified before this datetime. (optional)</param>
+        /// <param name="modifiedAfter">If provided, only objects synced by Merge after this date time will be returned. (optional)</param>
+        /// <param name="modifiedBefore">If provided, only objects synced by Merge before this date time will be returned. (optional)</param>
         /// <param name="pageSize">Number of results to return per page. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
         /// <param name="remoteId">The API provider&#39;s ID for the given object. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="types">If provided, will only return groups of these types. Multiple values can be separated by commas. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PaginatedGroupList)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedGroupList>> GroupsListWithHttpInfoAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<PaginatedGroupList>> GroupsListWithHttpInfoAsync(string xAccountToken, DateTime? createdAfter = default(DateTime?), DateTime? createdBefore = default(DateTime?), string cursor = default(string), bool? includeDeletedData = default(bool?), bool? includeRemoteData = default(bool?), DateTime? modifiedAfter = default(DateTime?), DateTime? modifiedBefore = default(DateTime?), int? pageSize = default(int?), string remoteFields = default(string), string remoteId = default(string), string showEnumOrigins = default(string), string types = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -520,6 +548,14 @@ namespace Merge.HRISClient.Api
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_id", remoteId));
             }
+            if (showEnumOrigins != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "show_enum_origins", showEnumOrigins));
+            }
+            if (types != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "types", types));
+            }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
             // authentication (tokenAuth) required
@@ -548,11 +584,12 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>Group</returns>
-        public Group GroupsRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string))
+        public Group GroupsRetrieve(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string))
         {
-            Merge.HRISClient.Client.ApiResponse<Group> localVarResponse = GroupsRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData, remoteFields);
+            Merge.HRISClient.Client.ApiResponse<Group> localVarResponse = GroupsRetrieveWithHttpInfo(xAccountToken, id, includeRemoteData, remoteFields, showEnumOrigins);
             return localVarResponse.Data;
         }
 
@@ -563,9 +600,10 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <returns>ApiResponse of Group</returns>
-        public Merge.HRISClient.Client.ApiResponse<Group> GroupsRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string))
+        public Merge.HRISClient.Client.ApiResponse<Group> GroupsRetrieveWithHttpInfo(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -595,6 +633,10 @@ namespace Merge.HRISClient.Api
             if (remoteFields != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
+            }
+            if (showEnumOrigins != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "show_enum_origins", showEnumOrigins));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 
@@ -623,12 +665,13 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of Group</returns>
-        public async System.Threading.Tasks.Task<Group> GroupsRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Group> GroupsRetrieveAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Merge.HRISClient.Client.ApiResponse<Group> localVarResponse = await GroupsRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, remoteFields, cancellationToken).ConfigureAwait(false);
+            Merge.HRISClient.Client.ApiResponse<Group> localVarResponse = await GroupsRetrieveWithHttpInfoAsync(xAccountToken, id, includeRemoteData, remoteFields, showEnumOrigins, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -639,10 +682,11 @@ namespace Merge.HRISClient.Api
         /// <param name="xAccountToken">Token identifying the end user.</param>
         /// <param name="id"></param>
         /// <param name="includeRemoteData">Whether to include the original data Merge fetched from the third-party to produce these models. (optional)</param>
-        /// <param name="remoteFields">Which fields should be returned in non-normalized form. (optional)</param>
+        /// <param name="remoteFields">Deprecated. Use show_enum_origins. (optional)</param>
+        /// <param name="showEnumOrigins">Which fields should be returned in non-normalized form. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (Group)</returns>
-        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<Group>> GroupsRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Merge.HRISClient.Client.ApiResponse<Group>> GroupsRetrieveWithHttpInfoAsync(string xAccountToken, Guid id, bool? includeRemoteData = default(bool?), string remoteFields = default(string), string showEnumOrigins = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'xAccountToken' is set
             if (xAccountToken == null)
@@ -674,6 +718,10 @@ namespace Merge.HRISClient.Api
             if (remoteFields != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "remote_fields", remoteFields));
+            }
+            if (showEnumOrigins != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Merge.HRISClient.Client.ClientUtils.ParameterToMultiMap("", "show_enum_origins", showEnumOrigins));
             }
             localVarRequestOptions.HeaderParameters.Add("X-Account-Token", Merge.HRISClient.Client.ClientUtils.ParameterToString(xAccountToken)); // header parameter
 

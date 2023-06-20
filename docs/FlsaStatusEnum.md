@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.FlsaStatusEnum
+* `EXEMPT` - EXEMPT * `SALARIED_NONEXEMPT` - SALARIED_NONEXEMPT * `NONEXEMPT` - NONEXEMPT * `OWNER` - OWNER
 
 ## Properties
 

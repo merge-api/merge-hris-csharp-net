@@ -41,15 +41,17 @@ namespace Merge.HRISClient.Model
         /// Initializes a new instance of the <see cref="MetaResponse" /> class.
         /// </summary>
         /// <param name="requestSchema">requestSchema (required).</param>
+        /// <param name="remoteFieldClasses">remoteFieldClasses.</param>
         /// <param name="status">status.</param>
         /// <param name="hasConditionalParams">hasConditionalParams (required).</param>
         /// <param name="hasRequiredLinkedAccountParams">hasRequiredLinkedAccountParams (required).</param>
-        public MetaResponse(Dictionary<string, Object> requestSchema = default(Dictionary<string, Object>), LinkedAccountStatus status = default(LinkedAccountStatus), bool hasConditionalParams = default(bool), bool hasRequiredLinkedAccountParams = default(bool))
+        public MetaResponse(Dictionary<string, Object> requestSchema = default(Dictionary<string, Object>), Dictionary<string, Object> remoteFieldClasses = default(Dictionary<string, Object>), LinkedAccountStatus status = default(LinkedAccountStatus), bool hasConditionalParams = default(bool), bool hasRequiredLinkedAccountParams = default(bool))
         {
             // to ensure "requestSchema" is required (not null)
             this.RequestSchema = requestSchema ?? throw new ArgumentNullException("requestSchema is a required property for MetaResponse and cannot be null");
             this.HasConditionalParams = hasConditionalParams;
             this.HasRequiredLinkedAccountParams = hasRequiredLinkedAccountParams;
+            this.RemoteFieldClasses = remoteFieldClasses;
             this.Status = status;
         }
 
@@ -58,6 +60,12 @@ namespace Merge.HRISClient.Model
         /// </summary>
         [DataMember(Name = "request_schema", IsRequired = true, EmitDefaultValue = false)]
         public Dictionary<string, Object> RequestSchema { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RemoteFieldClasses
+        /// </summary>
+        [DataMember(Name = "remote_field_classes", EmitDefaultValue = false)]
+        public Dictionary<string, Object> RemoteFieldClasses { get; set; }
 
         /// <summary>
         /// Gets or Sets Status
@@ -86,6 +94,7 @@ namespace Merge.HRISClient.Model
             var sb = new StringBuilder();
             sb.Append("class MetaResponse {\n");
             sb.Append("  RequestSchema: ").Append(RequestSchema).Append("\n");
+            sb.Append("  RemoteFieldClasses: ").Append(RemoteFieldClasses).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  HasConditionalParams: ").Append(HasConditionalParams).Append("\n");
             sb.Append("  HasRequiredLinkedAccountParams: ").Append(HasRequiredLinkedAccountParams).Append("\n");
@@ -130,6 +139,12 @@ namespace Merge.HRISClient.Model
                     this.RequestSchema.SequenceEqual(input.RequestSchema)
                 ) && 
                 (
+                    this.RemoteFieldClasses == input.RemoteFieldClasses ||
+                    this.RemoteFieldClasses != null &&
+                    input.RemoteFieldClasses != null &&
+                    this.RemoteFieldClasses.SequenceEqual(input.RemoteFieldClasses)
+                ) && 
+                (
                     this.Status == input.Status ||
                     (this.Status != null &&
                     this.Status.Equals(input.Status))
@@ -155,6 +170,8 @@ namespace Merge.HRISClient.Model
                 int hashCode = 41;
                 if (this.RequestSchema != null)
                     hashCode = hashCode * 59 + this.RequestSchema.GetHashCode();
+                if (this.RemoteFieldClasses != null)
+                    hashCode = hashCode * 59 + this.RemoteFieldClasses.GetHashCode();
                 if (this.Status != null)
                     hashCode = hashCode * 59 + this.Status.GetHashCode();
                 hashCode = hashCode * 59 + this.HasConditionalParams.GetHashCode();

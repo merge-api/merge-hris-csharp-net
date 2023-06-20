@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="employmentslist"></a>
 # **EmploymentsList**
-> PaginatedEmploymentList EmploymentsList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, string employeeId = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, string orderBy = null, int? pageSize = null, string remoteFields = null, string remoteId = null)
+> PaginatedEmploymentList EmploymentsList (string xAccountToken, DateTime? createdAfter = null, DateTime? createdBefore = null, string cursor = null, string employeeId = null, bool? includeDeletedData = null, bool? includeRemoteData = null, DateTime? modifiedAfter = null, DateTime? modifiedBefore = null, string orderBy = null, int? pageSize = null, string remoteFields = null, string remoteId = null, string showEnumOrigins = null)
 
 
 
@@ -45,16 +45,17 @@ namespace Example
             var employeeId = employeeId_example;  // string | If provided, will only return employments for this employee. (optional) 
             var includeDeletedData = true;  // bool? | Whether to include data that was marked as deleted by third party webhooks. (optional) 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
-            var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified after this datetime. (optional) 
-            var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, will only return objects modified before this datetime. (optional) 
+            var modifiedAfter = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, only objects synced by Merge after this date time will be returned. (optional) 
+            var modifiedBefore = 2013-10-20T19:20:30+01:00;  // DateTime? | If provided, only objects synced by Merge before this date time will be returned. (optional) 
             var orderBy = orderBy_example;  // string | Overrides the default ordering for this endpoint. (optional) 
             var pageSize = 56;  // int? | Number of results to return per page. (optional) 
-            var remoteFields = employment_type,flsa_status,pay_frequency,pay_period;  // string | Which fields should be returned in non-normalized form. (optional) 
+            var remoteFields = employment_type,flsa_status,pay_frequency,pay_period;  // string | Deprecated. Use show_enum_origins. (optional) 
             var remoteId = remoteId_example;  // string | The API provider's ID for the given object. (optional) 
+            var showEnumOrigins = employment_type,flsa_status,pay_frequency,pay_period;  // string | Which fields should be returned in non-normalized form. (optional) 
 
             try
             {
-                PaginatedEmploymentList result = apiInstance.EmploymentsList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteFields, remoteId);
+                PaginatedEmploymentList result = apiInstance.EmploymentsList(xAccountToken, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteFields, remoteId, showEnumOrigins);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -79,12 +80,13 @@ Name | Type | Description  | Notes
  **employeeId** | **string**| If provided, will only return employments for this employee. | [optional] 
  **includeDeletedData** | **bool?**| Whether to include data that was marked as deleted by third party webhooks. | [optional] 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
- **modifiedAfter** | **DateTime?**| If provided, will only return objects modified after this datetime. | [optional] 
- **modifiedBefore** | **DateTime?**| If provided, will only return objects modified before this datetime. | [optional] 
+ **modifiedAfter** | **DateTime?**| If provided, only objects synced by Merge after this date time will be returned. | [optional] 
+ **modifiedBefore** | **DateTime?**| If provided, only objects synced by Merge before this date time will be returned. | [optional] 
  **orderBy** | **string**| Overrides the default ordering for this endpoint. | [optional] 
  **pageSize** | **int?**| Number of results to return per page. | [optional] 
- **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
+ **remoteFields** | **string**| Deprecated. Use show_enum_origins. | [optional] 
  **remoteId** | **string**| The API provider&#39;s ID for the given object. | [optional] 
+ **showEnumOrigins** | **string**| Which fields should be returned in non-normalized form. | [optional] 
 
 ### Return type
 
@@ -109,7 +111,7 @@ Name | Type | Description  | Notes
 
 <a name="employmentsretrieve"></a>
 # **EmploymentsRetrieve**
-> Employment EmploymentsRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null, string remoteFields = null)
+> Employment EmploymentsRetrieve (string xAccountToken, Guid id, bool? includeRemoteData = null, string remoteFields = null, string showEnumOrigins = null)
 
 
 
@@ -140,11 +142,12 @@ namespace Example
             var xAccountToken = xAccountToken_example;  // string | Token identifying the end user.
             var id = new Guid(); // Guid | 
             var includeRemoteData = true;  // bool? | Whether to include the original data Merge fetched from the third-party to produce these models. (optional) 
-            var remoteFields = employment_type,flsa_status,pay_frequency,pay_period;  // string | Which fields should be returned in non-normalized form. (optional) 
+            var remoteFields = employment_type,flsa_status,pay_frequency,pay_period;  // string | Deprecated. Use show_enum_origins. (optional) 
+            var showEnumOrigins = employment_type,flsa_status,pay_frequency,pay_period;  // string | Which fields should be returned in non-normalized form. (optional) 
 
             try
             {
-                Employment result = apiInstance.EmploymentsRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
+                Employment result = apiInstance.EmploymentsRetrieve(xAccountToken, id, includeRemoteData, remoteFields, showEnumOrigins);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -165,7 +168,8 @@ Name | Type | Description  | Notes
  **xAccountToken** | **string**| Token identifying the end user. | 
  **id** | [**Guid**](Guid.md)|  | 
  **includeRemoteData** | **bool?**| Whether to include the original data Merge fetched from the third-party to produce these models. | [optional] 
- **remoteFields** | **string**| Which fields should be returned in non-normalized form. | [optional] 
+ **remoteFields** | **string**| Deprecated. Use show_enum_origins. | [optional] 
+ **showEnumOrigins** | **string**| Which fields should be returned in non-normalized form. | [optional] 
 
 ### Return type
 

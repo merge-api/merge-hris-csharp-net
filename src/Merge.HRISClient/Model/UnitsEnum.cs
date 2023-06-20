@@ -27,8 +27,9 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// Defines UnitsEnum
+    /// * &#x60;HOURS&#x60; - HOURS * &#x60;DAYS&#x60; - DAYS
     /// </summary>
+    /// <value>* &#x60;HOURS&#x60; - HOURS * &#x60;DAYS&#x60; - DAYS</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum UnitsEnum
     {

@@ -27,8 +27,9 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// Defines SyncStatusStatusEnum
+    /// * &#x60;SYNCING&#x60; - SYNCING * &#x60;DONE&#x60; - DONE * &#x60;FAILED&#x60; - FAILED * &#x60;DISABLED&#x60; - DISABLED * &#x60;PAUSED&#x60; - PAUSED * &#x60;PARTIALLY_SYNCED&#x60; - PARTIALLY_SYNCED
     /// </summary>
+    /// <value>* &#x60;SYNCING&#x60; - SYNCING * &#x60;DONE&#x60; - DONE * &#x60;FAILED&#x60; - FAILED * &#x60;DISABLED&#x60; - DISABLED * &#x60;PAUSED&#x60; - PAUSED * &#x60;PARTIALLY_SYNCED&#x60; - PARTIALLY_SYNCED</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum SyncStatusStatusEnum
     {
@@ -60,7 +61,13 @@ namespace Merge.HRISClient.Model
         /// Enum PAUSED for value: PAUSED
         /// </summary>
         [EnumMember(Value = "PAUSED")]
-        PAUSED = 5
+        PAUSED = 5,
+
+        /// <summary>
+        /// Enum PARTIALLYSYNCED for value: PARTIALLY_SYNCED
+        /// </summary>
+        [EnumMember(Value = "PARTIALLY_SYNCED")]
+        PARTIALLYSYNCED = 6
 
     }
 

@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.UnitsEnum
+* `HOURS` - HOURS * `DAYS` - DAYS
 
 ## Properties
 

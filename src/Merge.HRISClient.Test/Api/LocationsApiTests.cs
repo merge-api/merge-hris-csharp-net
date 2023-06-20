@@ -73,7 +73,8 @@ namespace Merge.HRISClient.Test.Api
             //int? pageSize = null;
             //string remoteFields = null;
             //string remoteId = null;
-            //var response = instance.LocationsList(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId);
+            //string showEnumOrigins = null;
+            //var response = instance.LocationsList(xAccountToken, createdAfter, createdBefore, cursor, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, pageSize, remoteFields, remoteId, showEnumOrigins);
             //Assert.IsType<PaginatedLocationList>(response);
         }
 
@@ -88,7 +89,8 @@ namespace Merge.HRISClient.Test.Api
             //Guid id = null;
             //bool? includeRemoteData = null;
             //string remoteFields = null;
-            //var response = instance.LocationsRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
+            //string showEnumOrigins = null;
+            //var response = instance.LocationsRetrieve(xAccountToken, id, includeRemoteData, remoteFields, showEnumOrigins);
             //Assert.IsType<Location>(response);
         }
     }

@@ -27,8 +27,9 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// Defines EmploymentTypeEnum
+    /// * &#x60;FULL_TIME&#x60; - FULL_TIME * &#x60;PART_TIME&#x60; - PART_TIME * &#x60;INTERN&#x60; - INTERN * &#x60;CONTRACTOR&#x60; - CONTRACTOR * &#x60;FREELANCE&#x60; - FREELANCE
     /// </summary>
+    /// <value>* &#x60;FULL_TIME&#x60; - FULL_TIME * &#x60;PART_TIME&#x60; - PART_TIME * &#x60;INTERN&#x60; - INTERN * &#x60;CONTRACTOR&#x60; - CONTRACTOR * &#x60;FREELANCE&#x60; - FREELANCE</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum EmploymentTypeEnum
     {

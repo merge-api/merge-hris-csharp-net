@@ -1,4 +1,5 @@
 # Merge.HRISClient.Model.MethodEnum
+* `GET` - GET * `OPTIONS` - OPTIONS * `HEAD` - HEAD * `POST` - POST * `PUT` - PUT * `PATCH` - PATCH * `DELETE` - DELETE
 
 ## Properties
 

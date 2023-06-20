@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 
-Get syncing status. Possible values: `DISABLED`, `DONE`, `FAILED`, `PAUSED`, `SYNCING`
+Get syncing status. Possible values: `DISABLED`, `DONE`, `FAILED`, `PARTIALLY_SYNCED`, `PAUSED`, `SYNCING`
 
 ### Example
 ```csharp

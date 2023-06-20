@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | The name of the form field | 
 **Data** | **string** | The data for the form field. | 
-**Encoding** | **EncodingEnum** | The encoding of the value of &#x60;data&#x60;. Defaults to &#x60;RAW&#x60; if not defined. | [optional] 
+**Encoding** | **EncodingEnum** | The encoding of the value of &#x60;data&#x60;. Defaults to &#x60;RAW&#x60; if not defined.  * &#x60;RAW&#x60; - RAW * &#x60;BASE64&#x60; - BASE64 * &#x60;GZIP_BASE64&#x60; - GZIP_BASE64 | [optional] 
 **FileName** | **string** | The file name of the form field, if the field is for a file. | [optional] 
 **ContentType** | **string** | The MIME type of the file, if the field is for a file. | [optional] 
 

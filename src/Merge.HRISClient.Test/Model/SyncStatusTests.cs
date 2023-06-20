@@ -105,6 +105,14 @@ namespace Merge.HRISClient.Test.Model
         {
             // TODO unit test for the property 'IsInitialSync'
         }
+        /// <summary>
+        /// Test the property 'SelectiveSyncConfigurationsUsage'
+        /// </summary>
+        [Fact]
+        public void SelectiveSyncConfigurationsUsageTest()
+        {
+            // TODO unit test for the property 'SelectiveSyncConfigurationsUsage'
+        }
 
     }
 

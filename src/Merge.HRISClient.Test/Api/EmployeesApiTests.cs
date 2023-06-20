@@ -80,8 +80,7 @@ namespace Merge.HRISClient.Test.Api
             //string xAccountToken = null;
             //Guid modelId = null;
             //IgnoreCommonModelRequest ignoreCommonModelRequest = null;
-            //var response = instance.EmployeesIgnoreCreate(xAccountToken, modelId, ignoreCommonModelRequest);
-            //Assert.IsType<IgnoreCommonModel>(response);
+            //instance.EmployeesIgnoreCreate(xAccountToken, modelId, ignoreCommonModelRequest);
         }
 
         /// <summary>
@@ -99,6 +98,7 @@ namespace Merge.HRISClient.Test.Api
             //string displayFullName = null;
             //string employmentStatus = null;
             //string firstName = null;
+            //string groups = null;
             //bool? includeDeletedData = null;
             //bool? includeRemoteData = null;
             //bool? includeSensitiveFields = null;
@@ -111,10 +111,15 @@ namespace Merge.HRISClient.Test.Api
             //string personalEmail = null;
             //string remoteFields = null;
             //string remoteId = null;
+            //string showEnumOrigins = null;
+            //DateTime? startedAfter = null;
+            //DateTime? startedBefore = null;
             //string teamId = null;
+            //DateTime? terminatedAfter = null;
+            //DateTime? terminatedBefore = null;
             //string workEmail = null;
             //string workLocationId = null;
-            //var response = instance.EmployeesList(xAccountToken, companyId, createdAfter, createdBefore, cursor, displayFullName, employmentStatus, firstName, includeDeletedData, includeRemoteData, includeSensitiveFields, lastName, managerId, modifiedAfter, modifiedBefore, pageSize, payGroupId, personalEmail, remoteFields, remoteId, teamId, workEmail, workLocationId);
+            //var response = instance.EmployeesList(xAccountToken, companyId, createdAfter, createdBefore, cursor, displayFullName, employmentStatus, firstName, groups, includeDeletedData, includeRemoteData, includeSensitiveFields, lastName, managerId, modifiedAfter, modifiedBefore, pageSize, payGroupId, personalEmail, remoteFields, remoteId, showEnumOrigins, startedAfter, startedBefore, teamId, terminatedAfter, terminatedBefore, workEmail, workLocationId);
             //Assert.IsType<PaginatedEmployeeList>(response);
         }
 
@@ -142,7 +147,8 @@ namespace Merge.HRISClient.Test.Api
             //bool? includeRemoteData = null;
             //bool? includeSensitiveFields = null;
             //string remoteFields = null;
-            //var response = instance.EmployeesRetrieve(xAccountToken, id, includeRemoteData, includeSensitiveFields, remoteFields);
+            //string showEnumOrigins = null;
+            //var response = instance.EmployeesRetrieve(xAccountToken, id, includeRemoteData, includeSensitiveFields, remoteFields, showEnumOrigins);
             //Assert.IsType<Employee>(response);
         }
     }

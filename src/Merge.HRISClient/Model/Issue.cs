@@ -34,8 +34,9 @@ namespace Merge.HRISClient.Model
     {
 
         /// <summary>
-        /// Gets or Sets Status
+        /// Status of the issue. Options: (&#39;ONGOING&#39;, &#39;RESOLVED&#39;)  * &#x60;ONGOING&#x60; - ONGOING * &#x60;RESOLVED&#x60; - RESOLVED
         /// </summary>
+        /// <value>Status of the issue. Options: (&#39;ONGOING&#39;, &#39;RESOLVED&#39;)  * &#x60;ONGOING&#x60; - ONGOING * &#x60;RESOLVED&#x60; - RESOLVED</value>
         [DataMember(Name = "status", EmitDefaultValue = false)]
         public IssueStatusEnum? Status { get; set; }
         /// <summary>
@@ -46,7 +47,7 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Issue" /> class.
         /// </summary>
-        /// <param name="status">status.</param>
+        /// <param name="status">Status of the issue. Options: (&#39;ONGOING&#39;, &#39;RESOLVED&#39;)  * &#x60;ONGOING&#x60; - ONGOING * &#x60;RESOLVED&#x60; - RESOLVED.</param>
         /// <param name="errorDescription">errorDescription (required).</param>
         /// <param name="firstIncidentTime">firstIncidentTime.</param>
         /// <param name="lastIncidentTime">lastIncidentTime.</param>
@@ -123,6 +124,21 @@ namespace Merge.HRISClient.Model
         }
 
         /// <summary>
+        /// Gets or Sets ErrorDetails
+        /// </summary>
+        [DataMember(Name = "error_details", EmitDefaultValue = false)]
+        public List<string> ErrorDetails { get; private set; }
+
+        /// <summary>
+        /// Returns false as ErrorDetails should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeErrorDetails()
+        {
+            return false;
+        }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -137,6 +153,7 @@ namespace Merge.HRISClient.Model
             sb.Append("  FirstIncidentTime: ").Append(FirstIncidentTime).Append("\n");
             sb.Append("  LastIncidentTime: ").Append(LastIncidentTime).Append("\n");
             sb.Append("  IsMuted: ").Append(IsMuted).Append("\n");
+            sb.Append("  ErrorDetails: ").Append(ErrorDetails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -204,6 +221,12 @@ namespace Merge.HRISClient.Model
                 (
                     this.IsMuted == input.IsMuted ||
                     this.IsMuted.Equals(input.IsMuted)
+                ) && 
+                (
+                    this.ErrorDetails == input.ErrorDetails ||
+                    this.ErrorDetails != null &&
+                    input.ErrorDetails != null &&
+                    this.ErrorDetails.SequenceEqual(input.ErrorDetails)
                 );
         }
 
@@ -228,6 +251,8 @@ namespace Merge.HRISClient.Model
                 if (this.LastIncidentTime != null)
                     hashCode = hashCode * 59 + this.LastIncidentTime.GetHashCode();
                 hashCode = hashCode * 59 + this.IsMuted.GetHashCode();
+                if (this.ErrorDetails != null)
+                    hashCode = hashCode * 59 + this.ErrorDetails.GetHashCode();
                 return hashCode;
             }
         }

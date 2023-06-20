@@ -105,6 +105,22 @@ namespace Merge.HRISClient.Test.Model
         {
             // TODO unit test for the property 'Slug'
         }
+        /// <summary>
+        /// Test the property 'IsInBeta'
+        /// </summary>
+        [Fact]
+        public void IsInBetaTest()
+        {
+            // TODO unit test for the property 'IsInBeta'
+        }
+        /// <summary>
+        /// Test the property 'ApiEndpointsToDocumentationUrls'
+        /// </summary>
+        [Fact]
+        public void ApiEndpointsToDocumentationUrlsTest()
+        {
+            // TODO unit test for the property 'ApiEndpointsToDocumentationUrls'
+        }
 
     }
 

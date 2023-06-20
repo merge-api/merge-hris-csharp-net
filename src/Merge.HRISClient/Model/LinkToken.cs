@@ -41,14 +41,13 @@ namespace Merge.HRISClient.Model
         /// Initializes a new instance of the <see cref="LinkToken" /> class.
         /// </summary>
         /// <param name="linkToken">linkToken (required).</param>
-        /// <param name="integrationName">integrationName (required).</param>
+        /// <param name="integrationName">integrationName.</param>
         /// <param name="magicLinkUrl">magicLinkUrl.</param>
         public LinkToken(string linkToken = default(string), string integrationName = default(string), string magicLinkUrl = default(string))
         {
             // to ensure "linkToken" is required (not null)
             this._LinkToken = linkToken ?? throw new ArgumentNullException("linkToken is a required property for LinkToken and cannot be null");
-            // to ensure "integrationName" is required (not null)
-            this.IntegrationName = integrationName ?? throw new ArgumentNullException("integrationName is a required property for LinkToken and cannot be null");
+            this.IntegrationName = integrationName;
             this.MagicLinkUrl = magicLinkUrl;
         }
 
@@ -61,7 +60,7 @@ namespace Merge.HRISClient.Model
         /// <summary>
         /// Gets or Sets IntegrationName
         /// </summary>
-        [DataMember(Name = "integration_name", IsRequired = true, EmitDefaultValue = false)]
+        [DataMember(Name = "integration_name", EmitDefaultValue = false)]
         public string IntegrationName { get; set; }
 
         /// <summary>

@@ -77,7 +77,8 @@ namespace Merge.HRISClient.Test.Api
             //int? pageSize = null;
             //string remoteFields = null;
             //string remoteId = null;
-            //var response = instance.BankInfoList(xAccountToken, accountType, bankName, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteFields, remoteId);
+            //string showEnumOrigins = null;
+            //var response = instance.BankInfoList(xAccountToken, accountType, bankName, createdAfter, createdBefore, cursor, employeeId, includeDeletedData, includeRemoteData, modifiedAfter, modifiedBefore, orderBy, pageSize, remoteFields, remoteId, showEnumOrigins);
             //Assert.IsType<PaginatedBankInfoList>(response);
         }
 
@@ -92,7 +93,8 @@ namespace Merge.HRISClient.Test.Api
             //Guid id = null;
             //bool? includeRemoteData = null;
             //string remoteFields = null;
-            //var response = instance.BankInfoRetrieve(xAccountToken, id, includeRemoteData, remoteFields);
+            //string showEnumOrigins = null;
+            //var response = instance.BankInfoRetrieve(xAccountToken, id, includeRemoteData, remoteFields, showEnumOrigins);
             //Assert.IsType<BankInfo>(response);
         }
     }

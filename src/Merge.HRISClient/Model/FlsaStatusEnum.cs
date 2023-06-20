@@ -27,8 +27,9 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// Defines FlsaStatusEnum
+    /// * &#x60;EXEMPT&#x60; - EXEMPT * &#x60;SALARIED_NONEXEMPT&#x60; - SALARIED_NONEXEMPT * &#x60;NONEXEMPT&#x60; - NONEXEMPT * &#x60;OWNER&#x60; - OWNER
     /// </summary>
+    /// <value>* &#x60;EXEMPT&#x60; - EXEMPT * &#x60;SALARIED_NONEXEMPT&#x60; - SALARIED_NONEXEMPT * &#x60;NONEXEMPT&#x60; - NONEXEMPT * &#x60;OWNER&#x60; - OWNER</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum FlsaStatusEnum
     {

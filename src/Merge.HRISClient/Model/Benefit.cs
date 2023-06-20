@@ -27,7 +27,7 @@ using OpenAPIDateConverter = Merge.HRISClient.Client.OpenAPIDateConverter;
 namespace Merge.HRISClient.Model
 {
     /// <summary>
-    /// # The Benefit Object ### Description The &#x60;Benefit&#x60; object is used to represent a Benefit for an employee.  ### Usage Example Fetch from the &#x60;LIST Benefits&#x60; endpoint and filter by &#x60;ID&#x60; to show all benefits.
+    /// # The Benefit Object ### Description The &#x60;Benefit&#x60; object is used to represent a benefit that an employee has enrolled in.  ### Usage Example Fetch from the &#x60;LIST Benefits&#x60; endpoint and filter by &#x60;ID&#x60; to show all benefits.
     /// </summary>
     [DataContract(Name = "Benefit")]
     public partial class Benefit : IEquatable<Benefit>, IValidatableObject
@@ -36,12 +36,14 @@ namespace Merge.HRISClient.Model
         /// Initializes a new instance of the <see cref="Benefit" /> class.
         /// </summary>
         /// <param name="remoteId">The third-party API ID of the matching object..</param>
-        /// <param name="employee">employee.</param>
+        /// <param name="employee">The employee on the plan..</param>
         /// <param name="providerName">The name of the benefit provider..</param>
         /// <param name="benefitPlanType">The type of benefit plan.</param>
         /// <param name="employeeContribution">The employee&#39;s contribution..</param>
         /// <param name="companyContribution">The company&#39;s contribution..</param>
-        public Benefit(string remoteId = default(string), Guid? employee = default(Guid?), string providerName = default(string), string benefitPlanType = default(string), float? employeeContribution = default(float?), float? companyContribution = default(float?))
+        /// <param name="startDate">The day and time the benefit started..</param>
+        /// <param name="endDate">The day and time the benefit ended..</param>
+        public Benefit(string remoteId = default(string), Guid? employee = default(Guid?), string providerName = default(string), string benefitPlanType = default(string), double? employeeContribution = default(double?), double? companyContribution = default(double?), DateTime? startDate = default(DateTime?), DateTime? endDate = default(DateTime?))
         {
             this.RemoteId = remoteId;
             this.Employee = employee;
@@ -49,6 +51,8 @@ namespace Merge.HRISClient.Model
             this.BenefitPlanType = benefitPlanType;
             this.EmployeeContribution = employeeContribution;
             this.CompanyContribution = companyContribution;
+            this.StartDate = startDate;
+            this.EndDate = endDate;
         }
 
         /// <summary>
@@ -74,8 +78,9 @@ namespace Merge.HRISClient.Model
         public string RemoteId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Employee
+        /// The employee on the plan.
         /// </summary>
+        /// <value>The employee on the plan.</value>
         [DataMember(Name = "employee", EmitDefaultValue = true)]
         public Guid? Employee { get; set; }
 
@@ -98,29 +103,28 @@ namespace Merge.HRISClient.Model
         /// </summary>
         /// <value>The employee&#39;s contribution.</value>
         [DataMember(Name = "employee_contribution", EmitDefaultValue = true)]
-        public float? EmployeeContribution { get; set; }
+        public double? EmployeeContribution { get; set; }
 
         /// <summary>
         /// The company&#39;s contribution.
         /// </summary>
         /// <value>The company&#39;s contribution.</value>
         [DataMember(Name = "company_contribution", EmitDefaultValue = true)]
-        public float? CompanyContribution { get; set; }
+        public double? CompanyContribution { get; set; }
 
         /// <summary>
-        /// Gets or Sets RemoteData
+        /// The day and time the benefit started.
         /// </summary>
-        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
-        public List<RemoteData> RemoteData { get; private set; }
+        /// <value>The day and time the benefit started.</value>
+        [DataMember(Name = "start_date", EmitDefaultValue = true)]
+        public DateTime? StartDate { get; set; }
 
         /// <summary>
-        /// Returns false as RemoteData should not be serialized given that it's read-only.
+        /// The day and time the benefit ended.
         /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeRemoteData()
-        {
-            return false;
-        }
+        /// <value>The day and time the benefit ended.</value>
+        [DataMember(Name = "end_date", EmitDefaultValue = true)]
+        public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Indicates whether or not this object has been deleted by third party webhooks.
@@ -134,6 +138,52 @@ namespace Merge.HRISClient.Model
         /// </summary>
         /// <returns>false (boolean)</returns>
         public bool ShouldSerializeRemoteWasDeleted()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Gets or Sets FieldMappings
+        /// </summary>
+        [DataMember(Name = "field_mappings", EmitDefaultValue = true)]
+        public Dictionary<string, Object> FieldMappings { get; private set; }
+
+        /// <summary>
+        /// Returns false as FieldMappings should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFieldMappings()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// This is the datetime that this object was last updated by Merge
+        /// </summary>
+        /// <value>This is the datetime that this object was last updated by Merge</value>
+        [DataMember(Name = "modified_at", EmitDefaultValue = false)]
+        public DateTime ModifiedAt { get; private set; }
+
+        /// <summary>
+        /// Returns false as ModifiedAt should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeModifiedAt()
+        {
+            return false;
+        }
+
+        /// <summary>
+        /// Gets or Sets RemoteData
+        /// </summary>
+        [DataMember(Name = "remote_data", EmitDefaultValue = true)]
+        public List<RemoteData> RemoteData { get; private set; }
+
+        /// <summary>
+        /// Returns false as RemoteData should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRemoteData()
         {
             return false;
         }
@@ -153,8 +203,12 @@ namespace Merge.HRISClient.Model
             sb.Append("  BenefitPlanType: ").Append(BenefitPlanType).Append("\n");
             sb.Append("  EmployeeContribution: ").Append(EmployeeContribution).Append("\n");
             sb.Append("  CompanyContribution: ").Append(CompanyContribution).Append("\n");
-            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
+            sb.Append("  StartDate: ").Append(StartDate).Append("\n");
+            sb.Append("  EndDate: ").Append(EndDate).Append("\n");
             sb.Append("  RemoteWasDeleted: ").Append(RemoteWasDeleted).Append("\n");
+            sb.Append("  FieldMappings: ").Append(FieldMappings).Append("\n");
+            sb.Append("  ModifiedAt: ").Append(ModifiedAt).Append("\n");
+            sb.Append("  RemoteData: ").Append(RemoteData).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -225,14 +279,35 @@ namespace Merge.HRISClient.Model
                     this.CompanyContribution.Equals(input.CompanyContribution))
                 ) && 
                 (
-                    this.RemoteData == input.RemoteData ||
-                    this.RemoteData != null &&
-                    input.RemoteData != null &&
-                    this.RemoteData.SequenceEqual(input.RemoteData)
+                    this.StartDate == input.StartDate ||
+                    (this.StartDate != null &&
+                    this.StartDate.Equals(input.StartDate))
+                ) && 
+                (
+                    this.EndDate == input.EndDate ||
+                    (this.EndDate != null &&
+                    this.EndDate.Equals(input.EndDate))
                 ) && 
                 (
                     this.RemoteWasDeleted == input.RemoteWasDeleted ||
                     this.RemoteWasDeleted.Equals(input.RemoteWasDeleted)
+                ) && 
+                (
+                    this.FieldMappings == input.FieldMappings ||
+                    this.FieldMappings != null &&
+                    input.FieldMappings != null &&
+                    this.FieldMappings.SequenceEqual(input.FieldMappings)
+                ) && 
+                (
+                    this.ModifiedAt == input.ModifiedAt ||
+                    (this.ModifiedAt != null &&
+                    this.ModifiedAt.Equals(input.ModifiedAt))
+                ) && 
+                (
+                    this.RemoteData == input.RemoteData ||
+                    this.RemoteData != null &&
+                    input.RemoteData != null &&
+                    this.RemoteData.SequenceEqual(input.RemoteData)
                 );
         }
 
@@ -259,9 +334,17 @@ namespace Merge.HRISClient.Model
                     hashCode = hashCode * 59 + this.EmployeeContribution.GetHashCode();
                 if (this.CompanyContribution != null)
                     hashCode = hashCode * 59 + this.CompanyContribution.GetHashCode();
+                if (this.StartDate != null)
+                    hashCode = hashCode * 59 + this.StartDate.GetHashCode();
+                if (this.EndDate != null)
+                    hashCode = hashCode * 59 + this.EndDate.GetHashCode();
+                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
+                if (this.FieldMappings != null)
+                    hashCode = hashCode * 59 + this.FieldMappings.GetHashCode();
+                if (this.ModifiedAt != null)
+                    hashCode = hashCode * 59 + this.ModifiedAt.GetHashCode();
                 if (this.RemoteData != null)
                     hashCode = hashCode * 59 + this.RemoteData.GetHashCode();
-                hashCode = hashCode * 59 + this.RemoteWasDeleted.GetHashCode();
                 return hashCode;
             }
         }
